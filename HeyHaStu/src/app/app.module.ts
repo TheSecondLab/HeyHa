@@ -8,24 +8,28 @@ import { MinePage } from '../pages/mine/mine';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TrainPage } from '../pages/train/train';
+import { HeaderComponent } from './components/header/header';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+// NgModule
 @NgModule({
-  declarations: [
+  declarations: [ // 当前项目运行的组件 & 自定义的组件
     MyApp,
     EventsPage,
     MinePage,
     HomePage,
     TabsPage,
-    TrainPage
+    TrainPage,
+
+    HeaderComponent
   ],
-  imports: [
+  imports: [ // 当前的项目依赖哪些组件
     BrowserModule,
     IonicModule.forRoot(MyApp)
   ],
-  bootstrap: [IonicApp],
+  bootstrap: [IonicApp], // 默认启动的组件
   entryComponents: [
     MyApp,
     EventsPage,
@@ -34,7 +38,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TabsPage,
     TrainPage
   ],
-  providers: [
+  providers: [ // 定义的服务
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

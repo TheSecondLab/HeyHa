@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'; // Angular核心组件
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
@@ -10,8 +10,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-mine',
-  templateUrl: 'mine.html',
+  selector: 'page-mine', // 使用组件的名称
+  templateUrl: 'mine.html' // HTML
+  // styleUrls: ['mine.scss'] // 样式
 })
 export class MinePage {
 

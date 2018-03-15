@@ -1,6 +1,11 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+
+// 自定义组件
+import { ComponentsModule } from '../components/components.module';
+
+// 根组件
 import { MyApp } from './app.component';
 
 import { AboutPage } from '../pages/about/about';
@@ -12,19 +17,20 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 @NgModule({
-  declarations: [
+  declarations: [ // 声明组件
     MyApp,
     AboutPage,
     ContactPage,
     HomePage,
     TabsPage
   ],
-  imports: [
+  imports: [ // 依赖的模块
     BrowserModule,
+    ComponentsModule,
     IonicModule.forRoot(MyApp)
   ],
-  bootstrap: [IonicApp],
-  entryComponents: [
+  bootstrap: [IonicApp], // 启动模块
+  entryComponents: [ // 不会在模板中使用的组件
     MyApp,
     AboutPage,
     ContactPage,
