@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 /**
  * Generated class for the SubTitleComponent component.
@@ -12,14 +12,12 @@ import { Component, Input } from '@angular/core';
 })
 export class SubTitleComponent {
 
-  @Input() title: string;
-  @Input() value: string;
+  title: string;
 
 
   constructor() {
-    console.log('Hello SubTitleComponent Component');
-    this.title = 'Hello World';
-    console.log(this, this.value);
+
+    this.title = '到期提醒';
 
   }
 

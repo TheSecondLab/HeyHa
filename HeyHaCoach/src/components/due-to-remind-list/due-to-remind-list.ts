@@ -19,6 +19,30 @@ export class DueToRemindListComponent {
       imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
       name: '好的',
       date: '12'
+    }, {
+      imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+      name: '好的',
+      date: '12'
+    }, {
+      imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+      name: '好的',
+      date: '12'
+    }, {
+      imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+      name: '好的',
+      date: '12'
+    }, {
+      imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+      name: '好的',
+      date: '12'
+    }, {
+      imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+      name: '好的',
+      date: '12'
+    }, {
+      imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+      name: '好的',
+      date: '12'
     }]
   }
 

@@ -1,3 +1,38 @@
 sub-title {
+  .wrap {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 15px;
+    align-content: center;
+  }
+  .title {
+    font-size: 14px;
+    color: #333333;
+    font-weight: bold;
+    &::before {
+      display: inline-block;
+      content: ' ';
+      width: 8px;
+      height: 20px;
+      margin-right: 10px;
+      vertical-align: -4px;
+      background: linear-gradient(to bottom right, #8fd9fd , #22a7e9);
+      border-radius: 5px;
+    }
+  }
 
+  .more {
+    line-height: 19px;
+    font-size: 12px;
+    color: #6EB6EC;
+    &::after {
+      display: inline-block;
+      content: ' ';
+      width: 8px;
+      height: 13px;
+      vertical-align: middle;
+      margin-left: 8px;
+      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAANCAYAAAHjxR+uAAAAAXNSR0IArs4c6QAAAK1JREFUGBltkMENwjAMRb9DFkDiTjsJvcIwFaMghmmPlEko9yImoCF26sRU9FLH/9n/yzj37wrla7spyEuKLGpBWrg8oh2R5vB5ONrUl+N2JEUi0UTh5hllIgr19bQjtP00KMV/h0BV271G2wQ3tJmXSj7CXUhL/OBJXbmQ2AYcAHo6cg2ntY5iksLOAxD2azCn4Kl/YDmP3WtqbyfjTRaLdDnWPIeMwhKyCLrkCzhOc5C1CgnhAAAAAElFTkSuQmCC);
+    }
+  }
 }
