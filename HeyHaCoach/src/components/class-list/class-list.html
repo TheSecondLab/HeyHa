@@ -1,0 +1,10 @@
+<!-- Generated template for the ClassListComponent component -->
+<div>
+  <div class="list" *ngFor="let item of list" (click)="goClassDetail(item.id)">
+    <div class="type">{{item.type}}</div>
+    <div class="cont">
+      <div class="name">{{item.name}}</div>
+      <div class="time">课程时间：{{item.time}}</div>
+    </div>
+  </div>
+</div>
