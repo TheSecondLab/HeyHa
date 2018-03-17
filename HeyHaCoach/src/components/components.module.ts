@@ -9,6 +9,9 @@ import { NewsDetailComponent } from './news-detail/news-detail';
 import { NewsListThumbComponent } from './news-list-thumb/news-list-thumb';
 import { ClassListComponent } from './class-list/class-list';
 import { RemindListAllComponent } from './remind-list-all/remind-list-all';
+import { StuListComponent } from './stu-list/stu-list';
+import { TraceListComponent } from './trace-list/trace-list';
+import { ExerciseListComponent } from './exercise-list/exercise-list';
 
 @NgModule({
 	declarations: [DueToRemindListComponent,
@@ -17,7 +20,10 @@ import { RemindListAllComponent } from './remind-list-all/remind-list-all';
     NewsDetailComponent,
     NewsListThumbComponent,
     ClassListComponent,
-    RemindListAllComponent],
+    RemindListAllComponent,
+    StuListComponent,
+    TraceListComponent,
+    ExerciseListComponent],
 	imports: [BrowserModule, IonicModule],
 	exports: [DueToRemindListComponent,
     SubTitleComponent,
@@ -25,6 +31,9 @@ import { RemindListAllComponent } from './remind-list-all/remind-list-all';
     NewsDetailComponent,
     NewsListThumbComponent,
     ClassListComponent,
-    RemindListAllComponent]
+    RemindListAllComponent,
+    StuListComponent,
+    TraceListComponent,
+    ExerciseListComponent]
 })
 export class ComponentsModule {}

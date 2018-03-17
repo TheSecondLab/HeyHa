@@ -1,0 +1,33 @@
+stu-list {
+
+  .list {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background: #fff;
+    border-bottom: 1px solid #f2f2f2;
+  }
+
+  .iphoto {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 10px;
+    img {
+      width: 100%;
+    }
+  }
+
+  .name {
+    font-size: 16px;
+    color: #333333;
+  }
+  .date {
+    font-size: 14px;
+    color: #666666;
+    padding-top: 4px;
+  }
+
+}

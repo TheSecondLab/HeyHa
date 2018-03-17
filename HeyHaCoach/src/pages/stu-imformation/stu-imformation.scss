@@ -1,0 +1,65 @@
+page-stu-imformation {
+  .header {
+    background-image: linear-gradient(-122deg, #A0BEFF 0%, #6EC6FF 100%);
+    color: #fff;
+  }
+
+  .photoCard {
+    display: flex;
+    flex: 1;
+    align-items: flex-end;
+    padding: 5px 0 15px 15px;
+    background-image: linear-gradient(-122deg, #A0BEFF 0%, #6EC6FF 100%);
+  }
+  .person {
+    display: flex;
+    flex: 1;
+    align-items: center;
+
+    .iphoto {
+      width: 80px;
+      height: 80px;
+      margin-right: 19px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    img {
+      width: 100%;
+    }
+
+    .name {
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+    }
+  }
+  .talk {
+    width: 64px;
+    height: 54px;
+    border-left: 1px solid #fff;
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAFpOLgnAAAAAXNSR0IArs4c6QAAA1BJREFUaAXtWb1rFEEUv3z4VQU0goVFEAQDgoWBgOiRQmxsQmKTIrbWFvk7bCzSB2OjVcDORkFUFCJYWHiSQoggpEiReIZ4/n57O9m348zOzuxlbk9u4N2+9+Z9/N587d3cSAOt0+ns43GavGojbKYOZTAK5sjj4Rul7j7p2cmrMomeS5no4BiJzWqGvp/sZE6GPtQsF61gaN2Q0BVf7KHFN4uFkOlig2sO19V+sgIr8krKVAaqRMo2nn1hmbho4NxihDIttXebcjjZcpaQ1xNt8UeCxrue3Kjl0lqEcAfOg5oLG8+k3hlqWDSXBw+c/ExSaW5zZnWqRZy3avILDWUnHKbpJHX+PALMM8oxtD2i4dyt41n+pPSvIWyX++bxXra+CWg/bnJSm4p9j25kFr565em9n5SjzzPKcDHJlg+qEFu113/D+URIgBI+zSSJNMS+OQX56LuJ7NP4bchnNF0iln4vmZxNOoBa0U8Kk11PdEg0rpJZA8JgAdRShhWe+/Dlizi/cqHYqxC0yHWeVXEzbuJ5zVpi9Y6xGDv+aYwkv2Ik8f+GEjJF+WUWEqGET5T3SZRKoiQZrq4SayoziTInMZJsxZj4JSa5hdF7lY1gT7kDvO9PjuLjNcLO9TR0N1iLCciavq1MlEh4FzZPLHazCP7e0uenxjBfsLx37+iRglcX0P4AcST+aEHPa3L19wnyjCHoVxF4UvAJG1yJDIRElyE/TnX/VCJtK/OYoyZotTAQDGZAm6C6N2KckcWoXw5UctMbv6RLh5rxvE5tYkl84Mm1AOF5zQD6wkkuUXmRdsnXs2b232K8sKLU3JNjKwpSR5JhIY4Bit5t/PFjQiEv0mS/vGyT+uO2l7nID5eWPiL9lofHb79nQM//X+2Rtl7dAMptzsjGAALXIW9ws/Pn12fQFb13QOQvwHmVdwOHoGkIy6CDAQFPmMS6TOxJDTpwzBD/mmFR90CzoLOgOrQdgHgHegZaA/j+DjoG6jroO8in3XSNZPTjFyP5EXQRwPgf2ZoLYNo/6bKLXogChGLaoPsg3hvwqmxX9RmezquZvhUiwaKWFyDeDZ4DvZR9KV/fGTGAbaCYHdBtEGfpAUhtaOeMmOLVSocTYQq04gL1F4+2S2fesIt8AAAAAElFTkSuQmCC);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 25px;
+  }
+
+  .stuInfo {
+    .items {
+      display: flex;
+      padding: 13px 15px 16px;
+      border-bottom: 1px solid #f2f2f2;
+      span {
+        width: 85px;
+        font-size: 14px;
+        color: #666666;
+      }
+
+      div {
+        flex: 1;
+        font-size: 14px;
+        color: #333333;
+      }
+    }
+  }
+}
+
