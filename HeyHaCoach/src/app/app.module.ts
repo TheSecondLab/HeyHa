@@ -13,6 +13,7 @@ import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { StuImformationPage } from '../pages/stu-imformation/stu-imformation';
+import { DueDateStuPage } from '../pages/due-date-stu/due-date-stu';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -24,7 +25,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ContactPage,
     HomePage,
     TabsPage,
-    StuImformationPage
+    StuImformationPage,
+    DueDateStuPage
   ],
   imports: [ // 依赖的模块
     BrowserModule,
@@ -38,7 +40,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ContactPage,
     HomePage,
     TabsPage,
-    StuImformationPage
+    StuImformationPage,
+    DueDateStuPage
   ],
   providers: [
     StatusBar,
