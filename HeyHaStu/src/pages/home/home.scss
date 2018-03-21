@@ -1,3 +1,30 @@
 page-home {
+  .content {
+    background-color: #f2f2f2;
+
+    .header {
+      position: relative;
+      display: flex;
+      justify-content: center;
+
+      .homeSlide {
+        height: 214px;
+      }
+
+      menu-bar {
+        position: absolute;
+        bottom: -53px;
+        z-index: 10;
+      }
+    }
+
+    sub-title {
+      .wrap {
+        margin-top: 10px;
+      }
+    }
+  }
+
+
 
 }
