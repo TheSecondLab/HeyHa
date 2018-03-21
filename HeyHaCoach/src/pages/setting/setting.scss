@@ -1,0 +1,26 @@
+page-setting {
+  .wrap {
+    background-color: #f2f2f2;
+  }
+  .list {
+    font-size: 15px;
+    background-color: #fff;
+    color: #333;
+    > div {
+      position: relative;
+      padding: 17px 15px;
+      border-bottom: 1px solid #f2f2f2;
+
+      &::after {
+        position: absolute;
+        content: ' ';
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 16px;
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAQCAYAAAFcjQ7rAAAAAXNSR0IArs4c6QAAAP1JREFUKBVtUasOwkAQLNczLWgCDgtYBBJNgiMVkKYOwR/Al/AwfWHqMMA3IPgHFAlY0qq2zB65o1BqdnZmdm7vqgVBMND+fJ7nHRjxhmGMPrrv+1XVYXaqwXgRDKQ2mqWSiwDCVcQR6brumjHWJ3AvusqY5kosyFMURTUSKlJF1oJzvpe9qCBzAWDXMfbeFHs30WyVVVxEdQBQHyWyYBCnIrMRx/ER/Nk0zbllWan0qLWIoMOTJFnled7TdX1o2/btyyCnqOIZJ1mW7XiRlBh7LZEyw0W7KoGeAvERTAx/a4w9njTAwzDspGl6gLhxHGcoU2TliKpDaEnit74AWIFtjLP4uVEAAAAASUVORK5CYII=);
+      }
+    }
+  }
+}

@@ -14,6 +14,11 @@ import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { StuImformationPage } from '../pages/stu-imformation/stu-imformation';
 import { DueDateStuPage } from '../pages/due-date-stu/due-date-stu';
+import { SettingPage } from '../pages/setting/setting';
+import { ExerciseTasksPage } from '../pages/exercise-tasks/exercise-tasks';
+import { ExerciseTasksListPage } from '../pages/exercise-tasks-list/exercise-tasks-list';
+import { ClassDynamicPage } from '../pages/class-dynamic/class-dynamic';
+import { ClassDynamicListPage } from '../pages/class-dynamic-list/class-dynamic-list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -26,7 +31,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     TabsPage,
     StuImformationPage,
-    DueDateStuPage
+    DueDateStuPage,
+    SettingPage,
+    ExerciseTasksPage,
+    ExerciseTasksListPage,
+    ClassDynamicPage,
+    ClassDynamicListPage
   ],
   imports: [ // 依赖的模块
     BrowserModule,
@@ -41,7 +51,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     TabsPage,
     StuImformationPage,
-    DueDateStuPage
+    DueDateStuPage,
+    SettingPage,
+    ExerciseTasksPage,
+    ExerciseTasksListPage,
+    ClassDynamicPage,
+    ClassDynamicListPage
   ],
   providers: [
     StatusBar,
