@@ -21,6 +21,8 @@ import { PersonalInfoPage } from '../pages/personal-info/personal-info';
 import { CardsPage } from '../pages/cards/cards';
 import { MyPointPage } from '../pages/my-point/my-point';
 
+import {HttpClientModule} from "@angular/common/http";
+
 // NgModule
 @NgModule({
   declarations: [ // 当前项目运行的组件 & 自定义的组件
@@ -40,7 +42,8 @@ import { MyPointPage } from '../pages/my-point/my-point';
   imports: [ // 当前的项目依赖哪些组件
     BrowserModule,
     ComponentsModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp], // 默认启动的组件
   entryComponents: [
@@ -60,7 +63,8 @@ import { MyPointPage } from '../pages/my-point/my-point';
   providers: [ // 定义的服务
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    HttpClientModule
   ]
 })
 export class AppModule {}

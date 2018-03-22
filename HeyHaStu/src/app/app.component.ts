@@ -11,7 +11,7 @@ import { MyPointPage } from '../pages/my-point/my-point';
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage:any = MyPointPage;
+  rootPage:any = TabsPage;
 
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
