@@ -1,0 +1,25 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>个人信息</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="content">
+  <div class="header">
+    <div class="img">
+      <img src="../../assets/imgs/avatar.png" alt="">
+    </div>
+    <div class="change">
+      <span>更改头像</span>
+    </div>
+  </div>
+
+  <ion-list>
+      <div ion-item *ngFor="let item of infos" class='infos'>
+        <span class="label">{{ item.label }}</span>
+        <span class="value">{{ item.value }}</span>
+      </div>
+    </ion-list>
+</ion-content>

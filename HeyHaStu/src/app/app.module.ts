@@ -17,6 +17,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { MyTaskPage } from '../pages/my-task/my-task';
 import { SettingPage } from '../pages/setting/setting';
 import { CoachInfoPage } from '../pages/coach-info/coach-info';
+import { PersonalInfoPage } from '../pages/personal-info/personal-info';
 
 // NgModule
 @NgModule({
@@ -29,7 +30,8 @@ import { CoachInfoPage } from '../pages/coach-info/coach-info';
     TrainPage,
     MyTaskPage,
     SettingPage,
-    CoachInfoPage
+    CoachInfoPage,
+    PersonalInfoPage
   ],
   imports: [ // 当前的项目依赖哪些组件
     BrowserModule,
@@ -46,7 +48,8 @@ import { CoachInfoPage } from '../pages/coach-info/coach-info';
     TrainPage,
     SettingPage,
     MyTaskPage,
-    CoachInfoPage
+    CoachInfoPage,
+    PersonalInfoPage
   ],
   providers: [ // 定义的服务
     StatusBar,
