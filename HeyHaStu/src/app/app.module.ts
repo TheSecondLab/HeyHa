@@ -14,6 +14,8 @@ import { TrainPage } from '../pages/train/train';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { MyTaskPage } from '../pages/my-task/my-task';
+import { SettingPage } from '../pages/setting/setting';
 
 // NgModule
 @NgModule({
@@ -23,7 +25,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MinePage,
     HomePage,
     TabsPage,
-    TrainPage
+    TrainPage,
+    MyTaskPage,
+    SettingPage
   ],
   imports: [ // 当前的项目依赖哪些组件
     BrowserModule,
@@ -37,7 +41,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MinePage,
     HomePage,
     TabsPage,
-    TrainPage
+    TrainPage,
+    SettingPage,
+    MyTaskPage
   ],
   providers: [ // 定义的服务
     StatusBar,
