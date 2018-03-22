@@ -18,6 +18,7 @@ import { MyTaskPage } from '../pages/my-task/my-task';
 import { SettingPage } from '../pages/setting/setting';
 import { CoachInfoPage } from '../pages/coach-info/coach-info';
 import { PersonalInfoPage } from '../pages/personal-info/personal-info';
+import { CardsPage } from '../pages/cards/cards';
 
 // NgModule
 @NgModule({
@@ -31,7 +32,8 @@ import { PersonalInfoPage } from '../pages/personal-info/personal-info';
     MyTaskPage,
     SettingPage,
     CoachInfoPage,
-    PersonalInfoPage
+    PersonalInfoPage,
+    CardsPage
   ],
   imports: [ // 当前的项目依赖哪些组件
     BrowserModule,
@@ -49,7 +51,8 @@ import { PersonalInfoPage } from '../pages/personal-info/personal-info';
     SettingPage,
     MyTaskPage,
     CoachInfoPage,
-    PersonalInfoPage
+    PersonalInfoPage,
+    CardsPage
   ],
   providers: [ // 定义的服务
     StatusBar,
