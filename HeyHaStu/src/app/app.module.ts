@@ -16,6 +16,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { MyTaskPage } from '../pages/my-task/my-task';
 import { SettingPage } from '../pages/setting/setting';
+import { CoachInfoPage } from '../pages/coach-info/coach-info';
 
 // NgModule
 @NgModule({
@@ -27,7 +28,8 @@ import { SettingPage } from '../pages/setting/setting';
     TabsPage,
     TrainPage,
     MyTaskPage,
-    SettingPage
+    SettingPage,
+    CoachInfoPage
   ],
   imports: [ // 当前的项目依赖哪些组件
     BrowserModule,
@@ -43,7 +45,8 @@ import { SettingPage } from '../pages/setting/setting';
     TabsPage,
     TrainPage,
     SettingPage,
-    MyTaskPage
+    MyTaskPage,
+    CoachInfoPage
   ],
   providers: [ // 定义的服务
     StatusBar,

@@ -1,0 +1,40 @@
+page-coach-info {
+  .content {
+    background-color: #f2f2f2;
+
+    .coachBrief {
+      height: 90px;
+      line-height: 90px;
+      position: relative;
+      background-color: #fff;
+      padding: 15px;
+      display: flex;
+
+      .avatar {
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+
+      .brief {
+        margin-left: 10px;
+        height: 90px;
+        line-height: 90px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      &::after {
+        position: absolute;
+        content: '';
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 16px;
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAQCAYAAAFcjQ7rAAAAAXNSR0IArs4c6QAAAP1JREFUKBVtUasOwkAQLNczLWgCDgtYBBJNgiMVkKYOwR/Al/AwfWHqMMA3IPgHFAlY0qq2zB65o1BqdnZmdm7vqgVBMND+fJ7nHRjxhmGMPrrv+1XVYXaqwXgRDKQ2mqWSiwDCVcQR6brumjHWJ3AvusqY5kosyFMURTUSKlJF1oJzvpe9qCBzAWDXMfbeFHs30WyVVVxEdQBQHyWyYBCnIrMRx/ER/Nk0zbllWan0qLWIoMOTJFnled7TdX1o2/btyyCnqOIZJ1mW7XiRlBh7LZEyw0W7KoGeAvERTAx/a4w9njTAwzDspGl6gLhxHGcoU2TliKpDaEnit74AWIFtjLP4uVEAAAAASUVORK5CYII=);
+      }
+    }
+  }
+}
