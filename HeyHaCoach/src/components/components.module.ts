@@ -12,6 +12,7 @@ import { RemindListAllComponent } from './remind-list-all/remind-list-all';
 import { StuListComponent } from './stu-list/stu-list';
 import { TraceListComponent } from './trace-list/trace-list';
 import { ExerciseListComponent } from './exercise-list/exercise-list';
+import { ModalPostPageComponent } from './modal-post-page/modal-post-page';
 
 @NgModule({
 	declarations: [DueToRemindListComponent,
@@ -23,7 +24,8 @@ import { ExerciseListComponent } from './exercise-list/exercise-list';
     RemindListAllComponent,
     StuListComponent,
     TraceListComponent,
-    ExerciseListComponent],
+    ExerciseListComponent,
+    ModalPostPageComponent],
 	imports: [BrowserModule, IonicModule],
 	exports: [DueToRemindListComponent,
     SubTitleComponent,
@@ -34,6 +36,7 @@ import { ExerciseListComponent } from './exercise-list/exercise-list';
     RemindListAllComponent,
     StuListComponent,
     TraceListComponent,
-    ExerciseListComponent]
+    ExerciseListComponent,
+    ModalPostPageComponent]
 })
 export class ComponentsModule {}

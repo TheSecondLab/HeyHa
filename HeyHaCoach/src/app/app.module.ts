@@ -19,6 +19,11 @@ import { ExerciseTasksPage } from '../pages/exercise-tasks/exercise-tasks';
 import { ExerciseTasksListPage } from '../pages/exercise-tasks-list/exercise-tasks-list';
 import { ClassDynamicPage } from '../pages/class-dynamic/class-dynamic';
 import { ClassDynamicListPage } from '../pages/class-dynamic-list/class-dynamic-list';
+import { ModifiedPassworkPage } from '../pages/modified-passwork/modified-passwork';
+import { ModalPostPageComponent } from '../components/modal-post-page/modal-post-page';
+import { PostTraceRecordPage } from '../pages/post-trace-record/post-trace-record';
+import { MyChatPage } from '../pages/my-chat/my-chat';
+import { TaskDetailPage } from '../pages/task-detail/task-detail';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -36,7 +41,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ExerciseTasksPage,
     ExerciseTasksListPage,
     ClassDynamicPage,
-    ClassDynamicListPage
+    ClassDynamicListPage,
+    ModifiedPassworkPage,
+    PostTraceRecordPage,
+    MyChatPage,
+    TaskDetailPage
   ],
   imports: [ // 依赖的模块
     BrowserModule,
@@ -56,7 +65,12 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ExerciseTasksPage,
     ExerciseTasksListPage,
     ClassDynamicPage,
-    ClassDynamicListPage
+    ClassDynamicListPage,
+    ModifiedPassworkPage,
+    ModalPostPageComponent,
+    PostTraceRecordPage,
+    MyChatPage,
+    TaskDetailPage
   ],
   providers: [
     StatusBar,
