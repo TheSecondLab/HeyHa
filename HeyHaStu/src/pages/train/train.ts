@@ -16,14 +16,8 @@ import { MyTaskPage } from '../my-task/my-task';
   templateUrl: 'train.html',
 })
 export class TrainPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  segmentsArray = ['myTask','process'];
+  segmentModel: string = this.segmentsArray[0];
+  constructor(public navCtrl: NavController) {
   }
-
-  tab1Root = MyTaskPage;
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TrainPage');
-  }
-
 }

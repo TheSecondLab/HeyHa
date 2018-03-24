@@ -1,6 +1,40 @@
-<ion-content>
-  <ion-tabs>
-    <ion-tab [root]="tab1Root" tabTitle="我的任务"></ion-tab>
-    <ion-tab [root]="tab2Root" tabTitle="课程进度"></ion-tab>
-  </ion-tabs>
-</ion-content>
+<ion-header>
+    <ion-navbar>
+      <ion-title>
+        我的修练
+      </ion-title>
+    </ion-navbar>
+
+    <ion-toolbar no-border-top>
+      <ion-segment [(ngModel)]="segmentModel">
+        <ion-segment-button value="myTask">
+          我的任务
+        </ion-segment-button>
+        <ion-segment-button value="process">
+          课程进度
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content >
+    <div [ngSwitch]="segmentModel">
+      <ion-list *ngSwitchCase="'myTask'">
+        <ion-item>
+          <ion-thumbnail item-left>
+            <img src="assets/icon/favicon.ico">
+          </ion-thumbnail>
+          <h2>myTask</h2>
+        </ion-item>
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'process'">
+        <ion-item>
+          <ion-thumbnail item-left>
+            <img src="assets/icon/favicon.ico">
+          </ion-thumbnail>
+          <h2>process</h2>
+        </ion-item>
+      </ion-list>
+    </div>
+  </ion-content>
