@@ -33,7 +33,7 @@
     <!-- <exercise-list></exercise-list> -->
 
     <!-- 滑动轮播 -->
-<!--
+
     <ion-slides pager="true" loop="true" class="banner">
       <ion-slide>
         <h1>Slide 1</h1>
@@ -44,13 +44,42 @@
       <ion-slide>
         <h1>Slide 3</h1>
       </ion-slide>
-    </ion-slides> -->
-
-    <ion-searchbar
+    </ion-slides>
+    <div class="searchWrap">
+      <ion-input type="text" value="" class="input" placeholder="搜索学员姓名"></ion-input>
+      <button class="btn">搜索</button>
+    </div>
+    <div class="linkWrap">
+      <div class="items">
+        <div class="img"></div>
+        <div>任教班级</div>
+      </div>
+      <div class="items">
+        <div class="img"></div>
+        <div>最新消息</div>
+      </div>
+      <div class="items">
+        <div class="img"></div>
+        <div>课程体系</div>
+      </div>
+      <div class="items">
+        <div class="img"></div>
+        <div>我的文件</div>
+      </div>
+    </div>
+    <div class="panel">
+      <sub-title></sub-title>
+      <due-to-remind-list></due-to-remind-list>
+    </div>
+    <div class="panel">
+      <sub-title></sub-title>
+      <news-list-thumb></news-list-thumb>
+    </div>
+    <!-- <ion-searchbar
     animated="true"
     showCancelButton="true"
     cancelButtonText="取消">
-</ion-searchbar>
+</ion-searchbar> -->
   <!-- <due-to-remind-list></due-to-remind-list>
   <h2>Welcome to Ionic!</h2>
   <p>

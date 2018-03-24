@@ -4,6 +4,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 
 // 自定义组件
 import { ComponentsModule } from '../components/components.module';
+import { StuImformationPageModule } from '../pages/stu-imformation/stu-imformation.module';
 
 // 根组件
 import { MyApp } from './app.component';
@@ -35,7 +36,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ContactPage,
     HomePage,
     TabsPage,
-    StuImformationPage,
+    // StuImformationPage,
     DueDateStuPage,
     SettingPage,
     ExerciseTasksPage,
@@ -50,7 +51,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   imports: [ // 依赖的模块
     BrowserModule,
     ComponentsModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    StuImformationPageModule
   ],
   bootstrap: [IonicApp], // 启动模块
   entryComponents: [ // 不会在模板中使用的组件

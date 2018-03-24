@@ -11,4 +11,8 @@ export class AboutPage {
 
   }
 
+  navTo(page) {
+    this.navCtrl.push(page)
+  }
+
 }
