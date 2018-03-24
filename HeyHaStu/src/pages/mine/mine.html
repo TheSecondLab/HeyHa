@@ -1,10 +1,10 @@
 <ion-content>
   <div class="header">
-    <img src="../../assets/imgs/bg_mine.png" alt="" class="bg">
+    <img src="assets/imgs/bg_mine.png" alt="" class="bg">
     <div class="title">
       <span>我的</span>
-      <div class="setting">
-        <img src="../../assets/imgs/btn_setup.png" alt="">
+      <div class="setting" (click)="navTo('SettingPage')">
+        <img src="assets/imgs/btn_setup.png" alt="">
       </div>
     </div>
     <personal-info ></personal-info>
