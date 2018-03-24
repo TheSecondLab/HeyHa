@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
 
 /**
  * Generated class for the MyInfoListComponent component.
@@ -12,11 +13,11 @@ import { Component } from '@angular/core';
 })
 export class MyInfoListComponent {
 
-  text: string;
+  constructor(public navCtrl: NavController) {
+  }
 
-  constructor() {
-    console.log('Hello MyInfoListComponent Component');
-    this.text = 'Hello World';
+  navTo(page) {
+    this.navCtrl.push(page)
   }
 
 }

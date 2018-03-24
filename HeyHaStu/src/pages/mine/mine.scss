@@ -3,20 +3,27 @@ page-mine {
     height: 236.5px;
     position: relative;
 
+    .bg {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      width: 100%;
+
+    }
+
     .title {
       position: relative;
-      margin-top: 13px;
+      padding-top: 13px;
       text-align: center;
 
       span {
         font-size: 17px;
+        color: #fff;
       }
 
       .setting {
         width: 22px;
-        height: 22px;
-        line-height: 22px;
-        background-color: black;
+        padding-top: 13px;
         position: absolute;
         right: 15px;
         top: 0;

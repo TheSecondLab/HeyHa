@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
 
 /**
  * Generated class for the MenuBarComponent component.
@@ -13,10 +14,14 @@ import { Component } from '@angular/core';
 export class MenuBarComponent {
 
   text: string;
+  // growPage: any;
 
-  constructor() {
-    console.log('Hello MenuBarComponent Component');
-    this.text = 'Hello World';
+  constructor(public navCtrl: NavController) {
+    // this.growPage = MyPointPage;
+  }
+
+  navTo(page) {
+    this.navCtrl.push('MyPointPage');
   }
 
 }

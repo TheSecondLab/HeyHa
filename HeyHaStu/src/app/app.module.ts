@@ -5,6 +5,9 @@ import { MyApp } from './app.component';
 
 // 自定义组件
 import { ComponentsModule } from '../components/components.module';
+import { MyPointPageModule } from '../pages/my-point/my-point.module';
+import { CoachInfoPageModule } from '../pages/coach-info/coach-info.module';
+import { CardsPageModule } from '../pages/cards/cards.module';
 
 import { EventsPage } from '../pages/events/events';
 import { MinePage } from '../pages/mine/mine';
@@ -22,6 +25,7 @@ import { CardsPage } from '../pages/cards/cards';
 import { MyPointPage } from '../pages/my-point/my-point';
 
 import {HttpClientModule} from "@angular/common/http";
+import { PersonalInfoPageModule } from '../pages/personal-info/personal-info.module';
 
 // NgModule
 @NgModule({
@@ -33,17 +37,20 @@ import {HttpClientModule} from "@angular/common/http";
     TabsPage,
     TrainPage,
     MyTaskPage,
-    SettingPage,
-    CoachInfoPage,
-    PersonalInfoPage,
-    CardsPage,
-    MyPointPage
+    SettingPage
   ],
   imports: [ // 当前的项目依赖哪些组件
     BrowserModule,
     ComponentsModule,
-    IonicModule.forRoot(MyApp),
-    HttpClientModule
+    IonicModule.forRoot(MyApp, {
+      tabsHideOnSubPages: 'true',
+       mode: 'ios'
+     }),
+    HttpClientModule,
+    MyPointPageModule,
+    CoachInfoPageModule,
+    PersonalInfoPageModule,
+    CardsPageModule
   ],
   bootstrap: [IonicApp], // 默认启动的组件
   entryComponents: [

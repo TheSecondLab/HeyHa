@@ -9,6 +9,19 @@ page-home {
 
       .homeSlide {
         height: 214px;
+
+        .slide {
+          position: relative;
+          overflow: hidden;
+
+          ion-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            // height: 100%;
+            // width: 100%;
+          }
+        }
       }
 
       menu-bar {

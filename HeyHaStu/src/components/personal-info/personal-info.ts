@@ -1,3 +1,5 @@
+
+import { NavController } from 'ionic-angular';
 import { Component } from '@angular/core';
 
 /**
@@ -12,11 +14,11 @@ import { Component } from '@angular/core';
 })
 export class PersonalInfoComponent {
 
-  text: string;
+  constructor(public navCtrl: NavController) {
+  }
 
-  constructor() {
-    console.log('Hello PersonalInfoComponent Component');
-    this.text = 'Hello World';
+  navTo(page) {
+    this.navCtrl.push(page)
   }
 
 }

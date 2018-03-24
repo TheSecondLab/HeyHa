@@ -15,12 +15,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   // styleUrls: ['mine.scss'] // 样式
 })
 export class MinePage {
-
+  i: number = 0;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MinePage');
+    this.i++;
   }
 
 }

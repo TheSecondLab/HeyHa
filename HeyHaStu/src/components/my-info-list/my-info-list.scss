@@ -6,17 +6,18 @@ my-info-list {
       height: 56px;
       line-height: 56px;
       border-bottom: 1px solid rgba(242,242,242,1);
-      display: flex;
       font-size: 15px;
       color: #333;
       position: relative;
+      padding-left: 36px;
 
       .icon {
-        height: 21px;
-        width: 18px;
+        position: absolute;
+        height: 100%;
         align-items: center;
         align-content: center;
         margin-right: 18px;
+        left: 0;
       }
 
       &::after {
