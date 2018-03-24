@@ -23,7 +23,11 @@ import { PersonalInfoPage } from '../pages/personal-info/personal-info';
 import { CardsPage } from '../pages/cards/cards';
 import { MyPointPage } from '../pages/my-point/my-point';
 import { PersonalInfoPageModule } from '../pages/personal-info/personal-info.module';
+import { ClassDynamicListPage } from '../pages/class-dynamic-list/class-dynamic-list';
 import { SettingPageModule } from '../pages/setting/setting.module';
+import { ModifiedPassworkPage } from '../pages/modified-passwork/modified-passwork';
+
+import { ModalPostPageComponent } from '../components/modal-post-page/modal-post-page';
 
 // NgModule
 @NgModule({
@@ -34,7 +38,7 @@ import { SettingPageModule } from '../pages/setting/setting.module';
     HomePage,
     TabsPage,
     TrainPage,
-    MyTaskPage
+    MyTaskPage,
   ],
   imports: [ // 当前的项目依赖哪些组件
     BrowserModule,
@@ -63,7 +67,10 @@ import { SettingPageModule } from '../pages/setting/setting.module';
     CoachInfoPage,
     PersonalInfoPage,
     CardsPage,
-    MyPointPage
+    MyPointPage,
+    ClassDynamicListPage,
+    ModalPostPageComponent,
+    ModifiedPassworkPage
   ],
   providers: [ // 定义的服务
     StatusBar,
