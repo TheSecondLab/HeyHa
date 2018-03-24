@@ -14,6 +14,7 @@ import { MyPointPageModule } from '../pages/my-point/my-point.module';
 import { CoachInfoPageModule } from '../pages/coach-info/coach-info.module';
 import { CardsPageModule } from '../pages/cards/cards.module';
 import { EventsPage } from '../pages/events/events';
+import { EventsPageModule } from '../pages/events/events.module';
 import { MinePage } from '../pages/mine/mine';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -28,20 +29,20 @@ import { PersonalInfoPageModule } from '../pages/personal-info/personal-info.mod
 import { ClassDynamicListPage } from '../pages/class-dynamic-list/class-dynamic-list';
 import { SettingPageModule } from '../pages/setting/setting.module';
 import { ModifiedPassworkPage } from '../pages/modified-passwork/modified-passwork';
+import { ModifiedPassworkPageModule } from '../pages/modified-passwork/modified-passwork.module';
 import { TrainPageModule } from '../pages/train/train.module';
+import { NewsListPage } from '../pages/news-list/news-list';
+import { NewsListPageModule } from '../pages/news-list/news-list.module';
 
 // NgModule
 @NgModule({
   declarations: [ // 当前项目运行的组件 & 自定义的组件
     MyApp,
-    EventsPage,
     MinePage,
     HomePage,
     TabsPage,
-    // TrainPage,
     MyTaskPage,
-    ClassDynamicListPage,
-    ModifiedPassworkPage
+    ClassDynamicListPage
   ],
   imports: [ // 当前的项目依赖哪些组件
     BrowserModule,
@@ -56,7 +57,10 @@ import { TrainPageModule } from '../pages/train/train.module';
     PersonalInfoPageModule,
     CardsPageModule,
     SettingPageModule,
-    TrainPageModule
+    TrainPageModule,
+    ModifiedPassworkPageModule,
+    EventsPageModule,
+    NewsListPageModule
   ],
   bootstrap: [IonicApp], // 默认启动的组件
   entryComponents: [

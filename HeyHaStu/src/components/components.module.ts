@@ -8,8 +8,6 @@ import { ReminderComponent } from './reminder/reminder';
 import { SubTitleComponent } from './sub-title/sub-title';
 import { PersonalInfoComponent } from './personal-info/personal-info';
 import { MyInfoListComponent } from './my-info-list/my-info-list';
-import { NewsListComponent } from './news-list/news-list';
-import { NewsDetailComponent } from './news-detail/news-detail';
 import { ModalPostPageComponent } from './modal-post-page/modal-post-page';
 
 @NgModule({
@@ -19,9 +17,7 @@ import { ModalPostPageComponent } from './modal-post-page/modal-post-page';
     SubTitleComponent,
     PersonalInfoComponent,
     MyInfoListComponent,
-    NewsListComponent,
-    ModalPostPageComponent,
-    NewsDetailComponent
+    ModalPostPageComponent
   ],
 	imports: [BrowserModule, IonicModule],
   exports: [NewsListThumbComponent,
@@ -30,9 +26,7 @@ import { ModalPostPageComponent } from './modal-post-page/modal-post-page';
     SubTitleComponent,
     PersonalInfoComponent,
     MyInfoListComponent,
-    NewsListComponent,
-    ModalPostPageComponent,
-    NewsDetailComponent
+    ModalPostPageComponent
   ]
 })
 export class ComponentsModule {}

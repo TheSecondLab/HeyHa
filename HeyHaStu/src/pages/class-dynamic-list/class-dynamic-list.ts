@@ -18,15 +18,5 @@ export class ClassDynamicListPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
   }
-
-  openModal(characterNum) {
-    let modal = this.modalCtrl.create(ModalPostPageComponent, characterNum);
-    modal.present();
-  }
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ClassDynamicListPage');
-  }
-
 }
 

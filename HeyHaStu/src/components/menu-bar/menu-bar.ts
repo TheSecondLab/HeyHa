@@ -21,7 +21,7 @@ export class MenuBarComponent {
   }
 
   navTo(page) {
-    this.navCtrl.push('MyPointPage');
+    this.navCtrl.push(page);
   }
 
 }

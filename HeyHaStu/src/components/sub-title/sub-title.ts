@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
 
 /**
  * Generated class for the SubTitleComponent component.
@@ -15,10 +16,14 @@ export class SubTitleComponent {
   title: string;
 
 
-  constructor() {
+  constructor(public navCtrl: NavController) {
 
     this.title = '热点资讯';
 
+  }
+
+  navTo() {
+    this.navCtrl.push('NewsListPage');
   }
 
 }
