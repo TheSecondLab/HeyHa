@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-import { MyTaskPage } from '../my-task/my-task';
-
 /**
- * Generated class for the TrainPage page.
+ * Generated class for the CoachInfoPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,18 +10,16 @@ import { MyTaskPage } from '../my-task/my-task';
 
 @IonicPage()
 @Component({
-  selector: 'page-train',
-  templateUrl: 'train.html',
+  selector: 'page-coach-info',
+  templateUrl: 'coach-info.html',
 })
-export class TrainPage {
+export class CoachInfoPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  tab1Root = MyTaskPage;
-
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TrainPage');
+    console.log('ionViewDidLoad CoachInfoPage');
   }
 
 }

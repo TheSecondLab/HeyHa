@@ -1,3 +1,40 @@
 page-mine {
-  color: #f00;
+  .header {
+    height: 236.5px;
+    position: relative;
+
+    .title {
+      position: relative;
+      margin-top: 13px;
+      text-align: center;
+
+      span {
+        font-size: 17px;
+      }
+
+      .setting {
+        width: 22px;
+        height: 22px;
+        line-height: 22px;
+        background-color: black;
+        position: absolute;
+        right: 15px;
+        top: 0;
+      }
+    }
+
+    personal-info {
+      position: absolute;
+      z-index: 10;
+      top: 46px;
+      background-color: #fff;
+      width: 345px;
+      height: 181px;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+      border-radius: 4px;
+      box-shadow: 0 2px 12px rgba(71,71,71,0.11);
+    }
+  }
 }
