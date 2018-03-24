@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { IonicPageModule } from 'ionic-angular';
 import { TrainPage } from './train';
-import { TaskItemComponent } from '../../components/task-item/task-item';
+import { TaskItemComponent } from './task-item/task-item';
 
 @NgModule({
   declarations: [
