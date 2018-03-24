@@ -10,6 +10,10 @@ import { ExerciseTasksPage } from '../exercise-tasks/exercise-tasks';
 import { ExerciseTasksListPage } from '../exercise-tasks-list/exercise-tasks-list';
 import { ClassDynamicPage } from '../class-dynamic/class-dynamic';
 import { ClassDynamicListPage } from '../class-dynamic-list/class-dynamic-list';
+import { ModifiedPassworkPage } from '../modified-passwork/modified-passwork';
+import { PostTraceRecordPage } from '../post-trace-record/post-trace-record';
+import { MyChatPage } from '../my-chat/my-chat';
+import { TaskDetailPage } from '../task-detail/task-detail';
 
 @Component({
   templateUrl: 'tabs.html'
@@ -26,6 +30,10 @@ export class TabsPage {
   tab8Root = ExerciseTasksListPage;
   tab9Root = ClassDynamicPage;
   tab10Root = ClassDynamicListPage;
+  tab11Root = ModifiedPassworkPage;
+  tab12Root = PostTraceRecordPage;
+  tab13Root = MyChatPage;
+  tab14Root = TaskDetailPage;
 
   constructor() {
 
