@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 
-import { MyTaskPage } from '../my-task/my-task';
 
-/**
- * Generated class for the TrainPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+interface Task {
+  imgUrl: string,
+  date: string,
+  desc: string,
+  id: string,
+  status: boolean
+}
 
 @IonicPage()
 @Component({
@@ -18,6 +18,48 @@ import { MyTaskPage } from '../my-task/my-task';
 export class TrainPage {
   segmentsArray = ['myTask','process'];
   segmentModel: string = this.segmentsArray[0];
+  tasks: Task[] = [{
+    date: '20101211',
+    imgUrl: '',
+    desc: '',
+    id: '',
+    status: false
+  }];
+  courses: Task[] = [{
+    date: '20101211',
+    imgUrl: '',
+    desc: '',
+    id: '',
+    status: false
+  }];
+
   constructor(public navCtrl: NavController) {
+    this.tasks = [{
+      id: '1',
+      date: '2020-02-02',
+      desc: 'testtesttestt esttesttesttes ttesttesttesttest',
+      status: true,
+      imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG'
+    }, {
+      id: '2',
+      date: '2020-02-02',
+      desc: '测试测试测试测试测试测试测试测试',
+      status: true,
+      imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG'
+    }];
+
+    this.courses = [{
+      id: '1',
+      date: '2020-02-02',
+      desc: 'testtesttestt esttesttesttes ttesttesttesttest',
+      imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+      status: false
+    }, {
+      id: '2',
+      date: '2020-02-02',
+      desc: '测试测试测试测试测试测试测试测试',
+      imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+      status: false
+    }];
   }
 }

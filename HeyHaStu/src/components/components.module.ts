@@ -11,6 +11,7 @@ import { MyInfoListComponent } from './my-info-list/my-info-list';
 import { NewsListComponent } from './news-list/news-list';
 import { NewsDetailComponent } from './news-detail/news-detail';
 import { ModalPostPageComponent } from './modal-post-page/modal-post-page';
+
 @NgModule({
   declarations: [NewsListThumbComponent,
     MenuBarComponent,
@@ -20,7 +21,8 @@ import { ModalPostPageComponent } from './modal-post-page/modal-post-page';
     MyInfoListComponent,
     NewsListComponent,
     ModalPostPageComponent,
-    NewsDetailComponent],
+    NewsDetailComponent
+  ],
 	imports: [BrowserModule, IonicModule],
   exports: [NewsListThumbComponent,
     MenuBarComponent,
@@ -30,6 +32,7 @@ import { ModalPostPageComponent } from './modal-post-page/modal-post-page';
     MyInfoListComponent,
     NewsListComponent,
     ModalPostPageComponent,
-    NewsDetailComponent]
+    NewsDetailComponent
+  ]
 })
 export class ComponentsModule {}

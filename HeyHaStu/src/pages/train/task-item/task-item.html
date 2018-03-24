@@ -1,0 +1,10 @@
+<!-- Generated template for the TaskItemComponent component -->
+<div class="container">
+  <div class="img"><img src="{{ task.imgUrl }}" alt=""></div>
+  <div class="text">
+    <div class="date">{{ task.date }}</div>
+    <div class="desc">{{ task.desc }}</div>
+    <div class="button"><span>查看</span></div>
+    <div class="complete" *ngIf="task.status"><img src="assets/imgs/icon_complete.png" alt=""></div>
+  </div>
+</div>

@@ -17,7 +17,7 @@ export class SubTitleComponent {
 
   constructor() {
 
-    this.title = '到期提醒';
+    this.title = '热点资讯';
 
   }
 
