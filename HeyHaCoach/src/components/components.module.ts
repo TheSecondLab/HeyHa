@@ -14,6 +14,7 @@ import { TraceListComponent } from './trace-list/trace-list';
 // import { ExerciseListComponent } from './exercise-list/exercise-list';
 import { ModalPostPageComponent } from './modal-post-page/modal-post-page';
 import { CourseListComponent } from './course-list/course-list';
+// import { DropdownComponent } from './dropdown/dropdown';
 
 @NgModule({
 	declarations: [DueToRemindListComponent,
@@ -26,7 +27,9 @@ import { CourseListComponent } from './course-list/course-list';
     // StuListComponent,
     TraceListComponent,
     // ExerciseListComponent,
-    ModalPostPageComponent],
+    ModalPostPageComponent,
+    // DropdownComponent
+  ],
 	imports: [BrowserModule, IonicModule],
 	exports: [DueToRemindListComponent,
     SubTitleComponent,
@@ -37,6 +40,8 @@ import { CourseListComponent } from './course-list/course-list';
     // RemindListAllComponent,
     // StuListComponent,
     TraceListComponent,
-    ModalPostPageComponent]
+    ModalPostPageComponent,
+    // DropdownComponent
+  ]
 })
 export class ComponentsModule {}
