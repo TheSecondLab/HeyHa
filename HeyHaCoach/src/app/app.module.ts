@@ -6,7 +6,7 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { ComponentsModule } from '../components/components.module';
 import { StuImformationPageModule } from '../pages/stu-imformation/stu-imformation.module';
 import { SettingPageModule } from '../pages/setting/setting.module';
-import { ModifiedPassworkPageModule } from '../pages/modified-passwork/modified-passwork.module';
+import { ModifiedPasswordPageModule } from '../pages/modified-password/modified-password.module';
 import { ClassDynamicListPageModule } from '../pages/class-dynamic-list/class-dynamic-list.module';
 import { TaskListPageModule } from '../pages/task-list/task-list.module';
 import { DueDateStuPageModule } from '../pages/due-date-stu/due-date-stu.module';
@@ -36,7 +36,7 @@ import { ExerciseTasksPage } from '../pages/exercise-tasks/exercise-tasks';
 import { ExerciseTasksListPage } from '../pages/exercise-tasks-list/exercise-tasks-list';
 import { ClassDynamicPage } from '../pages/class-dynamic/class-dynamic';
 import { ClassDynamicListPage } from '../pages/class-dynamic-list/class-dynamic-list';
-import { ModifiedPassworkPage } from '../pages/modified-passwork/modified-passwork';
+import { ModifiedPasswordPage } from '../pages/modified-password/modified-password';
 import { ModalPostPageComponent } from '../components/modal-post-page/modal-post-page';
 import { PostTraceRecordPage } from '../pages/post-trace-record/post-trace-record';
 import { MyChatPage } from '../pages/my-chat/my-chat';
@@ -76,7 +76,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
      }),
     StuImformationPageModule,
     SettingPageModule,
-    ModifiedPassworkPageModule,
+    ModifiedPasswordPageModule,
     ClassDynamicListPageModule,
     TaskListPageModule,
     DueDateStuPageModule,
@@ -105,7 +105,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ExerciseTasksListPage,
     ClassDynamicPage,
     ClassDynamicListPage,
-    ModifiedPassworkPage,
+    ModifiedPasswordPage,
     ModalPostPageComponent,
     PostTraceRecordPage,
     MyChatPage,
