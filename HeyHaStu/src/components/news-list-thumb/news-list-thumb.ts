@@ -44,7 +44,7 @@ export class NewsListThumbComponent {
 
   goNewsList(id) {
     console.log(id);
-    // this.navCtrl.push();
+    this.navCtrl.push("NewsDetailPage");
   }
 
 }

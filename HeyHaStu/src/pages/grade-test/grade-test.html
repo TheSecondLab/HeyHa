@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>
+        考级查询
+      </ion-title>
+    </ion-navbar>
+
+    <ion-toolbar no-border-top>
+      <ion-segment [(ngModel)]="segmentModel">
+        <ion-segment-button value="tab1">
+          考级
+        </ion-segment-button>
+        <ion-segment-button value="tab2">
+          考品/段
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content >
+    <div [ngSwitch]="segmentModel">
+      <ion-list *ngSwitchCase="'tab1'">
+        <div *ngFor="let grade of grades" class="gradeItem">
+          <div class="img">
+            <img src={{grade.imgUrl}} alt="">
+          </div>
+          <div class="desc">
+            <div class="title">{{grade.desc}}</div>
+            <div class="date">考试日期：{{grade.date}}</div>
+          </div>
+          <div class="score">
+            {{grade.score.substr(0,1)}}
+            <span class="extra">{{grade.score.substr(1,2)}}</span>
+          </div>
+        </div>
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'tab2'">
+        <div *ngFor="let grade of grades">
+            考品/段
+        </div>
+      </ion-list>
+    </div>
+  </ion-content>

@@ -33,7 +33,7 @@ export class NewsListComponent {
 
   goNewsDetail(id) {
     console.log(id);
-    // this.navCtrl.push();
+    this.navCtrl.push('NewsDetailPage');
   }
 
 }

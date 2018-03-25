@@ -20,21 +20,15 @@
   <ion-content >
     <div [ngSwitch]="segmentModel">
       <ion-list *ngSwitchCase="'myTask'">
-        <ion-item>
-          <ion-thumbnail item-left>
-            <img src="assets/icon/favicon.ico">
-          </ion-thumbnail>
-          <h2>myTask</h2>
-        </ion-item>
+        <div *ngFor="let task of tasks">
+          <task-item [task]="task"></task-item>
+        </div>
       </ion-list>
 
       <ion-list *ngSwitchCase="'process'">
-        <ion-item>
-          <ion-thumbnail item-left>
-            <img src="assets/icon/favicon.ico">
-          </ion-thumbnail>
-          <h2>process</h2>
-        </ion-item>
+        <div *ngFor="let course of courses">
+          <task-item [task]="course"></task-item>
+        </div>
       </ion-list>
     </div>
   </ion-content>

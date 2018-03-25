@@ -1,22 +1,17 @@
 import { Component } from '@angular/core';
+import { NavController } from 'ionic-angular';
 
-/**
- * Generated class for the ReminderComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
 @Component({
   selector: 'reminder',
   templateUrl: 'reminder.html'
 })
 export class ReminderComponent {
 
-  text: string;
-
-  constructor() {
-    console.log('Hello ReminderComponent Component');
-    this.text = 'Hello World';
+  constructor(public navCtrl: NavController) {
   }
 
+  navTo() {
+    console.log('123')
+    this.navCtrl.push('TrainPage');
+  }
 }
