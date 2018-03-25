@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
 /**
  * Generated class for the ClassListComponent component.
@@ -11,6 +11,10 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'class-list.html'
 })
 export class ClassListComponent {
+
+  @Input() typeName:string;
+  @Input() bgColor:string;
+  @Input() pageName:string;
 
   public list = [{
     type: '动态',
@@ -30,12 +34,11 @@ export class ClassListComponent {
   }];
 
   constructor(public navCtrl: NavController) {
-
+    
   }
 
-  goClassDetail(id) {
-    console.log(id);
-    // this.navCtrl.push();
+  navTo(page) {
+    this.navCtrl.push(page);
   }
 
 }

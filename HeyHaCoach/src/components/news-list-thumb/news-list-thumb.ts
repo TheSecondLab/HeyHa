@@ -42,9 +42,8 @@ export class NewsListThumbComponent {
 
   }
 
-  goNewsList(id) {
-    console.log(id);
-    // this.navCtrl.push();
+  navTo(page) {
+    this.navCtrl.push(page);
   }
 
 }

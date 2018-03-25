@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { NavController } from 'ionic-angular';
 
 /**
  * Generated class for the SubTitleComponent component.
@@ -12,13 +13,17 @@ import { Component } from '@angular/core';
 })
 export class SubTitleComponent {
 
-  title: string;
+  @Input() title: string;
+  @Input() pageName: string;
 
-
-  constructor() {
-
-    this.title = '到期提醒';
-
+  constructor(public navCtrl: NavController) {
+    
   }
+
+  navTo(page) {
+    this.navCtrl.push(page);
+  }
+
+
 
 }

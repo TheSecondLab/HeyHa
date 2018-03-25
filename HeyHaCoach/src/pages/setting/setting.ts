@@ -18,8 +18,9 @@ export class SettingPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SettingPage');
+  
+  navTo(page) {
+    this.navCtrl.push(page)
   }
 
 }

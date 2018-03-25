@@ -22,14 +22,13 @@ export class DueDateStuPage {
     let actionSheet = this.actionSheetCtrl.create({
       buttons: [
         {
-          text: 'Destructive',
-          role: 'destructive',
+          text: '132-2222-1111',
           handler: () => {
             console.log('Destructive clicked');
           }
         },
         {
-          text: 'Archive',
+          text: '132-2672-1211',
           handler: () => {
             console.log('Archive clicked');
           }
@@ -48,6 +47,10 @@ export class DueDateStuPage {
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad DueDateStuPage');
+  }
+
+  navTo(page) {
+    this.navCtrl.push(page)
   }
 
 }

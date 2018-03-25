@@ -15,6 +15,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ClassDynamicPage {
 
+  public pageName = 'ClassDynamicListPage';
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

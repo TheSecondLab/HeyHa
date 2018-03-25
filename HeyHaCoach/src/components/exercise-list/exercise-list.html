@@ -1,6 +1,6 @@
 <!-- Generated template for the ExerciseListComponent component -->
 <div>
-  <div class="list" *ngFor="let item of list; let i = index" (click)="goRemindDetail(item.number)">
+  <div class="list" *ngFor="let item of list; let i = index" (click)="navTo('TaskDetailPage')">
     <div class="iphoto">{{list.length - i}}</div>
     <div class="content done">
       <div class="name">{{item.time}}</div>

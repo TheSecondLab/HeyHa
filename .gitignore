@@ -63,3 +63,5 @@ www/
 platforms/
 
 plugins/
+
+.DS_Store

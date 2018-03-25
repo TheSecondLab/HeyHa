@@ -15,7 +15,7 @@
 
 <ion-content class="bg">
   <div class="wrap">
-    <div class="tabs">
+    <!-- <div class="tabs">
       <div class="{{tabIndex === 1 ? 'tab-item act' : 'tab-item'}}" (click)="changeTab(1)">个人列表</div>
       <div class="{{tabIndex === 2 ? 'tab-item act' : 'tab-item'}}" (click)="changeTab(2)">我的班级</div>
       <div class="{{tabIndex === 3 ? 'tab-item act' : 'tab-item'}}" (click)="changeTab(3)">我的班级</div>
@@ -55,6 +55,58 @@
       <div *ngIf="tabIndex === 3">
         <class-list></class-list>
       </div>
+    </div> -->
+
+    <div class="tabs">
+      <ion-segment [(ngModel)]="type">
+        <ion-segment-button value="remind">
+          提醒
+        </ion-segment-button>
+        <ion-segment-button value="unfinish">
+          未完成
+        </ion-segment-button>
+        <ion-segment-button value="class">
+          课程列表
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+      
+    <div [ngSwitch]="type">
+      <div *ngSwitchCase="'remind'">
+        <div class="finishStatusList">
+          <div class="iphoto"><img src="https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG" alt=""></div>
+          <div class="msg">
+            <div class="name">张一鸣</div>
+            <div>sdfasdf</div>
+          </div>
+          <button ion-button class="btn">任务提醒</button>
+        </div>
+        <div class="finishStatusList">
+          <div class="iphoto"><img src="https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG" alt=""></div>
+          <div class="msg">
+            <div class="name">张一鸣</div>
+            <div>sdfasdf</div>
+          </div>
+          <button ion-button class="btn dis">任务提醒</button>
+        </div>
+      </div>
+      <div *ngSwitchCase="'unfinish'">
+        <div class="finishStatusList">
+          <div class="iphoto"><img src="https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG" alt=""></div>
+          <div class="msg">
+            <div class="name">张一鸣</div>
+            <div>sdfasdf</div>
+          </div>
+          <div class="date">
+            <div class="time">13:11:10</div>
+            <div>2012-2-2</div>
+          </div>
+        </div>
+      </div>
+      <div *ngSwitchCase="'class'">
+        <div>123</div>
+      </div>
+      
     </div>
   </div>
 </ion-content>

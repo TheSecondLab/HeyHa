@@ -36,8 +36,7 @@ export class RemindListAllComponent {
 
   }
 
-  goRemindDetail(number) {
-    console.log(number);
-    // this.navCtrl.push();
+  navTo(page) {
+    this.navCtrl.push(page);
   }
 }

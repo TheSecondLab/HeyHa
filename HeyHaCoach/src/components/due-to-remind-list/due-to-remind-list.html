@@ -5,7 +5,7 @@
       {{item}}
     </ion-item>
   </ion-list> -->
-  <div class="peopleList" *ngFor="let item of list">
+  <div class="peopleList" *ngFor="let item of list" (click)="navTo('DueDateStuPage')">
     <div><img src="{{item.imgUrl}}" alt=""></div>
     <div class="name">{{item.name}}</div>
     <div class="dueDate">还剩{{item.date}}天</div>

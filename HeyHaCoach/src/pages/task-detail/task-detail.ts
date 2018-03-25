@@ -16,6 +16,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 export class TaskDetailPage {
   
   public tabIndex = 1;
+  type: string = 'remind';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

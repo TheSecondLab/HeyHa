@@ -1,6 +1,6 @@
 <!-- Generated template for the NewListComponent component -->
 <div>
-  <div *ngFor="let item of newsList" class="list" (click)="goNewsDetail(item.id)" id="{{item.id}}">
+  <div *ngFor="let item of newsList" class="list" (click)="navTo('NewsDetailPage')" id="{{item.id}}">
     <div class="img"><img src="{{item.imgUrl}}"/></div>
     <div class="content">
       <div class="tit">{{item.title}}</div>

@@ -1,7 +1,8 @@
 <!-- Generated template for the ClassListComponent component -->
+<!-- ClassDynamicListPage -->
 <div>
-  <div class="list" *ngFor="let item of list" (click)="goClassDetail(item.id)">
-    <div class="type">{{item.type}}</div>
+  <div class="list" *ngFor="let item of list" (click)="navTo(pageName)">
+    <div class="type">{{typeName}}</div>
     <div class="cont">
       <div class="name">{{item.name}}</div>
       <div class="time">课程时间：{{item.time}}</div>

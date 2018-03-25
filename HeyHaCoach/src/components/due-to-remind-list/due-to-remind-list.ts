@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { NavController } from 'ionic-angular';
 
 /**
  * Generated class for the DueToRemindListComponent component.
@@ -13,8 +14,8 @@ import { Component } from '@angular/core';
 export class DueToRemindListComponent {
 
   public list = [];
-
-  constructor() {
+  @Input() pageName:string;
+  constructor(public navCtrl: NavController) {
     this.list = [{
       imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
       name: '好的',
@@ -44,6 +45,10 @@ export class DueToRemindListComponent {
       name: '好的',
       date: '12'
     }]
+  }
+
+  navTo(page) {
+    this.navCtrl.push(page);
   }
 
 }

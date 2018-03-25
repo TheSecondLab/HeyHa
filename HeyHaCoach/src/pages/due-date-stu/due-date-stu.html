@@ -22,7 +22,7 @@
           <div class="time">到期时间： 1028-2-1</div>
       </div>
     </div>
-    <div class="phone"></div>
+    <div class="phone" (click)="presentActionSheet()"></div>
   </div>
   <div>
     <div class="contactWrapper">
@@ -42,5 +42,5 @@
       </div>
     </div>
   </div>
-  <div class="btn" (click)="presentActionSheet()"><span></span>添加记录</div>
+  <div class="btn" (click)="navTo('PostTraceRecordPage')"><span></span>添加记录</div>
 </ion-content>

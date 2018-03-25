@@ -2,7 +2,9 @@ page-due-date-stu {
 
   .header {
     background-image: linear-gradient(58deg, #A0BEFF 0%, #6EC6FF 100%);
-    color: #fff;
+    > div {
+      color: #fff;
+    }
   }
   .photoCard {
     display: flex;
@@ -97,7 +99,7 @@ page-due-date-stu {
 
   .btn {
     position: fixed;
-    bottom: 20px;
+    bottom: 0;
     width: 100%;
     background: #FF8080;
     color: #fff;
@@ -110,6 +112,7 @@ page-due-date-stu {
       display: inline-block;
       width: 22px;
       height: 22px;
+      margin-right: 10px;
       vertical-align: -5px;
       background-size: 22px;
       background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACwAAAAsCAYAAAAehFoBAAAAAXNSR0IArs4c6QAAAlBJREFUWAnVmbFOwlAUhilv4GYYO/gEJjAwOLARHTDyFqyuhNmFVV/BwEDCZqKRRRJfQAdGcNIX0NT/r/c2pZbS0lPoOcnh9ra9//l6OXB773UqOczzPAfN6/A23IXXQu7heAVfGl+gnMLnjuPw2v4MoC34LXwFz2psw7atwokRpAF/hksZtRri4BB14SMpyhgdajOl8huE+PV/xgSRPsUY+dIEAj34tzRZgh5j9XbqZjQcJggXfWmYCZpPWTRRCv10PQ0h5uw+02ATOxn+5TT/+APDDfylvsKPgpOHPfhC+FMMNBx0fIsCj3C2Y67tVgwG6+36/fV69toYwJe2WdUeoHf5B54P1orJlh3D5qsGwKjdyMYRVQvYfGCT3E3RELJiTcNYsT3cldUvRO2KqlWQ84d3XkgIWdELsrKH+T57LKtdiBoZ6wTmy7cWaxPY1UJLVgJzWqPFag4S+Q20J1uJoyPY1gYZb0g3Ir6r62EC73cGm7HjI7d7BOZUXIutmMOPoD0TI47merrcTBv+iT3MhQ4ttiRw8HKsgHpBYC4fabEpgefwDwXEZJxXzcLcRAHwhKzsYdr9X1HqT5/RBwb5A1BnJcadGcZgxkHW6xIDB2w2JSp4ghcAj0sIzWk+2XyLrku4OFvqhZSgh4mPJ+EgwgnpD+sHNjJ0DVMyCt4v9CwG2kcBtJ7l1hC0ngXtELSeLYMQtJ5NGQvNEnnNba8ZXMqoJb/tFYY24EyTO/iuG4ts+291PRonrr42cMTdkHQOQdl+09Ytm9ptW5YiW7e/1LXLWJSbTv4AAAAASUVORK5CYII=);

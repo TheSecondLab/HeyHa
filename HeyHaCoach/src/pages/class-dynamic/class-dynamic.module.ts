@@ -4,7 +4,7 @@ import { ClassDynamicPage } from './class-dynamic';
 
 @NgModule({
   declarations: [
-    ClassDynamicPage,
+    ClassDynamicPage
   ],
   imports: [
     IonicPageModule.forChild(ClassDynamicPage),

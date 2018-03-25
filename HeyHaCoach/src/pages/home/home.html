@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>首页</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -50,29 +50,29 @@
       <button class="btn">搜索</button>
     </div>
     <div class="linkWrap">
-      <div class="items">
+      <div class="items" (click)="navTo('MyClassPage')">
         <div class="img"></div>
         <div>任教班级</div>
       </div>
-      <div class="items">
+      <div class="items" (click)="navTo('MyChatPage')">
         <div class="img"></div>
         <div>最新消息</div>
       </div>
-      <div class="items">
+      <div class="items" (click)="navTo('CourseSystemPage')">
         <div class="img"></div>
         <div>课程体系</div>
       </div>
-      <div class="items">
+      <div class="items" (click)="navTo('MyFilePage')">
         <div class="img"></div>
         <div>我的文件</div>
       </div>
     </div>
     <div class="panel">
-      <sub-title></sub-title>
-      <due-to-remind-list></due-to-remind-list>
+      <sub-title pageName="{{dueToStuPage}}" title="{{dueToStuTit}}"></sub-title>
+      <due-to-remind-list pageName="{{dueToStuPage}}"></due-to-remind-list>
     </div>
     <div class="panel">
-      <sub-title></sub-title>
+      <sub-title pageName="{{newsListPage}}" title="{{newsListTit}}"></sub-title>
       <news-list-thumb></news-list-thumb>
     </div>
     <!-- <ion-searchbar

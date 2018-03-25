@@ -4,39 +4,39 @@ import { IonicModule } from 'ionic-angular';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { SubTitleComponent } from './sub-title/sub-title';
-import { NewsListComponent } from './news-list/news-list';
-import { NewsDetailComponent } from './news-detail/news-detail';
+// import { NewsListComponent } from './news-list/news-list';
+// import { NewsDetailComponent } from './news-detail/news-detail';
 import { NewsListThumbComponent } from './news-list-thumb/news-list-thumb';
 import { ClassListComponent } from './class-list/class-list';
-import { RemindListAllComponent } from './remind-list-all/remind-list-all';
-import { StuListComponent } from './stu-list/stu-list';
+// import { RemindListAllComponent } from './remind-list-all/remind-list-all';
+// import { StuListComponent } from './stu-list/stu-list';
 import { TraceListComponent } from './trace-list/trace-list';
-import { ExerciseListComponent } from './exercise-list/exercise-list';
+// import { ExerciseListComponent } from './exercise-list/exercise-list';
 import { ModalPostPageComponent } from './modal-post-page/modal-post-page';
+import { CourseListComponent } from './course-list/course-list';
 
 @NgModule({
 	declarations: [DueToRemindListComponent,
     SubTitleComponent,
-    NewsListComponent,
-    NewsDetailComponent,
+    // NewsListComponent,
+    // NewsDetailComponent,
     NewsListThumbComponent,
     ClassListComponent,
-    RemindListAllComponent,
-    StuListComponent,
+    // RemindListAllComponent,
+    // StuListComponent,
     TraceListComponent,
-    ExerciseListComponent,
+    // ExerciseListComponent,
     ModalPostPageComponent],
 	imports: [BrowserModule, IonicModule],
 	exports: [DueToRemindListComponent,
     SubTitleComponent,
-    NewsListComponent,
-    NewsDetailComponent,
+    // NewsListComponent,
+    // NewsDetailComponent,
     NewsListThumbComponent,
     ClassListComponent,
-    RemindListAllComponent,
-    StuListComponent,
+    // RemindListAllComponent,
+    // StuListComponent,
     TraceListComponent,
-    ExerciseListComponent,
     ModalPostPageComponent]
 })
 export class ComponentsModule {}
