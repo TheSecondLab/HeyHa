@@ -33,6 +33,8 @@ import { ModifiedPassworkPageModule } from '../pages/modified-passwork/modified-
 import { TrainPageModule } from '../pages/train/train.module';
 import { NewsListPage } from '../pages/news-list/news-list';
 import { NewsListPageModule } from '../pages/news-list/news-list.module';
+import { CourseDetailPage } from '../pages/course-detail/course-detail';
+import { CourseDetailPageModule } from '../pages/course-detail/course-detail.module';
 
 // NgModule
 @NgModule({
@@ -60,7 +62,8 @@ import { NewsListPageModule } from '../pages/news-list/news-list.module';
     TrainPageModule,
     ModifiedPassworkPageModule,
     EventsPageModule,
-    NewsListPageModule
+    NewsListPageModule,
+    CourseDetailPageModule
   ],
   bootstrap: [IonicApp], // 默认启动的组件
   entryComponents: [
@@ -78,7 +81,8 @@ import { NewsListPageModule } from '../pages/news-list/news-list.module';
     MyPointPage,
     ClassDynamicListPage,
     ModalPostPageComponent,
-    ModifiedPassworkPage
+    ModifiedPassworkPage,
+    CourseDetailPage
   ],
   providers: [ // 定义的服务
     StatusBar,

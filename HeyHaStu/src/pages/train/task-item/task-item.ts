@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { NavController } from 'ionic-angular';
 
 /**
  * Generated class for the TaskItemComponent component.
@@ -14,7 +15,10 @@ export class TaskItemComponent {
 
   @Input() task
 
-  constructor() {
+  constructor(public navCtrl: NavController) {
   }
 
+  navTo() {
+    this.navCtrl.push('CourseDetailPage');
+  }
 }
