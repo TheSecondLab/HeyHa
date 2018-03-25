@@ -18,6 +18,7 @@ import { EventsPageModule } from '../pages/events/events.module';
 import { MinePage } from '../pages/mine/mine';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { TabsPageModule } from '../pages/tabs/tabs.module';
 import { TrainPage } from '../pages/train/train';
 import { MyTaskPage } from '../pages/my-task/my-task';
 import { SettingPage } from '../pages/setting/setting';
@@ -35,6 +36,7 @@ import { NewsListPage } from '../pages/news-list/news-list';
 import { NewsListPageModule } from '../pages/news-list/news-list.module';
 import { CourseDetailPage } from '../pages/course-detail/course-detail';
 import { CourseDetailPageModule } from '../pages/course-detail/course-detail.module';
+import { LoginPage } from '../pages/login/login';
 
 // NgModule
 @NgModule({
@@ -42,9 +44,10 @@ import { CourseDetailPageModule } from '../pages/course-detail/course-detail.mod
     MyApp,
     MinePage,
     HomePage,
-    TabsPage,
+    // TabsPage,
     MyTaskPage,
-    ClassDynamicListPage
+    ClassDynamicListPage,
+    LoginPage
   ],
   imports: [ // 当前的项目依赖哪些组件
     BrowserModule,
@@ -63,7 +66,8 @@ import { CourseDetailPageModule } from '../pages/course-detail/course-detail.mod
     ModifiedPassworkPageModule,
     EventsPageModule,
     NewsListPageModule,
-    CourseDetailPageModule
+    CourseDetailPageModule,
+    TabsPageModule
   ],
   bootstrap: [IonicApp], // 默认启动的组件
   entryComponents: [
@@ -82,7 +86,8 @@ import { CourseDetailPageModule } from '../pages/course-detail/course-detail.mod
     ClassDynamicListPage,
     ModalPostPageComponent,
     ModifiedPassworkPage,
-    CourseDetailPage
+    CourseDetailPage,
+    LoginPage
   ],
   providers: [ // 定义的服务
     StatusBar,

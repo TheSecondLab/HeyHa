@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
+import { IonicPage } from 'ionic-angular';
 
 import { HomePage } from '../home/home';
 import { MinePage } from '../mine/mine';
 import { TrainPage } from '../train/train';
 import { ClassDynamicListPage } from '../class-dynamic-list/class-dynamic-list';
 
+@IonicPage()
 @Component({
   templateUrl: 'tabs.html'
 })
