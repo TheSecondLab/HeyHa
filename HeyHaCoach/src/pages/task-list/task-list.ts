@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 
 /**
  * Generated class for the TaskListPage page.
@@ -15,11 +15,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TaskListPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController) {
+    menu.enable(true);
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TaskListPage');
+  showMenu() {
+    this.menu.toggle()
+  }
+
+  openPage(str) {
+    console.log(str);
+    this.menu.close();
   }
 
 }
