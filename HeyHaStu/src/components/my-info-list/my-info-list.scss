@@ -14,8 +14,9 @@ my-info-list {
       .icon {
         position: absolute;
         height: 100%;
-        align-items: center;
-        align-content: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         margin-right: 18px;
         left: 0;
       }
