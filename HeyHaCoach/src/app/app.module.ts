@@ -29,6 +29,7 @@ import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
 import { TabsPage } from '../pages/tabs/tabs';
+import { TabsPageModule } from '../pages/tabs/tabs.module';
 import { StuImformationPage } from '../pages/stu-imformation/stu-imformation';
 import { DueDateStuPage } from '../pages/due-date-stu/due-date-stu';
 import { SettingPage } from '../pages/setting/setting';
@@ -50,6 +51,7 @@ import { MyClassPage } from '../pages/my-class/my-class';
 import { MyFilePage } from '../pages/my-file/my-file';
 import { NewsDetailPage } from '../pages/news-detail/news-detail';
 import { PersonalInfoPage } from '../pages/personal-info/personal-info';
+import { LoginPage } from '../pages/login/login';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -60,13 +62,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AboutPage,
     ContactPage,
     HomePage,
-    TabsPage,
+    // TabsPage,
     ExerciseTasksPage,
     ExerciseTasksListPage,
     ClassDynamicPage,
     // PostTraceRecordPage,
     // TaskDetailPage,
-    TaskPage
+    TaskPage,
+    LoginPage
   ],
   imports: [ // 依赖的模块
     BrowserModule,
@@ -89,7 +92,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     NewsDetailPageModule,
     TaskDetailPageModule,
     PersonalInfoPageModule,
-    PostTraceRecordPageModule
+    PostTraceRecordPageModule,
+    TabsPageModule
   ],
   bootstrap: [IonicApp], // 启动模块
   entryComponents: [ // 不会在模板中使用的组件
@@ -118,7 +122,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyFilePage,
     NewsDetailPage,
     TaskDetailPage,
-    PersonalInfoPage
+    PersonalInfoPage,
+    LoginPage
   ],
   providers: [
     StatusBar,

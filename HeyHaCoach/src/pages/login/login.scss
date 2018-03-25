@@ -1,0 +1,72 @@
+page-login {
+  .container {
+    height: 100%;
+    background: linear-gradient(rgba(128,189,255,1), rgba(112,184,241,1));
+    display: flex;
+    flex-direction: column;
+
+    .logo {
+      width: 80px;
+      height: 80px;
+      margin: 78px auto 32px;
+    }
+
+    .logoText {
+      width: 188px;
+      height: 46px;
+      margin: 0 auto 80px;
+    }
+
+    .form {
+      // height: 226px;
+      display: flex;
+      flex-direction: column;
+      margin: 0 40px;
+
+      .formItem{
+        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        display: flex;
+        margin-bottom: 10px;
+
+        ::-webkit-input-placeholder {
+          color:rgba(255,255,255,0.6);
+        }
+        :-moz-placeholder {
+          color:rgba(255,255,255,0.6);
+        }
+
+        ::-moz-placeholder {
+          color:rgba(255,255,255,0.6);
+        }
+
+        :-ms-input-placeholder {
+          color:rgba(255,255,255,0.6);
+        }
+
+        .icon {
+          width: 20px;
+          height: 23px;
+          margin: 10px 10px 0;
+        }
+      }
+
+      .btn {
+        margin: 80px auto 0;
+        height: 50px;
+        line-height: 50px;
+        color: #fff;
+        width: 305px;
+        text-align: center;
+        background-color: rgba(255,255,255,0.3);
+        font-size: 17px;
+        letter-spacing: 20px;
+      }
+    }
+
+    .company {
+      height: 20px;
+      width: 151px;
+      margin: 74px auto 0;
+    }
+  }
+}
