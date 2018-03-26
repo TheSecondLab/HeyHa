@@ -17,8 +17,10 @@ export class TaskDetailPage {
   
   public tabIndex = 1;
   type: string = 'remind';
+  public pageName = '';
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.pageName = 'ClassDynamicListPage';
   }
 
   ionViewDidLoad() {

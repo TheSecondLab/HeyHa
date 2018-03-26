@@ -1,5 +1,8 @@
 <!-- Generated template for the DropdownComponent component -->
 <div class="container">
+  <div *ngIf="clickedTitleKey != ''" >
+    <div class="layer"></div>
+  </div>
   <div class="inputs">
     <div *ngFor="let selectedValue of selectedValues" (click)="changeTab(selectedValue.titleKey)">
       <span>{{selectedValue.value}}</span>

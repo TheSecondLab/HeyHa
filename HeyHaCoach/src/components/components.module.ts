@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { DueToRemindListComponent } from './due-to-remind-list/due-to-remind-list';
 import { IonicModule } from 'ionic-angular';
+import { CommonModule } from '@angular/common';
 
-import { BrowserModule } from '@angular/platform-browser';
+
+// import { BrowserModule } from '@angular/platform-browser';
 import { SubTitleComponent } from './sub-title/sub-title';
 // import { NewsListComponent } from './news-list/news-list';
 // import { NewsDetailComponent } from './news-detail/news-detail';
@@ -30,7 +32,7 @@ import { CourseListComponent } from './course-list/course-list';
     ModalPostPageComponent,
     // DropdownComponent
   ],
-	imports: [BrowserModule, IonicModule],
+	imports: [CommonModule, IonicModule],
 	exports: [DueToRemindListComponent,
     SubTitleComponent,
     // NewsListComponent,

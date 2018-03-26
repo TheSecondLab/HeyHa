@@ -28,4 +28,8 @@ export class TaskListPage {
     this.menu.close();
   }
 
+  swipeEvent(e) {
+    console.log(e);
+    
+  }
 }
