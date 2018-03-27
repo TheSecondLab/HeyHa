@@ -13,25 +13,25 @@ import { NavController } from 'ionic-angular';
 export class NewsListThumbComponent {
 
   public newsList = [{
-    imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+    imgUrl: 'assets/imgs/iphoto.JPG',
     title: '士大夫撒旦是阿斯蒂芬史蒂夫',
     date: '2012-2-4',
     id: 123,
     source: '联盟发布'
   }, {
-    imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+    imgUrl: 'assets/imgs/iphoto.JPG',
     title: '士大夫撒旦是阿斯蒂芬史蒂夫',
     date: '2012-2-4',
     id: 123,
     source: '联盟发布'
   }, {
-    imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+    imgUrl: 'assets/imgs/iphoto.JPG',
     title: '士大夫撒旦是阿斯蒂芬史蒂夫',
     date: '2012-2-4',
     id: 123,
     source: '联盟发布'
   }, {
-    imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+    imgUrl: 'assets/imgs/iphoto.JPG',
     title: '士大夫撒旦是阿斯蒂芬史蒂夫',
     date: '2012-2-4',
     id: 123,

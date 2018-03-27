@@ -17,31 +17,31 @@ export class DueToRemindListComponent {
   @Input() pageName:string;
   constructor(public navCtrl: NavController) {
     this.list = [{
-      imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+      imgUrl: 'assets/imgs/iphoto.JPG',
       name: '好的',
       date: '12'
     }, {
-      imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+      imgUrl: 'assets/imgs/iphoto.JPG',
       name: '好的',
       date: '12'
     }, {
-      imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+      imgUrl: 'assets/imgs/iphoto.JPG',
       name: '好的',
       date: '12'
     }, {
-      imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+      imgUrl: 'assets/imgs/iphoto.JPG',
       name: '好的',
       date: '12'
     }, {
-      imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+      imgUrl: 'assets/imgs/iphoto.JPG',
       name: '好的',
       date: '12'
     }, {
-      imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+      imgUrl: 'assets/imgs/iphoto.JPG',
       name: '好的',
       date: '12'
     }, {
-      imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+      imgUrl: 'assets/imgs/iphoto.JPG',
       name: '好的',
       date: '12'
     }]

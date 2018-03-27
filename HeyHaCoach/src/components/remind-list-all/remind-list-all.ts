@@ -13,19 +13,19 @@ import { NavController } from 'ionic-angular';
 export class RemindListAllComponent {
 
   public list = [{
-    imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+    imgUrl: 'assets/imgs/iphoto.JPG',
     trace: '2',
     date: '2019-2-2',
     name: '金田',
     number: 'CFTA110500'
   }, {
-    imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+    imgUrl: 'assets/imgs/iphoto.JPG',
     trace: '2',
     date: '2019-2-2',
     name: '金田',
     number: 'CFTA110500'
   }, {
-    imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+    imgUrl: 'assets/imgs/iphoto.JPG',
     trace: '2',
     date: '2019-2-2',
     name: '金田',

@@ -14,15 +14,15 @@ export class StuListComponent {
 
 
   public list = [{
-    imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+    imgUrl: 'assets/imgs/iphoto.JPG',
     name: '金田',
     number: 'CFTA110500'
   }, {
-    imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+    imgUrl: 'assets/imgs/iphoto.JPG',
     name: '金田',
     number: 'CFTA110500'
   }, {
-    imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+    imgUrl: 'assets/imgs/iphoto.JPG',
     name: '金田',
     number: 'CFTA110500'
   }];

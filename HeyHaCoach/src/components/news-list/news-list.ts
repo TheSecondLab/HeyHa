@@ -16,13 +16,13 @@ export class NewsListComponent {
   public newsList = [{
     id: '12',
     date: '2012-2-2',
-    imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+    imgUrl: 'assets/imgs/iphoto.JPG',
     title: '这是大新闻啊',
     source: '联盟发布'
   }, {
     id: '123',
     date: '2012-2-2',
-    imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+    imgUrl: 'assets/imgs/iphoto.JPG',
     title: '这是大新闻啊',
     source: '联盟发布'
   }];

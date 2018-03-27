@@ -39,26 +39,26 @@ export class TrainPage {
       date: '2020-02-02',
       desc: 'testtesttestt esttesttesttes ttesttesttesttest',
       status: true,
-      imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG'
+      imgUrl: 'assets/imgs/iphoto.JPG'
     }, {
       id: '2',
       date: '2020-02-02',
       desc: '测试测试测试测试测试测试测试测试',
       status: true,
-      imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG'
+      imgUrl: 'assets/imgs/iphoto.JPG'
     }];
 
     this.courses = [{
       id: '1',
       date: '2020-02-02',
       desc: 'testtesttestt esttesttesttes ttesttesttesttest',
-      imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+      imgUrl: 'assets/imgs/iphoto.JPG',
       status: false
     }, {
       id: '2',
       date: '2020-02-02',
       desc: '测试测试测试测试测试测试测试测试',
-      imgUrl: 'https://tac-cdn.zhongan.com/care/user_image/iphoto.JPG',
+      imgUrl: 'assets/imgs/iphoto.JPG',
       status: false
     }];
   }
