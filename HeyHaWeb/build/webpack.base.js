@@ -13,6 +13,33 @@ module.exports = {
       test: /\.js$/,
       exclude:  /node_modules/,
       use: 'babel-loader'
+    }, {
+      test: /\.scss$/,
+      exclude:  /node_modules/,
+      use: [
+        "style-loader", 
+        {
+          loader: "css-loader", 
+          options: {
+            module: true, // 模块
+            localIdentName: '[name]__[local]--[hash:5]' // class命名规则
+          }
+        },
+        "sass-loader"
+      ]
+    }, {
+      test: /\.(png|jpg|gif)$/,
+      use: [
+        {
+          loader: 'url-loader',
+          options: {
+            limit: 8000
+          }
+        }
+      ],
+    }, {
+      test: /\.html$/,
+      loader: 'html-loader'
     }]
   },
   plugins: [
