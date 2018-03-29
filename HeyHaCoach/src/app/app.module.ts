@@ -1,6 +1,8 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { JPush } from '@jiguang-ionic/jpush';
+import { Push, PushObject, PushOptions } from '@ionic-native/push';
 
 // 自定义组件
 import { ComponentsModule } from '../components/components.module';
@@ -128,7 +130,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    JPush,
+    Push
   ]
 })
 export class AppModule {}
