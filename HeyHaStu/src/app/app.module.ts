@@ -4,6 +4,8 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { HttpClientModule } from "@angular/common/http";
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { JPush } from '@jiguang-ionic/jpush';
+
 import { MyApp } from './app.component';
 
 // 自定义组件
@@ -93,7 +95,8 @@ import { LoginPage } from '../pages/login/login';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    HttpClientModule
+    HttpClientModule,
+    JPush
   ]
 })
 export class AppModule {}
