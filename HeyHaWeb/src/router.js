@@ -3,16 +3,19 @@ import { renderRoutes } from 'react-router-config';
 
 import Root from './root';
 import HomeComponent from './home';
+import AttendenceComp from './attendence';
+import SearchComp from './search';
 
 
 const routes = [
-  { component: Root,
-    routes: [
-      { path: '/',
-        exact: true,
-        component: HomeComponent
-      }
-    ]
+  { component: SearchComp,
+    path: '/'
+    // routes: [
+    //   { path: '/',
+    //     exact: true,
+    //     component: AttendenceComp
+    //   }
+    // ]
   }
 ];
 

@@ -1,0 +1,73 @@
+
+@mixin stuList ($alignMent: 3n) {
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 5px;
+  
+    .item {
+      position: relative;
+      display: flex;
+      padding: 10px;
+      margin: 15px 12px 0 0;
+      width: 185px;
+      box-sizing: border-box;
+      background: #FFFFFF;
+      box-shadow: 0 2px 4px 0 rgba(0,0,0,0.14);
+      border-radius: 4px;
+  
+      &.act {
+        border: 2px solid #6490FF;
+        &::after {
+          content: ' ';
+          position: absolute;
+          right: -8px;
+          top: -8px;
+          width: 28px;
+          height: 28px;
+          background-repeat: no-repeat;
+          background-size: 28px 28px;
+          background-image: url(data:image/png;base64,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);
+        }
+      }
+      @if $alignMent == 3n {
+        &:nth-child(3n) {
+          margin-right: 0;
+        }
+      } @else {
+        &:nth-child(4n) {
+          margin-right: 0;
+        }
+      }
+     
+  
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 10px;
+      }
+  
+      .msg {
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        .name {
+          font-size: 17px;
+          color: #333;
+        }
+        .no {
+          font-size: 15px;
+          color: #666;
+        }
+      }
+    }
+  
+}
+
+.stuList3n {
+  @include stuList()
+}
+
+.stuList4n {
+  @include stuList(4n)
+}
