@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import routes from './router';
 import * as style from './style.scss';
@@ -10,10 +10,10 @@ import * as style from './style.scss';
 
 
 ReactDOM.render(
-  <BrowserRouter>
+  <HashRouter>
     {/* kick it all off with the root route */}
     {renderRoutes(routes)}
-  </BrowserRouter>,
+  </HashRouter>,
 document.getElementById('root'));
 // ReactDOM.render(<App />, document.getElementById('root'));
 

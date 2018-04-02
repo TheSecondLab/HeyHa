@@ -31,8 +31,14 @@ const AttendenceComp = (props) => (
         <div className={style.item}>班级动态</div>
       </div>
       <div className={style.menuContent}>
-        <HeaderBar title='本班学员' component={HeaderOpa()}/>
-        <StuList alignment='3' />
+        <div className={style.box}>
+          <HeaderBar title='本班学员' component={HeaderOpa()}/>
+          <StuList alignment='3' />
+        </div>
+        <div className={style.box}>
+          <HeaderBar title='本班学员' component={HeaderOpa()}/>
+          <StuList alignment='3' />
+        </div>
       </div>
     </div>
   </div>

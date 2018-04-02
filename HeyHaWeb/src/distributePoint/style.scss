@@ -1,0 +1,96 @@
+.wrap {
+  background: #FFFFFF;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05);
+  border-radius: 4px;
+}
+
+.header {
+  padding: 0 20px;
+}
+
+
+.content {
+  display: flex;
+  padding: 20px 0 0 0;
+
+  .menuList {
+    width: 210px;
+    height: calc(100vh - 150px - 27px);
+    margin-right: 20px;
+    box-sizing: border-box;
+    padding: 19px 10px;
+    background: #FFFFFF;
+    box-shadow: 0 2px 4px 2px rgba(0,0,0,0.05);
+    border-radius: 4px;
+    .item {
+      padding: 10px 0;
+      margin-bottom: 15px;
+      color: #999;
+      font-size: 15px;
+    }
+  }
+  .menuContent {
+    flex: 1;
+    
+  }
+  
+}
+
+// 标题栏 操作区
+.opaWrap {
+  display: flex;
+}
+
+.darkBtn {
+  margin-left: 10px;
+  button{
+    font-size: 16px;
+    padding: 5px 13px;
+    border: none;
+    color: #fff;
+    background-image: linear-gradient(-230deg, #82C9FF 0%, #5D84FF 100%);
+    border-radius: 100px;
+  }
+}
+
+.pointTable {
+  width: 100%;
+  border-spacing: 0;
+  td {
+    padding: 15px 0;
+    text-align: center;
+    &:first-child {
+      padding-left: 20px
+    }
+    &:last-child {
+      padding-right: 20px
+    }
+    &:nth-child(3) div {
+      width: 280px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+    }
+  }
+  thead {
+    color: #333;
+  }
+  tbody {
+    color: #666;
+    
+    tr:nth-child(n) {
+      background-color: #F5F5F5;
+    }
+    tr:nth-child(2n) {
+      background-color: #fff;
+    }
+    
+  }
+  .del {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid #E4E4E4;
+    border-radius: 100px;
+  }
+}

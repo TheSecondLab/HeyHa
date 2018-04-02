@@ -25,8 +25,8 @@
   padding: 20px 0 0 0;
 
   .menuList {
-    min-height: 550px;
     width: 210px;
+    height: calc(100vh - 150px - 27px);
     margin-right: 20px;
     box-sizing: border-box;
     padding: 19px 10px;
@@ -42,10 +42,13 @@
   }
   .menuContent {
     flex: 1;
-    padding: 0 20px;
-    background: #FFFFFF;
-    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05);
-    border-radius: 4px;
+    .box {
+      padding: 0 20px 30px;
+      margin-bottom: 20px;
+      background: #FFFFFF;
+      box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05);
+      border-radius: 4px;
+    }
   }
   
 }
