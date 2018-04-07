@@ -23,6 +23,7 @@ export class LoginPage {
     // this.navCtrl.push('TabsPage');
     this.jPush.init().then((data) => {
       alert(data)
+      this.navCtrl.push('TabsPage');
     }).catch(e=> alert(e));
   }
 

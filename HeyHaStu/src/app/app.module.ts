@@ -5,6 +5,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { JPush } from '@jiguang-ionic/jpush';
+import {JmessageChenyu} from "jmessage-chenyu";
 
 import { MyApp } from './app.component';
 
@@ -96,7 +97,8 @@ import { LoginPage } from '../pages/login/login';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HttpClientModule,
-    JPush
+    JPush,
+    JmessageChenyu
   ]
 })
 export class AppModule {}

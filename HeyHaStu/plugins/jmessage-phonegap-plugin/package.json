@@ -1,0 +1,59 @@
+{
+  "_from": "git+https://github.com/jpush/jmessage-phonegap-plugin.git",
+  "_id": "jmessage-phonegap-plugin@3.4.0",
+  "_inBundle": false,
+  "_location": "/jmessage-phonegap-plugin",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "https://github.com/jpush/jmessage-phonegap-plugin.git",
+    "rawSpec": "https://github.com/jpush/jmessage-phonegap-plugin.git",
+    "saveSpec": "git+https://github.com/jpush/jmessage-phonegap-plugin.git",
+    "fetchSpec": "https://github.com/jpush/jmessage-phonegap-plugin.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "git+https://github.com/jpush/jmessage-phonegap-plugin.git#71fd135da2353364ab7541ee0f036a551a45dbee",
+  "_spec": "https://github.com/jpush/jmessage-phonegap-plugin.git",
+  "_where": "/Users/robin/Documents/project/HeyHa/HeyHaStu",
+  "author": {
+    "name": "JiGuang"
+  },
+  "bugs": {
+    "url": "https://github.com/jpush/jmessage-phonegap-plugin/issues"
+  },
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "jmessage-phonegap-plugin",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "JMessage Cordova Plugin.",
+  "devDependencies": {
+    "cordova-plugin-device": "*",
+    "cordova-plugin-jcore": ">=1.2.0"
+  },
+  "homepage": "https://github.com/jpush/jmessage-phonegap-plugin#readme",
+  "keywords": [
+    "JMessage",
+    "IM",
+    "im",
+    "JPush",
+    "cordova-plugin",
+    "JiGuang",
+    "Jiguang"
+  ],
+  "license": "MIT",
+  "name": "jmessage-phonegap-plugin",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jpush/jmessage-phonegap-plugin.git"
+  },
+  "version": "3.4.0"
+}
