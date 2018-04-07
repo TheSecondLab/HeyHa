@@ -1,0 +1,150 @@
+.wrap {
+  height: 100vh;
+  overflow-y: auto;
+  padding: 20px 31px 31px 35px;
+  background: #fbfbfd;
+}
+.formBox {
+  padding-bottom: 36px;
+}
+.formItem {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  label {
+    width: 95px;
+  }
+  select, input {
+    width: 215px;
+    padding: 0 20px;
+    box-sizing: border-box;
+    border: 1px solid #E4E4E4;
+    height: 40px;
+    line-height: 40px;
+    border-radius: 20px;
+  }
+}
+.btnBox {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+
+  .lightbtn {
+    width: 188px;
+    padding: 8px 0;
+    text-align: center;
+    border: 1px solid #6089FF;
+    border-radius: 100px;
+    font-size: 17px;
+    color: #6490FF;
+    margin-left: 20px;
+  }
+  .darkbtn {
+    width: 188px;
+    padding: 8px 0;
+    text-align: center;
+    font-size: 17px;
+    color: #fff;
+    background-image: linear-gradient(-230deg, #82C9FF 0%, #5D84FF 100%);
+    border-radius: 100px;
+    margin-left: 20px;
+  }
+}
+
+.courseContent {
+  width: 400px;
+  .title {
+    background: #EDF2FF;
+    color: #333;
+    text-align: center;
+    line-height: 45px;
+  }
+  .courseType {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 10px;
+    line-height: 45px;
+    border-bottom: 1px solid #F2F2F2;
+    align-items: center;
+    .add {
+      width: 25px;
+      height: 25px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-image: url(data:image/png;base64,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);
+    }
+    // align-items: space-between;
+  }
+}
+.typeWrap {
+  flex: 1;
+  .typeSelector {
+    display: flex;
+    background: #EDF2FF;
+    color: #333;
+    text-align: center;
+    line-height: 45px;
+    > div {
+      width: 50%;
+      border-left: 1px solid #fff;
+    }
+    
+  }
+}
+
+.courseBox {
+  display: flex;
+  margin-left: -20px;
+  margin-right: -20px;
+}
+
+.courseList {
+  position: relative;
+  display: flex;
+  margin-left: 10px;
+  border-bottom: 1px solid #F2F2F2;
+  padding: 11px 16px 11px 0;
+  align-items: center;
+  .darkbtn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 3px 10px;
+    color: #fff;
+    background-image: linear-gradient(-230deg, #82C9FF 0%, #5D84FF 100%);
+    border-radius: 100px;
+  }
+  .lightbtn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    padding: 3px 10px;
+    color: #999;
+    border: 1px solid #999;
+    border-radius: 100px;
+  }
+  .img {
+    width: 95px;
+    height: 65px;
+    padding-right: 15px;
+    padding-left: 3px;
+    img { width: 100%; }
+  }
+  .cont {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    .name {
+      font-size: 16px;
+    }
+    .desc {
+      width: 100%;
+      color: #999;
+      font-size: 14px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 1;
+      overflow: hidden;
+    }
+  }
+}
