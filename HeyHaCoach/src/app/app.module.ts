@@ -1,6 +1,8 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { HttpClientModule } from '@angular/common/http';
+import { Http } from '@angular/http';
 
 // 自定义组件
 import { ComponentsModule } from '../components/components.module';
@@ -74,6 +76,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   imports: [ // 依赖的模块
     BrowserModule,
     ComponentsModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp, {
       tabsHideOnSubPages: 'true'
      }),
@@ -126,6 +129,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     LoginPage
   ],
   providers: [
+    Http,
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

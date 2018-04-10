@@ -22,4 +22,8 @@ export class MyClassPage {
     console.log('ionViewDidLoad MyClassPage');
   }
 
+  navTo(page) {
+    this.navCtrl.push(page);
+  }
+
 }
