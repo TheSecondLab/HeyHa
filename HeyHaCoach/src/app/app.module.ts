@@ -22,6 +22,7 @@ import { NewsDetailPageModule } from '../pages/news-detail/news-detail.module';
 import { TaskDetailPageModule } from '../pages/task-detail/task-detail.module';
 import { PersonalInfoPageModule } from '../pages/personal-info/personal-info.module';
 import { PostTraceRecordPageModule } from '../pages/post-trace-record/post-trace-record.module';
+import { ChatPageModule } from '../pages/chat/chat.module';
 
 
 // 根组件
@@ -54,6 +55,7 @@ import { MyFilePage } from '../pages/my-file/my-file';
 import { NewsDetailPage } from '../pages/news-detail/news-detail';
 import { PersonalInfoPage } from '../pages/personal-info/personal-info';
 import { LoginPage } from '../pages/login/login';
+import { ChatPage } from '../pages/chat/chat';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -96,7 +98,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     TaskDetailPageModule,
     PersonalInfoPageModule,
     PostTraceRecordPageModule,
-    TabsPageModule
+    TabsPageModule,
+    ChatPageModule
   ],
   bootstrap: [IonicApp], // 启动模块
   entryComponents: [ // 不会在模板中使用的组件
@@ -126,7 +129,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     NewsDetailPage,
     TaskDetailPage,
     PersonalInfoPage,
-    LoginPage
+    LoginPage,
+    ChatPage
   ],
   providers: [
     Http,

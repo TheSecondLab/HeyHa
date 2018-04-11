@@ -20,7 +20,7 @@
     </div>
     <div>
       <div *ngIf="tabIndex === 1">
-        <div class="personalList">
+        <div class="personalList" (click)="navTo('ChatPage')">
           <div class="iphoto"><img src="assets/imgs/iphoto.JPG" alt=""></div>
           <div class="cont">
             <div class="info">
