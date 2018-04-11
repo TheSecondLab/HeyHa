@@ -21,9 +21,9 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
-      this.jMessageChenyu.init({ isOpenMessageRoaming: true })
+      // this.jMessageChenyu.init({ isOpenMessageRoaming: true })
       //用户注册。
-      let obj ={username: 'robin1', password: '123456'}
+      // let obj ={username: 'robin1', password: '123456'}
       //obj对应的参数详情请看文档
       //https://github.com/jpush/jmessage-phonegap-plugin/wiki/APIs
       // this.jMessageChenyu.register(obj)
@@ -34,30 +34,30 @@ export class MyApp {
       //         console.log("注册失败" + JSON.stringify(error))
       //       });
       //用户登录
-      this.jMessageChenyu.login(obj).then(() =>{
+    //   this.jMessageChenyu.login(obj).then(() =>{
 
-          //代码
+    //       //代码
 
-          console.log("login success");
+    //       console.log("login success");
 
-          this.jMessageChenyu.createConversation({ type: 'single', username: 'robin2', appKey: '9e2471813200538bfe0c47e1' })
-          .then(
-            (conversation) => {
-              // do something.
-              this.jMessageChenyu.sendTextMessage({ type: 'single', username: 'robin2', appKey: '9e2471813200538bfe0c47e1',
-                text: 'hello world', extras: {key1: 'value1'} })
-            }
-          ).catch ((error) => {
-            var code = error.code
-            var desc = error.description
-          })
-      })
-      // this.jMessageChenyu.logout().then(
-      //       //代码
-      // )
-      //获取用户信息
-      this.jMessageChenyu.getMyInfo().then()
-      // 此处省略很多方法... 详情对照https://github.com/jpush/jmessage-phonegap-plugin/wiki/APIs 方法名
+    //       this.jMessageChenyu.createConversation({ type: 'single', username: 'robin2', appKey: '9e2471813200538bfe0c47e1' })
+    //       .then(
+    //         (conversation) => {
+    //           // do something.
+    //           this.jMessageChenyu.sendTextMessage({ type: 'single', username: 'robin2', appKey: '9e2471813200538bfe0c47e1',
+    //             text: 'hello world', extras: {key1: 'value1'} })
+    //         }
+    //       ).catch ((error) => {
+    //         var code = error.code
+    //         var desc = error.description
+    //       })
+    //   })
+    //   // this.jMessageChenyu.logout().then(
+    //   //       //代码
+    //   // )
+    //   //获取用户信息
+    //   this.jMessageChenyu.getMyInfo().then()
+    //   // 此处省略很多方法... 详情对照https://github.com/jpush/jmessage-phonegap-plugin/wiki/APIs 方法名
 
 
     });
