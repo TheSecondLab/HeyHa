@@ -41,6 +41,8 @@ import { CourseDetailPage } from '../pages/course-detail/course-detail';
 import { CourseDetailPageModule } from '../pages/course-detail/course-detail.module';
 import { LoginPage } from '../pages/login/login';
 
+import { BaseService } from '../module/baseService.service';
+
 // NgModule
 @NgModule({
   declarations: [ // 当前项目运行的组件 & 自定义的组件
@@ -98,7 +100,8 @@ import { LoginPage } from '../pages/login/login';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HttpClientModule,
     JPush,
-    JmessageChenyu
+    JmessageChenyu,
+    BaseService
   ]
 })
 export class AppModule {}
