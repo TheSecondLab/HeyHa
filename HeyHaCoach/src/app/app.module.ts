@@ -2,7 +2,8 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { HttpClientModule } from '@angular/common/http';
-import { Http } from '@angular/http';
+import { JPush } from '@jiguang-ionic/jpush';
+import {JmessageChenyu} from "jmessage-chenyu";
 
 // 自定义组件
 import { ComponentsModule } from '../components/components.module';
@@ -60,18 +61,18 @@ import { ChatPage } from '../pages/chat/chat';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
+import { BaseService } from '../module/baseService.service';
+import { BaseServiceJson } from '../module/service';
+
 @NgModule({
   declarations: [ // 声明组件
     MyApp,
     AboutPage,
     ContactPage,
     HomePage,
-    // TabsPage,
     ExerciseTasksPage,
     ExerciseTasksListPage,
     ClassDynamicPage,
-    // PostTraceRecordPage,
-    // TaskDetailPage,
     TaskPage,
     LoginPage
   ],
@@ -133,10 +134,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ChatPage
   ],
   providers: [
-    Http,
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    HttpClientModule,
+    JPush,
+    JmessageChenyu,
+    BaseService,
+    BaseServiceJson
   ]
 })
 export class AppModule {}
