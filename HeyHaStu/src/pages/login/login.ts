@@ -26,7 +26,7 @@ export class LoginPage {
   }
 
   login() {
-    this.baseService.postData("/login", { data: this.form.value }, () => {
+    this.baseService.postData("/admin/login", { data: this.form.value }, () => {
       this.navCtrl.push('TabsPage');
     });
   }

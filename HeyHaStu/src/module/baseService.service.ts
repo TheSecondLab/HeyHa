@@ -31,6 +31,8 @@ export class BaseService {
 
     const { data, myHeader } = option;
     const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
+    // headers.append('withCredentials', 'true');
+    // console.log(headers);
     for (const key in myHeader) {
       headers.append(key, myHeader[key]);
     };
@@ -42,10 +44,21 @@ export class BaseService {
       params.append(key, data[key]);
     };
 
-    this.http.post(`http://test.hu0572.cn${url}`, params.toString() ,options).subscribe((data: ResData) => {
+    const domain = 'http://test.hu0572.cn';
+    // const domain = '';
+
+    this.http.post(`${domain}${url}`, params.toString() ,options).subscribe((data: ResData) => {
       loading.dismiss();
+      // let alert = this.alertCtrl.create({
+      //   title: "错误",
+      //   message: JSON.stringify(data),
+      //   buttons: [{
+      //     text: 'Ok',
+      //   }]
+      // });
+      // alert.present()
       if(data.status === 'SUCCESS') {
-        onSuccess(data);
+        onSuccess(data.data);
         return;
       }
       if (typeof onError === 'function') {
