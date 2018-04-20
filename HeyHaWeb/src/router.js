@@ -1,7 +1,7 @@
 import React from 'react';
 import { renderRoutes } from 'react-router-config';
 
-// import Root from './root';
+import Root from './root';
 import HomeComponent from './home';
 import AttendenceComp from './attendence';
 import DestribuyePointComp from './distributePoint';
@@ -17,111 +17,54 @@ import ClassMoment from './classMoment';
 import PostMoment from './postMoment';
 
 
-const routessss = [
-  { 
-    component: Root,
-    exact: true,
-    path: '/',
-    // routes: [
-    //   { path: '/',
-    //     exact: true,
-    //     component: HomeComponent
-    //   },
-    //   { path: '/classList',
-    //     exact: true,
-    //     component: AttendenceComp
-    //   },
-    //   { path: '/search',
-    //     exact: true,
-    //     component: SearchComp
-    //   },
-    //   { path: '/point',
-    //     exact: true,
-    //     component: DestribuyePointComp
-    //   },
-    //   { path: '/mineInfo',
-    //     exact: true,
-    //     component: MineInfo
-    //   },
-    //   { path: '/courseProgress',
-    //     exact: true,
-    //     component: CourseProgress
-    //   },
-    //   { path: '/classMoment',
-    //     exact: true,
-    //     component: ClassMoment
-    //   },
-      
-    // ]
-  },
+const routes = [
   { path: '/pointDetail',
     exact: true,
     component: PointDetailComp
-  },
-  { path: '/sendPoint',
+  }, { path: '/sendPoint',
     exact: true,
     component: SendPoint
-  },
-  { path: '/password',
+  }, { path: '/password',
     exact: true,
     component: PasswordComp
-  },
-  { path: '/login',
+  }, { path: '/login',
     exact: true,
     component: Login
-  },
-  { path: '/courseSetting',
+  }, { path: '/courseSetting',
     exact: true,
     component: CourseSetting
-  },
-  { path: '/postMoment',
+  }, { path: '/postMoment',
     exact: true,
     component: PostMoment
-  },
-];
-
-
-
-
-
-const Root = (props) => (
-  <div>
-    Root
-  </div>
-)
-const Home = (props) => (
-  <div>
-    Home
-  </div>
-)
-const Child = (props) => (
-  <div>
-    Child
-  </div>
-)
-const GrandChild = (props) => (
-  <div>
-    GrandChild
-  </div>
-)
-
-
-const routes = [
-  { component: Root,
+  }, { 
+    component: Root,
+    path: '/',
     routes: [
-      { path: '/',
+      { path: '/home',
         exact: true,
-        component: Home
-      },
-      { path: '/child/:id',
-        component: Child,
-        routes: [
-          { path: '/child/:id/grand-child',
-            component: GrandChild
-          }
-        ]
+        component: HomeComponent
+      }, { path: '/classList',
+        exact: true,
+        component: AttendenceComp
+      }, { path: '/search',
+        exact: true,
+        component: SearchComp
+      }, { path: '/point',
+        exact: true,
+        component: DestribuyePointComp
+      }, { path: '/mineInfo',
+        exact: true,
+        component: MineInfo
+      }, { path: '/courseProgress',
+        exact: true,
+        component: CourseProgress
+      }, { path: '/classMoment',
+        exact: true,
+        component: ClassMoment
       }
     ]
   }
-]
+];
+ 
+
 export default routes;
