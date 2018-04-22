@@ -33,7 +33,6 @@
     <div
       class="list"
       *ngFor="let item of classList;index as i" (click)="navTo(ClassStudentListPage)"
-      *ngIf="classList.length > 0; else noClass"
     >
       <div class="type">{{i}}</div>
       <div class="cont">
@@ -42,8 +41,6 @@
       </div>
       <div class="stuCount">{{item.clazzStudentsCount}}</div>
     </div>
-    <div #noClass>
-      暂无班级
-    </div>
+
   </div>
 </ion-content>
