@@ -62,7 +62,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { BaseService } from '../module/baseService.service';
-import { BaseServiceJson } from '../module/service';
+import { Utils } from '../module/util';
 
 @NgModule({
   declarations: [ // 声明组件
@@ -141,7 +141,7 @@ import { BaseServiceJson } from '../module/service';
     JPush,
     JmessageChenyu,
     BaseService,
-    BaseServiceJson
+    Utils
   ]
 })
 export class AppModule {}

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ActionSheetController } from 'ionic-angular';
 
+import { BaseService } from '../../module/baseService.service';
+
 /**
  * Generated class for the DueDateStuPage page.
  *
@@ -15,7 +17,7 @@ import { IonicPage, NavController, NavParams, ActionSheetController } from 'ioni
 })
 export class DueDateStuPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public actionSheetCtrl: ActionSheetController, public baseService: BaseService) {
   }
 
   presentActionSheet() {

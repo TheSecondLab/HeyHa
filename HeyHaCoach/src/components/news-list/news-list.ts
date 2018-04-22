@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 /**
@@ -13,26 +13,35 @@ import { NavController } from 'ionic-angular';
 })
 export class NewsListComponent {
 
-  public newsList = [{
-    id: '12',
-    date: '2012-2-2',
-    imgUrl: 'assets/imgs/iphoto.JPG',
-    title: '这是大新闻啊',
-    source: '联盟发布'
-  }, {
-    id: '123',
-    date: '2012-2-2',
-    imgUrl: 'assets/imgs/iphoto.JPG',
-    title: '这是大新闻啊',
-    source: '联盟发布'
-  }];
+  newsList = [];
+  @Input() list;
+  // public newsList = [{
+  //   id: '12',
+  //   date: '2012-2-2',
+  //   imgUrl: 'assets/imgs/iphoto.JPG',
+  //   title: '这是大新闻啊',
+  //   source: '联盟发布'
+  // }, {
+  //   id: '123',
+  //   date: '2012-2-2',
+  //   imgUrl: 'assets/imgs/iphoto.JPG',
+  //   title: '这是大新闻啊',
+  //   source: '联盟发布'
+  // }];
 
   constructor(public navCtrl: NavController) {
+    this
+  }
+
+  ngOnChanges(changes) {
+    this.newsList = changes.list.currentValue;
 
   }
 
-  navTo(page) {
-    this.navCtrl.push(page);
+  navTo(item) {
+    this.navCtrl.push('NewsDetailPage', {
+      item
+    });
   }
 
 }

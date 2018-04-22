@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
 /**
  * Generated class for the NewsListThumbComponent component.
@@ -6,44 +6,38 @@ import { NavController } from 'ionic-angular';
  * See https://angular.io/api/core/Component for more info on Angular
  * Components.
  */
+    
+interface listItem {
+  cover: string,
+  name: string,
+  releasetimeStr: string,
+  id: number
+  // source: string
+}
+
 @Component({
   selector: 'news-list-thumb',
   templateUrl: 'news-list-thumb.html'
 })
 export class NewsListThumbComponent {
 
-  public newsList = [{
-    imgUrl: 'assets/imgs/iphoto.JPG',
-    title: '士大夫撒旦是阿斯蒂芬史蒂夫',
-    date: '2012-2-4',
-    id: 123,
-    source: '联盟发布'
-  }, {
-    imgUrl: 'assets/imgs/iphoto.JPG',
-    title: '士大夫撒旦是阿斯蒂芬史蒂夫',
-    date: '2012-2-4',
-    id: 123,
-    source: '联盟发布'
-  }, {
-    imgUrl: 'assets/imgs/iphoto.JPG',
-    title: '士大夫撒旦是阿斯蒂芬史蒂夫',
-    date: '2012-2-4',
-    id: 123,
-    source: '联盟发布'
-  }, {
-    imgUrl: 'assets/imgs/iphoto.JPG',
-    title: '士大夫撒旦是阿斯蒂芬史蒂夫',
-    date: '2012-2-4',
-    id: 123,
-    source: '联盟发布'
-  }]
+  newsList = [];
+  @Input() list: listItem[];
 
   constructor(public navCtrl: NavController) {
 
   }
 
-  navTo(page) {
-    this.navCtrl.push(page);
+  ngOnChanges(changes) {
+    this.newsList = changes.list.currentValue;
+
+  }
+
+  navTo(item) {
+    // NewsDetailPage
+    this.navCtrl.push('NewsDetailPage', {
+      item
+    });
   }
 
 }

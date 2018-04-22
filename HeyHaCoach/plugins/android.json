@@ -13,17 +13,14 @@
     "cordova-plugin-device": {
       "PACKAGE_NAME": "io.ionic.starter"
     },
-    "cordova-plugin-splashscreen": {
-      "PACKAGE_NAME": "io.ionic.starter"
-    },
-    "cordova-plugin-ionic-webview": {
-      "PACKAGE_NAME": "io.ionic.starter"
-    },
     "cordova-plugin-ionic-keyboard": {
       "PACKAGE_NAME": "io.ionic.starter"
     },
     "jpush-phonegap-plugin": {
       "APP_KEY": "b62940b22c4c70c0ee319808",
+      "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "io.ionic.starter"
     }
   },

@@ -82,7 +82,7 @@ export class BaseService {
       }
       let alert = this.alertCtrl.create({
         title: "错误",
-        message: "系统错误，请稍后重试",
+        message: JSON.stringify(error),
         buttons: [{
           text: 'Ok',
         }]

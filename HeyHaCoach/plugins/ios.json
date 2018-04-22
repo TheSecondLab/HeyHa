@@ -9,6 +9,9 @@
   "installed_plugins": {
     "ionic-plugin-keyboard": {
       "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "io.ionic.starter"
     }
   },
   "dependent_plugins": {}

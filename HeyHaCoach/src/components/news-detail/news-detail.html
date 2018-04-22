@@ -1,12 +1,12 @@
 <!-- Generated template for the NewsDetailComponent component -->
 <div class="wrap">
-  <div class="title">{{articleData.title}}</div>
+  <div class="title">{{articleData.name}}</div>
   <div class="info">
-    <div class="iphoto"><img  src="{{articleData.imgUrl}}"/></div>
+    <div class="iphoto"><img  src="{{articleData.cover}}"/></div>
     <div class="cont">
-      <div class="times">浏览次数： {{articleData.times}}</div>
-      <div class="time">发布时间： {{articleData.date}}</div>
+      <div class="times">浏览次数： {{articleData.point}}</div>
+      <div class="time">发布时间： {{articleData.releasetimeStr}}</div>
     </div>
   </div>
-  <div class="content">{{articleData.content}}</div>
+  <div class="content" [innerHTML]="articleData.content"></div>
 </div>

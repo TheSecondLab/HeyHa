@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { JPush } from '@jiguang-ionic/jpush';
+
 import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import {
   FormGroup,
@@ -8,7 +9,7 @@ import {
   Validators
 } from '@angular/forms';
 
-import { BaseServiceJson } from '../../module/service';
+import { BaseService } from '../../module/baseService.service';
 
 @Component({
   selector: 'page-home',
@@ -21,33 +22,34 @@ export class HomePage {
   public newsListPage = 'NewsListPage';
   public newsListTit = '热点资讯';
   
-  constructor(public navCtrl: NavController, public jPush: JPush, public http: HttpClient, public navParams: NavParams, public baseService: BaseServiceJson) {
-    this.loadRemindData();
+  newsList = [];
+  remindList = [];
+
+  constructor(
+    public navCtrl: NavController,
+    public jPush: JPush,
+    public http: HttpClient,
+    public navParams: NavParams,
+    public baseService: BaseService,
+    private alertCtrl: AlertController
+  ) {
     
   }
+  
 
-  // ionViewDidEnter() {
+  ngOnInit() {
+    this.loadRemindData();
+  }
+
   loadRemindData() {
-    // const res = this.http.get('http://dev.hu0572.cn/api/update')
-    // .toPromise()
-    // .then(response => {console.log(response)});
-    // // console.log('res', res);
-    // app/admin/member/getFastExpiryMember
+    // 到期会员
+    this.baseService.postData('/admin/member/getFastExpiryMember', { data: {} }, (data)=> {
+      this.remindList = data;
+    });
 
-
-    this.baseService.postData('/admin/member/getFastExpiryMember', {}).subscribe(data => {
-      console.log(data);
-      // this.item = JSON.stringify(data);
-      
-    }, error => {
-      // let alert = this.alertCtrl.create({
-      //   title: "Account Created",
-      //   message: "error: " + JSON.stringify(error),
-      //   buttons: [{
-      //     text: 'Ok',
-      //   }]
-      // });
-      // alert.present()
+    // 热点资讯
+    this.baseService.postData('/admin/threeunactivity', { data: {} }, (data)=> {
+      this.newsList = data;
     });
     
   }

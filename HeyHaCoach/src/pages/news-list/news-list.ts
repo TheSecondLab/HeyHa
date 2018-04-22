@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { BaseService } from '../../module/baseService.service';
+
 /**
  * Generated class for the NewsListPage page.
  *
@@ -15,11 +17,26 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class NewsListPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public baseService: BaseService) {
   }
-
+  newsList: any;
   ionViewDidLoad() {
     console.log('ionViewDidLoad NewsListPage');
+  }
+
+  ngOnInit() {
+    this.loadNewsListData();
+  }
+
+  loadNewsListData() {
+    // 资讯列表
+    this.baseService.postData('/admin/unactivity', { data: {} }, (data)=> {
+      this.newsList = data;
+    });
+
   }
 
 }

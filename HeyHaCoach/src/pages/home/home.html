@@ -39,12 +39,12 @@
       </div>
     </div>
     <div class="panel">
-      <sub-title pageName="{{dueToStuPage}}" title="{{dueToStuTit}}"></sub-title>
-      <due-to-remind-list pageName="{{dueToStuPage}}"></due-to-remind-list>
+      <sub-title pageName="{{dueToStuPage}}" title="到期提醒"></sub-title>
+      <due-to-remind-list [list]=remindList pageName="{{dueToStuPage}}"></due-to-remind-list>
     </div>
     <div class="panel">
-      <sub-title pageName="{{newsListPage}}" title="{{newsListTit}}"></sub-title>
-      <news-list-thumb></news-list-thumb>
+      <sub-title pageName="{{newsListPage}}" title="热点资讯"></sub-title>
+      <news-list-thumb [list]=newsList></news-list-thumb>
     </div>
     <!-- <ion-searchbar
     animated="true"

@@ -15,8 +15,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class NewsDetailPage {
 
+  articleTitle: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.articleTitle = this.navParams.get('item').name;
   }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NewsDetailPage');
