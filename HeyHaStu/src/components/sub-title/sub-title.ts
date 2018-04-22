@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 /**
@@ -13,17 +13,15 @@ import { NavController } from 'ionic-angular';
 })
 export class SubTitleComponent {
 
-  title: string;
-
+  @Input() title: string;
+  @Input() btnText: string;
+  @Output() onTitleClick = new EventEmitter()
 
   constructor(public navCtrl: NavController) {
-
-    this.title = '热点资讯';
-
   }
 
-  navTo() {
-    this.navCtrl.push('NewsListPage');
+  titleClick() {
+    this.onTitleClick.emit();
   }
 
 }

@@ -84,6 +84,7 @@
     <plugin name="jpush-phonegap-plugin" spec="~3.4.1">
         <variable name="APP_KEY" value="9e2471813200538bfe0c47e1" />
     </plugin>
+    <allow-navigation href="http://172.16.41.238:8101" />
     <engine name="ios" spec="4.5.4" />
     <engine name="android" spec="7.0.0" />
 </widget>

@@ -18,110 +18,53 @@ import PostMoment from './postMoment';
 
 
 const routes = [
-  { 
-    component: Root,
+  { path: '/pointDetail',
     exact: true,
-    // path: '/',
+    component: PointDetailComp
+  }, { path: '/sendPoint',
+    exact: true,
+    component: SendPoint
+  }, { path: '/password',
+    exact: true,
+    component: PasswordComp
+  }, { path: '/login',
+    exact: true,
+    component: Login
+  }, { path: '/courseSetting',
+    exact: true,
+    component: CourseSetting
+  }, { path: '/postMoment',
+    exact: true,
+    component: PostMoment
+  }, { 
+    component: Root,
+    path: '/',
     routes: [
-      { path: '/',
+      { path: '/home',
         exact: true,
         component: HomeComponent
-      },
-      { path: '/classList',
+      }, { path: '/classList',
         exact: true,
         component: AttendenceComp
-      },
-      { path: '/search',
+      }, { path: '/search',
         exact: true,
         component: SearchComp
-      },
-      { path: '/point',
+      }, { path: '/point',
         exact: true,
         component: DestribuyePointComp
-      },
-      { path: '/mineInfo',
+      }, { path: '/mineInfo',
         exact: true,
         component: MineInfo
-      },
-      { path: '/courseProgress',
+      }, { path: '/courseProgress',
         exact: true,
         component: CourseProgress
-      },
-      { path: '/classMoment',
+      }, { path: '/classMoment',
         exact: true,
         component: ClassMoment
-      },
-      
+      }
     ]
-  },
-  // { path: '/pointDetail',
-  //   exact: true,
-  //   component: PointDetailComp
-  // },
-  // { path: '/sendPoint',
-  //   exact: true,
-  //   component: SendPoint
-  // },
-  // { path: '/password',
-  //   exact: true,
-  //   component: PasswordComp
-  // },
-  // { path: '/login',
-  //   exact: true,
-  //   component: Login
-  // },
-  // { path: '/courseSetting',
-  //   exact: true,
-  //   component: CourseSetting
-  // },
-  // { path: '/postMoment',
-  //   exact: true,
-  //   component: PostMoment
-  // },
+  }
 ];
+ 
 
-
-
-
-
-// const Root = (props) => (
-//   <div>
-//     Root
-//   </div>
-// )
-// const Home = (props) => (
-//   <div>
-//     Home
-//   </div>
-// )
-// const Child = (props) => (
-//   <div>
-//     Child
-//   </div>
-// )
-// const GrandChild = (props) => (
-//   <div>
-//     GrandChild
-//   </div>
-// )
-
-
-// const routes = [
-//   { component: Root,
-//     routes: [
-//       { path: '/',
-//         exact: true,
-//         component: Home
-//       },
-//       { path: '/child/:id',
-//         component: Child,
-//         routes: [
-//           { path: '/child/:id/grand-child',
-//             component: GrandChild
-//           }
-//         ]
-//       }
-//     ]
-//   }
-// ]
 export default routes;
