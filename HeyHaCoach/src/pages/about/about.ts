@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 
 @Component({
   selector: 'page-about',
@@ -7,12 +7,22 @@ import { NavController } from 'ionic-angular';
 })
 export class AboutPage {
 
-  constructor(public navCtrl: NavController) {
-
+  userInfo: any;
+  constructor(
+    public alertCtrl: AlertController,
+    private navParams: NavParams,
+    public navCtrl: NavController) {
+      this.userInfo = this.navParams.data;
   }
 
+  // ngOnInit() {
+  //   this.userInfo = this.navParams.data;
+
+  // }
   navTo(page) {
-    this.navCtrl.push(page)
+    this.navCtrl.push(page, {
+      userInfo: this.userInfo
+    })
   }
 
 }

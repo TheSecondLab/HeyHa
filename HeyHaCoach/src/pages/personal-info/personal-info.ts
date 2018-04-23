@@ -15,23 +15,39 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PersonalInfoPage {
 
-  infos = [{
-    label: 'testtest',
-    value: '123123123123'
-  },{
-    label: 'testtest',
-    value: '123123123123'
-  },{
-    label: 'testtest',
-    value: '123123123123'
-  },{
-    label: 'testtest',
-    value: '123123123123'
-  }]
+  userInfo: any;
+  infos: any;
+// 性别 入职时间 联系电话 身份证号 详细住址 职级 段位
+  
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
+  ngOnInit() {
+    this.userInfo = this.navParams.get('userInfo');
+    this.infos = [{
+      label: '性别',
+      value: this.userInfo.sexStr
+    },{
+      label: '入职时间',
+      value: this.userInfo.expirationTimeEndStr
+    },{
+      label: '联系电话',
+      value: this.userInfo.tel
+    },{
+      label: '身份证号',
+      value: this.userInfo.userId
+    },{
+      label: '详细住址',
+      value: this.userInfo.address
+    },{
+      label: '职级',
+      value: this.userInfo.levelName
+    },{
+      label: '段位',
+      value: '黄带'
+    }]
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad PersonalInfoPage');

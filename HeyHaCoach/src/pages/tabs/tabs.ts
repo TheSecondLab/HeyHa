@@ -1,5 +1,5 @@
 import { Component, Host } from '@angular/core';
-import { IonicPage } from 'ionic-angular';
+import { IonicPage, NavParams, AlertController } from 'ionic-angular';
 
 import { HomePage } from '../home/home';
 import { AboutPage } from '../about/about';
@@ -17,7 +17,15 @@ export class TabsPage {
   tab3Root = ClassDynamicPage;
   tab4Root = AboutPage;
 
-  constructor() {
+  userInfo: any;
+  constructor(
+    public alertCtrl: AlertController,
+    private navParams: NavParams) {
+    
+  }
+
+  ngOnInit() {
+    this.userInfo = this.navParams.get('userInfo');
 
   }
 }
