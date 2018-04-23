@@ -1,12 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the PersonalInfoPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { BaseService } from '../../module/baseService.service';
 
 @IonicPage()
 @Component({
@@ -15,26 +9,44 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class PersonalInfoPage {
 
-  infos = [{
-    label: 'testtest',
-    value: '123123123123'
-  },{
-    label: 'testtest',
-    value: '123123123123'
-  },{
-    label: 'testtest',
-    value: '123123123123'
-  },{
-    label: 'testtest',
-    value: '123123123123'
-  }]
+  // infos = [{
+  //   label: 'testtest',
+  //   value: '123123123123'
+  // },{
+  //   label: 'testtest',
+  //   value: '123123123123'
+  // },{
+  //   label: 'testtest',
+  //   value: '123123123123'
+  // },{
+  //   label: 'testtest',
+  //   value: '123123123123'
+  // }]
+  item: any = {
+    photoUrl: '',
+    taekwondoId: '',
+    expirationTimeEndStr: '',
+    sexStr: '',
+    birthdayStr: '',
+    code: '',
+    tel: '',
+    idCard: '',
+    address: '',
+    school: ''
+  };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public baseService: BaseService) {
   }
 
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PersonalInfoPage');
+  ngOnInit() {
+    this.loadData();
   }
+
+  loadData() {
+    this.baseService.postData('/admin/student', { data: {} }, (data)=> {
+      this.item = data;
+    });
+  }
+
 
 }
