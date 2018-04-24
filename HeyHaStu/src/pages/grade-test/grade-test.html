@@ -20,24 +20,34 @@
   <ion-content >
     <div [ngSwitch]="segmentModel">
       <ion-list *ngSwitchCase="'tab1'">
-        <div *ngFor="let grade of grades" class="gradeItem">
+        <div *ngFor="let level of levelList" class="gradeItem">
           <div class="img">
-            <img src={{grade.imgUrl}} alt="">
+            <img src={{level.imgUrl}} alt="">
           </div>
           <div class="desc">
-            <div class="title">{{grade.desc}}</div>
-            <div class="date">考试日期：{{grade.date}}</div>
+            <div class="title">{{level.name}}</div>
+            <div class="date">考试日期：{{level.addtimeStr || '未开始'}}</div>
           </div>
-          <div class="score">
-            {{grade.score.substr(0,1)}}
-            <span class="extra">{{grade.score.substr(1,2)}}</span>
+          <div class="score" *ngIf="level.score">
+            {{level.score.substr(0,1)}}
+            <span class="extra">{{level.score.substr(1,2)}}</span>
           </div>
         </div>
       </ion-list>
 
       <ion-list *ngSwitchCase="'tab2'">
-        <div *ngFor="let grade of grades">
-            考品/段
+        <div *ngFor="let level of segmentLevel" class="gradeItem">
+          <div class="img">
+            <img src={{level.imgUrl}} alt="">
+          </div>
+          <div class="desc">
+            <div class="title">{{level.name}}</div>
+            <div class="date">考试日期：{{level.addtimeStr || '未开始'}}</div>
+          </div>
+          <div class="score" *ngIf="level.score">
+            {{level.score.substr(0,1)}}
+            <span class="extra">{{level.score.substr(1,2)}}</span>
+          </div>
         </div>
       </ion-list>
     </div>

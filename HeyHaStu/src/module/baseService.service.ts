@@ -44,7 +44,8 @@ export class BaseService {
       params.append(key, data[key]);
     };
 
-    const domain = 'http://test.hu0572.cn';
+    // const domain = 'http://test.hu0572.cn';
+    const domain = 'http://api.zjztty.com';
     // const domain = '';
 
     this.http.post(`${domain}${url}`, params.toString() ,options).subscribe((data: ResData) => {

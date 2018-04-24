@@ -26,6 +26,7 @@ page-my-point {
     .points {
       height: 198px;
       position: relative;
+      overflow: hidden;
 
       img {
         position: absolute;
