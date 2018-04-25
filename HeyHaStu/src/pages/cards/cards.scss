@@ -4,27 +4,28 @@ page-cards {
 
     ion-card {
       position: relative;
-      text-align: center;
-      width: 355px;
-      height: 132px;
       background-color: #fff;
     }
 
-    .card-title {
+    .cardType {
       position: absolute;
-      top: 36%;
-      font-size: 2.0em;
-      width: 100%;
-      font-weight: bold;
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      top: 0;
       color: #fff;
-    }
+      height: 100%;
+      justify-content: space-between;
 
-    .card-subtitle {
-      font-size: 1.0em;
-      position: absolute;
-      top: 52%;
-      width: 100%;
-      color: #fff;
-    }
+      .title {
+        font-size: 30px;
+        margin: 18px;
+      }
+
+      .date {
+        font-size: 15px;
+        margin: 0 18px 18px;
+      }
+   }
   }
 }

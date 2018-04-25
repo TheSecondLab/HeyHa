@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { BaseService } from '../../module/baseService.service';
 
 /**
  * Generated class for the CardsPage page.
@@ -14,12 +15,18 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'cards.html',
 })
 export class CardsPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  cards = [];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public baseService: BaseService) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CardsPage');
+  ngOnInit() {
+    this.loadData();
+  }
+
+  loadData() {
+    this.baseService.postData('/admin/memberCardMapping/getmemberCardMapping', { data: {} }, (data)=> {
+      this.cards = data;
+    });
   }
 
 }

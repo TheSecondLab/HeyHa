@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { BaseService } from '../../module/baseService.service';
 interface Grade {
   imgUrl: string,
   desc: string,
@@ -16,59 +16,23 @@ interface Grade {
 export class GradeTestPage {
   segmentsArray = ['tab1','tab2'];
   segmentModel: string = this.segmentsArray[0];
-  grades: Grade[] = [{
-    imgUrl: 'assets/imgs/grade10.png',
-    desc: '十级（白带）',
-    date: '2017-11-11',
-    score: 'A+'
-  }, {
-    imgUrl: 'assets/imgs/grade10.png',
-    desc: '九级（白黄带）',
-    date: '',
-    score: ''
-  }, {
-    imgUrl: 'assets/imgs/grade10.png',
-    desc: '八级（黄带）',
-    date: '',
-    score: ''
-  }, {
-    imgUrl: 'assets/imgs/grade10.png',
-    desc: '七级（黄绿带）',
-    date: '',
-    score: ''
-  }, {
-    imgUrl: 'assets/imgs/grade10.png',
-    desc: '六级（绿带）',
-    date: '',
-    score: ''
-  }, {
-    imgUrl: 'assets/imgs/grade10.png',
-    desc: '五级（绿蓝带）',
-    date: '',
-    score: ''
-  }, {
-    imgUrl: 'assets/imgs/grade10.png',
-    desc: '四级（蓝带）',
-    date: '',
-    score: ''
-  }, {
-    imgUrl: 'assets/imgs/grade10.png',
-    desc: '三级（蓝红带）',
-    date: '',
-    score: ''
-  }, {
-    imgUrl: 'assets/imgs/grade10.png',
-    desc: '二级（红带）',
-    date: '',
-    score: ''
-  }, {
-    imgUrl: 'assets/imgs/grade10.png',
-    desc: '一级（黑带）',
-    date: '',
-    score: ''
-  }];
+  levelList = [];
+  segmentLevel = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public baseService: BaseService) {
   }
 
+  ngOnInit() {
+    this.loadData();
+  }
+
+  loadData() {
+    this.baseService.postData('/admin/level/getRankLevel', { data: {} }, (data)=> {
+      this.levelList = data;
+    });
+
+    this.baseService.postData('/admin/level/getProductsegmentLevel', { data: {} }, (data) => {
+      this.segmentLevel = data
+    })
+  }
 }

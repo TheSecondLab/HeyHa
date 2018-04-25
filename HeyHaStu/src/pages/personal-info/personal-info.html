@@ -9,7 +9,7 @@
 <ion-content class="content">
   <div class="header">
     <div class="img">
-      <img src="assets/imgs/avatar.png" alt="">
+      <img src={{item.photoUrl}} alt="">
     </div>
     <div class="change">
       <span>更改头像</span>
@@ -17,9 +17,42 @@
   </div>
 
   <ion-list>
-      <div ion-item *ngFor="let item of infos" class='infos'>
-        <span class="label">{{ item.label }}</span>
-        <span class="value">{{ item.value }}</span>
-      </div>
-    </ion-list>
+    <div ion-item class='infos'>
+      <span class="label">学习道馆</span>
+      <span class="value">{{ item.taekwondoId }}</span>
+    </div>
+    <div ion-item class='infos'>
+      <span class="label">到期时间</span>
+      <span class="value">{{ item.expirationTimeEndStr }}</span>
+    </div>
+    <div ion-item class='infos'>
+      <span class="label">性别</span>
+      <span class="value">{{ item.sexStr }}</span>
+    </div>
+    <div ion-item class='infos'>
+      <span class="label">出生年月</span>
+      <span class="value">{{ item.birthdayStr }}</span>
+    </div>
+    <div ion-item class='infos'>
+      <span class="label">会员编号</span>
+      <span class="value">{{ item.code }}</span>
+    </div>
+    <div ion-item class='infos'>
+      <span class="label">联系电话</span>
+      <span class="value">{{ item.tel }}</span>
+    </div>
+    <div ion-item class='infos'>
+      <span class="label">身份证号</span>
+      <span class="value">{{ item.idCard }}</span>
+    </div>
+    <div ion-item class='infos'>
+      <span class="label">详细地址</span>
+      <span class="value">{{ item.address }}</span>
+    </div>
+    <div ion-item class='infos'>
+      <span class="label">单位名称</span>
+      <span class="value">{{ item.school }}</span>
+    </div>
+
+  </ion-list>
 </ion-content>
