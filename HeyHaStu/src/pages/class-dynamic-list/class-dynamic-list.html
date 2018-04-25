@@ -13,11 +13,11 @@
 </ion-header>
 
 
-<ion-content padding="">
+<ion-content>
   <div class="dynamic" *ngFor="let dynamic of dynamicList">
     <div class="text">{{dynamic.content}}</div>
     <div class="assist">
-      <div class="time">3029-3-3</div>
+      <div class="time">{{dynamic.publishTimeStr}}</div>
       <!-- <div class="delete"></div> -->
     </div>
     <div class="photoGroup">
@@ -25,6 +25,9 @@
       <!-- <div><img src="assets/imgs/iphoto.JPG" alt=""></div>
       <div><img src="assets/imgs/iphoto.JPG" alt=""></div> -->
     </div>
-    <div class="good">点赞</div>
+    <div class="bad" *ngIf="dynamic.zan; else elseBlock" (click)="zan(dynamic.id)">点赞</div>
+    <ng-template #elseBlock>
+      <div class="good" (click)="zan(dynamic.id)">点赞</div>
+    </ng-template>
   </div>
 </ion-content>
