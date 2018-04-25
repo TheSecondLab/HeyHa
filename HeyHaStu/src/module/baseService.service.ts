@@ -28,7 +28,6 @@ export class BaseService {
       buttons: [{
         text: 'Ok',
         handler: () => {
-          // this.navCtrl.setRoot(LoginPage);
           this.app.getRootNav().setRoot(LoginPage);
         }
       }]
@@ -102,15 +101,15 @@ export class BaseService {
         onError("系统错误，请稍后重试");
         return;
       }
-      this.sessionTimeout();
-      // let alert = this.alertCtrl.create({
-      //   title: "错误",
-      //   message: JSON.stringify(error),
-      //   buttons: [{
-      //     text: 'Ok',
-      //   }]
-      // });
-      // alert.present()
+
+      let alert = this.alertCtrl.create({
+        title: "错误",
+        message: JSON.stringify(error),
+        buttons: [{
+          text: 'Ok',
+        }]
+      });
+      alert.present();
     });
   }
 }
