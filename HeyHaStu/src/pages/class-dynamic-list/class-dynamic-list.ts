@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { ModalPostPageComponent } from '../../components/modal-post-page/modal-post-page';
+import { BaseService } from '../../module/baseService.service';
 
 /**
  * Generated class for the ClassDynamicListPage page.
@@ -15,8 +16,18 @@ import { ModalPostPageComponent } from '../../components/modal-post-page/modal-p
   templateUrl: 'class-dynamic-list.html',
 })
 export class ClassDynamicListPage {
+  dynamicList = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public baseService: BaseService) {
+  }
+  ngOnInit() {
+    this.loadData();
+  }
+
+  loadData() {
+    this.baseService.postData('/admin/dynamic/getDynamicListByClazz', { data: {} }, (data)=> {
+      this.dynamicList = data;
+    });
   }
 }
 
