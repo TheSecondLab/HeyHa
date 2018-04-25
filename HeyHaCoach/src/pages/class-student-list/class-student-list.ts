@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+
+import { BaseService } from '../../module/baseService.service';
 
 /**
  * Generated class for the ClassStudentListPage page.
@@ -35,15 +37,39 @@ export class ClassStudentListPage {
     attendence: 4
   }];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  // classId;
+  classMsg: any;
+  studentList: any;
+
+  constructor(
+    public navCtrl: NavController,
+    public baseService: BaseService,
+    public alertCtrl: AlertController,
+    public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ClassStudentListPage');
   }
 
-  navTo(page) {
-    this.navCtrl.push(page);
+  ngOnInit() {
+    // this.classId = this.navParams.get('classId');
+    this.loadClassStucent();
+  }
+
+
+  navTo(item) {
+    this.navCtrl.push('StuImformationPage', {
+      item
+    });
+  }
+
+  loadClassStucent() {
+    this.baseService.postData('/admin/clazz', { data: { clazzId: this.navParams.get('classId') } }, (data)=> {
+      this.studentList = data;
+     
+    });
+  
   }
 
 }

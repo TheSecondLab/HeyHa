@@ -16,15 +16,15 @@
 <ion-content >
   <div class="photoCard">
     <div>
-      <div class="count">{{classCount}}</div>
+      <div class="count">{{countData.clazzCount}}</div>
       <div class="type">班级总数</div>
     </div>
     <div>
-      <div class="count">168</div>
+      <div class="count">{{countData.clazzMemberCount}}</div>
       <div class="type">学员总数</div>
     </div>
     <div>
-      <div class="count">{{dueDateStudentCount}}</div>
+      <div class="count">{{countData.expiryMemberCount}}</div>
       <div class="type">到期学员</div>
     </div>
   </div>
@@ -32,14 +32,14 @@
 
     <div
       class="list"
-      *ngFor="let item of classList;index as i" (click)="navTo(ClassStudentListPage)"
+      *ngFor="let item of classList;index as i" (click)="navTo(item)"
     >
       <div class="type">{{i}}</div>
       <div class="cont">
         <div class="name">{{item.name}}</div>
         <div class="time">课程时间：{{item.clazzTime}}</div>
       </div>
-      <div class="stuCount">{{item.clazzStudentsCount}}</div>
+      <div class="stuCount">{{item.clazzStudentsCount}}人</div>
     </div>
 
   </div>

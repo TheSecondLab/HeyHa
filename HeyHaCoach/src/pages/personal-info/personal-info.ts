@@ -30,7 +30,7 @@ export class PersonalInfoPage {
       value: this.userInfo.sexStr
     },{
       label: '入职时间',
-      value: this.userInfo.expirationTimeEndStr
+      value: this.userInfo.inTimeStr
     },{
       label: '联系电话',
       value: this.userInfo.tel
@@ -42,10 +42,10 @@ export class PersonalInfoPage {
       value: this.userInfo.address
     },{
       label: '职级',
-      value: this.userInfo.levelName
+      value: this.userInfo.jobLevel
     },{
       label: '段位',
-      value: '黄带'
+      value: this.userInfo.levelName
     }]
   }
 

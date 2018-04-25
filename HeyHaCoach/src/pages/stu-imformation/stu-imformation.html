@@ -15,67 +15,51 @@
 <ion-content>
   <div class="photoCard">
     <div class="person">
-      <div class="iphoto"><img src="assets/imgs/iphoto.JPG" alt=""></div>
-      <div class="name">今天</div>
+      <div class="iphoto"><img src={{studentMsg.photoUrl}} alt=""></div>
+      <div class="name">{{studentMsg.name}}</div>
     </div>
     <div class="talk"></div>
   </div>
   <div class="stuInfo">
     <div class="items">
       <span>学习道馆</span>
-      <div>浙北旗舰馆</div>
+      <div>没有数据</div>
     </div>
     <div class="items">
-      <span>学习道馆</span>
-      <div>浙北旗舰馆</div>
+      <span>到期时间</span>
+      <div>{{studentMsg.expirationTimeEndStr}}</div>
     </div>
     <div class="items">
-      <span>学习道馆</span>
-      <div>浙北旗舰馆</div>
+      <span>性别</span>
+      <div>{{studentMsg.sexStr}}</div>
     </div>
     <div class="items">
-      <span>学习道馆</span>
-      <div>浙北旗舰馆</div>
+      <span>出生年月</span>
+      <div>{{studentMsg.birthdayStr}}</div>
     </div>
     <div class="items">
-      <span>学习道馆</span>
-      <div>浙北旗舰馆</div>
+      <span>会员编号</span>
+      <div>{{studentMsg.code}}</div>
     </div>
     <div class="items">
-      <span>学习道馆</span>
-      <div>浙北旗舰馆</div>
+      <span>联系电话1</span>
+      <div>{{studentMsg.tel}}</div>
     </div>
     <div class="items">
-      <span>学习道馆</span>
-      <div>浙北旗舰馆</div>
+      <span>联系电话2</span>
+      <div>没有数据</div>
     </div>
     <div class="items">
-      <span>学习道馆</span>
-      <div>浙北旗舰馆</div>
+      <span>身份证号</span>
+      <div>{{studentMsg.idCard}}</div>
     </div>
     <div class="items">
-      <span>学习道馆</span>
-      <div>浙北旗舰馆</div>
+      <span>详细住址</span>
+      <div>{{studentMsg.address}}</div>
     </div>
     <div class="items">
-      <span>学习道馆</span>
-      <div>浙北旗舰馆</div>
-    </div>
-    <div class="items">
-      <span>学习道馆</span>
-      <div>浙北旗舰馆</div>
-    </div>
-    <div class="items">
-      <span>学习道馆</span>
-      <div>浙北旗舰馆</div>
-    </div>
-    <div class="items">
-      <span>学习道馆</span>
-      <div>浙北旗舰馆</div>
-    </div>
-    <div class="items">
-      <span>学习道馆</span>
-      <div>浙北旗舰馆</div>
+      <span>单位名称</span>
+      <div>{{studentMsg.school}}</div>
     </div>
   </div>
 </ion-content>

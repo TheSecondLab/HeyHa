@@ -24,6 +24,7 @@ export class HomePage {
   
   newsList = [];
   remindList = [];
+  bannerList = [];
 
   constructor(
     public navCtrl: NavController,
@@ -45,17 +46,29 @@ export class HomePage {
     // 到期会员
     this.baseService.postData('/admin/member/getFastExpiryMember', { data: {} }, (data)=> {
       this.remindList = data;
+
     });
 
     // 热点资讯
-    this.baseService.postData('/admin/threeunactivity', { data: {} }, (data)=> {
+    this.baseService.postData('/admin/sysactivity/threeunactivity', { data: {} }, (data)=> {
       this.newsList = data;
+    });
+
+    // 公告
+    this.baseService.postData('/admin/sysactivity/sysactivity', { data: {} }, (data)=> {
+      this.bannerList = data;
     });
     
   }
 
   navTo(page) {
     this.navCtrl.push(page);
+  }
+  
+  navToNews(item) {
+    this.navCtrl.push('NewsDetailPage', {
+      item
+    });
   }
 
 }

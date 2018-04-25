@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
 /**
  * Generated class for the RemindListAllComponent component.
@@ -12,27 +12,15 @@ import { NavController } from 'ionic-angular';
 })
 export class RemindListAllComponent {
 
-  public list = [{
-    imgUrl: 'assets/imgs/iphoto.JPG',
-    trace: '2',
-    date: '2019-2-2',
-    name: '金田',
-    number: 'CFTA110500'
-  }, {
-    imgUrl: 'assets/imgs/iphoto.JPG',
-    trace: '2',
-    date: '2019-2-2',
-    name: '金田',
-    number: 'CFTA110500'
-  }, {
-    imgUrl: 'assets/imgs/iphoto.JPG',
-    trace: '2',
-    date: '2019-2-2',
-    name: '金田',
-    number: 'CFTA110500'
-  }];
+  data;
+  @Input() list;
 
   constructor(public navCtrl: NavController) {
+
+  }
+  
+  ngOnChanges(changes) {
+    this.data = changes.list.currentValue;
 
   }
 
