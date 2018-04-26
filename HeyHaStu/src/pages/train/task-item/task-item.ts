@@ -18,7 +18,10 @@ export class TaskItemComponent {
   constructor(public navCtrl: NavController) {
   }
 
-  navTo() {
-    this.navCtrl.push('CourseDetailPage');
+  navTo(id, dateStr) {
+    this.navCtrl.push('CourseDetailPage', {
+      id,
+      dateStr
+    });
   }
 }

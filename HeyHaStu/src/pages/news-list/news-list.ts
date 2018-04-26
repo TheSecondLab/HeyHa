@@ -20,7 +20,7 @@ export class NewsListPage {
   }
 
   loadData() {
-    this.baseService.postData('/admin/unactivity', { data: {} }, (data)=> {
+    this.baseService.postData('/admin/sysactivity/unactivity', { data: {} }, (data)=> {
       this.newsList = data;
 
     });

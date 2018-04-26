@@ -6,6 +6,8 @@ import { MinePage } from '../mine/mine';
 import { TrainPage } from '../train/train';
 import { ClassDynamicListPage } from '../class-dynamic-list/class-dynamic-list';
 
+// import {CourseDetailPage} from  '../course-detail/course-detail';
+
 @IonicPage()
 @Component({
   templateUrl: 'tabs.html'

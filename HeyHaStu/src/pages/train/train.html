@@ -20,13 +20,13 @@
   <ion-content >
     <div [ngSwitch]="segmentModel">
       <ion-list *ngSwitchCase="'myTask'">
-        <div *ngFor="let task of tasks">
+        <div *ngFor="let task of taskList">
           <task-item [task]="task"></task-item>
         </div>
       </ion-list>
 
       <ion-list *ngSwitchCase="'process'">
-        <div *ngFor="let course of courses">
+        <div *ngFor="let course of courseList">
           <task-item [task]="course"></task-item>
         </div>
       </ion-list>
