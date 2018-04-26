@@ -29,5 +29,11 @@ export class ClassDynamicListPage {
       this.dynamicList = data;
     });
   }
+
+  zan(id) {
+    this.baseService.postData('/admin/dynamic/zanDynamic', { data: {id}, hideLoading: true }, (data)=> {
+      this.loadData();
+    });
+  }
 }
 
