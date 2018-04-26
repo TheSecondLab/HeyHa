@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { ModalPostPageComponent } from '../../components/modal-post-page/modal-post-page';
+import { BaseService } from '../../module/baseService.service';
 
 /**
  * Generated class for the EventsPage page.
@@ -15,13 +16,27 @@ import { ModalPostPageComponent } from '../../components/modal-post-page/modal-p
   templateUrl: 'events.html',
 })
 export class EventsPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
+  eventList= [];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public baseService: BaseService) {
   }
 
   openModal(characterNum) {
     let modal = this.modalCtrl.create(ModalPostPageComponent, characterNum);
     modal.present();
   }
+  ngOnInit() {
+    this.loadData();
+  }
 
+  loadData() {
+    this.baseService.postData('/admin/growthRecord/getGrowthRecord', { data: {} }, (data)=> {
+      this.eventList = data;
+    });
+  }
+
+  deleteEvent(id) {
+    this.baseService.postData('/admin/growthRecord/deleteGrowthRecord', { data: { growthRecordId: id } }, (data)=> {
+      this.loadData();
+    });
+  }
 }

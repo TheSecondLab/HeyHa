@@ -43,7 +43,7 @@ export class CourseDetailPage {
   }
 
   completeTask(id) {
-    this.baseService.postData('/admin/clazz/completeClazzSource', { data: { id } }, (data)=> {
+    this.baseService.postData('/admin/clazzSource/completeClazzSource', { data: { id } }, (data)=> {
       this.loadData(id);
     });
   }
