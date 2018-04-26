@@ -6,14 +6,8 @@
 
 <ion-content>
     <ion-slides pager="true" loop="true" class="banner">
-      <ion-slide>
-        <h1>Slide 1</h1>
-      </ion-slide>
-      <ion-slide>
-        <h1>Slide 2</h1>
-      </ion-slide>
-      <ion-slide>
-        <h1>Slide 3</h1>
+      <ion-slide *ngFor="let item of bannerList" class="list" >
+        <div style="overflow: hidden;" (click)="navToNews(item)"><img src="{{item.coverUrl}}" style="width:100%" /></div>
       </ion-slide>
     </ion-slides>
     <div class="searchWrap">
@@ -32,10 +26,6 @@
       <div class="items" (click)="navTo('CourseSystemPage')">
         <div class="img"></div>
         <div>课程体系</div>
-      </div>
-      <div class="items" (click)="navTo('MyFilePage')">
-        <div class="img"></div>
-        <div>我的文件</div>
       </div>
     </div>
     <div class="panel">

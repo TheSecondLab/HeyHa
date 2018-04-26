@@ -33,7 +33,7 @@ export class NewsListPage {
 
   loadNewsListData() {
     // 资讯列表
-    this.baseService.postData('/admin/unactivity', { data: {} }, (data)=> {
+    this.baseService.postData('/admin/sysactivity/unactivity', { data: {} }, (data)=> {
       this.newsList = data;
     });
 

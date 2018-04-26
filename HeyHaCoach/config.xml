@@ -89,4 +89,5 @@
     <engine name="android" spec="7.0.0" />
     <allow-navigation href="http://192.168.3.4:8100" />
     <plugin name="cordova-plugin-splashscreen" spec="^5.0.2" />
+    <plugin name="mx.ferreyra.callnumber" spec="~0.0.2" />
 </widget>

@@ -21,7 +21,7 @@ export class LoginPage {
 
   constructor(public navCtrl: NavController, public jPush: JPush, public baseService: BaseService) {
     this.form = new FormGroup({
-      username: new FormControl("CFTA18A001", Validators.required),
+      username: new FormControl("zdl", Validators.required),
       password: new FormControl("123456", Validators.required)
     });
   }

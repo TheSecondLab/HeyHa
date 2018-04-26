@@ -26,54 +26,16 @@ export class DueToRemindListComponent {
   public data = [];
   @Input() pageName:string;
   @Input() list: listItem[];
-  constructor(public navCtrl: NavController, public alertCrtl: AlertController) {
-    // this.list = [{
-    //   imgUrl: 'assets/imgs/iphoto.JPG',
-    //   name: '好的',
-    //   date: '12'
-    // }, {
-    //   imgUrl: 'assets/imgs/iphoto.JPG',
-    //   name: '好的',
-    //   date: '12'
-    // }, {
-    //   imgUrl: 'assets/imgs/iphoto.JPG',
-    //   name: '好的',
-    //   date: '12'
-    // }, {
-    //   imgUrl: 'assets/imgs/iphoto.JPG',
-    //   name: '好的',
-    //   date: '12'
-    // }, {
-    //   imgUrl: 'assets/imgs/iphoto.JPG',
-    //   name: '好的',
-    //   date: '12'
-    // }, {
-    //   imgUrl: 'assets/imgs/iphoto.JPG',
-    //   name: '好的',
-    //   date: '12'
-    // }, {
-    //   imgUrl: 'assets/imgs/iphoto.JPG',
-    //   name: '好的',
-    //   date: '12'
-    // }]
-
-    // let alert = this.alertCrtl.create({
-    //   title: "test",
-    //   message: JSON.stringify(this.list),
-    //   buttons: [{
-    //     text: 'Ok',
-    //   }]
-    // });
-    // alert.present();
+  constructor(public navCtrl: NavController, public alertCtrl: AlertController) {
   }
 
 
   ngOnChanges(changes) {
-    this.list = changes.list.currentValue;
+    this.data = changes.list.currentValue;
 
   }
-  navTo(page) {
-    this.navCtrl.push(page);
+  navTo(item) {
+    this.navCtrl.push('DueDateStuPage', {item});
   }
 
 }

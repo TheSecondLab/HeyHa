@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+
 import { BaseService } from '../../module/baseService.service';
 
 /**
@@ -19,12 +20,12 @@ export class MyClassPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    public alertCtrl: AlertController,
     public baseService :BaseService) {
   }
 
-  classCount: string;
-  dueDateStudentCount: string;
-  classList: Array<any> = [];
+  countData: any = {};
+  classList: any = [];
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyClassPage');
@@ -36,16 +37,11 @@ export class MyClassPage {
   
   loadPageData() {
 
-    // 教练名下班级总和
-    this.baseService.postData('/admin/clazz/getClazzCount', { data: {} }, (data)=> {
-      this.classCount = data;
+    // 获得这个教练下所管理的班级总数测试,班级人数总和，班级到期人数总和
+    this.baseService.postData('/admin/member/getCount', { data: {} }, (data)=> {
+      this.countData = data;
     });
-
-    // 所管理班级中到期人数总和
-    this.baseService.postData('/admin/member/getCountExpiryMember', { data: {} }, (data)=> {
-      this.dueDateStudentCount = data;
-    });
-
+  
     // 所管理班级中到期人数总和
     this.baseService.postData('/admin/clazz/getAllClass', { data: {} }, (data)=> {
       this.classList = data;
@@ -53,8 +49,10 @@ export class MyClassPage {
 
   }
 
-  navTo(page) {
-    this.navCtrl.push(page);
+  navTo(item) {
+    this.navCtrl.push('ClassStudentListPage', {
+      classId: item.id
+    });
   }
 
 }

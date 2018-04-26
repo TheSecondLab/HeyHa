@@ -7,9 +7,6 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "io.ionic.starter"
-    },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "io.ionic.starter"
     },
@@ -17,10 +14,7 @@
       "PACKAGE_NAME": "io.ionic.starter"
     },
     "jpush-phonegap-plugin": {
-      "APP_KEY": "b62940b22c4c70c0ee319808",
-      "PACKAGE_NAME": "io.ionic.starter"
-    },
-    "cordova-plugin-splashscreen": {
+      "APP_KEY": "9e2471813200538bfe0c47e1",
       "PACKAGE_NAME": "io.ionic.starter"
     },
     "mx.ferreyra.callnumber": {

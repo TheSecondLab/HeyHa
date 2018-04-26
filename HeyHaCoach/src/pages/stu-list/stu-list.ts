@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { BaseService } from '../../module/baseService.service';
+
 /**
  * Generated class for the StuListPage page.
  *
@@ -15,11 +17,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class StuListPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  studentList;
+
+  constructor(
+    public navCtrl: NavController,
+    public baseService: BaseService,
+    public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StuListPage');
+  }
+
+  ngOnInit() {
+    this.loadStudentList();
+  }
+
+  loadStudentList() {
+    this.baseService.postData('/admin/member/getExpiryMemberList', { data: {} }, (data)=> {
+      this.studentList = data.content;
+    });
+    
   }
 
 }

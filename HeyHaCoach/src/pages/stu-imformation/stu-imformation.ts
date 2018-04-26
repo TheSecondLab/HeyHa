@@ -1,5 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
+
+import { BaseService } from '../../module/baseService.service';
 
 /**
  * Generated class for the StuImformationPage page.
@@ -15,18 +17,35 @@ import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 })
 export class StuImformationPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  // studentId;
+  studentMsg;
+  constructor(
+    public navCtrl: NavController, 
+    public baseService: BaseService, 
+    public navParams: NavParams) {
+    // this.studentId = this.navParams.get('item').id
   }
 
-  @ViewChild(Content) content: Content;
+  ngOnInit() {
+    this.loadPageData();
+  }
+
+  loadPageData() {
+    this.baseService.postData('/admin/member/getMemberByMemberId', { data: { id: this.navParams.get('item').id } }, (data)=> {
+      this.studentMsg = data;
+    });
+
+  }
+
   // @ViewChild(Header) header: Header;
-  ionViewDidLoad() {
-    // console.log(window.t = this);
-    // this.content.addScrollListener(this.onPageScroll);
-  }
+  // ionViewDidLoad() {
+  //   // console.log(window.t = this);
+  //   // this.content.addScrollListener(this.onPageScroll);
+  // }
 
-  onPageScroll(event) {
-    console.log('1222')
-  }
+  // onPageScroll(event) {
+  //   console.log('1222')
+  // }
 
+  
 }

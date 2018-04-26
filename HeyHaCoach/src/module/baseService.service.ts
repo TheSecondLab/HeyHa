@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { AlertController, LoadingController } from 'ionic-angular';
+import { App, AlertController, LoadingController } from 'ionic-angular';
+
+import { LoginPage } from '../pages/login/login';
 
 interface ReqOption {
   data: any,
@@ -16,7 +18,21 @@ interface ResData {
 
 @Injectable()
 export class BaseService {
-  constructor(public http: HttpClient, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
+  constructor(public app: App, public http: HttpClient, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
+  }
+
+  sessionTimeout() {
+    let alert = this.alertCtrl.create({
+      title: "错误",
+      message: '登陆过期，请重新登陆',
+      buttons: [{
+        text: 'Ok',
+        handler: () => {
+          this.app.getRootNav().setRoot(LoginPage);
+        }
+      }]
+    });
+    alert.present();
   }
 
   postData(url: string, option: ReqOption = { data: {}, myHeader: {}, hideLoading: false}, onSuccess: any, onError?: any): void {
@@ -44,23 +60,18 @@ export class BaseService {
       params.append(key, data[key]);
     };
 
-    const domain = 'http://test.hu0572.cn';
+    const domain = 'http://api.zjztty.com';
     // const domain = '';
 
     this.http.post(`${domain}${url}`, params.toString() ,options).subscribe((data: ResData) => {
-      loading.dismiss();
-      // let alert = this.alertCtrl.create({
-      //   title: "错误",
-      //   message: JSON.stringify(data),
-      //   buttons: [{
-      //     text: 'Ok',
-      //   }]
-      // });
-      // alert.present()
       if(data.status === 'SUCCESS') {
         onSuccess(data.data);
         return;
       }
+      if(data.status === 'SESSION_OUT') {
+        this.sessionTimeout();
+      }
+
       if (typeof onError === 'function') {
         onError(data.msg);
         return;
@@ -72,7 +83,7 @@ export class BaseService {
           text: 'Ok',
         }]
       });
-      alert.present()
+      alert.present();
 
     }, error => {
       loading.dismiss();
@@ -82,7 +93,8 @@ export class BaseService {
       }
       let alert = this.alertCtrl.create({
         title: "错误",
-        message: "系统错误，请稍后重试",
+        // message: "系统错误，请稍后重试",
+        message: JSON.stringify(error),
         buttons: [{
           text: 'Ok',
         }]
