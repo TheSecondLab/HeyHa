@@ -31,12 +31,9 @@ export class StuImformationPage {
   }
 
   loadPageData() {
-
     this.baseService.postData('/admin/member/getMemberByMemberId', { data: { id: this.navParams.get('item').id } }, (data)=> {
       this.studentMsg = data;
     });
-  
-
 
   }
 

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 /**
  * Generated class for the RemindListAllComponent component.
  *
@@ -15,7 +15,9 @@ export class RemindListAllComponent {
   data;
   @Input() list;
 
-  constructor(public navCtrl: NavController) {
+  constructor(
+    public alertCtrl: AlertController,
+    public navCtrl: NavController) {
 
   }
   
@@ -24,7 +26,7 @@ export class RemindListAllComponent {
 
   }
 
-  navTo(page) {
-    this.navCtrl.push(page);
+  navTo(item) {
+    this.navCtrl.push('DueDateStuPage', { item });
   }
 }

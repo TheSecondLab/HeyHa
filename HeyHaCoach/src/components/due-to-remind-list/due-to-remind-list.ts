@@ -34,8 +34,8 @@ export class DueToRemindListComponent {
     this.data = changes.list.currentValue;
 
   }
-  navTo(page) {
-    this.navCtrl.push(page);
+  navTo(item) {
+    this.navCtrl.push('DueDateStuPage', {item});
   }
 
 }
