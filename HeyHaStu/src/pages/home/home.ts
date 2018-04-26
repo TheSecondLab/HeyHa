@@ -10,6 +10,7 @@ import { BaseService } from '../../module/baseService.service';
 export class HomePage {
   item = '';
   newsList = [];
+  banners = [];
 
   constructor(public navCtrl: NavController, public baseService: BaseService) {
 
@@ -20,17 +21,13 @@ export class HomePage {
   }
 
   loadData() {
-    this.baseService.postData('/admin/threeunactivity', { data: {} }, (data)=> {
-      // let alert = this.alertCtrl.create({
-      //   title: "data",
-      //   message: JSON.stringify(data),
-      //   buttons: [{
-      //     text: 'Ok',
-      //   }]
-      // });
-      // alert.present()
+    this.baseService.postData('/admin/sysactivity/threeunactivity', { data: {} }, (data)=> {
       this.newsList = data;
     });
+
+    this.baseService.postData('/admin/sysactivity/sysactivity', { data: {} }, (data) => {
+      this.banners = data
+    })
   }
 
   titleClick() {

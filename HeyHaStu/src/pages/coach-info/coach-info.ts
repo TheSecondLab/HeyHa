@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { BaseService } from '../../module/baseService.service';
 /**
  * Generated class for the CoachInfoPage page.
  *
@@ -15,11 +15,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CoachInfoPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  cocheInfo: any = {
+
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad CoachInfoPage');
+  constructor(public navCtrl: NavController, public navParams: NavParams, public baseService: BaseService) {
+  }
+
+  ngOnInit() {
+    this.loadData();
+  }
+
+  loadData() {
+    this.baseService.postData('/admin/stucoached', { data: {} }, (data)=> {
+      this.cocheInfo = data;
+    });
   }
 
 }

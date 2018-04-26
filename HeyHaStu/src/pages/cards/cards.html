@@ -14,19 +14,14 @@
 
 
 <ion-content class="content">
-  <ion-card>
-    <img src="assets/imgs/avatar.png"/>
-  </ion-card>
-
-  <ion-card>
-    <img src="assets/imgs/avatar.png"/>
-  </ion-card>
-
-  <ion-card>
-    <img src="assets/imgs/avatar.png"/>
-  </ion-card>
-
-  <ion-card>
-    <img src="assets/imgs/avatar.png"/>
+  <ion-card class="cards"  *ngFor="let card of cards;index as i">
+    <img src="assets/imgs/pic_card{{i%4+1}}.png"/>
+    <div class="cardType">
+      <div class="title">{{card.card.name}}</div>
+      <div class="date">
+        <div>办卡日期：{{card.startTimeStr}}</div>
+        <div>截止日期：{{card.endTimeStr}}</div>
+      </div>
+    </div>
   </ion-card>
 </ion-content>

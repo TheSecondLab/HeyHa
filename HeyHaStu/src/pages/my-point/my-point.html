@@ -17,30 +17,36 @@
       <img src="assets/imgs/myPoint.png" alt="">
       <div class="pointsInfo">
         <div class="total">
-          <span class="point">350</span>
+          <span class="point">{{pointDetail.totalIntegral}}</span>
           <span class="label">总积分</span>
         </div>
         <div class="other">
           <div class="used">
             <span class="label">已使用</span>
-            <span class="point">120</span>
+            <span class="point">{{pointDetail.usedIntegral}}</span>
           </div>
           <div class="nonUsed">
             <span class="label">未使用</span>
-            <span class="point">230</span>
+            <span class="point">{{pointDetail.availableIntegral}}</span>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="list" *ngFor="let item of items">
+    <div class="list" *ngFor="let point of pointList">
       <div class="left">
-        <div class="desc">{{ item.desc }}</div>
-        <div class="date">{{ item.date }}</div>
+        <div class="desc">{{ point.name }}</div>
+        <div class="date">{{ point.date }}</div>
       </div>
-      <div class="right">
-        {{ item.point}}
+      <div class="right" *ngIf="point.type === 'ADD'; else elseBlock">
+        +{{ point.score}}
       </div>
+      <ng-template #elseBlock>
+        <div class="right" >
+          -{{ point.score}}
+        </div>
+      </ng-template>
+
     </div>
   </div>
 </ion-content>
