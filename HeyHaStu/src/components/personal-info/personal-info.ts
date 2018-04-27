@@ -1,7 +1,7 @@
 
 import { NavController } from 'ionic-angular';
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { BaseService } from '../../module/baseService.service';
 /**
  * Generated class for the PersonalInfoComponent component.
  *
@@ -13,12 +13,34 @@ import { Component } from '@angular/core';
   templateUrl: 'personal-info.html'
 })
 export class PersonalInfoComponent {
-
-  constructor(public navCtrl: NavController) {
+  item: any = {
+    photoUrl: '',
+    taekwondoId: '',
+    expirationTimeEndStr: '',
+    sexStr: '',
+    birthdayStr: '',
+    code: '',
+    tel: '',
+    idCard: '',
+    address: '',
+    school: '',
+    name: ''
+  };
+  constructor(public navCtrl: NavController, public baseService: BaseService) {
   }
 
   navTo(page) {
     this.navCtrl.push(page)
+  }
+
+  ngOnInit() {
+    this.loadData();
+  }
+
+  loadData() {
+    this.baseService.postData('/admin/student', { data: {} }, (data)=> {
+      this.item = data;
+    });
   }
 
 }
