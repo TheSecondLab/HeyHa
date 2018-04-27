@@ -11,17 +11,19 @@
       </button>
     </ion-buttons>
     <ion-buttons end>
-      <button ion-button (click)="dismiss()">
+      <button ion-button (click)="submit()">
         <span ion-text color="primary" showWhen="ios">发布</span>
-        <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
+        <ion-icon name="md-checkmark" showWhen="android,windows"></ion-icon>
       </button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <ion-textarea placeholder="说点什么吧…" rows="12"></ion-textarea>
-  <div>
-    <div class="empty"></div>
-  </div>
+  <form [formGroup]="form">
+      <ion-textarea placeholder="说点什么吧…" rows="12" formControlName="record"></ion-textarea>
+      <div>
+        <div class="empty"></div>
+      </div>
+  </form>
 </ion-content>

@@ -22,6 +22,9 @@ export class EventsPage {
 
   openModal(characterNum) {
     let modal = this.modalCtrl.create(ModalPostPageComponent, characterNum);
+    modal.onDidDismiss(data => {
+      this.loadData();
+    });
     modal.present();
   }
   ngOnInit() {
@@ -35,7 +38,7 @@ export class EventsPage {
   }
 
   deleteEvent(id) {
-    this.baseService.postData('/admin/growthRecord/deleteGrowthRecord', { data: { growthRecordId: id } }, (data)=> {
+    this.baseService.postData('/admin/growthRecord/deleteGrowthRecord', { data: { id }, hideLoading: true }, (data)=> {
       this.loadData();
     });
   }

@@ -10,9 +10,9 @@
 
   <ion-content padding="">
     <div class="dynamic" *ngFor="let event of eventList">
-      <div class="text">{{event.content}}</div>
+      <div class="text">{{event.record}}</div>
       <div class="assist">
-        <div class="time">{{event.publishTimeStr}}</div>
+        <div class="time">{{event.recordTimeStr}}</div>
         <div class="delete" (click)="deleteEvent(event.id)"></div>
       </div>
       <div class="photoGroup">
