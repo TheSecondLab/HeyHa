@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+import { BaseService } from '../../module/baseService.service';
+
 /**
  * Generated class for the ExerciseTasksPage page.
  *
@@ -15,11 +17,34 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ExerciseTasksPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  classList;
+
+  constructor(
+    public navCtrl: NavController,
+    public baseService: BaseService,
+    public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ExerciseTasksPage');
   }
 
+
+  // ngOnInit() {
+  //   this.loadPageData();
+  // }
+  
+  // loadPageData() {
+
+  //   // 所管理班级中到期人数总和
+  //   this.baseService.postData('/admin/clazz/getAllClass', { data: {} }, (data)=> {
+  //     this.classList = data;
+  //   });
+  // }
+
+  // navTo(item) {
+  //   this.navCtrl.push('ClassStudentListPage', {
+  //     item
+  //   });
+  // }
 }

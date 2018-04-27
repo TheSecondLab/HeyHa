@@ -4,7 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { BaseService } from '../../module/baseService.service';
 
 /**
- * Generated class for the TaskPage page.
+ * Generated class for the ClassDueStudentPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -12,38 +12,36 @@ import { BaseService } from '../../module/baseService.service';
 
 @IonicPage()
 @Component({
-  selector: 'page-task',
-  templateUrl: 'task.html',
+  selector: 'page-class-due-student',
+  templateUrl: 'class-due-student.html',
 })
-export class TaskPage {
+export class ClassDueStudentPage {
 
-  public pageName = 'TaskListPage';
-  classList;
   constructor(
+    public navCtrl: NavController,
     public baseService: BaseService,
-    public navCtrl: NavController, public navParams: NavParams) {
-
+    public navParams: NavParams) {
   }
+
+  stuList;
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TaskPage');
+    console.log('ionViewDidLoad ClassDueStudentPage');
+    // admin/member/getExpiryMember
   }
-
   ngOnInit() {
     this.loadPageData();
   }
-  
+
   loadPageData() {
 
-    // 所管理班级中到期人数总和
-    this.baseService.postData('/admin/clazz/getAllClass', { data: {} }, (data)=> {
-      this.classList = data;
+    this.baseService.postData('/admin/member/getExpiryMember', { data: {} }, (data)=> {
+      this.stuList = data;
     });
   }
 
   navTo(item) {
-    this.navCtrl.push('ClassStudentListPage', {
-      item
-    });
+    this.navCtrl.push('DueDateStuPage', { item });
   }
+
 }

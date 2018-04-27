@@ -50,9 +50,14 @@ export class MyClassPage {
   }
 
   navTo(item) {
-    this.navCtrl.push('ClassStudentListPage', {
-      classId: item.id
-    });
+    if (item) {
+      this.navCtrl.push('ClassStudentListPage', {
+        classId: item.id
+      });
+      return;
+    }
+    this.navCtrl.push('ClassDueStudentPage');
+    
   }
 
 }

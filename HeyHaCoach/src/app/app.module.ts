@@ -24,6 +24,7 @@ import { TaskDetailPageModule } from '../pages/task-detail/task-detail.module';
 import { PersonalInfoPageModule } from '../pages/personal-info/personal-info.module';
 import { PostTraceRecordPageModule } from '../pages/post-trace-record/post-trace-record.module';
 import { ChatPageModule } from '../pages/chat/chat.module';
+import { ClassDueStudentPageModule } from '../pages/class-due-student/class-due-student.module';
 
 
 // 根组件
@@ -57,6 +58,7 @@ import { NewsDetailPage } from '../pages/news-detail/news-detail';
 import { PersonalInfoPage } from '../pages/personal-info/personal-info';
 import { LoginPage } from '../pages/login/login';
 import { ChatPage } from '../pages/chat/chat';
+import { ClassDueStudentPage } from '../pages/class-due-student/class-due-student';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -100,7 +102,8 @@ import { Utils } from '../module/util';
     PersonalInfoPageModule,
     PostTraceRecordPageModule,
     TabsPageModule,
-    ChatPageModule
+    ChatPageModule,
+    ClassDueStudentPageModule
   ],
   bootstrap: [IonicApp], // 启动模块
   entryComponents: [ // 不会在模板中使用的组件
@@ -131,7 +134,8 @@ import { Utils } from '../module/util';
     TaskDetailPage,
     PersonalInfoPage,
     LoginPage,
-    ChatPage
+    ChatPage,
+    ClassDueStudentPage
   ],
   providers: [
     StatusBar,
