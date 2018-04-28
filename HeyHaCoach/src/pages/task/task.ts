@@ -42,7 +42,7 @@ export class TaskPage {
   }
 
   navTo(item) {
-    this.navCtrl.push('ClassStudentListPage', {
+    this.navCtrl.push('TaskListPage', {
       item
     });
   }

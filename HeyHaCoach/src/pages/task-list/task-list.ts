@@ -47,9 +47,9 @@ export class TaskListPage {
   
   loadPageData() {
     
-    this.baseService.postData('/admin/clazz/getEmployeeClazzSource',
+    this.baseService.postData('/admin/clazzSource/getEmployeeClazzSource',
       { data: {
-        id: this.navParams.get('item').id,
+        clazzId: this.navParams.get('item').id,
         type: 'HOMEWORK'
       }}, 
       (data)=> {
