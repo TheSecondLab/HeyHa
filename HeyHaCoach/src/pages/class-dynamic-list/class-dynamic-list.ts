@@ -23,6 +23,7 @@ export class ClassDynamicListPage {
     let modal = this.modalCtrl.create(ModalPostPageComponent, characterNum);
     modal.present();
   }
+  // /admin/dynamic/getOneDynamic
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ClassDynamicListPage');

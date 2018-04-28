@@ -19,6 +19,9 @@ export class StuImformationPage {
 
   // studentId;
   studentMsg;
+  studentName;
+  studentPhoto;
+
   constructor(
     public navCtrl: NavController, 
     public baseService: BaseService, 
@@ -32,20 +35,21 @@ export class StuImformationPage {
 
   loadPageData() {
     this.baseService.postData('/admin/member/getMemberByMemberId', { data: { id: this.navParams.get('item').id } }, (data)=> {
-      this.studentMsg = data;
+      this.studentMsg = [
+        { label: '学习道馆', value: data.taekwondoName },
+        { label: '到期时间', value: data.expirationTimeEndStr },
+        { label: '性别', value: data.sexStr },
+        { label: '出生年月', value: data.birthdayStr },
+        { label: '会员编号', value: data.code },
+        { label: '联系电话', value: data.tel },
+        { label: '身份证号', value: data.idCard },
+        { label: '详细住址', value: data.address },
+        { label: '单位名称', value: data.school }
+      ];
+      this.studentName = data.name;
+      this.studentPhoto = data.photoUrl;
     });
 
   }
 
-  // @ViewChild(Header) header: Header;
-  // ionViewDidLoad() {
-  //   // console.log(window.t = this);
-  //   // this.content.addScrollListener(this.onPageScroll);
-  // }
-
-  // onPageScroll(event) {
-  //   console.log('1222')
-  // }
-
-  
 }

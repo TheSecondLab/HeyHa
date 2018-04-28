@@ -12,20 +12,6 @@ import { NavController } from 'ionic-angular';
 })
 export class ExerciseListComponent {
 
-  // public list = [{
-  //   time: '2014年1月3日',
-  //   completed: '4',
-  //   count: 26
-  // }, {
-  //   time: '2014年1月3日',
-  //   completed: '4',
-  //   count: 26
-  // }, {
-  //   time: '2014年1月3日',
-  //   completed: '4',
-  //   count: 26
-  // }];
-
   @Input() list;
   exerciseList;
   constructor(public navCtrl: NavController) {

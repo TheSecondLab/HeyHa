@@ -18,7 +18,11 @@ import { BaseService } from '../../module/baseService.service';
 })
 export class DueDateStuPage {
 
-  studentMsg;
+  studentName;
+  photoUrl;
+  taekwondoName;
+  expirationTimeEndStr;
+  tel;
   studentTrace;
 
   constructor(
@@ -67,22 +71,18 @@ export class DueDateStuPage {
 
   loadStudentMsg() {
     this.baseService.postData('/admin/member/getMemberByMemberId', { data: { id: this.navParams.get('item').id } }, (data)=> {
-      let alert = this.alertCtrl.create({
-        title: 'id',
-        message: JSON.stringify(this.navParams.get('item'))
-      });
-      alert.present();
-      this.studentMsg = data;
+
+      this.studentName = data.name;
+      this.photoUrl = data.photoUrl;
+      this.taekwondoName = data.taekwondoName;
+      this.expirationTimeEndStr = data.expirationTimeEndStr;
+      this.tel = data.tel;
+
     });
   }
 
   loadStudentTrace() {
-    this.baseService.postData('/admin/follow/getMemberFollow', { data: { id: this.navParams.get('item').id } }, (data)=> {
-      let alert = this.alertCtrl.create({
-        title: 'id',
-        message: JSON.stringify(this.navParams.get('item'))
-      });
-      alert.present();
+    this.baseService.postData('/admin/follow/getMemberFollow', { data: { memberId: this.navParams.get('item').id } }, (data)=> {
       this.studentTrace = data;
     });
     

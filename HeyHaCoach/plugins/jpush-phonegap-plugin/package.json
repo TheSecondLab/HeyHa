@@ -1,28 +1,28 @@
 {
-  "_from": "jpush-phonegap-plugin@^3.4.1",
-  "_id": "jpush-phonegap-plugin@3.4.1",
+  "_from": "jpush-phonegap-plugin",
+  "_id": "jpush-phonegap-plugin@3.4.2",
   "_inBundle": false,
-  "_integrity": "sha512-J1QC/XPvF3es96sA98uBNRVWNoKD6iSa5nC5p7QvsdNN8KS3kY2otA6x54I42nJ6NvV3Xkrp+5mfC6OF3VOMUg==",
+  "_integrity": "sha1-NYYdWZAUsSWO2mK/Xx+G+7R0rzc=",
   "_location": "/jpush-phonegap-plugin",
   "_phantomChildren": {},
   "_requested": {
-    "type": "range",
+    "type": "tag",
     "registry": true,
-    "raw": "jpush-phonegap-plugin@^3.4.1",
+    "raw": "jpush-phonegap-plugin",
     "name": "jpush-phonegap-plugin",
     "escapedName": "jpush-phonegap-plugin",
-    "rawSpec": "^3.4.1",
+    "rawSpec": "",
     "saveSpec": null,
-    "fetchSpec": "^3.4.1"
+    "fetchSpec": "latest"
   },
   "_requiredBy": [
     "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/jpush-phonegap-plugin/-/jpush-phonegap-plugin-3.4.1.tgz",
-  "_shasum": "e7cbe37e4893368087cd119fc09499ce06811adb",
-  "_spec": "jpush-phonegap-plugin@^3.4.1",
-  "_where": "/Users/robin/Documents/project/HeyHa/HeyHaCoach",
+  "_resolved": "https://registry.npmjs.org/jpush-phonegap-plugin/-/jpush-phonegap-plugin-3.4.2.tgz",
+  "_shasum": "35861d599014b1258eda62bf5f1f86fbb474af37",
+  "_spec": "jpush-phonegap-plugin",
+  "_where": "/Users/zhaoxing/privateSpace/HeyHa/HeyHaCoach",
   "author": {
     "name": "JiGuang"
   },
@@ -58,5 +58,5 @@
     "type": "git",
     "url": "git+https://github.com/jpush/jpush-phonegap-plugin.git"
   },
-  "version": "3.4.1"
+  "version": "3.4.2"
 }

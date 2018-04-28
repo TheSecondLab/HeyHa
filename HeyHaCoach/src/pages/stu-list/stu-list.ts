@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, Content } from 'ionic-angular';
 
 import { BaseService } from '../../module/baseService.service';
 
@@ -22,6 +22,7 @@ export class StuListPage {
   constructor(
     public navCtrl: NavController,
     public baseService: BaseService,
+    public alertCtrl: AlertController,
     public navParams: NavParams) {
   }
 

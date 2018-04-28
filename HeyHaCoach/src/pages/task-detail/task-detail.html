@@ -18,13 +18,13 @@
     <div class="tabs">
       <ion-segment [(ngModel)]="type">
         <ion-segment-button value="remind">
-          提醒
-        </ion-segment-button>
-        <ion-segment-button value="unfinish">
           未完成
         </ion-segment-button>
+        <ion-segment-button value="unfinish">
+          已完成
+        </ion-segment-button>
         <ion-segment-button value="class">
-          课程列表
+          修炼内容
         </ion-segment-button>
       </ion-segment>
     </div>
@@ -54,7 +54,18 @@
         </div>
       </div>
       <div *ngSwitchCase="'class'">
-        <class-list [typeName]="'动态'" bgColor="'#ccc'" pageName="{{pageName}}"></class-list>
+        <!-- <class-list [typeName]="'动态'" bgColor="'#ccc'" pageName="{{pageName}}"></class-list> -->
+        <!-- taskList -->
+        <div
+          class="list"
+          *ngFor="let item of taskList;index as i" (click)="navTo(item)"
+        >
+          <div class="type"></div>
+          <div class="cont">
+            <div class="name">{{item.name}}</div>
+            <div class="time">{{item.levelName}}</div>
+          </div>
+        </div>
       </div>
       
     </div>

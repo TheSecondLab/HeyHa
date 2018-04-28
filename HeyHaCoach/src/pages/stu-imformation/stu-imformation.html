@@ -15,51 +15,16 @@
 <ion-content>
   <div class="photoCard">
     <div class="person">
-      <div class="iphoto"><img src={{studentMsg.photoUrl}} alt=""></div>
-      <div class="name">{{studentMsg.name}}</div>
+      <div class="iphoto"><img src="{{studentPhoto}}" alt=""></div>
+      <div class="name">{{studentName}}</div>
     </div>
     <div class="talk"></div>
   </div>
   <div class="stuInfo">
-    <div class="items">
-      <span>学习道馆</span>
-      <div>{{studentMsg.taekwondoName}}</div>
-    </div>
-    <div class="items">
-      <span>到期时间</span>
-      <div>{{studentMsg.expirationTimeEndStr}}</div>
-    </div>
-    <div class="items">
-      <span>性别</span>
-      <div>{{studentMsg.sexStr}}</div>
-    </div>
-    <div class="items">
-      <span>出生年月</span>
-      <div>{{studentMsg.birthdayStr}}</div>
-    </div>
-    <div class="items">
-      <span>会员编号</span>
-      <div>{{studentMsg.code}}</div>
-    </div>
-    <div class="items">
-      <span>联系电话1</span>
-      <div>{{studentMsg.tel}}</div>
-    </div>
-    <div class="items">
-      <span>联系电话2</span>
-      <div>没有数据</div>
-    </div>
-    <div class="items">
-      <span>身份证号</span>
-      <div>{{studentMsg.idCard}}</div>
-    </div>
-    <div class="items">
-      <span>详细住址</span>
-      <div>{{studentMsg.address}}</div>
-    </div>
-    <div class="items">
-      <span>单位名称</span>
-      <div>{{studentMsg.school}}</div>
-    </div>
-  </div>
+    <div class="items" *ngFor="let item of studentMsg">
+        <span>{{item.label}}</span>
+        <div>{{item.value}}</div>
+      </div>
+  </div> 
+  
 </ion-content>

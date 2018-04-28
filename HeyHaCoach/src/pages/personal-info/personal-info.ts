@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 /**
  * Generated class for the PersonalInfoPage page.
@@ -20,7 +20,10 @@ export class PersonalInfoPage {
 // 性别 入职时间 联系电话 身份证号 详细住址 职级 段位
   
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public alertCtrl: AlertController,
+    public navParams: NavParams) {
   }
 
   ngOnInit() {

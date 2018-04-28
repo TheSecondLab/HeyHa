@@ -26,11 +26,11 @@
   "jpush-phonegap-plugin": {
     "source": {
       "type": "registry",
-      "id": "jpush-phonegap-plugin@^3.4.1"
+      "id": "jpush-phonegap-plugin"
     },
     "is_top_level": true,
     "variables": {
-      "APP_KEY": "b62940b22c4c70c0ee319808"
+      "APP_KEY": "9e2471813200538bfe0c47e1"
     }
   },
   "cordova-plugin-jcore": {

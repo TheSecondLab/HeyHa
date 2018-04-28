@@ -4,15 +4,5 @@
   "type": "ionic-angular",
   "integrations": {
     "cordova": {}
-  },
-  "proxies": [{
-    "path": "/api",
-    "proxyUrl": "http://test.hu0572.cn"
-  }, {
-    "path": "/login",
-    "proxyUrl": "http://test.hu0572.cn/login"
-  }, {
-    "path": "/admin",
-    "proxyUrl": "http://test.hu0572.cn/admin"
-  }]
+  }
 }

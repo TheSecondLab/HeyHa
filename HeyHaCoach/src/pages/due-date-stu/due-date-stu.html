@@ -6,23 +6,22 @@
 -->
 <ion-header>
 
-  <!-- <ion-navbar>
-    <ion-title class="header">dueDateStu</ion-title>
-  </ion-navbar> -->
+  <ion-navbar>
+  </ion-navbar>
 
 </ion-header>
 
 <ion-content class="bgContent">
   <div class="photoCard">
     <div class="person">
-      <div class="iphoto"><img src={{studentMsg.photoUrl}} alt=""></div>
+      <div class="iphoto"><img src={{photoUrl}} alt=""></div>
       <div class="msg">
-          <div class="name">{{studentMsg.name}}</div>
-          <div class="place">{{studentMsg.taekwondoName}}</div>
-          <div class="time">到期时间： {{studentMsg.expirationTimeEndStr}}</div>
+          <div class="name">{{name}}</div>
+          <div class="place">{{taekwondoName}}</div>
+          <div class="time">到期时间： {{expirationTimeEndStr}}</div>
       </div>
     </div>
-    <div class="phone" (click)="presentActionSheet(studentMsg.tel)"></div>
+    <div class="phone" (click)="presentActionSheet(tel)"></div>
   </div>
   <div>
     <div class="contactWrapper" *ngFor="let item of studentTrace; let i = index" >

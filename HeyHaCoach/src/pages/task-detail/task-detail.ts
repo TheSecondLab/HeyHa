@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 import { BaseService } from '../../module/baseService.service';
 
@@ -24,9 +24,11 @@ export class TaskDetailPage {
   id;
   completeStu;
   uncompleteStu;
+  title;
 
   constructor(
     public navCtrl: NavController,
+    public alertCtrl: AlertController,
     public baseService: BaseService,
     public navParams: NavParams) {
     this.pageName = 'ClassDynamicListPage';
@@ -37,17 +39,19 @@ export class TaskDetailPage {
   }
 
   ngOnInit() {
-
+    this.loadPageData();
   }
 
   loadPageData() {
+    this.title = this.navParams.get('item').dateStr;
     this.id = this.navParams.get('item').id;
-    this.baseService.postData('/admin/clazz/getEmployeeClazzSourceDetail', { data: { id: this.id } }, (data)=> {
+    this.baseService.postData('/admin/clazzSource/getEmployeeClazzSourceDetail', { data: { id: this.id } }, (data)=> {
       this.taskList = data;
+
     });
     
-    this.baseService.postData('/admin/clazz/getEmployeeClazzSourceLearning', { data: { id: this.id } }, (data)=> {
-      this.taskList = data;
+    this.baseService.postData('/admin/clazzSource/getEmployeeClazzSourceLearning', { data: { id: this.id } }, (data)=> {
+      // this.taskList = data;
       this.completeStu = data.map((obj) => {
         if (obj.completeStatus === 'COMPLETE') {
           return obj;
@@ -55,13 +59,25 @@ export class TaskDetailPage {
           this.uncompleteStu.push(obj);
         }
       });
+      let alert = this.alertCtrl.create({
+        title: 'taskList',
+        message: JSON.stringify(this.completeStu),
+        buttons: ['ok']
+      });
+      alert.present();
+      let alerts = this.alertCtrl.create({
+        title: 'taskList',
+        message: JSON.stringify(this.uncompleteStu),
+        buttons: ['ok']
+      });
+      alerts.present();
     });
   }
 
   remindStu(item) {
     if (item.notice === 'INACTIVE') {
-      this.baseService.postData('/admin/clazz/getEmployeeClazzSourceDetail', { data: { id: this.id, memberId: item.id } }, (data)=> {
-        
+      this.baseService.postData('/admin/clazzSource/noticeClazzSource', { data: { id: this.id, memberId: item.id } }, (data)=> {
+       
       });
       
     }

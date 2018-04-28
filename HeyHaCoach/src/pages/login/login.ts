@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController } from 'ionic-angular';
 import { JPush } from '@jiguang-ionic/jpush';
-import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
-import { AlertController } from 'ionic-angular';
+
 import {
   FormGroup,
   FormControl,
@@ -33,6 +32,5 @@ export class LoginPage {
       });
     });
   }
-  
 
 }

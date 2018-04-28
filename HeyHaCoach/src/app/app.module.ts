@@ -62,6 +62,7 @@ import { ClassDueStudentPage } from '../pages/class-due-student/class-due-studen
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { CallNumber } from '@ionic-native/call-number';
 
 import { BaseService } from '../module/baseService.service';
 import { Utils } from '../module/util';
@@ -140,6 +141,7 @@ import { Utils } from '../module/util';
   providers: [
     StatusBar,
     SplashScreen,
+    CallNumber,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     HttpClientModule,
     JPush,
