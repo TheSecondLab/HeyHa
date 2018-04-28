@@ -6,6 +6,8 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { JPush } from '@jiguang-ionic/jpush';
 import {JmessageChenyu} from "jmessage-chenyu";
+import { Camera } from '@ionic-native/camera';
+import { FileTransfer, FileUploadOptions, FileTransferObject }from'@ionic-native/file-transfer';
 
 import { MyApp } from './app.component';
 
@@ -42,6 +44,7 @@ import { CourseDetailPageModule } from '../pages/course-detail/course-detail.mod
 import { LoginPage } from '../pages/login/login';
 
 import { BaseService } from '../module/baseService.service';
+import { UpLoadService } from '../module/uploadService.service';
 
 // NgModule
 @NgModule({
@@ -101,7 +104,11 @@ import { BaseService } from '../module/baseService.service';
     HttpClientModule,
     JPush,
     JmessageChenyu,
-    BaseService
+    BaseService,
+    UpLoadService,
+    Camera,
+    FileTransferObject,
+    FileTransfer
   ]
 })
 export class AppModule {}

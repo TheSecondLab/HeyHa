@@ -22,10 +22,19 @@
     "jpush-phonegap-plugin": {
       "APP_KEY": "9e2471813200538bfe0c47e1",
       "PACKAGE_NAME": "com.heyhaStu"
+    },
+    "cordova-plugin-camera": {
+      "PACKAGE_NAME": "com.heyhaStu"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "com.heyhaStu"
     }
   },
   "dependent_plugins": {
     "cordova-plugin-jcore": {
+      "PACKAGE_NAME": "com.heyhaStu"
+    },
+    "cordova-plugin-file": {
       "PACKAGE_NAME": "com.heyhaStu"
     }
   }

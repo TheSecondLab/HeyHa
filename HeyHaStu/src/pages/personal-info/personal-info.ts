@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ActionSheetController } from 'ionic-angular';
+import { Camera, CameraOptions } from '@ionic-native/camera';
+import { FileTransfer, FileUploadOptions, FileTransferObject }from'@ionic-native/file-transfer';
+
 import { BaseService } from '../../module/baseService.service';
+import { UpLoadService } from '../../module/uploadService.service';
 
 @IonicPage()
 @Component({
@@ -35,7 +39,10 @@ export class PersonalInfoPage {
     school: ''
   };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public baseService: BaseService) {
+  imgSrc="";
+
+  constructor(public uploadService: UpLoadService, public navCtrl: NavController, public navParams: NavParams, public baseService: BaseService, public alertCtrl: AlertController) {
+    // this.fileTransfer = this.transfer.create();
   }
 
   ngOnInit() {
@@ -45,6 +52,15 @@ export class PersonalInfoPage {
   loadData() {
     this.baseService.postData('/admin/student', { data: {} }, (data)=> {
       this.item = data;
+    });
+  }
+
+  showActionSheet() {
+    this.uploadService.chooseAndUpload('/admin/user/updatePhotoKey', {
+      fileKey: 'file_photoKey',
+      onSuccess: () => {
+        this.loadData();
+      }
     });
   }
 

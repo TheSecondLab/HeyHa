@@ -11,8 +11,9 @@
     <div class="img">
       <img src={{item.photoUrl}} alt="">
     </div>
-    <div class="change">
+    <div class="change" (click)="showActionSheet()">
       <span>更改头像</span>
+      <div>{{imgSrc}}</div>
     </div>
   </div>
 
