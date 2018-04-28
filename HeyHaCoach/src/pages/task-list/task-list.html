@@ -28,12 +28,12 @@
 
 <ion-header>
   <ion-navbar>
-    <ion-title>一届精英二班</ion-title>
+    <ion-title>{{classTitle}}</ion-title>
     <!-- <div (click)="showMenu()">test</div> -->
   </ion-navbar>
 </ion-header>
 
 <ion-content #content>
-  <exercise-list></exercise-list>
+  <exercise-list [list]=dataList></exercise-list>
 </ion-content>
 

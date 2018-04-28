@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
 /**
  * Generated class for the ExerciseListComponent component.
@@ -12,26 +12,32 @@ import { NavController } from 'ionic-angular';
 })
 export class ExerciseListComponent {
 
-  public list = [{
-    time: '2014年1月3日',
-    completed: '4',
-    count: 26
-  }, {
-    time: '2014年1月3日',
-    completed: '4',
-    count: 26
-  }, {
-    time: '2014年1月3日',
-    completed: '4',
-    count: 26
-  }];
+  // public list = [{
+  //   time: '2014年1月3日',
+  //   completed: '4',
+  //   count: 26
+  // }, {
+  //   time: '2014年1月3日',
+  //   completed: '4',
+  //   count: 26
+  // }, {
+  //   time: '2014年1月3日',
+  //   completed: '4',
+  //   count: 26
+  // }];
 
+  @Input() list;
+  exerciseList;
   constructor(public navCtrl: NavController) {
 
   }
 
-  navTo(page) {
-    this.navCtrl.push(page);
+  ngOnChanges(changes) {
+    this.exerciseList = changes.list.currentValue;
+
+  }
+  navTo(item) {
+    this.navCtrl.push('TaskDetailPage', { item });
   }
 
 }

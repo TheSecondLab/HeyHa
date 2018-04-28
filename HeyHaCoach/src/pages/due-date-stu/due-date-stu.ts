@@ -31,34 +31,29 @@ export class DueDateStuPage {
   }
 
   presentActionSheet(tel) {
-    let actionSheet = this.actionSheetCtrl.create({
-      buttons: [
-        {
-          text: tel,
-          handler: () => {
-            console.log('拨打电话');
-            this.callNumber.callNumber(tel, true)
-              .then(res => console.log('拨打成功!', res))
-              .catch(err => console.log('Error launching dialer', err));
+    if(tel) {
+      let actionSheet = this.actionSheetCtrl.create({
+        buttons: [
+          {
+            text: tel,
+            handler: () => {
+              console.log('拨打电话');
+              this.callNumber.callNumber(tel, true)
+                .then(res => console.log('拨打成功!', res))
+                .catch(err => console.log('Error launching dialer', err));
+            }
           }
-        },
-        // {
-        //   text: '132-2672-1211',
-        //   handler: () => {
-        //     console.log('Archive clicked');
-        //   }
-        // },
-        // {
-        //   text: 'Cancel',
-        //   role: 'cancel',
-        //   handler: () => {
-        //     console.log('Cancel clicked');
-        //   }
-        // }
-      ]
+        ]
+      });
+   
+      actionSheet.present();
+      return;
+    }
+    let alert = this.alertCtrl.create({
+      message: '无电话号码',
+      buttons: ['好的']
     });
- 
-    actionSheet.present();
+    alert.present();
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad DueDateStuPage');

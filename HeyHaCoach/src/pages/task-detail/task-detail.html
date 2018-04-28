@@ -30,34 +30,26 @@
     </div>
       
     <div [ngSwitch]="type">
-      <div *ngSwitchCase="'remind'">
-        <div class="finishStatusList">
-          <div class="iphoto"><img src="assets/imgs/iphoto.JPG" alt=""></div>
+      <div *ngSwitchCase="'unfinish'">
+        <div class="finishStatusList" *ngFor="let item of uncompleteStu">
+          <div class="iphoto"><img src="{{item.photoUrl}}" alt=""></div>
           <div class="msg">
-            <div class="name">张一鸣</div>
-            <div>sdfasdf</div>
+            <div class="name">{{item.name}}</div>
+            <div>{{item.code}}</div>
           </div>
-          <button ion-button class="btn">任务提醒</button>
-        </div>
-        <div class="finishStatusList">
-          <div class="iphoto"><img src="assets/imgs/iphoto.JPG" alt=""></div>
-          <div class="msg">
-            <div class="name">张一鸣</div>
-            <div>sdfasdf</div>
-          </div>
-          <button ion-button class="btn dis">任务提醒</button>
+          <button ion-button class="btn" (click)="remindStu(item)">{{ item.notice === 'INACTIVE' ? '任务提醒' : '已提醒'}}</button>
         </div>
       </div>
-      <div *ngSwitchCase="'unfinish'">
-        <div class="finishStatusList">
-          <div class="iphoto"><img src="assets/imgs/iphoto.JPG" alt=""></div>
+      <div *ngSwitchCase="'remind'">
+        <div class="finishStatusList" *ngFor="let item of completeStu">
+          <div class="iphoto"><img src="{{item.photoUrl}}" alt=""></div>
           <div class="msg">
-            <div class="name">张一鸣</div>
-            <div>sdfasdf</div>
+            <div class="name">{{item.name}}</div>
+            <div>{{item.code}}</div>
           </div>
           <div class="date">
-            <div class="time">13:11:10</div>
-            <div>2012-2-2</div>
+            <div class="time">{{item.hourStr}}</div>
+            <div>{{item.dateStr}}</div>
           </div>
         </div>
       </div>

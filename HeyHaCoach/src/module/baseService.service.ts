@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { App, AlertController, LoadingController } from 'ionic-angular';
+import { AlertController, LoadingController } from 'ionic-angular';
 
-import { LoginPage } from '../pages/login/login';
+// import { LoginPage } from '../pages/login/login';
 
 interface ReqOption {
   data: any,
@@ -18,22 +18,22 @@ interface ResData {
 
 @Injectable()
 export class BaseService {
-  constructor(public app: App, public http: HttpClient, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
+  constructor(public http: HttpClient, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
   }
 
-  sessionTimeout() {
-    let alert = this.alertCtrl.create({
-      title: "错误",
-      message: '登陆过期，请重新登陆',
-      buttons: [{
-        text: 'Ok',
-        handler: () => {
-          this.app.getRootNav().setRoot(LoginPage);
-        }
-      }]
-    });
-    alert.present();
-  }
+  // sessionTimeout() {
+  //   let alert = this.alertCtrl.create({
+  //     title: "错误",
+  //     message: '登陆过期，请重新登陆',
+  //     buttons: [{
+  //       text: 'Ok',
+  //       handler: () => {
+  //         this.app.getRootNav().setRoot(LoginPage);
+  //       }
+  //     }]
+  //   });
+  //   alert.present();
+  // }
 
   postData(url: string, option: ReqOption = { data: {}, myHeader: {}, hideLoading: false}, onSuccess: any, onError?: any): void {
     let loading = this.loadingCtrl.create({
@@ -64,13 +64,14 @@ export class BaseService {
     // const domain = '';
 
     this.http.post(`${domain}${url}`, params.toString() ,options).subscribe((data: ResData) => {
+      loading.dismiss();
       if(data.status === 'SUCCESS') {
         onSuccess(data.data);
         return;
       }
-      if(data.status === 'SESSION_OUT') {
-        this.sessionTimeout();
-      }
+      // if(data.status === 'SESSION_OUT') {
+      //   this.sessionTimeout();
+      // }
 
       if (typeof onError === 'function') {
         onError(data.msg);

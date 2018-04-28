@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 
+import { BaseService } from '../../module/baseService.service';
+
 /**
  * Generated class for the TaskListPage page.
  *
@@ -15,7 +17,13 @@ import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angul
 })
 export class TaskListPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public menu: MenuController) {
+  dataList;
+  classTitle;
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public baseService: BaseService,
+    public menu: MenuController) {
     menu.enable(true);
   }
 
@@ -30,6 +38,23 @@ export class TaskListPage {
 
   swipeEvent(e) {
     console.log(e);
-    
   }
+
+  ngOnInit() {
+    this.classTitle = this.navParams.get('item').name;
+    this.loadPageData();
+  }
+  
+  loadPageData() {
+    
+    this.baseService.postData('/admin/clazzSource/getEmployeeClazzSource',
+      { data: {
+        clazzId: this.navParams.get('item').id,
+        type: 'HOMEWORK'
+      }}, 
+      (data)=> {
+        this.dataList = data;
+    });
+  }
+
 }
