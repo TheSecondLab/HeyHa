@@ -14,7 +14,7 @@ interface ResData {
   data: any,
   msg: string,
   status: string
-}
+  }
 
 @Injectable()
 export class BaseService {

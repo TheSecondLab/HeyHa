@@ -28,14 +28,14 @@
     },
     "cordova-plugin-file-transfer": {
       "PACKAGE_NAME": "com.heyhaStu"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.heyhaStu"
     }
   },
   "dependent_plugins": {
     "cordova-plugin-jcore": {
       "PACKAGE_NAME": "io.ionic.starter"
-    },
-    "cordova-plugin-file": {
-      "PACKAGE_NAME": "com.heyhaStu"
     }
   }
 }

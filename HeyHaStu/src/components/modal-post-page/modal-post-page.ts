@@ -7,25 +7,29 @@ import {
 } from '@angular/forms';
 
 import { BaseService } from '../../module/baseService.service';
-/**
- * Generated class for the ModalPostPageComponent component.
- *
- * See https://angular.io/api/core/Component for more info on Angular
- * Components.
- */
-// @IonicPage()
+import { MultipleUpLoadService } from '../../module/multipleUpdate.service';
+
 @Component({
   selector: 'modal-post-page',
   templateUrl: 'modal-post-page.html'
 })
 export class ModalPostPageComponent {
   form;
+  photoList = [];
   constructor(
-    public params: NavParams,public baseService: BaseService,
+    public params: NavParams,
+    public baseService: BaseService,
+    public multiUpload: MultipleUpLoadService,
     public viewCtrl: ViewController
   ) {
     this.form = new FormGroup({
       record: new FormControl('', Validators.required)
+    });
+  }
+
+  addPhoto() {
+    this.multiUpload.chooseImage((data) => {
+      this.photoList.push(data);
     });
   }
 
@@ -34,9 +38,15 @@ export class ModalPostPageComponent {
   }
 
   submit() {
-    this.baseService.postData("/admin/growthRecord/create", { data: this.form.value }, (data) => {
-      this.viewCtrl.dismiss();
-    });
+    // const params = new Map();
+    // params.set('record', this.form.value)
+
+    this.multiUpload.uploadFile("/admin/growthRecord/create", "file_img", [{record: this.form.value }], this.photoList, ()=> {this.viewCtrl.dismiss();}, () => {})
+
+
+    // postData("/admin/growthRecord/create", { data: this.form.value }, (data) => {
+    //   this.viewCtrl.dismiss();
+    // });
   }
 
 }
