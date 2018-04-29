@@ -4,6 +4,9 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { HttpClientModule } from '@angular/common/http';
 import { JPush } from '@jiguang-ionic/jpush';
 import {JmessageChenyu} from "jmessage-chenyu";
+import { Camera } from '@ionic-native/camera';
+import { FileTransfer, FileUploadOptions, FileTransferObject }from'@ionic-native/file-transfer';
+import { File, FileEntry } from '@ionic-native/file';
 
 // 自定义组件
 import { ComponentsModule } from '../components/components.module';
@@ -68,6 +71,8 @@ import { CallNumber } from '@ionic-native/call-number';
 
 import { BaseService } from '../module/baseService.service';
 import { Utils } from '../module/util';
+import { MultipleUpLoadService } from '../module/multipleUpdate.service';
+import { UpLoadService } from '../module/uploadService.service';
 
 @NgModule({
   declarations: [ // 声明组件
@@ -151,7 +156,13 @@ import { Utils } from '../module/util';
     JPush,
     JmessageChenyu,
     BaseService,
-    Utils
+    Utils,
+    MultipleUpLoadService,
+    UpLoadService,
+    Camera,
+    FileTransferObject,
+    FileTransfer,
+    File
   ]
 })
 export class AppModule {}

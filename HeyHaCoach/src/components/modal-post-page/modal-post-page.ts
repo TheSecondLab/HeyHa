@@ -1,5 +1,14 @@
 import { Component } from '@angular/core';
-import { NavParams, ViewController } from 'ionic-angular';
+import { NavParams, ViewController, AlertController } from 'ionic-angular';
+import {
+  FormGroup,
+  FormControl,
+  Validators
+} from '@angular/forms';
+
+import { BaseService } from '../../module/baseService.service';
+import { MultipleUpLoadService } from '../../module/multipleUpdate.service';
+import { UpLoadService } from '../../module/uploadService.service';
 
 /**
  * Generated class for the ModalPostPageComponent component.
@@ -14,49 +23,56 @@ import { NavParams, ViewController } from 'ionic-angular';
 })
 export class ModalPostPageComponent {
 
-  character;
-
+  form;
+  photoList = [];
+  imgLength;
   constructor(
     public params: NavParams,
+    public uploadService: UpLoadService,
+    public baseService: BaseService,
+    public alertCtrl: AlertController,
+    public multiUpload: MultipleUpLoadService,
     public viewCtrl: ViewController
   ) {
-    var characters = [
-      {
-        name: 'Gollum',
-        quote: 'Sneaky little hobbitses!',
-        image: 'assets/img/avatar-gollum.jpg',
-        items: [
-          { title: 'Race', note: 'Hobbit' },
-          { title: 'Culture', note: 'River Folk' },
-          { title: 'Alter Ego', note: 'Smeagol' }
-        ]
-      },
-      {
-        name: 'Frodo',
-        quote: 'Go back, Sam! I\'m going to Mordor alone!',
-        image: 'assets/img/avatar-frodo.jpg',
-        items: [
-          { title: 'Race', note: 'Hobbit' },
-          { title: 'Culture', note: 'Shire Folk' },
-          { title: 'Weapon', note: 'Sting' }
-        ]
-      },
-      {
-        name: 'Samwise Gamgee',
-        quote: 'What we need is a few good taters.',
-        image: 'assets/img/avatar-samwise.jpg',
-        items: [
-          { title: 'Race', note: 'Hobbit' },
-          { title: 'Culture', note: 'Shire Folk' },
-          { title: 'Nickname', note: 'Sam' }
-        ]
-      }
-    ];
-    this.character = characters[this.params.get('charNum')];
+    this.form = new FormGroup({
+      record: new FormControl('', Validators.required)
+    });
+  }
+
+  ngOnInit() {
+    this.imgLength = this.params.get('classId') ? 3 : 1 ;
+  }
+
+  addPhoto() {
+    this.multiUpload.chooseImage((data) => {
+      this.photoList.push(data);
+    });
+
   }
 
   dismiss() {
     this.viewCtrl.dismiss();
+  }
+
+  submit() {
+    if (this.params.get('classId')) {
+      this.multiUpload.uploadFile(
+        "/admin/dynamic/addDynamic", "file_img",
+        [{clazzId: this.params.get('classId'), content: this.form.value }],
+        this.photoList,
+        ()=> {this.viewCtrl.dismiss();}, () => {}
+      );
+      return;
+    }
+
+    this.multiUpload.uploadFile(
+      "/admin/user/updatePhotoKeyAndintroduction",
+      "file_photoKey", [{introduction: this.form.value }],
+      this.photoList,
+      ()=> {this.viewCtrl.dismiss();}, () => {}
+    )
+
+
   }
 
 }

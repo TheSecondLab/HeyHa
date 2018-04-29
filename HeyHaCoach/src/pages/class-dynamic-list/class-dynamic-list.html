@@ -7,8 +7,8 @@
 <ion-header>
 
   <ion-navbar class="header">
-    <ion-title>13届精英班</ion-title>
-    <div class="postNew" (click)="openModal({charNum: 0})"></div>
+    <ion-title>{{classTitle}}</ion-title>
+    <div class="postNew" (click)="openModal()"></div>
   </ion-navbar>
 
 </ion-header>
@@ -24,9 +24,5 @@
     <div class="photoGroup">
       <div *ngFor="let imageUrl of dynamic.imageUrl"><img src="{{imageUrl}}" alt=""></div>
     </div>
-    <div class="bad" *ngIf="dynamic.zan; else elseBlock" (click)="zan(dynamic.id)">点赞</div>
-    <ng-template #elseBlock>
-      <div class="good" (click)="zan(dynamic.id)">点赞</div>
-    </ng-template>
   </div>
 </ion-content>

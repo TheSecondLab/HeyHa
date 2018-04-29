@@ -19,6 +19,8 @@ import { BaseService } from '../../module/baseService.service';
 export class ClassDynamicListPage {
 
   dynamicList = [];
+  classId;
+  classTitle;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -27,31 +29,36 @@ export class ClassDynamicListPage {
     public modalCtrl: ModalController) {
   }
 
-  openModal(characterNum) {
-    let modal = this.modalCtrl.create(ModalPostPageComponent, characterNum);
+  openModal() {
+    let modal = this.modalCtrl.create(ModalPostPageComponent, { classId: this.classId });
     modal.present();
   }
 
 
   ngOnInit() {
+    this.classId = this.navParams.get('item').id;
+    this.classTitle = this.navParams.get('item').name;
     this.loadPageData();
   }
   
   loadPageData() {
-    this.baseService.postData('/admin/dynamic/getOneDynamic', { data: { id: this.navParams.get('item').id } }, (data)=> {
+    this.baseService.postData('/admin/dynamic/getDynamicListByClazz', { data: { clazzId: this.classId } }, (data)=> {
       this.dynamicList = data;
+      let alert = this.alertCtrl.create({
+        message: JSON.stringify(data)
+      })
+      alert.present();
     });
   }
 
-  zan(id) {
-    this.baseService.postData('/admin/dynamic/zanDynamic', { data: {id}, hideLoading: true }, (data)=> {
-      this.loadPageData();
-    });
-  }
 
   deleteDynamic(id) {
     this.baseService.postData('/admin/dynamic/deleteDynamic', { data: {id}, hideLoading: true }, (data)=> {
       this.loadPageData();
+      let alert = this.alertCtrl.create({
+        message: JSON.stringify(data)
+      })
+      alert.present();
     });
   }
 }

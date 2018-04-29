@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { ModalPostPageComponent } from '../../components/modal-post-page/modal-post-page';
 
 @Component({
   selector: 'page-about',
@@ -11,6 +12,7 @@ export class AboutPage {
   constructor(
     public alertCtrl: AlertController,
     private navParams: NavParams,
+    public modalCtrl: ModalController,
     public navCtrl: NavController) {
       this.userInfo = this.navParams.data;
   }
@@ -23,6 +25,11 @@ export class AboutPage {
     this.navCtrl.push(page, {
       userInfo: this.userInfo
     })
+  }
+
+  openModal() {
+    let modal = this.modalCtrl.create(ModalPostPageComponent);
+    modal.present();
   }
 
 }
