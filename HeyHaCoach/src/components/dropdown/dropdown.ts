@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { AlertController } from 'ionic-angular';
 
 interface ItemObject {
   key: string,
@@ -26,32 +27,14 @@ export class DropdownComponent {
   data = [{
     key: '1',
     list: [{
-      key: '1',
-      value: '所有课程'
-    }, {
-      key: '2',
-      value: '黑带'
-    }, {
-      key: '3',
-      value: '黑带'
-    }, {
-      key: '4',
-      value: '黑带'
+      key: 'all',
+      value: '所有级别'
     }]
   }, {
     key: '2',
     list: [{
-      key: '1',
-      value: '组合技术'
-    }, {
-      key: '2',
-      value: '蓝带'
-    }, {
-      key: '3',
-      value: '蓝带'
-    }, {
-      key: '4',
-      value: '蓝带'
+      key: 'all',
+      value: '所有组合'
     }]
   }];
 
@@ -62,8 +45,10 @@ export class DropdownComponent {
     left: '0px'
   };
   selectedIndex: number = -1;
-
-  constructor() {
+  @Input() typeList;
+  @Input() levelList;
+  @Output() private childOuter = new EventEmitter();
+  constructor(public alertCtrl: AlertController) {
     const array = this.data.map(item => ({...item.list[0], titleKey: item.key}));
 
     this.selectedValues = array;
@@ -72,6 +57,18 @@ export class DropdownComponent {
   reset() {
     this.listItems = [];
     this.clickedTitleKey = '';
+  }
+
+  ngOnChanges(changes) {
+    if (changes.typeList.currentValue.length) {
+      this.data[1].list = changes.typeList.currentValue;
+    }
+    if (changes.levelList.currentValue.length) {
+      this.data[0].list = changes.levelList.currentValue;
+    }
+    
+   
+    
   }
 
   changeTab(key) {
@@ -99,6 +96,11 @@ export class DropdownComponent {
 
     this.selectedValues[this.selectedIndex].key = key;
     this.selectedValues[this.selectedIndex].value = value;
+    //  let alert = this.alertCtrl.create({
+    //   message: JSON.stringify(this.selectedValues)
+    // });
+    // alert.present()
+    this.childOuter.emit(this.selectedValues);
     this.reset();
   }
 }

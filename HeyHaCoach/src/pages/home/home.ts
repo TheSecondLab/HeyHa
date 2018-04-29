@@ -25,7 +25,7 @@ export class HomePage {
   newsList = [];
   remindList = [];
   bannerList = [];
-
+  studentName;
   constructor(
     public navCtrl: NavController,
     public jPush: JPush,
@@ -62,6 +62,10 @@ export class HomePage {
   }
 
   navTo(page) {
+    if (page === 'TaskPage') {
+      this.navCtrl.parent.select(1);
+      return;
+    }
     this.navCtrl.push(page);
   }
   
@@ -69,6 +73,10 @@ export class HomePage {
     this.navCtrl.push('NewsDetailPage', {
       item
     });
+  }
+
+  searchStudent() {
+    this.navCtrl.push('SearchStudentPage', { studentName: this.studentName })
   }
 
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 /**
@@ -13,30 +13,22 @@ import { NavController } from 'ionic-angular';
 })
 export class CourseListComponent {
 
-  public list = [{
-    type: '动态',
-    detail: '动作要求：前脚脚后跟与后脚脚尖距前脚脚后跟与后脚脚尖距',
-    name: '11届精英2班（周六、日）',
-    id: 'CFTA110500'
-  }, {
-    type: '动态',
-    detail: '动作要求：前脚脚后跟与后脚脚尖距前脚脚后跟与后脚脚尖距',
-    name: '11届精英2班（周六、日）',
-    id: 'CFTA110500'
-  }, {
-    type: '动态',
-    detail: '动作要求：前脚脚后跟与后脚脚尖距前脚脚后跟与后脚脚尖距',
-    name: '11届精英2班（周六、日）',
-    id: 'CFTA110500'
-  }];
+  @Input() list;
+  courseList = [];
 
-  constructor(public navCtrl: NavController) {
+  constructor(
+    public navCtrl: NavController) {
+  }
+
+  ngOnChanges(changes) {
+    this.courseList = changes.list.currentValue;
 
   }
 
-  goClassDetail(id) {
-    console.log(id);
-    // this.navCtrl.push();
+  goCourseDetail(item) {
+    this.navCtrl.push('CourseDetailPage', {
+      item
+    });
   }
 
 }

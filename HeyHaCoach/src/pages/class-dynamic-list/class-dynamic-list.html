@@ -14,13 +14,13 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content padding>
   <div class="dynamic" *ngFor="let dynamic of dynamicList">
-    <div class="text">{{dynamic.content}}</div>
     <div class="assist">
       <div class="time">{{dynamic.publishTimeStr}}</div>
       <div class="delete" (click)="deleteDynamic(dynamic.id)"></div>
     </div>
+    <div class="text">{{dynamic.content}}</div>
     <div class="photoGroup">
       <div *ngFor="let imageUrl of dynamic.imageUrl"><img src="{{imageUrl}}" alt=""></div>
     </div>

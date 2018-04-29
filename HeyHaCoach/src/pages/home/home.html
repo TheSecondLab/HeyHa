@@ -11,8 +11,8 @@
       </ion-slide>
     </ion-slides>
     <div class="searchWrap">
-      <ion-input type="text" value="" class="input" placeholder="搜索学员姓名"></ion-input>
-      <button class="btn">搜索</button>
+      <ion-input type="text" [(ngModel)]="studentName" value="" class="input" placeholder="搜索学员姓名"></ion-input>
+      <button class="btn" (click)="searchStudent()">搜索</button>
     </div>
     <div class="linkWrap">
       <div class="items" (click)="navTo('MyClassPage')">
@@ -26,6 +26,10 @@
       <div class="items" (click)="navTo('CourseSystemPage')">
         <div class="img"></div>
         <div>课程体系</div>
+      </div>
+      <div class="items" (click)="navTo('TaskPage')">
+        <div class="img"></div>
+        <div>修炼任务</div>
       </div>
     </div>
     <div class="panel">

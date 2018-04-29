@@ -20,7 +20,6 @@ course-list {
   .type {
     width: 50px;
     height: 50px;
-    line-height: 50px;
     margin-right: 10px;
     text-align: center;
     border-radius: 50%;
@@ -33,9 +32,10 @@ course-list {
 
   .cont {
     display: flex;
+    flex: 1;
     justify-content: space-between;
     flex-direction: column;
-    padding: 2px 0;
+    padding: 2px 28px 2px 0;
   }
   .name {
     font-size: 16px;
@@ -43,7 +43,9 @@ course-list {
   }
 
   .time {
-    font-size: 14px;
-    color: #666666;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
   }
 }
