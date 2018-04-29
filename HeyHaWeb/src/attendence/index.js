@@ -1,6 +1,6 @@
 import React, { Component as C } from 'react'
 
-import { HeaderBar, StuList} from '../components/index';
+import { HeaderBar, StuList, SideMenu } from '../components/index';
 import * as style from './style.scss';
 
 const HeaderOpa = () => (
@@ -26,20 +26,18 @@ class AttendenceComp extends C {
           </div>
         </div>
         <div className={style.content}>
-          <div className={style.menuList}>
-            <div className={`${style.item}  ${style.act}`}>学员出勤</div>
-            <div className={style.item}>积分发放</div>
-            <div className={style.item}>课程进度</div>
-            <div className={style.item}>修炼任务</div>
-            <div className={style.item}>班级动态</div>
-          </div>
+          <SideMenu />
           <div className={style.menuContent}>
             <div className={style.box}>
-              <HeaderBar title='本班学员' component={HeaderOpa()}/>
+              <HeaderBar title='本班学员'>
+                <HeaderOpa />
+              </HeaderBar>
               <StuList alignment='3' />
             </div>
             <div className={style.box}>
-              <HeaderBar title='本班学员' component={HeaderOpa()}/>
+              <HeaderBar title='本班学员'>
+                <HeaderOpa />
+              </HeaderBar>
               <StuList alignment='3' />
             </div>
           </div>

@@ -15,6 +15,8 @@ import CourseProgress from './courseProgress';
 import CourseSetting from './courseSetting';
 import ClassMoment from './classMoment';
 import PostMoment from './postMoment';
+import Task from './task';
+import TaskSetting from './taskSetting';
 
 
 const routes = [
@@ -33,6 +35,9 @@ const routes = [
   }, { path: '/courseSetting',
     exact: true,
     component: CourseSetting
+  }, { path: '/taskSetting',
+    exact: true,
+    component: TaskSetting
   }, { path: '/postMoment',
     exact: true,
     component: PostMoment
@@ -61,6 +66,9 @@ const routes = [
       }, { path: '/classMoment',
         exact: true,
         component: ClassMoment
+      }, { path: '/task',
+        exact: true,
+        component: Task
       }
     ]
   }

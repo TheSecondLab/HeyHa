@@ -9,7 +9,6 @@ class HomeComponent extends C {
 
   click(id) {
     this.props.history.push('/classList');
-    
   }
 
   render() {

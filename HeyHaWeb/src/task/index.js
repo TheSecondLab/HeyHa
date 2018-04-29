@@ -9,7 +9,7 @@ const HeaderOpa = (props) => (
   </div>
 )
 
-class CourseProgress extends C {
+class Task extends C {
   constructor() {
     super();
     this.addCourse = this.addCourse.bind(this);
@@ -91,4 +91,4 @@ class CourseProgress extends C {
     )
   }
 }
-export default CourseProgress
+export default Task

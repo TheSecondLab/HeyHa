@@ -7,7 +7,7 @@ const HeaderBar = (props) => (
     <span className={style.icon}></span>
     <span className={style.tit}>{props.title}</span>
     <div className={style.opa}>
-      {props.component}
+      {props.children}
     </div>
   </div>
 )

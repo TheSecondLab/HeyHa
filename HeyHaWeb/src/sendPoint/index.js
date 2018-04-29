@@ -40,7 +40,9 @@ const SendPoint = (props) => {
                 </div>
               </div>
             </div>
-            <HeaderBar title='本班学员' component={HeaderOpa()}  hasBorder={true}/>
+            <HeaderBar title='本班学员' hasBorder={true}>
+              <HeaderOpa />
+            </HeaderBar>
             <StuList alignment='4' />
         </Panel>
       </div>

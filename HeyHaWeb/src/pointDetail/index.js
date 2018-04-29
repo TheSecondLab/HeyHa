@@ -1,9 +1,10 @@
 import React from 'react'
-import { Panel, HeaderBar, StuList } from '../components';
+import { Panel, HeaderBar, StuList, PageTitle } from '../components';
 import * as style from './style.scss';
 
 const PointDetailComp = (props) => (
   <div className={style.wrap}>
+    <PageTitle title='积分详情' />
     <div className={style.record}>
       <div className={style.item}>
         <div className={style.desc}>分值</div>

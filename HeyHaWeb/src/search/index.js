@@ -26,7 +26,9 @@ const SearchComp = (props) => (
       <span>王大力</span>
       <span>王大力</span>
     </div>
-    <HeaderBar title='搜索结果' hasBorder={false} component={HeaderOpa()} />
+    <HeaderBar title='搜索结果' hasBorder={false} >
+      <HeaderOpa />
+    </HeaderBar>
     <StuList alignment='4' />
   </div>
 )

@@ -4,13 +4,13 @@ import img1 from './images/class.png';
 import img2 from './images/setting.png';
 import img3 from './images/logout.png';
 
-const SideBar = () => (
+const SideBar = (props) => (
   <div className={style.sideBar}>
-    <div className={`${style.item} ${style.act}`}>
+    <div className={`${style.item} ${style.act}`} onClick={props.pagePush('/classList')}>
       <div className={style.icon}><img src={img1} alt='' /></div>
       <span>我的班级</span>
     </div>
-    <div className={style.item}>
+    <div className={style.item} onClick={props.pagePush('mineInfo')}>
       <div className={style.icon}><img src={img2} alt='' /></div>
       <span>我的信息</span>
     </div>
