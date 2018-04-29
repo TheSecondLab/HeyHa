@@ -17,8 +17,11 @@ import { BaseService } from '../../module/baseService.service';
 })
 export class StuListPage {
 
-  studentList;
-
+  studentList = [];
+  items = [];
+  size = 10;
+  page = 1;
+  total;
   constructor(
     public navCtrl: NavController,
     public baseService: BaseService,
@@ -26,19 +29,33 @@ export class StuListPage {
     public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad StuListPage');
-  }
-
   ngOnInit() {
     this.loadStudentList();
   }
 
   loadStudentList() {
-    this.baseService.postData('/admin/member/getExpiryMemberList', { data: {} }, (data)=> {
+    this.baseService.postData('/admin/member/getExpiryMemberList', { data: { size: this.size, page: this.page } }, (data)=> {
       this.studentList = data.content;
+      this.total = data.totalPages;
     });
     
+  }
+
+  doInfinite(infiniteScroll) {
+    if (+this.total === 1) {
+      infiniteScroll.enable(false); 
+    }
+    this.page = this.page + 1;
+    this.baseService.postData('/admin/member/getExpiryMemberList', { data: { size: this.size, page: this.page } }, (data)=> {
+      infiniteScroll.complete();
+      this.studentList = this.studentList.concat(data.content);
+
+      if (data.totalPages == this.page) {
+        infiniteScroll.enable(false);   //没有数据的时候隐藏 ion-infinate-scroll
+      }
+
+    });
+
   }
 
 }

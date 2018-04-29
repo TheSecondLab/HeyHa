@@ -1,0 +1,32 @@
+<!--
+  Generated template for the CourseDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>修炼内容</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div class="list">
+    <div class="listItem">
+      <div class="banner">
+        <span class="title">{{courseName}}</span>
+        <!-- <img src={{course.videoImageUrl}} alt=""> -->
+        <video width="100%" height="100%" controls="controls" preload="metadata" autoplay="autoplay" webkit-playsinline="webkit-playsinline" class="videoPlayer">
+          <source src={{videoUrl}} type="video/mp4" />
+        </video>
+      </div>
+      <div class="article">
+        <div class="title">动作要求</div>
+        <div class="content">{{claim}}</div>
+      </div>
+    </div>
+  </div>
+</ion-content>

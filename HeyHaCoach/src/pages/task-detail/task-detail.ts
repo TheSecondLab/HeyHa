@@ -18,7 +18,7 @@ import { BaseService } from '../../module/baseService.service';
 export class TaskDetailPage {
   
   public tabIndex = 1;
-  type: string = 'remind';
+  type: string = 'unfinish';
   public pageName = '';
   taskList;
   id;
@@ -59,18 +59,6 @@ export class TaskDetailPage {
           this.uncompleteStu.push(obj);
         }
       });
-      let alert = this.alertCtrl.create({
-        title: 'taskList',
-        message: JSON.stringify(this.completeStu),
-        buttons: ['ok']
-      });
-      alert.present();
-      let alerts = this.alertCtrl.create({
-        title: 'taskList',
-        message: JSON.stringify(this.uncompleteStu),
-        buttons: ['ok']
-      });
-      alerts.present();
     });
   }
 
@@ -86,6 +74,12 @@ export class TaskDetailPage {
   // /admin/clazz/getEmployeeClazzSourceDetail
   changeTab(idx) {
     this.tabIndex = idx;
+  }
+
+  navTo(item) {
+    this.navCtrl.push('CourseDetailPage', {
+      item
+    })
   }
 
 }

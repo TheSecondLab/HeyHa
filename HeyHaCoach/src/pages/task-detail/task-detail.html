@@ -17,10 +17,10 @@
   <div class="wrap">
     <div class="tabs">
       <ion-segment [(ngModel)]="type">
-        <ion-segment-button value="remind">
+        <ion-segment-button value="unfinish">
           未完成
         </ion-segment-button>
-        <ion-segment-button value="unfinish">
+        <ion-segment-button value="finished">
           已完成
         </ion-segment-button>
         <ion-segment-button value="class">
@@ -37,10 +37,11 @@
             <div class="name">{{item.name}}</div>
             <div>{{item.code}}</div>
           </div>
-          <button ion-button class="btn" (click)="remindStu(item)">{{ item.notice === 'INACTIVE' ? '任务提醒' : '已提醒'}}</button>
+          <button ion-button class="btn" *ngIf="item.notice == 'INACTIVE'" (click)="remindStu(item)">任务提醒</button>
+          <button ion-button class="btn" *ngIf="item.notice != 'INACTIVE'">已提醒</button>
         </div>
       </div>
-      <div *ngSwitchCase="'remind'">
+      <div *ngSwitchCase="'finished'">
         <div class="finishStatusList" *ngFor="let item of completeStu">
           <div class="iphoto"><img src="{{item.photoUrl}}" alt=""></div>
           <div class="msg">

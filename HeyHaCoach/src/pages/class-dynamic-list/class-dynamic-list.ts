@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
 import { ModalPostPageComponent } from '../../components/modal-post-page/modal-post-page';
+
+import { BaseService } from '../../module/baseService.service';
 
 /**
  * Generated class for the ClassDynamicListPage page.
@@ -16,18 +18,41 @@ import { ModalPostPageComponent } from '../../components/modal-post-page/modal-p
 })
 export class ClassDynamicListPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
+  dynamicList = [];
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public alertCtrl: AlertController,
+    public baseService: BaseService,
+    public modalCtrl: ModalController) {
   }
 
   openModal(characterNum) {
     let modal = this.modalCtrl.create(ModalPostPageComponent, characterNum);
     modal.present();
   }
-  // /admin/dynamic/getOneDynamic
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ClassDynamicListPage');
+
+  ngOnInit() {
+    this.loadPageData();
+  }
+  
+  loadPageData() {
+    this.baseService.postData('/admin/dynamic/getOneDynamic', { data: { id: this.navParams.get('item').id } }, (data)=> {
+      this.dynamicList = data;
+    });
   }
 
+  zan(id) {
+    this.baseService.postData('/admin/dynamic/zanDynamic', { data: {id}, hideLoading: true }, (data)=> {
+      this.loadPageData();
+    });
+  }
+
+  deleteDynamic(id) {
+    this.baseService.postData('/admin/dynamic/deleteDynamic', { data: {id}, hideLoading: true }, (data)=> {
+      this.loadPageData();
+    });
+  }
 }
 

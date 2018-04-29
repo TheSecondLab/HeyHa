@@ -14,18 +14,19 @@
 </ion-header>
 
 
-<ion-content padding="">
-  <div class="dynamic">
-    <div class="text">跆拳道（韩文：태권도，英文：Taekwondo），是现代奥运会正式比赛项目之一，是一种主要使用手及脚进行格斗或对抗的运动。</div>
+<ion-content>
+  <div class="dynamic" *ngFor="let dynamic of dynamicList">
+    <div class="text">{{dynamic.content}}</div>
     <div class="assist">
-      <div class="time">3029-3-3</div>
-      <div class="delete"></div>
+      <div class="time">{{dynamic.publishTimeStr}}</div>
+      <div class="delete" (click)="deleteDynamic(dynamic.id)"></div>
     </div>
     <div class="photoGroup">
-      <div><img src="assets/imgs/iphoto.JPG" alt=""></div>
-      <div><img src="assets/imgs/iphoto.JPG" alt=""></div>
-      <div><img src="assets/imgs/iphoto.JPG" alt=""></div>
+      <div *ngFor="let imageUrl of dynamic.imageUrl"><img src="{{imageUrl}}" alt=""></div>
     </div>
-    <div class="good">点赞</div>
+    <div class="bad" *ngIf="dynamic.zan; else elseBlock" (click)="zan(dynamic.id)">点赞</div>
+    <ng-template #elseBlock>
+      <div class="good" (click)="zan(dynamic.id)">点赞</div>
+    </ng-template>
   </div>
 </ion-content>
