@@ -13,13 +13,13 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content >
   <!-- <div class="tabMenu">
     <div>所有级别</div>
     <div>组合技术</div>
   </div>
   <div class="dropdownContainer"> -->
-  <dropdown></dropdown>
+  <dropdown [typeList]=typeList [levelList]=levelList (childOuter)="getParentData($event)"></dropdown>
   <!-- </div> -->
-  <course-list></course-list>
+  <course-list [list]=courseList></course-list>
 </ion-content>

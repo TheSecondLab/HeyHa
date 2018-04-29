@@ -62,6 +62,10 @@ export class HomePage {
   }
 
   navTo(page) {
+    if (page === 'TaskPage') {
+      this.navCtrl.parent.select(1);
+      return;
+    }
     this.navCtrl.push(page);
   }
   

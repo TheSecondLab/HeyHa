@@ -17,7 +17,7 @@ export class NewsListComponent {
   @Input() list;
 
   constructor(public navCtrl: NavController) {
-    this
+    
   }
 
   ngOnChanges(changes) {
