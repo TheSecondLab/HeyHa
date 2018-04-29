@@ -47,6 +47,7 @@ import { LoginPage } from '../pages/login/login';
 import { BaseService } from '../module/baseService.service';
 import { UpLoadService } from '../module/uploadService.service';
 import { MultipleUpLoadService } from '../module/multipleUpdate.service';
+import { IMService } from '../module/imService.service';
 
 // NgModule
 @NgModule({
@@ -109,6 +110,7 @@ import { MultipleUpLoadService } from '../module/multipleUpdate.service';
     BaseService,
     UpLoadService,
     MultipleUpLoadService,
+    IMService,
     Camera,
     FileTransferObject,
     FileTransfer,
