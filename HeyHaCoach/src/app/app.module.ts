@@ -29,6 +29,7 @@ import { PostTraceRecordPageModule } from '../pages/post-trace-record/post-trace
 import { ChatPageModule } from '../pages/chat/chat.module';
 import { ClassDueStudentPageModule } from '../pages/class-due-student/class-due-student.module';
 import { CourseDetailPageModule } from '../pages/course-detail/course-detail.module';
+import { SearchStudentPageModule } from '../pages/search-student/search-student.module';
 
 
 // 根组件
@@ -64,6 +65,8 @@ import { LoginPage } from '../pages/login/login';
 import { ChatPage } from '../pages/chat/chat';
 import { ClassDueStudentPage } from '../pages/class-due-student/class-due-student';
 import { CourseDetailPage } from '../pages/course-detail/course-detail';
+import { SearchStudentPage } from '../pages/search-student/search-student';
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -112,7 +115,8 @@ import { UpLoadService } from '../module/uploadService.service';
     TabsPageModule,
     ChatPageModule,
     ClassDueStudentPageModule,
-    CourseDetailPageModule
+    CourseDetailPageModule,
+    SearchStudentPageModule
   ],
   bootstrap: [IonicApp], // 启动模块
   entryComponents: [ // 不会在模板中使用的组件
@@ -145,7 +149,8 @@ import { UpLoadService } from '../module/uploadService.service';
     LoginPage,
     ChatPage,
     ClassDueStudentPage,
-    CourseDetailPage
+    CourseDetailPage,
+    SearchStudentPage
   ],
   providers: [
     StatusBar,

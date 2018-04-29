@@ -44,10 +44,6 @@ export class ClassDynamicListPage {
   loadPageData() {
     this.baseService.postData('/admin/dynamic/getDynamicListByClazz', { data: { clazzId: this.classId } }, (data)=> {
       this.dynamicList = data;
-      let alert = this.alertCtrl.create({
-        message: JSON.stringify(data)
-      })
-      alert.present();
     });
   }
 

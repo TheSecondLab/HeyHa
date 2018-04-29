@@ -25,7 +25,7 @@ export class HomePage {
   newsList = [];
   remindList = [];
   bannerList = [];
-
+  studentName;
   constructor(
     public navCtrl: NavController,
     public jPush: JPush,
@@ -69,6 +69,10 @@ export class HomePage {
     this.navCtrl.push('NewsDetailPage', {
       item
     });
+  }
+
+  searchStudent() {
+    this.navCtrl.push('SearchStudentPage', { studentName: this.studentName })
   }
 
 }
