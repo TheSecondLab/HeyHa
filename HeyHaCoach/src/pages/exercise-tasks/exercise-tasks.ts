@@ -25,26 +25,5 @@ export class ExerciseTasksPage {
     public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ExerciseTasksPage');
-  }
 
-
-  // ngOnInit() {
-  //   this.loadPageData();
-  // }
-  
-  // loadPageData() {
-
-  //   // 所管理班级中到期人数总和
-  //   this.baseService.postData('/admin/clazz/getAllClass', { data: {} }, (data)=> {
-  //     this.classList = data;
-  //   });
-  // }
-
-  // navTo(item) {
-  //   this.navCtrl.push('ClassStudentListPage', {
-  //     item
-  //   });
-  // }
 }

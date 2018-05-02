@@ -29,7 +29,7 @@ export class StuImformationPage {
     // this.studentId = this.navParams.get('item').id
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.loadPageData();
   }
 

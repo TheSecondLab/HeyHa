@@ -17,10 +17,6 @@ export class AboutPage {
       this.userInfo = this.navParams.data;
   }
 
-  // ngOnInit() {
-  //   this.userInfo = this.navParams.data;
-
-  // }
   navTo(page) {
     this.navCtrl.push(page, {
       userInfo: this.userInfo

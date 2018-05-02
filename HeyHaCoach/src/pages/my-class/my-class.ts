@@ -27,24 +27,25 @@ export class MyClassPage {
   countData: any = {};
   classList: any = [];
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad MyClassPage');
-  }
-
-  ngOnInit() {
+  ionViewWillEnter() {
     this.loadPageData();
   }
   
   loadPageData() {
-
-    // 获得这个教练下所管理的班级总数测试,班级人数总和，班级到期人数总和
-    this.baseService.postData('/admin/member/getCount', { data: {} }, (data)=> {
-      this.countData = data;
-    });
-  
-    // 所管理班级中到期人数总和
-    this.baseService.postData('/admin/clazz/getAllClass', { data: {} }, (data)=> {
-      this.classList = data;
+    this.baseService.multiReq({
+      requests: [{
+        // 获得这个教练下所管理的班级总数测试,班级人数总和，班级到期人数总和
+        url: '/admin/member/getCount',
+        option: { data: {} }
+      },{
+        // 所管理班级中到期人数总和
+        url: '/admin/clazz/getAllClass',
+        option: { data: {} }
+      }],
+      onSuccess: (datas) => {
+        this.countData = datas[0];
+        this.classList = datas[1];
+      }
     });
 
   }

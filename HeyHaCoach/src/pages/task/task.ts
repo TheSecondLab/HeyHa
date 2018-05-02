@@ -25,11 +25,7 @@ export class TaskPage {
 
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TaskPage');
-  }
-
-  ngOnInit() {
+  ionViewWillEnter() {
     this.loadPageData();
   }
   

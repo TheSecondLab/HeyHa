@@ -28,31 +28,31 @@ export class CourseSystemPage {
   }
 
 
-  ngOnInit() {
-    this.loadCourseList();
-    this.loadType();
-    // this.loadLevel()
+  ionViewWillEnter() {
+    this.loadPageData();
   }
 
-  loadCourseList() {
-    this.baseService.postData('/admin/clazzSource/getCapital', { data: {} }, (data)=> {
-      this.courseList = data;
-
+  loadPageData() {
+    this.baseService.multiReq({
+      requests: [{
+        url: '/admin/clazzSource/getCapital',
+        option: { data: {} }
+      },{
+        url: '/admin/capital/getMaterial',
+        option: { data: {} }
+      }],
+      onSuccess: (datas) => {
+        this.courseList = datas[0];
+        this.baseService.postData('/admin/level/getLevel', { data: {}, hideLoading: true }, (levelList)=> {
+          this.typeList = datas[1].map((item) => ({ key: item.id, value: item.name}));
+          this.typeList = [{key: 'all', value: '所有组合'}].concat(this.typeList);
+          this.levelList = levelList.map((item) => ({ key: item.id, value: item.name}));
+          this.levelList = [{key: 'all', value: '所有级别'}].concat(this.levelList);
+        });
+      }
     });
   }
 
-  loadType() {
-    this.baseService.postData('/admin/capital/getMaterial', { data: {} }, (typeList)=> {
-      this.baseService.postData('/admin/level/getLevel', { data: {} }, (levelList)=> {
-        this.typeList = typeList.map((item) => ({ key: item.id, value: item.name}));
-        this.typeList = [{key: 'all', value: '所有组合'}].concat(this.typeList);
-        this.levelList = levelList.map((item) => ({ key: item.id, value: item.name}));
-        this.levelList = [{key: 'all', value: '所有级别'}].concat(this.levelList);
-      });
-      
-    });
-    
-  }
   getParentData(dataFormDrop) {
     
     const levelId = dataFormDrop[0].key === 'all' ? '' : dataFormDrop[0].key;

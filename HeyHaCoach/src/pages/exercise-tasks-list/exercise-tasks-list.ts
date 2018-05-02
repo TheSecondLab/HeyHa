@@ -18,8 +18,4 @@ export class ExerciseTasksListPage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ExerciseTasksListPage');
-  }
-
 }

@@ -25,11 +25,7 @@ export class ClassDueStudentPage {
 
   stuList;
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ClassDueStudentPage');
-    // admin/member/getExpiryMember
-  }
-  ngOnInit() {
+  ionViewWillEnter() {
     this.loadPageData();
   }
 

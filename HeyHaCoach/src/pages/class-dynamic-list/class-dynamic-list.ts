@@ -35,7 +35,7 @@ export class ClassDynamicListPage {
   }
 
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.classId = this.navParams.get('item').id;
     this.classTitle = this.navParams.get('item').name;
     this.loadPageData();

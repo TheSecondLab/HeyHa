@@ -34,32 +34,33 @@ export class TaskDetailPage {
     this.pageName = 'ClassDynamicListPage';
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad TaskDetailPage');
-  }
-
-  ngOnInit() {
+  ionViewWillEnter() {
     this.loadPageData();
   }
 
   loadPageData() {
     this.title = this.navParams.get('item').dateStr;
     this.id = this.navParams.get('item').id;
-    this.baseService.postData('/admin/clazzSource/getEmployeeClazzSourceDetail', { data: { id: this.id } }, (data)=> {
-      this.taskList = data;
-
+    this.baseService.multiReq({
+      requests: [{
+        url: '/admin/clazzSource/getEmployeeClazzSourceDetail',
+        option: { data: {id: this.id} }
+      },{
+        url: '/admin/clazzSource/getEmployeeClazzSourceLearning',
+        option: { data: {id: this.id} }
+      }],
+      onSuccess: (datas) => {
+        this.taskList = datas[0];
+        this.completeStu = datas[1].map((obj) => {
+          if (obj.completeStatus === 'COMPLETE') {
+            return obj;
+          } else {
+            this.uncompleteStu.push(obj);
+          }
+        });
+      }
     });
-    
-    this.baseService.postData('/admin/clazzSource/getEmployeeClazzSourceLearning', { data: { id: this.id } }, (data)=> {
-      // this.taskList = data;
-      this.completeStu = data.map((obj) => {
-        if (obj.completeStatus === 'COMPLETE') {
-          return obj;
-        } else {
-          this.uncompleteStu.push(obj);
-        }
-      });
-    });
+  
   }
 
   remindStu(item) {

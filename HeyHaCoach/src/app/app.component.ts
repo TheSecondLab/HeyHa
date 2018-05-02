@@ -28,7 +28,6 @@ export class MyApp {
       statusBar.styleDefault();
       splashScreen.hide();
       this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.CAMERA, this.androidPermissions.PERMISSION.GET_ACCOUNTS]);
-
       this.jMessageChenyu.init({ isOpenMessageRoaming: true }); // 初始化
 
     });

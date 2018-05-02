@@ -36,7 +36,7 @@ export class CourseDetailPage {
     }
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     const course =this.navParams.get('item');
     this.courseName = course.name;
     this.videoUrl = course.videoPlayUrl;

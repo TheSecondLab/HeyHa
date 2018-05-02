@@ -29,7 +29,7 @@ export class StuListPage {
     public navParams: NavParams) {
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.loadStudentList();
   }
 

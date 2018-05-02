@@ -23,11 +23,8 @@ export class NewsListPage {
     public baseService: BaseService) {
   }
   newsList: any;
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NewsListPage');
-  }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.loadNewsListData();
   }
 

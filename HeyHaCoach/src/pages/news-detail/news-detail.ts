@@ -23,9 +23,4 @@ export class NewsDetailPage {
     this.articleData = this.navParams.get('item');
   }
 
-
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NewsDetailPage');
-  }
-
 }

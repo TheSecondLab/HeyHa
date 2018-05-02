@@ -25,12 +25,7 @@ export class ClassDynamicPage {
     public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ClassDynamicPage');
-  }
-
-
-  ngOnInit() {
+  ionViewWillEnter() {
     this.loadPageData();
   }
   

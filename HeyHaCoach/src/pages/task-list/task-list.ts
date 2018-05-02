@@ -40,7 +40,7 @@ export class TaskListPage {
     console.log(e);
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.classTitle = this.navParams.get('item').name;
     this.loadPageData();
   }

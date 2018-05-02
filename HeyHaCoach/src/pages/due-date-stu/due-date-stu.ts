@@ -60,29 +60,30 @@ export class DueDateStuPage {
     alert.present();
   }
 
-  ngOnInit() {
-    this.loadStudentMsg();
-    this.loadStudentTrace();
+  ionViewWillEnter() {
+    this.loadPageData();
    
   }
 
-  loadStudentMsg() {
-    this.baseService.postData('/admin/member/getMemberByMemberId', { data: { id: this.navParams.get('item').id } }, (data)=> {
+  loadPageData() {
+    this.baseService.multiReq({
+      requests: [{
+        url: '/admin/member/getMemberByMemberId',
+        option: { data: { id: this.navParams.get('item').id } }
+      },{
+        url: '/admin/follow/getMemberFollow',
+        option: { data: { memberId: this.navParams.get('item').id } }
+      }],
+      onSuccess: (datas) => {
+        this.studentName = this.navParams.get('item').name;
+        this.photoUrl = datas[0].photoUrl;
+        this.taekwondoName = datas[0].taekwondoName;
+        this.expirationTimeEndStr = datas[0].expirationTimeEndStr;
+        this.tel = datas[0].tel;
 
-      this.studentName = this.navParams.get('item').name;
-      this.photoUrl = data.photoUrl;
-      this.taekwondoName = data.taekwondoName;
-      this.expirationTimeEndStr = data.expirationTimeEndStr;
-      this.tel = data.tel;
-
+        this.studentTrace = datas[1];
+      }
     });
-  }
-
-  loadStudentTrace() {
-    this.baseService.postData('/admin/follow/getMemberFollow', { data: { memberId: this.navParams.get('item').id } }, (data)=> {
-      this.studentTrace = data;
-    });
-    
   }
 
   navTo(page) {

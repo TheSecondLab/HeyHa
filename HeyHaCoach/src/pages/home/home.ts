@@ -36,29 +36,34 @@ export class HomePage {
   ) {
     
   }
-  
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.loadRemindData();
   }
 
+
   loadRemindData() {
-    // 到期会员
-    this.baseService.postData('/admin/member/getFastExpiryMember', { data: {} }, (data)=> {
-      this.remindList = data;
-
+    this.baseService.multiReq({
+      requests: [{
+        // 到期会员
+        url: '/admin/member/getFastExpiryMember',
+        option: { data: {} }
+      },{
+        // 热点资讯
+        url: '/admin/sysactivity/threeunactivity',
+        option: { data: {} }
+      },{
+        // 公告
+        url: '/admin/sysactivity/sysactivity',
+        option: { data: {} }
+      }],
+      onSuccess: (datas) => {
+        this.remindList = datas[0];
+        this.newsList = datas[1];
+        this.bannerList = datas[2];
+      }
     });
 
-    // 热点资讯
-    this.baseService.postData('/admin/sysactivity/threeunactivity', { data: {} }, (data)=> {
-      this.newsList = data;
-    });
-
-    // 公告
-    this.baseService.postData('/admin/sysactivity/sysactivity', { data: {} }, (data)=> {
-      this.bannerList = data;
-    });
-    
   }
 
   navTo(page) {

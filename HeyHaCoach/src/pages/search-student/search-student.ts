@@ -26,10 +26,11 @@ export class SearchStudentPage {
     public navParams: NavParams) {
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.studentName = this.navParams.get('studentName');
     this.loadSearchData(this.studentName);
   }
+
   
   searchByKeyword(e) {
     this.loadSearchData(this.studentName);

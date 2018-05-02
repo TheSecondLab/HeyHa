@@ -48,12 +48,8 @@ export class ClassStudentListPage {
     public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ClassStudentListPage');
-  }
 
-  ngOnInit() {
-    // this.classId = this.navParams.get('classId');
+  ionViewWillEnter() {
     this.loadClassStucent();
   }
 
