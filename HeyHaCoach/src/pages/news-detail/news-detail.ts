@@ -15,10 +15,12 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class NewsDetailPage {
 
+  articleData: any;
   articleTitle: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.articleTitle = this.navParams.get('item').name;
+    this.articleData = this.navParams.get('item');
   }
 
 

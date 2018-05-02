@@ -71,7 +71,7 @@ export class TaskDetailPage {
     }
     return;
   }
-  // /admin/clazz/getEmployeeClazzSourceDetail
+
   changeTab(idx) {
     this.tabIndex = idx;
   }

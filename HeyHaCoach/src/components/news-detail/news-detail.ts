@@ -14,9 +14,16 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 export class NewsDetailComponent {
 
   articleData: any;
-
+  @Input() data;
   constructor(private navParams: NavParams) {
   }
 
+  ngOnChanges(changes) {
+    this.articleData = changes.data.currentValue;
+
+  }
+
+
+  
 
 }

@@ -34,6 +34,10 @@
     },
     "cordova-plugin-file": {
       "PACKAGE_NAME": "io.ionic.starter"
+    },
+    "jmessage-phonegap-plugin": {
+      "APP_KEY": "b62940b22c4c70c0ee319808",
+      "PACKAGE_NAME": "io.ionic.starter"
     }
   },
   "dependent_plugins": {

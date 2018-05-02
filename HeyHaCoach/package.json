@@ -45,6 +45,7 @@
     "ionic-plugin-keyboard": "^2.2.1",
     "ionicons": "3.0.0",
     "jmessage-chenyu": "^1.0.9",
+    "jmessage-phonegap-plugin": "^3.4.4",
     "jpush-phonegap-plugin": "^3.4.2",
     "rxjs": "5.5.10",
     "sw-toolbox": "3.6.0",
@@ -67,7 +68,10 @@
       },
       "cordova-plugin-camera": {},
       "cordova-plugin-file-transfer": {},
-      "cordova-plugin-file": {}
+      "cordova-plugin-file": {},
+      "jmessage-phonegap-plugin": {
+        "APP_KEY": "b62940b22c4c70c0ee319808"
+      }
     },
     "platforms": [
       "ios",

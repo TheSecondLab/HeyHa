@@ -80,5 +80,15 @@
     },
     "is_top_level": true,
     "variables": {}
+  },
+  "jmessage-phonegap-plugin": {
+    "source": {
+      "type": "registry",
+      "id": "jmessage-phonegap-plugin@^3.4.4"
+    },
+    "is_top_level": true,
+    "variables": {
+      "APP_KEY": "b62940b22c4c70c0ee319808"
+    }
   }
 }

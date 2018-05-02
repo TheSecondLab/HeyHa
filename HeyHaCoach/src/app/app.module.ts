@@ -76,6 +76,7 @@ import { BaseService } from '../module/baseService.service';
 import { Utils } from '../module/util';
 import { MultipleUpLoadService } from '../module/multipleUpdate.service';
 import { UpLoadService } from '../module/uploadService.service';
+import { IMService } from '../module/imService.service';
 
 @NgModule({
   declarations: [ // 声明组件
@@ -164,6 +165,7 @@ import { UpLoadService } from '../module/uploadService.service';
     Utils,
     MultipleUpLoadService,
     UpLoadService,
+    IMService,
     Camera,
     FileTransferObject,
     FileTransfer,
