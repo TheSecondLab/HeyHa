@@ -1,5 +1,12 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import {
+  FormGroup,
+  FormControl,
+  Validators
+} from '@angular/forms';
+
+import { BaseService } from '../../module/baseService.service';
 
 /**
  * Generated class for the PostTraceRecordPage page.
@@ -14,12 +21,36 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'post-trace-record.html',
 })
 export class PostTraceRecordPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  form;
+  stuName;
+  way;
+  content;
+  constructor(
+    public navCtrl: NavController,
+    public alertCtrl: AlertController,
+    public baseService: BaseService,
+    public navParams: NavParams) {
+      
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad PostTraceRecordPage');
+  ionViewWillEnter() {
+    this.stuName = this.navParams.get('name');
   }
+
+  addTrace() {
+
+    const reqObj = {
+      memberId: this.navParams.get('id'),
+      way: this.way,
+      content: this.content
+    };
+
+    this.baseService.postData('/admin/follow/create', { data: { ...reqObj } }, (data)=> {
+      this.navCtrl.pop();
+    });
+    
+  }
+
+
 
 }

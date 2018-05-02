@@ -86,8 +86,11 @@ export class DueDateStuPage {
     });
   }
 
-  navTo(page) {
-    this.navCtrl.push(page)
+  navTo() {
+    this.navCtrl.push('PostTraceRecordPage', {
+      name: this.studentName,
+      id: this.navParams.get('item').id
+    })
   }
   
 
