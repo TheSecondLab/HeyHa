@@ -59,9 +59,6 @@ export class DueDateStuPage {
     });
     alert.present();
   }
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad DueDateStuPage');
-  }
 
   ngOnInit() {
     this.loadStudentMsg();
@@ -72,7 +69,7 @@ export class DueDateStuPage {
   loadStudentMsg() {
     this.baseService.postData('/admin/member/getMemberByMemberId', { data: { id: this.navParams.get('item').id } }, (data)=> {
 
-      this.studentName = data.name;
+      this.studentName = this.navParams.get('item').name;
       this.photoUrl = data.photoUrl;
       this.taekwondoName = data.taekwondoName;
       this.expirationTimeEndStr = data.expirationTimeEndStr;

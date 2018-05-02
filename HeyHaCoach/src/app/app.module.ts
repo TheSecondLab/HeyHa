@@ -7,6 +7,7 @@ import {JmessageChenyu} from "jmessage-chenyu";
 import { Camera } from '@ionic-native/camera';
 import { FileTransfer, FileUploadOptions, FileTransferObject }from'@ionic-native/file-transfer';
 import { File, FileEntry } from '@ionic-native/file';
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 
 // 自定义组件
 import { ComponentsModule } from '../components/components.module';
@@ -161,6 +162,7 @@ import { IMService } from '../module/imService.service';
     HttpClientModule,
     JPush,
     JmessageChenyu,
+    AndroidPermissions,
     BaseService,
     Utils,
     MultipleUpLoadService,

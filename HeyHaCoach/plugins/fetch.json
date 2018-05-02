@@ -90,5 +90,13 @@
     "variables": {
       "APP_KEY": "b62940b22c4c70c0ee319808"
     }
+  },
+  "cordova-plugin-android-permissions": {
+    "source": {
+      "type": "registry",
+      "id": "cordova-plugin-android-permissions"
+    },
+    "is_top_level": true,
+    "variables": {}
   }
 }
