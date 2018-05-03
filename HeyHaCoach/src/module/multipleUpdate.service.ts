@@ -68,7 +68,7 @@ export class MultipleUpLoadService {
 
   chooseImage(cb) {
     let actionSheet = this.actionSheetCtrl.create({
-      title: '上传头像',
+      title: '选择图片',
       buttons: [
         {
           text: '拍照',
@@ -100,7 +100,8 @@ export class MultipleUpLoadService {
       // params.forEach((value, key) => {
       //     this.formData.append(key, value);
       // });
-      this.formData.append('record', '123123');
+      this.formData.append('content', '123123');
+      this.formData.append('classId', '1');
       this.http.post(`${this.domain}${path}`, this.formData).toPromise().then(res => {
         onSuccess(res);
       }).catch(error => {

@@ -1,19 +1,19 @@
 {
-  "_from": "jmessage-phonegap-plugin",
+  "_from": "jmessage-phonegap-plugin@^3.4.4",
   "_id": "jmessage-phonegap-plugin@3.4.4",
   "_inBundle": false,
   "_integrity": "sha512-KRU+XNGEAfEaVZuRkkS7xMZcgzMcsSIp9CCSAog4CAk2abWf72Aai2/nWFDGtqv/NhAf7O229UC9u368OUPx6w==",
   "_location": "/jmessage-phonegap-plugin",
   "_phantomChildren": {},
   "_requested": {
-    "type": "tag",
+    "type": "range",
     "registry": true,
-    "raw": "jmessage-phonegap-plugin",
+    "raw": "jmessage-phonegap-plugin@^3.4.4",
     "name": "jmessage-phonegap-plugin",
     "escapedName": "jmessage-phonegap-plugin",
-    "rawSpec": "",
+    "rawSpec": "^3.4.4",
     "saveSpec": null,
-    "fetchSpec": "latest"
+    "fetchSpec": "^3.4.4"
   },
   "_requiredBy": [
     "#USER",
@@ -21,7 +21,7 @@
   ],
   "_resolved": "https://registry.npmjs.org/jmessage-phonegap-plugin/-/jmessage-phonegap-plugin-3.4.4.tgz",
   "_shasum": "2a3f7fdb4c410f2bb722ba7d6c96540e3ad4a16a",
-  "_spec": "jmessage-phonegap-plugin",
+  "_spec": "jmessage-phonegap-plugin@^3.4.4",
   "_where": "/Users/zhaoxing/privateSpace/HeyHa/HeyHaCoach",
   "author": {
     "name": "JiGuang"

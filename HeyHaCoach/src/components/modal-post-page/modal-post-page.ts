@@ -57,8 +57,9 @@ export class ModalPostPageComponent {
   submit() {
     if (this.params.get('classId')) {
       this.multiUpload.uploadFile(
-        "/admin/dynamic/addDynamic", "file_img",
-        [{clazzId: this.params.get('classId'), content: this.form.value }],
+        "/admin/dynamic/addDynamic",
+        "file_img",
+        [{clazzId: this.params.get('classId')}, {content: this.form.value.record }],
         this.photoList,
         ()=> {this.viewCtrl.dismiss();}, () => {}
       );
@@ -69,7 +70,8 @@ export class ModalPostPageComponent {
       "/admin/user/updatePhotoKeyAndintroduction",
       "file_photoKey", [{introduction: this.form.value }],
       this.photoList,
-      ()=> {this.viewCtrl.dismiss();}, () => {}
+      ()=> { this.viewCtrl.dismiss(); },
+      () => {}
     )
 
 

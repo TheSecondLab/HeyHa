@@ -66,7 +66,7 @@
       "cordova-plugin-ionic-keyboard": {},
       "mx.ferreyra.callnumber": {},
       "jpush-phonegap-plugin": {
-        "APP_KEY": "9e2471813200538bfe0c47e1"
+        "APP_KEY": "b62940b22c4c70c0ee319808"
       },
       "cordova-plugin-camera": {},
       "cordova-plugin-file-transfer": {},
@@ -74,7 +74,8 @@
       "jmessage-phonegap-plugin": {
         "APP_KEY": "b62940b22c4c70c0ee319808"
       },
-      "cordova-plugin-android-permissions": {}
+      "cordova-plugin-android-permissions": {},
+      "call-number": {}
     },
     "platforms": [
       "ios",
