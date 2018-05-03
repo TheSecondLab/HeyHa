@@ -61,6 +61,13 @@ www/
 .sourcemaps/
 
 platforms/
+plugins/
+**/plugins
+**/platforms/
+HeyHaStu/plugins/
+HeyHaStu/platforms/
+HeyHaCoach/plugins/
+HeyHaCoach/platforms/
 
 **/.DS_Store
 .DS_Store
