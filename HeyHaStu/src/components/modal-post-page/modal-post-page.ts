@@ -40,18 +40,20 @@ export class ModalPostPageComponent {
   }
 
   submit() {
-    // const params = new Map();
-    // params.set('record', this.form.value)
+
     let loading = this.loadingCtrl.create({
       spinner: 'crescent',
       content: '请稍后...'
     });
     loading.present();
 
+    const params = new Map();
+    params.set('record', this.form.value.record);
+
     this.multiUpload.uploadFile(
       "/admin/growthRecord/create",
       "file_img",
-      [{record: this.form.value }],
+      params,
       this.photoList,
       () => {
         loading.dismiss()

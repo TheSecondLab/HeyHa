@@ -97,10 +97,10 @@ export class MultipleUpLoadService {
 
       console.log('开始上传........');
 
-      // params.forEach((value, key) => {
-      //     this.formData.append(key, value);
-      // });
-      this.formData.append('record', '123123');
+      params.forEach((value, key) => {
+        this.formData.append(key, value);
+      });
+
       this.http.post(`${this.domain}${path}`, this.formData).toPromise().then(res => {
         onSuccess(res);
       }).catch(error => {

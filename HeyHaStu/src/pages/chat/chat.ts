@@ -44,7 +44,7 @@ export class ChatPage {
     // alert.present();
     const currentUser = this.navParams.get('username');
     if(msg.from && currentUser === msg.from.username) {
-      this.loadMessage(currentUser, this.chatHistrory.length + 1);
+      this.loadMessage(currentUser);
     }
   }
 
@@ -53,11 +53,6 @@ export class ChatPage {
 
     this.loadMessage(username);
     this.imService.createConversation(username);
-    this.imService.addReceiveMessageListener(this.receiveMsgListen);
-  }
-
-  ionViewDidEnter() {
-
     this.imService.addReceiveMessageListener(this.receiveMsgListen);
   }
 
@@ -93,7 +88,7 @@ export class ChatPage {
       //   title: username
       // });
       // alert.present();
-      this.pushToArray(messages);
+      this.pushToArray(messages.reverse());
     });
   }
 
