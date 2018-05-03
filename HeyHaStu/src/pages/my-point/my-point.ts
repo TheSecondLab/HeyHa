@@ -36,18 +36,32 @@ export class MyPointPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public baseService: BaseService) {
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.loadData();
   }
 
   loadData() {
-    this.baseService.postData('/admin/member/getMemberIntegral', { data: {} }, (data)=> {
-      this.pointDetail = data;
-    });
+    this.baseService.multiReq({
+      requests: [{
+        url: '/admin/member/getMemberIntegral',
+        option: { data: {} }
+      },{
+        url: '/admin/member/getMemberIntegralList',
+        option: { data: {} }
+      }],
+      onSuccess: (datas) => {
+        this.pointDetail = datas[0];
+        this.pointList = datas[1];
+      }
+    })
 
-    this.baseService.postData('/admin/member/getMemberIntegralList', { data: {} }, (data)=> {
-      this.pointList = data;
-    });
+    // this.baseService.postData('/admin/member/getMemberIntegral', { data: {} }, (data)=> {
+    //   this.pointDetail = data;
+    // });
+
+    // this.baseService.postData('/admin/member/getMemberIntegralList', { data: {} }, (data)=> {
+    //   this.pointList = data;
+    // });
   }
 
 }

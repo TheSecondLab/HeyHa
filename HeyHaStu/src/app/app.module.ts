@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { JPush } from '@jiguang-ionic/jpush';
 import {JmessageChenyu} from "jmessage-chenyu";
+import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { Camera } from '@ionic-native/camera';
 import { FileTransfer, FileUploadOptions, FileTransferObject }from'@ionic-native/file-transfer';
 import { File, FileEntry } from '@ionic-native/file';
@@ -43,11 +44,16 @@ import { NewsListPageModule } from '../pages/news-list/news-list.module';
 import { CourseDetailPage } from '../pages/course-detail/course-detail';
 import { CourseDetailPageModule } from '../pages/course-detail/course-detail.module';
 import { LoginPage } from '../pages/login/login';
+import { ChatPageModule } from '../pages/chat/chat.module';
+import { MyChatPageModule } from '../pages/my-chat/my-chat.module';
+import { ChatPage } from '../pages/chat/chat';
+import { MyChatPage } from '../pages/my-chat/my-chat';
 
 import { BaseService } from '../module/baseService.service';
 import { UpLoadService } from '../module/uploadService.service';
 import { MultipleUpLoadService } from '../module/multipleUpdate.service';
 import { IMService } from '../module/imService.service';
+import { AlertService } from '../module/alertService.service';
 
 // NgModule
 @NgModule({
@@ -78,7 +84,9 @@ import { IMService } from '../module/imService.service';
     EventsPageModule,
     NewsListPageModule,
     CourseDetailPageModule,
-    TabsPageModule
+    TabsPageModule,
+    ChatPageModule,
+    MyChatPageModule
   ],
   bootstrap: [IonicApp], // 默认启动的组件
   entryComponents: [
@@ -98,7 +106,9 @@ import { IMService } from '../module/imService.service';
     ModalPostPageComponent,
     ModifiedPassworkPage,
     CourseDetailPage,
-    LoginPage
+    LoginPage,
+    ChatPage,
+    MyChatPage
   ],
   providers: [ // 定义的服务
     StatusBar,
@@ -107,10 +117,12 @@ import { IMService } from '../module/imService.service';
     HttpClientModule,
     JPush,
     JmessageChenyu,
+    AndroidPermissions,
     BaseService,
     UpLoadService,
     MultipleUpLoadService,
     IMService,
+    AlertService,
     Camera,
     FileTransferObject,
     FileTransfer,

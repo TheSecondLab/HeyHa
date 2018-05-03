@@ -14,14 +14,16 @@ import { NavController } from 'ionic-angular';
 export class TaskItemComponent {
 
   @Input() task
+  @Input() isTask
 
   constructor(public navCtrl: NavController) {
   }
 
-  navTo(id, dateStr) {
+  navTo(id, dateStr, isTask) {
     this.navCtrl.push('CourseDetailPage', {
       id,
-      dateStr
+      dateStr,
+      isTask
     });
   }
 }

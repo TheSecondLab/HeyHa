@@ -20,7 +20,7 @@ export class ClassDynamicListPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public baseService: BaseService) {
   }
-  ngOnInit() {
+  ionViewWillEnter() {
     this.loadData();
   }
 

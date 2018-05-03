@@ -15,7 +15,7 @@ export class NewsListPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public baseService: BaseService) {
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.loadData();
   }
 

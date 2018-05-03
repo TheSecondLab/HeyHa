@@ -1,5 +1,5 @@
 
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { Component, OnInit } from '@angular/core';
 import { BaseService } from '../../module/baseService.service';
 /**
@@ -26,7 +26,7 @@ export class PersonalInfoComponent {
     school: '',
     name: ''
   };
-  constructor(public navCtrl: NavController, public baseService: BaseService) {
+  constructor(public navCtrl: NavController, public baseService: BaseService, public alertCtrl: AlertController) {
   }
 
   navTo(page) {
@@ -38,8 +38,25 @@ export class PersonalInfoComponent {
   }
 
   loadData() {
+    // const alert = this.alertCtrl.create({
+    //   title:'init',
+    //   message: JSON.stringify('init')
+    // })
+    // alert.present();
     this.baseService.postData('/admin/student', { data: {} }, (data)=> {
       this.item = data;
+      // const alert = this.alertCtrl.create({
+      //   title:'init',
+      //   message: JSON.stringify(data)
+      // })
+      // alert.present();
+    },
+    (error)=> {
+      const alert = this.alertCtrl.create({
+        title:'error',
+        message: JSON.stringify(error)
+      })
+      alert.present();
     });
   }
 

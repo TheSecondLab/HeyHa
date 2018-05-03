@@ -20,9 +20,9 @@
   <ion-content >
     <div [ngSwitch]="segmentModel">
       <ion-list *ngSwitchCase="'tab1'">
-        <div *ngFor="let level of levelList" class="gradeItem">
+        <div *ngFor="let level of levelList;index as i" class="gradeItem">
           <div class="img">
-            <img src={{level.imgUrl}} alt="">
+            <img src="assets/imgs/ji{{i}}.png" alt="">
           </div>
           <div class="desc">
             <div class="title">{{level.name}}</div>
@@ -36,9 +36,9 @@
       </ion-list>
 
       <ion-list *ngSwitchCase="'tab2'">
-        <div *ngFor="let level of segmentLevel" class="gradeItem">
+        <div *ngFor="let level of segmentLevel; index as j" class="gradeItem">
           <div class="img">
-            <img src={{level.imgUrl}} alt="">
+            <img src="assets/imgs/kao{{j}}.png" alt="">
           </div>
           <div class="desc">
             <div class="title">{{level.name}}</div>

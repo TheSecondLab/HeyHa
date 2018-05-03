@@ -22,17 +22,32 @@ export class GradeTestPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public baseService: BaseService) {
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.loadData();
   }
 
   loadData() {
-    this.baseService.postData('/admin/level/getRankLevel', { data: {} }, (data)=> {
-      this.levelList = data;
-    });
-
-    this.baseService.postData('/admin/level/getProductsegmentLevel', { data: {} }, (data) => {
-      this.segmentLevel = data
+    this.baseService.multiReq({
+      requests: [{
+        url: '/admin/level/getRankLevel',
+        option: { data: {} }
+      },{
+        url: '/admin/level/getProductsegmentLevel',
+        option: { data: {} }
+      }],
+      onSuccess: (datas) => {
+        this.levelList = datas[0];
+        this.segmentLevel = datas[1];
+      }
     })
+
+
+    // this.baseService.postData('/admin/level/getRankLevel', { data: {} }, (data)=> {
+    //   this.levelList = data;
+    // });
+
+    // this.baseService.postData('/admin/level/getProductsegmentLevel', { data: {} }, (data) => {
+    //   this.segmentLevel = data
+    // })
   }
 }

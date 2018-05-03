@@ -45,7 +45,7 @@ export class PersonalInfoPage {
     // this.fileTransfer = this.transfer.create();
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.loadData();
   }
 

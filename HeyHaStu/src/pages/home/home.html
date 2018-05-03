@@ -1,8 +1,11 @@
 <ion-content class="content">
   <div class="header">
     <ion-slides class="homeSlide" loop="true">
-      <ion-slide class="slide" *ngFor="let banner of banners">
+      <!-- <ion-slide class="slide" *ngFor="let banner of banners">
         <ion-img height='200%' width='375px' src={{banner.coverUrl}}></ion-img>
+      </ion-slide> -->
+      <ion-slide *ngFor="let item of banners" class="list" >
+        <div style="overflow: hidden;" (click)="navToNews(item)"><img src="{{item.coverUrl}}" style="width:100%" /></div>
       </ion-slide>
     </ion-slides>
     <menu-bar></menu-bar>

@@ -85,7 +85,7 @@ export class UpLoadService {
 
   chooseImage(onCamera?, onLibrary?) {
     let actionSheet = this.actionSheetCtrl.create({
-      title: '上传头像',
+      title: '选择图片',
       buttons: [
         {
           text: '拍照',
