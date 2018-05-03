@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, Content } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, Content, LoadingController } from 'ionic-angular';
 import { IMService } from '../../module/imService.service';
 import { MultipleUpLoadService } from '../../module/multipleUpdate.service';
 import {
@@ -28,7 +28,8 @@ export class ChatPage {
     public alertCtrl: AlertController,
     public navCtrl: NavController,
     public navParams: NavParams,
-    public uploadService: MultipleUpLoadService
+    public uploadService: MultipleUpLoadService,
+    public loadingCtrl: LoadingController
   ) {
     this.form = new FormGroup({
       content: new FormControl("", Validators.required)
@@ -77,7 +78,8 @@ export class ChatPage {
       isMine: msg.isSend,
       imageUrl: '',
       content: msg.type === 'text' ? msg.text: msg.thumbPath,
-      type: msg.type
+      type: msg.type,
+      avatarThumbPath: msg.from.avatarThumbPath
     })).reverse();
     this.chatHistrory = arr;
 
@@ -85,7 +87,12 @@ export class ChatPage {
   }
 
   loadMessage(username,length?) {
-    this.imService.getHistoryMsg(username, length || 50).then(messages => {
+    this.imService.getHistoryMsg(username, length || -1).then(messages => {
+      // const alert = this.alertCtrl.create({
+      //   message: JSON.stringify(messages[0].from),
+      //   title: username
+      // });
+      // alert.present();
       this.pushToArray(messages);
     });
   }
@@ -97,13 +104,6 @@ export class ChatPage {
       content: msg.type === 'text' ? msg.text: msg.thumbPath,
       type: msg.type
     });
-    this.scrollToBottom();
-  }
-
-  focus(e) {
-
-    let appEl = <HTMLElement>(document.getElementsByClassName('scroll-content')[0]);
-    appEl.style.paddingBottom = '600px';
     this.scrollToBottom();
   }
 

@@ -36,7 +36,7 @@
         </div>
         <ng-template #elseBlock>
           <div class="chat-other">
-            <div class="iphoto"><img src={{msg.imageUrl}} /></div>
+            <div class="iphoto"><img src={{msg.avatarThumbPath}} /></div>
             <div class="text"><img src={{msg.content}} /></div>
           </div>
         </ng-template>
@@ -47,7 +47,7 @@
   <div class="chat-window">
     <div class="input">
       <form (submit)="sendMsg()" [formGroup]="form">
-        <input type="text" placeholder="说点什么吧" [(ngModel)]="inputs" formControlName="content" (onFocus)="focus()" />
+        <input type="text" placeholder="说点什么吧" [(ngModel)]="inputs" formControlName="content" />
       </form>
     </div>
     <div class="add" (click)="chooseImage()"></div>
