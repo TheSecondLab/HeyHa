@@ -89,7 +89,7 @@ export class ChatPage {
   loadMessage(username,length?) {
     this.imService.getHistoryMsg(username, length || -1).then(messages => {
       // const alert = this.alertCtrl.create({
-      //   message: JSON.stringify(messages[0].from),
+      //   message: JSON.stringify(messages.map(msg=>msg.from)),
       //   title: username
       // });
       // alert.present();
@@ -126,8 +126,24 @@ export class ChatPage {
   chooseImage() {
     const username = this.navParams.get('username');
     this.uploadService.chooseImage((path) => {
+      let loading = this.loadingCtrl.create({
+        spinner: 'crescent',
+        content: '请稍后...'
+      });
+      loading.present();
       this.imService.sendImageMsg(username, path).then((msg) => {
+        loading.dismiss();
         this.newMessage(msg);
+      }).catch((e) => {
+        loading.dismiss();
+        let alert = this.alertCtrl.create({
+          title: "错误",
+          message: JSON.stringify(e),
+          buttons: [{
+            text: 'Ok',
+          }]
+        });
+        alert.present();
       });
     });
   }

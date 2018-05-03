@@ -27,6 +27,14 @@ export class MyApp {
     public alertCtrl: AlertController
   ) {
     platform.ready().then(() => {
+      const versions = platform.versions();
+      if (versions.android && versions.android.major < 7) {
+        const alert = this.alertCtrl.create({
+          message: JSON.stringify(`您手机的当前版本为${versions.android.str}, 本应用暂不支持该安卓版本，请前往升级或等待app更新。为您带来的不便，尽请谅解`)
+        })
+        alert.present();
+        return;
+      }
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
