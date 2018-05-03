@@ -22,7 +22,7 @@ export class CoachInfoPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public baseService: BaseService) {
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.loadData();
   }
 
@@ -30,6 +30,16 @@ export class CoachInfoPage {
     this.baseService.postData('/admin/stucoached', { data: {} }, (data)=> {
       this.cocheInfo = data;
     });
+  }
+
+  navTo(username) {
+    let _username = username;
+    if(username.length < 4) {
+      _username += '_jpush';
+    }
+    this.navCtrl.push('ChatPage', {
+      username: _username
+    })
   }
 
 }

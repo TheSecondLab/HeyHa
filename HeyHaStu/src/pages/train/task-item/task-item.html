@@ -1,10 +1,10 @@
 <!-- Generated template for the TaskItemComponent component -->
 <div class="container">
-  <div class="img"><img src="{{ task.videoUrl }}" alt=""></div>
+  <div class="img"><img src="{{ task.photoUrl }}" alt=""></div>
   <div class="text">
     <div class="date">{{ task.dateStr }}</div>
     <div class="desc">{{ task.name }}</div>
-    <div class="button" (click)="navTo(task.id, task.dateStr)"><span>查看</span></div>
+    <div class="button" (click)="navTo(task.id, task.dateStr, type==='HOMEWORK')"><span>查看</span></div>
     <div class="complete" *ngIf="task.completeStatus!=='UNCOMPLETE'"><img src="assets/imgs/icon_complete.png" alt=""></div>
   </div>
 </div>

@@ -27,7 +27,7 @@ export class EventsPage {
     });
     modal.present();
   }
-  ngOnInit() {
+  ionViewWillEnter() {
     this.loadData();
   }
 

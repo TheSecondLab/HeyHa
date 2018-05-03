@@ -27,7 +27,7 @@
 
       <ion-list *ngSwitchCase="'process'">
         <div *ngFor="let course of courseList">
-          <task-item [task]="course"></task-item>
+          <task-item [task]="course" [isTask]="segmentModel === 'myTask'"></task-item>
         </div>
       </ion-list>
     </div>

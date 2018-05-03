@@ -19,8 +19,8 @@
       <div class="banner">
         <span class="title">{{course.name}}</span>
         <!-- <img src={{course.videoImageUrl}} alt=""> -->
-        <video width="100%" height="100%" controls="controls" preload="metadata" autoplay="autoplay" webkit-playsinline="webkit-playsinline" class="videoPlayer">
-          <source src={{course.videoImageUrl}} type="video/mp4" />
+        <video width="100%" height="100%" controls="controls" preload="metadata" webkit-playsinline="webkit-playsinline" class="videoPlayer">
+          <source src={{course.videoUrl}} type="video/mp4" />
         </video>
       </div>
       <div class="article hidden" (click)="showContent($event)">
@@ -29,5 +29,5 @@
       </div>
     </div>
   </div>
-  <div class="fixBtn" *ngIf="courseDetail[0] && courseDetail[0].completeStatus==='UNCOMPLETE'" (click)="completeTask(courseDetail[0].id)">完成作业</div>
+  <div class="fixBtn" *ngIf="isTask && courseDetail[0] && courseDetail[0].completeStatus==='UNCOMPLETE'" (click)="completeTask(courseDetail[0].id)">完成作业</div>
 </ion-content>

@@ -17,7 +17,7 @@ import { BaseService } from '../../module/baseService.service';
 export class CourseDetailPage {
   courseDetail = [];
   dateStr = '';
-
+  isTask = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, public baseService: BaseService) {
   }
 
@@ -30,9 +30,10 @@ export class CourseDetailPage {
     }
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     const courseId =this.navParams.get('id');
     this.dateStr = this.navParams.get('dateStr');
+    this.isTask = this.navParams.get('isTask');
     this.loadData(courseId);
   }
 

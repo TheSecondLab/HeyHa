@@ -67,17 +67,32 @@ export class TrainPage {
     // }];
   }
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.loadData();
   }
 
   loadData() {
-    this.baseService.postData('/admin/clazzSource/getStudentClazzSource', { data: { type: 'HOMEWORK' } }, (data)=> {
-      this.taskList = data;
-    });
+    this.baseService.multiReq({
+      requests: [{
+        url: '/admin/clazzSource/getStudentClazzSource',
+        option: { data: { type: 'HOMEWORK' } }
+      },{
+        url: '/admin/clazzSource/getStudentClazzSource',
+        option: { data: { type: 'COURSE' } }
+      }],
+      onSuccess: (datas) => {
+        this.taskList = datas[0];
+        this.courseList = datas[1];
+      }
+    })
 
-    this.baseService.postData('/admin/clazzSource/getStudentClazzSource', { data: { type: 'COURSE' } }, (data) => {
-      this.courseList = data
-    });
+
+    // this.baseService.postData('/admin/clazzSource/getStudentClazzSource', { data: { type: 'HOMEWORK' } }, (data)=> {
+    //   this.taskList = data;
+    // });
+
+    // this.baseService.postData('/admin/clazzSource/getStudentClazzSource', { data: { type: 'COURSE' } }, (data) => {
+    //   this.courseList = data
+    // });
   }
 }

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
+
+import { BaseService } from '../../module/baseService.service';
 /**
  * Generated class for the NewsDetailPage page.
  *
@@ -14,12 +16,26 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'news-detail.html',
 })
 export class NewsDetailPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  articleData = {
+    name: '',
+    point: '',
+    photoKeyUrl: '',
+    releasetimeStr: '',
+    content: ''
+  };
+  constructor(public navCtrl: NavController, private navParams: NavParams, private baseService: BaseService) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad NewsDetailPage');
+  ionViewWillEnter() {
+    this.loadData();
+  }
+
+  loadData() {
+    const item = this.navParams.get('item');
+    this.baseService.postData('/admin/sysactivity/oneactivity', { data: {id: item.id} }, (data)=> {
+      this.articleData = data;
+
+    });
   }
 
 }

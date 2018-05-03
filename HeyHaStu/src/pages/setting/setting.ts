@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { BaseService } from '../../module/baseService.service';
+import { LoginPage } from '../login/login';
+
 @IonicPage()
 @Component({
   selector: 'page-setting',
@@ -8,7 +10,7 @@ import { BaseService } from '../../module/baseService.service';
 })
 export class SettingPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public baseService: BaseService) {
+  constructor(public alertCtrl: AlertController, public navCtrl: NavController, public navParams: NavParams, public baseService: BaseService) {
   }
 
   items = [{
@@ -26,7 +28,12 @@ export class SettingPage {
 
     if(item.key === 2) {
       this.baseService.postData('/admin/logout', { data: {} }, ()=> {
-        this.navCtrl.push('LoginPage');
+        // const alert = this.alertCtrl.create({
+        //   message: JSON.stringify('sss')
+        // })
+        // alert.present();
+        // this.navCtrl.popToRoot();
+        this.navCtrl.push(LoginPage);
       });
     }
   }

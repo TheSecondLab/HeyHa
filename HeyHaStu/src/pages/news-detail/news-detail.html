@@ -7,13 +7,24 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>news-detail</ion-title>
+    <ion-title>详情</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content>
-  <news-detail></news-detail>
+    <div class="wrap">
+        <div class="title">{{articleData.name}}</div>
+        <div class="info">
+          <div class="iphoto"><img  src="{{articleData.photoKeyUrl}}"/></div>
+          <div class="cont">
+            <div class="times">浏览次数： {{articleData.point}}</div>
+            <div class="time">发布时间： {{articleData.releasetimeStr}}</div>
+          </div>
+        </div>
+        <div class="content" [innerHTML]="articleData.content"></div>
+      </div>
+
 
 </ion-content>
