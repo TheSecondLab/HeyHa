@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { IonicPageModule } from 'ionic-angular';
+import { IonicPageModule, AlertController } from 'ionic-angular';
 import { LoginPage } from './login';
 
 @NgModule({
@@ -10,4 +10,9 @@ import { LoginPage } from './login';
     IonicPageModule.forChild(LoginPage),
   ],
 })
-export class LoginPageModule {}
+export class LoginPageModule {
+  constructor(public alertCtrl: AlertController) {
+
+  }
+
+}

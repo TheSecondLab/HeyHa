@@ -22,12 +22,5 @@ export class ChatPage {
     public navParams: NavParams) {
   }
 
-  focusInput(e) {
-    let alert = this.alertCtrl.create({
-      message: JSON.stringify(e)
-    })
-    alert.present();
-
-  }
 
 }
