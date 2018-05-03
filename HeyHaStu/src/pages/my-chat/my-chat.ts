@@ -50,7 +50,8 @@ export class MyChatPage {
             image: relation.photoUrl,
             name: conversation.title,
             latestMessage: conversation.latestMessage.type === 'text' ? conversation.latestMessage.text : '[类型不支持预览]',
-            date: '待添加'
+            date: '',
+            nickname: relation.nickname
           };
 
           this.chatHistory.push(msg);

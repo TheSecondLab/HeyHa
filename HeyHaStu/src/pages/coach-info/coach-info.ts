@@ -32,4 +32,14 @@ export class CoachInfoPage {
     });
   }
 
+  navTo(username) {
+    let _username = username;
+    if(username.length < 4) {
+      _username += '_jpush';
+    }
+    this.navCtrl.push('ChatPage', {
+      username: _username
+    })
+  }
+
 }
