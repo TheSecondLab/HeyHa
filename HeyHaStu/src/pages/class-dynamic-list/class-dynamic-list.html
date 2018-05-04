@@ -29,5 +29,10 @@
     <ng-template #elseBlock>
       <div class="good" (click)="zan(dynamic.id)">点赞</div>
     </ng-template>
+
+    <div class="bad" *ngIf="dynamic.collect; else uncollect" (click)="collect(dynamic.id)">点赞</div>
+    <ng-template #uncollect>
+      <div class="good" (click)="zan(dynamic.id)">点赞</div>
+    </ng-template>
   </div>
 </ion-content>

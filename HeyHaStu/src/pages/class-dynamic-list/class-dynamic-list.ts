@@ -35,5 +35,11 @@ export class ClassDynamicListPage {
       this.loadData();
     });
   }
+
+  collect(id){
+    this.baseService.postData('/admin/dynamic/collectDynamic', { data: {id}, hideLoading: true }, (data)=> {
+      this.loadData();
+    });
+  }
 }
 
