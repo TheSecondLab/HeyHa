@@ -3,6 +3,8 @@ import { NavController } from 'ionic-angular';
 
 import { BaseService } from '../../module/baseService.service';
 
+declare var cordova:any;
+
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -18,6 +20,10 @@ export class HomePage {
 
   ionViewWillEnter() {
     this.loadData();
+  }
+
+  openLink(url) {
+    var ref = cordova.InAppBrowser.open(url, '_blank', 'location=yes');
   }
 
   loadData() {
