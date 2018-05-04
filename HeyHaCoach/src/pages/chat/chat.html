@@ -11,71 +11,43 @@
   </ion-navbar>
 
 </ion-header>
-
-
 <ion-content class="wrap">
   <div class="test">
     <div class="chatWrap">
-        <div class="chat-other">
-          <div class="iphoto"><img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1214248342,1256011437&fm=27&gp=0.jpg" /></div>
-          <div class="text">你好！初次见面 多多指教</div>
+      <div *ngFor="let msg of chatHistrory">
+        <div *ngIf="msg.type==='text';else imgBlock">
+          <div class="chat-me"  *ngIf="msg.isMine; else elseBlock">
+            <div class="iphoto"><img src={{msg.imageUrl}} /></div>
+            <div class="text">{{msg.content}}</div>
+          </div>
+          <ng-template #elseBlock>
+            <div class="chat-other">
+              <div class="iphoto"><img src={{msg.imageUrl}} /></div>
+              <div class="text">{{msg.content}}</div>
+            </div>
+          </ng-template>
         </div>
-        <div class="chat-me">
-          <div class="iphoto"><img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1214248342,1256011437&fm=27&gp=0.jpg" /></div>
-          <div class="text">您好！我家孩子目前学习情况如何？能否跟得上进度。</div>
-        </div>
-        <div class="chat-other">
-          <div class="iphoto"><img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1214248342,1256011437&fm=27&gp=0.jpg" /></div>
-          <div class="text">你好！初次见面 多多指教</div>
-        </div>
-        <div class="chat-me">
-          <div class="iphoto"><img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1214248342,1256011437&fm=27&gp=0.jpg" /></div>
-          <div class="text">您好！我家孩子目前学习情况如何？能否跟得上进度。</div>
-        </div>
-        <div class="chat-other">
-          <div class="iphoto"><img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1214248342,1256011437&fm=27&gp=0.jpg" /></div>
-          <div class="text">你好！初次见面 多多指教</div>
-        </div>
-        <div class="chat-me">
-          <div class="iphoto"><img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1214248342,1256011437&fm=27&gp=0.jpg" /></div>
-          <div class="text">您好！我家孩子目前学习情况如何？能否跟得上进度。</div>
-        </div>
-        <div class="chat-other">
-          <div class="iphoto"><img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1214248342,1256011437&fm=27&gp=0.jpg" /></div>
-          <div class="text">你好！初次见面 多多指教</div>
-        </div>
-        <div class="chat-me">
-          <div class="iphoto"><img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1214248342,1256011437&fm=27&gp=0.jpg" /></div>
-          <div class="text">您好！我家孩子目前学习情况如何？能否跟得上进度。</div>
-        </div>
-        <div class="chat-other">
-          <div class="iphoto"><img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1214248342,1256011437&fm=27&gp=0.jpg" /></div>
-          <div class="text">你好！初次见面 多多指教000000</div>
-        </div>
-        <div class="chat-me">
-          <div class="iphoto"><img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1214248342,1256011437&fm=27&gp=0.jpg" /></div>
-          <div class="text">您好！我家孩子目前学习情况如何？能否跟得上进度。</div>
-        </div>
-        <div class="chat-other">
-          <div class="iphoto"><img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1214248342,1256011437&fm=27&gp=0.jpg" /></div>
-          <div class="text">你好！初次见面 多多指教000000</div>
-        </div>
-        <div class="chat-me">
-          <div class="iphoto"><img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1214248342,1256011437&fm=27&gp=0.jpg" /></div>
-          <div class="text">您好！我家孩子目前学习情况如何？能否跟得上进度。</div>
-        </div>
-        <div class="chat-other">
-          <div class="iphoto"><img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1214248342,1256011437&fm=27&gp=0.jpg" /></div>
-          <div class="text">你好！初次见面 多多指教000000</div>
-        </div>
-        <div class="chat-me">
-          <div class="iphoto"><img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1214248342,1256011437&fm=27&gp=0.jpg" /></div>
-          <div class="text">您好！我家孩子目前学习情况如何？能否跟得上进度。</div>
-        </div>
+        <ng-template #imgBlock>
+          <div class="chat-me"  *ngIf="msg.isMine; else elseBlock">
+            <div class="iphoto"><img src={{msg.imageUrl}} /></div>
+            <div class="text"><img src={{msg.content}} /></div>
+          </div>
+          <ng-template #elseBlock>
+            <div class="chat-other">
+              <div class="iphoto"><img src={{msg.avatarThumbPath}} /></div>
+              <div class="text"><img src={{msg.content}} /></div>
+            </div>
+          </ng-template>
+        </ng-template>
       </div>
-      <div class="chat-window">
-        <div class="input"><ion-input type="text" placeholder="说点什么吧" ></ion-input></div>
-        <div class="add"></div>
+    </div>
+    <div class="chat-window">
+      <div class="input">
+        <form (submit)="sendMsg()" [formGroup]="form">
+          <input type="text" placeholder="说点什么吧" [(ngModel)]="inputs" formControlName="content" />
+        </form>
       </div>
+      <div class="add" (click)="chooseImage()"></div>
+    </div>
   </div>
 </ion-content>

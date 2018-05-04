@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AlertController, LoadingController } from 'ionic-angular';
 import { JmessageChenyu } from "jmessage-chenyu";
+// import { AndroidPermissions } from '@ionic-native/android-permissions';
 
 import { BaseService } from './baseService.service';
 
@@ -14,7 +15,8 @@ export class IMService {
     public jMessageChenyu: JmessageChenyu,
     public alertCtrl: AlertController,
     public loadingCtrl: LoadingController,
-    public baseService: BaseService
+    public baseService: BaseService,
+    // private androidPermissions: AndroidPermissions
   ) {}
 
   // private generateParam(type, code) {
@@ -64,24 +66,32 @@ export class IMService {
   }
 
   public createConversation(username) {
-    let loading = this.loadingCtrl.create({
-      spinner: 'crescent',
-      content: '请稍后...'
-    });
-    loading.present();
+    // let loading = this.loadingCtrl.create({
+    //   spinner: 'crescent',
+    //   content: '请稍后...'
+    // });
+    // loading.present();
 
     this.baseService.postData('/admin/chart/connect', { data: { username }}, () => {});
 
     this.jMessageChenyu.createConversation({ type: 'single', appKey: this.appKey, username })
       .then(() => {
-        loading.dismiss();
+        // loading.dismiss();
+        // let alert = this.alertCtrl.create({
+        //   message: JSON.stringify('conversation create'),
+        //   buttons: [{
+        //     text: 'Ok',
+        //   }]
+        // });
+        // alert.present();
       }).catch ((error) => {
-        loading.dismiss();
+        // loading.dismiss();
       })
   }
 
   public sendTextMsg(username, text) {
     // const param = this.generateParam(type, code);
+    // this.requestPerssion()
     return this.jMessageChenyu.sendTextMessage({ type: 'single', appKey: this.appKey, username, text });
   }
 
@@ -90,14 +100,35 @@ export class IMService {
   }
 
   public getHistoryMsg(username, limit) {
-    return this.jMessageChenyu.getHistoryMessages({ type: 'single', appKey: this.appKey, username, limit });
+    return this.jMessageChenyu.getHistoryMessages({ type: 'single', appKey: this.appKey, username, limit, from: 0 });
   }
 
   public getConversation(username) {
-    let alert2 = this.alertCtrl.create({
-      message: JSON.stringify(this.jMessageChenyu.getConversation({ type: 'single', appKey: this.appKey, username}))
-    })
-    alert2.present();
     return this.jMessageChenyu.getConversation({ type: 'single', appKey: this.appKey, username});
   }
+
+  public addReceiveMessageListener(listen) {
+    this.jMessageChenyu.addReceiveMessageListener(listen);
+  };
+
+  public removeReceiveMessageListener(listen) {
+    this.jMessageChenyu.removeReceiveMessageListener(listen);
+  }
+
+  public addClickMessageNotificationListener(listen) {
+    this.jMessageChenyu.addClickMessageNotificationListener(listen);
+  }
+
+  public removeClickMessageNotificationListener(listen) {
+    this.jMessageChenyu.removeClickMessageNotificationListener(listen);
+  }
+
+  // public requestPerssion() {
+  //   this.androidPermissions.checkPermission(this.androidPermissions.PERMISSION.WRITE_EXTERNAL_STORAGE).then(
+  //     result => console.log('Has permission?',result.hasPermission),
+  //     err => this.androidPermissions.requestPermission(this.androidPermissions.PERMISSION.WRITE_EXTERNAL_STORAGE)
+  //   );
+
+  //   this.androidPermissions.requestPermissions([this.androidPermissions.PERMISSION.WRITE_EXTERNAL_STORAGE]);
+  // }
 }

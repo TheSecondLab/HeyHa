@@ -20,34 +20,14 @@
     </div>
     <div>
       <div *ngIf="tabIndex === 1">
-        <div class="personalList" (click)="navTo('ChatPage')">
-          <div class="iphoto"><img src="assets/imgs/iphoto.JPG" alt=""></div>
+        <div class="personalList" (click)="navTo('ChatPage', conversation.username)" *ngFor="let conversation of chatHistory">
+          <div class="iphoto"><img src={{conversation.image}} alt=""></div>
           <div class="cont">
             <div class="info">
-              <div class="name">张一鸣</div>
-              <div>2014-4-4</div>
+              <div class="name">{{conversation.nickname}} </div>
+              <div>{{conversation.date}}</div>
             </div>
-            <div class="content">您好，沃尔沃二翁人哇二色绕二奥尔沃二翁人哇二色绕二奥尔沃二翁人哇二色绕二奥</div>
-          </div>
-        </div>
-        <div class="personalList">
-          <div class="iphoto"><img src="assets/imgs/iphoto.JPG" alt=""></div>
-          <div class="cont">
-            <div class="info">
-              <div class="name">张一鸣</div>
-              <div>2014-4-4</div>
-            </div>
-            <div class="content">您好，沃尔沃二翁人哇二色绕二奥尔沃二翁人哇二色绕二奥尔沃二翁人哇二色绕二奥</div>
-          </div>
-        </div>
-        <div class="personalList">
-          <div class="iphoto"><img src="assets/imgs/iphoto.JPG" alt=""></div>
-          <div class="cont">
-            <div class="info">
-              <div class="name">张一鸣</div>
-              <div>2014-4-4</div>
-            </div>
-            <div class="content">您好，沃尔沃二翁人哇二色绕二奥尔沃二翁人哇二色绕二奥尔沃二翁人哇二色绕二奥</div>
+            <div class="content">{{conversation.latestMessage}}</div>
           </div>
         </div>
       </div>
