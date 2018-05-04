@@ -20,12 +20,14 @@
 </ion-header>
 <ion-content padding>
   <form [formGroup]="form">
-    <ion-textarea placeholder="说点什么吧…" rows="12" formControlName="record"></ion-textarea>
-    <div *ngFor="let imgUrl of photoList">
-      <img src={{imgUrl || ''}} alt="">
-    </div>
-    <div>
-      <div class="empty" *ngIf="photoList.length < imgLength" (click)='addPhoto()'></div>
-    </div>
+      <ion-textarea placeholder="说点什么吧…" rows="12" formControlName="record"></ion-textarea>
+      <div class="imgContainer">
+        <div *ngFor="let imgUrl of photoList" class="target">
+          <img src="{{imgUrl || ''}}" alt="" />
+        </div>
+        <div>
+          <div class="empty" *ngIf="photoList.length < 3" (click)='addPhoto()'></div>
+        </div>
+      </div>
   </form>
 </ion-content>

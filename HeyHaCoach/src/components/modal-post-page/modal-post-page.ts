@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavParams, ViewController, AlertController } from 'ionic-angular';
+import { NavParams, ViewController, AlertController, LoadingController } from 'ionic-angular';
 import {
   FormGroup,
   FormControl,
@@ -32,7 +32,8 @@ export class ModalPostPageComponent {
     public baseService: BaseService,
     public alertCtrl: AlertController,
     public multiUpload: MultipleUpLoadService,
-    public viewCtrl: ViewController
+    public viewCtrl: ViewController,
+    public loadingCtrl: LoadingController
   ) {
     this.form = new FormGroup({
       record: new FormControl('', Validators.required)
@@ -55,23 +56,49 @@ export class ModalPostPageComponent {
   }
 
   submit() {
+    let loading = this.loadingCtrl.create({
+      spinner: 'crescent',
+      content: '请稍后...'
+    });
+    loading.present();
+
     if (this.params.get('classId')) {
+      const params = new Map();
+      params.set('clazzId', this.params.get('classId'));
+      params.set('content', this.form.value.record);
+
       this.multiUpload.uploadFile(
         "/admin/dynamic/addDynamic",
         "file_img",
-        [{clazzId: this.params.get('classId')}, {content: this.form.value.record }],
+        params,
         this.photoList,
-        ()=> {this.viewCtrl.dismiss();}, () => {}
+        ()=> {
+          loading.dismiss();
+          this.viewCtrl.dismiss();
+        }, () => {
+          loading.dismiss();
+        }
       );
       return;
     }
 
+    const params = new Map();
+    params.set('introduction', this.form.value);
+    params.set('content', this.form.value.record);
+
     this.multiUpload.uploadFile(
       "/admin/user/updatePhotoKeyAndintroduction",
-      "file_photoKey", [{introduction: this.form.value }],
+      "file_photoKey",
+      // [{introduction: this.form.value }],
+      params,
       this.photoList,
-      ()=> { this.viewCtrl.dismiss(); },
-      () => {}
+      ()=> {
+        loading.dismiss();
+        this.viewCtrl.dismiss();
+      },
+      () => {
+        loading.dismiss();
+      }
     )
 
 

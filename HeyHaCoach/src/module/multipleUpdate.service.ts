@@ -100,8 +100,12 @@ export class MultipleUpLoadService {
       // params.forEach((value, key) => {
       //     this.formData.append(key, value);
       // });
-      this.formData.append('content', '123123');
-      this.formData.append('classId', '1');
+      // this.formData.append('content', '123123');
+      // this.formData.append('classId', '1');
+      params.forEach((value, key) => {
+        this.formData.append(key, value);
+      });
+
       this.http.post(`${this.domain}${path}`, this.formData).toPromise().then(res => {
         onSuccess(res);
       }).catch(error => {
