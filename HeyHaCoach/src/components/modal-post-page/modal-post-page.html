@@ -2,7 +2,13 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      发布
+      <div *ngIf="imgLength > 1; else other_content">
+          发布动态
+      </div>
+      
+      <ng-template #other_content>个人简历</ng-template>
+      <!-- <div *nfIf="imgLength > 1; then content">发布动态</div>
+      <ng-template #content>个人简历</ng-template> -->
     </ion-title>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
@@ -26,7 +32,7 @@
           <img src="{{imgUrl || ''}}" alt="" />
         </div>
         <div>
-          <div class="empty" *ngIf="photoList.length < 3" (click)='addPhoto()'></div>
+          <div class="empty" *ngIf="photoList.length < imgLength" (click)='addPhoto()'></div>
         </div>
       </div>
   </form>

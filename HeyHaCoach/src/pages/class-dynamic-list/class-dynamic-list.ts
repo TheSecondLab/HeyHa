@@ -47,6 +47,21 @@ export class ClassDynamicListPage {
     });
   }
 
+  // onDidDismiss(data) {
+  //   let alert = this.alertCtrl.create({
+  //     message: JSON.stringify(data)
+  //   });
+  //   alert.present();
+  // }
+//   ionViewCanEnter() :boolean {
+    
+//     if(){
+        
+//         return false;
+//     }
+//     return true;
+// }
+
 
   deleteDynamic(id) {
     this.baseService.postData('/admin/dynamic/deleteDynamic', { data: {id}, hideLoading: true }, (data)=> {

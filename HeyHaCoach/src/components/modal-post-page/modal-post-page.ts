@@ -74,7 +74,7 @@ export class ModalPostPageComponent {
         this.photoList,
         ()=> {
           loading.dismiss();
-          this.viewCtrl.dismiss();
+          this.viewCtrl.dismiss({ uploadRes: true });
         }, () => {
           loading.dismiss();
         }
