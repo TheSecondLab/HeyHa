@@ -7,26 +7,19 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-camera": {
+    "cordova-plugin-whitelist": {
       "PACKAGE_NAME": "com.gk.test"
     },
     "cordova-plugin-device": {
       "PACKAGE_NAME": "com.gk.test"
     },
-    "cordova-plugin-file-transfer": {
-      "PACKAGE_NAME": "com.gk.test"
-    },
     "cordova-plugin-ionic-keyboard": {
       "PACKAGE_NAME": "com.gk.test"
     },
-    "cordova-plugin-whitelist": {
+    "cordova-plugin-camera": {
       "PACKAGE_NAME": "com.gk.test"
     },
-    "jpush-phonegap-plugin": {
-      "APP_KEY": "b62940b22c4c70c0ee319808",
-      "PACKAGE_NAME": "com.gk.test"
-    },
-    "cordova-plugin-splashscreen": {
+    "cordova-plugin-file-transfer": {
       "PACKAGE_NAME": "com.gk.test"
     },
     "jmessage-phonegap-plugin": {
@@ -37,6 +30,13 @@
       "PACKAGE_NAME": "com.gk.test"
     },
     "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "com.gk.test"
+    },
+    "jpush-phonegap-plugin": {
+      "APP_KEY": "b62940b22c4c70c0ee319808",
+      "PACKAGE_NAME": "com.gk.test"
+    },
+    "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "com.gk.test"
     }
   },

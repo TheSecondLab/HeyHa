@@ -2,7 +2,7 @@
   "_args": [
     [
       "jpush-phonegap-plugin@3.4.1",
-      "/Users/robin/Documents/project/HeyHa/HeyHaStu"
+      "/Users/zhaoxing/privateSpace/HeyHa/HeyHaStu"
     ]
   ],
   "_from": "jpush-phonegap-plugin@3.4.1",
@@ -26,7 +26,7 @@
   ],
   "_resolved": "https://registry.npmjs.org/jpush-phonegap-plugin/-/jpush-phonegap-plugin-3.4.1.tgz",
   "_spec": "3.4.1",
-  "_where": "/Users/robin/Documents/project/HeyHa/HeyHaStu",
+  "_where": "/Users/zhaoxing/privateSpace/HeyHa/HeyHaStu",
   "author": {
     "name": "JiGuang"
   },
