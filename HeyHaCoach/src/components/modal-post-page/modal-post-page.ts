@@ -69,7 +69,7 @@ export class ModalPostPageComponent {
 
       this.multiUpload.uploadFile(
         "/admin/dynamic/addDynamic",
-        "file_img",
+        "file_image",
         params,
         this.photoList,
         ()=> {
@@ -83,8 +83,7 @@ export class ModalPostPageComponent {
     }
 
     const params = new Map();
-    params.set('introduction', this.form.value);
-    params.set('content', this.form.value.record);
+    params.set('introduction', this.form.value.record);
 
     this.multiUpload.uploadFile(
       "/admin/user/updatePhotoKeyAndintroduction",
