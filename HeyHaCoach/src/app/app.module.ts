@@ -50,6 +50,7 @@ import { ClassDynamicPage } from '../pages/class-dynamic/class-dynamic';
 import { ClassDynamicListPage } from '../pages/class-dynamic-list/class-dynamic-list';
 import { ModifiedPasswordPage } from '../pages/modified-password/modified-password';
 import { ModalPostPageComponent } from '../components/modal-post-page/modal-post-page';
+import { PostClassMessageComponent } from '../components/post-class-message/post-class-message';
 import { PostTraceRecordPage } from '../pages/post-trace-record/post-trace-record';
 import { MyChatPage } from '../pages/my-chat/my-chat';
 import { TaskDetailPage } from '../pages/task-detail/task-detail';
@@ -137,6 +138,7 @@ import { AlertService } from '../module/alertService.service';
     ClassDynamicListPage,
     ModifiedPasswordPage,
     ModalPostPageComponent,
+    PostClassMessageComponent,
     PostTraceRecordPage,
     MyChatPage,
     CourseSystemPage,

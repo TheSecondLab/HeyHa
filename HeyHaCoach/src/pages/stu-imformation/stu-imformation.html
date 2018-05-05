@@ -18,7 +18,7 @@
       <div class="iphoto"><img src="{{studentPhoto}}" alt=""></div>
       <div class="name">{{studentName}}</div>
     </div>
-    <div class="talk"></div>
+    <div class="talk" (click)="navTo('ChatPage', username)"></div>
   </div>
   <div class="stuInfo">
     <div class="items" *ngFor="let item of studentMsg">

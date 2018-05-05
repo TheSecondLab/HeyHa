@@ -38,7 +38,7 @@
             <div>{{item.code}}</div>
           </div>
           <button ion-button class="btn" *ngIf="item.notice == 'INACTIVE'" (click)="remindStu(item)">任务提醒</button>
-          <button ion-button class="btn" *ngIf="item.notice != 'INACTIVE'">已提醒</button>
+          <button ion-button class="btn dis" *ngIf="item.notice != 'INACTIVE'">已提醒</button>
         </div>
       </div>
       <div *ngSwitchCase="'finished'">

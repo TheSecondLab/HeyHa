@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Content, AlertController } from 'ionic-angular';
 
 import { BaseService } from '../../module/baseService.service';
 
@@ -21,9 +21,11 @@ export class StuImformationPage {
   studentMsg;
   studentName;
   studentPhoto;
+  username;
 
   constructor(
     public navCtrl: NavController, 
+    public alertCtrl: AlertController, 
     public baseService: BaseService, 
     public navParams: NavParams) {
     // this.studentId = this.navParams.get('item').id
@@ -46,10 +48,19 @@ export class StuImformationPage {
         { label: '详细住址', value: data.address },
         { label: '单位名称', value: data.school }
       ];
+      this.username = data.code;
       this.studentName = data.name;
       this.studentPhoto = data.photoUrl;
     });
 
   }
+
+  navTo(url, username) {
+    this.navCtrl.push(url, {
+      username
+    });
+  }
+
+
 
 }

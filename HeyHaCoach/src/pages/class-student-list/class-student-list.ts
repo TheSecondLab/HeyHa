@@ -17,26 +17,6 @@ import { BaseService } from '../../module/baseService.service';
 })
 export class ClassStudentListPage {
 
-  public list = [{
-    imgUrl: 'assets/imgs/iphoto.JPG',
-    name: '金田',
-    no: 'CFTA110500',
-    date: '2012年10月12号',
-    attendence: 4
-  }, {
-    imgUrl: 'assets/imgs/iphoto.JPG',
-    name: '金田',
-    no: 'CFTA110500',
-    date: '2012年10月12号',
-    attendence: 4
-  }, {
-    imgUrl: 'assets/imgs/iphoto.JPG',
-    name: '金田',
-    no: 'CFTA110500',
-    date: '2012年10月12号',
-    attendence: 4
-  }];
-
   // classId;
   classMsg: any;
   studentList: any;

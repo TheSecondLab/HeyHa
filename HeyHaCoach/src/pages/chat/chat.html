@@ -17,19 +17,19 @@
       <div *ngFor="let msg of chatHistrory">
         <div *ngIf="msg.type==='text';else imgBlock">
           <div class="chat-me"  *ngIf="msg.isMine; else elseBlock">
-            <div class="iphoto"><img src={{msg.imageUrl}} /></div>
+            <div class="iphoto"><img src={{userImg[msg.username]}} /></div>
             <div class="text">{{msg.content}}</div>
           </div>
           <ng-template #elseBlock>
             <div class="chat-other">
-              <div class="iphoto"><img src={{msg.imageUrl}} /></div>
+              <div class="iphoto"><img src={{userImg[msg.username]}} /></div>
               <div class="text">{{msg.content}}</div>
             </div>
           </ng-template>
         </div>
         <ng-template #imgBlock>
           <div class="chat-me"  *ngIf="msg.isMine; else elseBlock">
-            <div class="iphoto"><img src={{msg.imageUrl}} /></div>
+            <div class="iphoto"><img src={{userImg[msg.username]}} /></div>
             <div class="text"><img src={{msg.content}} /></div>
           </div>
           <ng-template #elseBlock>

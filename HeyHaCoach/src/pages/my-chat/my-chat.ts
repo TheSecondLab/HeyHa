@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
 
 import { IMService } from '../../module/imService.service';
 import { BaseService } from '../../module/baseService.service';
+import { PostClassMessageComponent } from '../../components/post-class-message/post-class-message';
 
 import {JmessageChenyu} from "jmessage-chenyu";
 
@@ -17,6 +18,8 @@ export class MyChatPage {
   public tabIndex = 1;
 
   chatHistory = [];
+  classList = [];
+  sendClasses = [];
 
   constructor(
     public navCtrl: NavController,
@@ -24,6 +27,7 @@ export class MyChatPage {
     public baseService: BaseService,
     public imService: IMService,
     public alertCtrl: AlertController,
+    public modalCtrl: ModalController,
     public jMessageChenyu: JmessageChenyu
   ) {
   }
@@ -44,62 +48,65 @@ export class MyChatPage {
 
   loadData() {
     this.chatHistory = [];
-    this.baseService.postData('/admin/chart/relation', { data: {} }, (data)=> {
-      data.forEach((relation) => {
-        this.imService.getConversation(relation.username).then((conversation) => {
-        // this.imService.getConversation('admin').then((conversation) => {
-          const msg = {
-            // username: 'admin',
-            username: relation.username,
-            image: relation.photoUrl,
-            name: conversation.title,
-            latestMessage: conversation.latestMessage.type === 'text' ? conversation.latestMessage.text : '[类型不支持预览]',
-            date: '',
-            nickname: relation.nickname
-          };
+    this.baseService.multiReq({
+      requests: [{
+        // 获取聊天关系
+        url: '/admin/chart/relation',
+        option: { data: {} }
+      },{
+        // 获取教练下的班级
+        url: '/admin/clazz/getAllClass',
+        option: { data: {} }
+      }],
+      onSuccess: (datas) => {
+        datas[0].forEach((relation) => {
+          this.imService.getConversation(relation.username).then((conversation) => {
+            const msg = {
+              username: relation.username,
+              image: relation.photoUrl,
+              name: conversation.title,
+              latestMessage: conversation.latestMessage.type === 'text' ? conversation.latestMessage.text : '[类型不支持预览]',
+              date: '',
+              nickname: relation.nickname
+            };
+  
+            this.chatHistory.push(msg);
+          })
+        });
+        
+        this.classList = datas[1];
 
-          this.chatHistory.push(msg);
-        })
-      });
-      // const promiseArr = data.map(relation => this.imService.getConversation(relation.username));
-      // Promise.all(promiseArr).then((data) => {
-      //   let alert = this.alertCtrl.create({
-      //     title: "123",
-      //     message: JSON.stringify(data),
-      //     buttons: [{
-      //       text: 'Ok',
-      //     }]
-      //   });
-      //   alert.present();
-      // }).catch((e) => {
-      //   let alert = this.alertCtrl.create({
-      //     title: "错误",
-      //     message: JSON.stringify(e),
-      //     buttons: [{
-      //       text: 'Ok',
-      //     }]
-      //   });
-      // })
-
+      }
     });
-    // this.imService.getHistoryMsg(null, null).then((data) => {
-    //   let alert = this.alertCtrl.create({
-    //     title: "123",
-    //     message: JSON.stringify(data),
-    //     buttons: [{
-    //       text: 'Ok',
-    //     }]
-    //   });
-    //   alert.present();
-    // }).catch((e) => {
-    //   let alert = this.alertCtrl.create({
-    //     title: "错误",
-    //     message: JSON.stringify(e),
-    //     buttons: [{
-    //       text: 'Ok',
-    //     }]
-    //   });alert.present();
+  }
+
+  selectItem(id) {
+    const active = [];
+    this.classList = this.classList.map((item) => {
+      
+      if(item.id == id) {
+        item.status = !item.status;
+        item.status && active.push(item.id);
+        return item;
+      }
+      item.status && active.push(item.id);
+      return item;
+    });
+
+    this.sendClasses = active;
+
+    // let alert = this.alertCtrl.create({
+    //   message: JSON.stringify(active)
     // })
+    // alert.present()
+  }
+
+  openModal() {
+    let modal = this.modalCtrl.create(PostClassMessageComponent, { classIds: this.sendClasses });
+    modal.onDidDismiss(data => {
+      this.loadData();
+    })
+    modal.present();
   }
 
 
