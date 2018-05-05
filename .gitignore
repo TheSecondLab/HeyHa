@@ -75,3 +75,5 @@ HeyHaCoach/platforms/
 **/dist
 
 **/.idea/
+
+.vscode/

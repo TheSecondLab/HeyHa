@@ -25,14 +25,16 @@
       <!-- <div><img src="assets/imgs/iphoto.JPG" alt=""></div>
       <div><img src="assets/imgs/iphoto.JPG" alt=""></div> -->
     </div>
-    <div class="bad" *ngIf="dynamic.zan; else elseBlock" (click)="zan(dynamic.id)">点赞</div>
-    <ng-template #elseBlock>
-      <div class="good" (click)="zan(dynamic.id)">点赞</div>
-    </ng-template>
+    <div class="btns">
+      <div class="bad" *ngIf="dynamic.zan; else elseBlock" (click)="zan(dynamic.id)">点赞</div>
+      <ng-template #elseBlock>
+        <div class="good" (click)="zan(dynamic.id)">点赞</div>
+      </ng-template>
 
-    <div class="bad" *ngIf="dynamic.collect; else uncollect" (click)="collect(dynamic.id)">点赞</div>
-    <ng-template #uncollect>
-      <div class="good" (click)="zan(dynamic.id)">点赞</div>
-    </ng-template>
+      <div class="nonselect" *ngIf="dynamic.collect; else uncollect" (click)="collect(dynamic.id)">收藏</div>
+      <ng-template #uncollect>
+        <div class="collect" (click)="collect(dynamic.id)">收藏</div>
+      </ng-template>
+    </div>
   </div>
 </ion-content>

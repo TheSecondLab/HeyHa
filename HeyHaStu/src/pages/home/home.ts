@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 
 import { BaseService } from '../../module/baseService.service';
 
@@ -13,8 +13,13 @@ export class HomePage {
   item = '';
   newsList = [];
   banners = [];
+  reminder = {
+    status: false,
+    imgUrl: '',
+    name: ''
+  };
 
-  constructor(public navCtrl: NavController, public baseService: BaseService) {
+  constructor(public navCtrl: NavController, public baseService: BaseService, public alertCtrl: AlertController) {
 
   }
 
@@ -34,10 +39,19 @@ export class HomePage {
       },{
         url: '/admin/sysactivity/sysactivity',
         option: { data: {} }
+      },{
+        url: '/admin/clazzSource/getStudentCompleteStatus',
+        option: { data: {} }
+      },{
+        url: '/admin/stucoached',
+        option: { data: {} }
       }],
       onSuccess: (datas) => {
         this.newsList = datas[0];
         this.banners = datas[1];
+        this.reminder.status = datas[2] === "UNCOMPLETE" ? false: true;
+        this.reminder.imgUrl = datas[3].photoUrl;
+        this.reminder.name = datas[3].name;
       }
     })
     // this.baseService.postData('/admin/sysactivity/threeunactivity', { data: {} }, (data)=> {
