@@ -1,6 +1,6 @@
 
 import { NavController, AlertController } from 'ionic-angular';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { BaseService } from '../../module/baseService.service';
 /**
  * Generated class for the PersonalInfoComponent component.
@@ -13,7 +13,7 @@ import { BaseService } from '../../module/baseService.service';
   templateUrl: 'personal-info.html'
 })
 export class PersonalInfoComponent {
-  item: any = {
+  @Input() item: any = {
     photoUrl: '',
     taekwondoId: '',
     expirationTimeEndStr: '',
@@ -33,31 +33,31 @@ export class PersonalInfoComponent {
     this.navCtrl.push(page)
   }
 
-  ngOnInit() {
-    this.loadData();
-  }
+  // ngOnInit() {
+  //   this.loadData();
+  // }
 
-  loadData() {
-    // const alert = this.alertCtrl.create({
-    //   title:'init',
-    //   message: JSON.stringify('init')
-    // })
-    // alert.present();
-    this.baseService.postData('/admin/student', { data: {} }, (data)=> {
-      this.item = data;
-      // const alert = this.alertCtrl.create({
-      //   title:'init',
-      //   message: JSON.stringify(data)
-      // })
-      // alert.present();
-    },
-    (error)=> {
-      const alert = this.alertCtrl.create({
-        title:'error',
-        message: JSON.stringify(error)
-      })
-      alert.present();
-    });
-  }
+  // loadData() {
+  //   // const alert = this.alertCtrl.create({
+  //   //   title:'init',
+  //   //   message: JSON.stringify('init')
+  //   // })
+  //   // alert.present();
+  //   this.baseService.postData('/admin/student', { data: {} }, (data)=> {
+  //     this.item = data;
+  //     // const alert = this.alertCtrl.create({
+  //     //   title:'init',
+  //     //   message: JSON.stringify(data)
+  //     // })
+  //     // alert.present();
+  //   },
+  //   (error)=> {
+  //     const alert = this.alertCtrl.create({
+  //       title:'error',
+  //       message: JSON.stringify(error)
+  //     })
+  //     alert.present();
+  //   });
+  // }
 
 }
