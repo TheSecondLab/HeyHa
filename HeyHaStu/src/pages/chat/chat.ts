@@ -2,13 +2,14 @@ import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, Content, LoadingController } from 'ionic-angular';
 import { IMService } from '../../module/imService.service';
 import { MultipleUpLoadService } from '../../module/multipleUpdate.service';
+import { BaseService } from '../../module/baseService.service';
 import {
   FormGroup,
   FormControl,
   Validators
 } from '@angular/forms';
 
-// import { JmessageChenyu } from "jmessage-chenyu";
+
 
 @IonicPage()
 @Component({
@@ -22,6 +23,7 @@ export class ChatPage {
   chatHistrory = [];
   form;
   inputs;
+  userImg;
 
   constructor(
     public imService: IMService,
@@ -29,7 +31,8 @@ export class ChatPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public uploadService: MultipleUpLoadService,
-    public loadingCtrl: LoadingController
+    public loadingCtrl: LoadingController,
+    public baseService: BaseService
   ) {
     this.form = new FormGroup({
       content: new FormControl("", Validators.required)
@@ -51,6 +54,21 @@ export class ChatPage {
   ionViewWillEnter() {
     const username = this.navParams.get('username');
 
+    this.baseService.postData('/admin/user/usernames', {
+      data: {},
+      array: {
+        username: [username, window.localStorage.getItem('username')]
+      }
+    }, (data)=> {
+      this.userImg = data;
+    },
+    (error)=> {
+      const alert = this.alertCtrl.create({
+        title:'error',
+        message: JSON.stringify(error)
+      })
+      alert.present();
+    });
     this.loadMessage(username);
     this.imService.createConversation(username);
     this.imService.addReceiveMessageListener(this.receiveMsgListen);
@@ -70,6 +88,7 @@ export class ChatPage {
 
   pushToArray(msgArr) {
     const arr = msgArr.map(msg =>({
+      username: msg.from.username,
       isMine: msg.isSend,
       imageUrl: '',
       content: msg.type === 'text' ? msg.text: msg.thumbPath,
@@ -94,6 +113,7 @@ export class ChatPage {
 
   newMessage(msg) {
     this.chatHistrory.push({
+      username: msg.from.username,
       isMine: msg.isSend,
       imageUrl: '',
       content: msg.type === 'text' ? msg.text: msg.thumbPath,

@@ -35,6 +35,7 @@ export class LoginPage {
 
   login() {
     this.baseService.postData("/admin/login", { data: this.form.value }, (data) => {
+      window.localStorage.setItem('username', data.code);
       this.jpush.setAlias({ sequence: 1, alias: data.code });
       this.imService.login(data.code);
       this.imService.addClickMessageNotificationListener((msg) => {
