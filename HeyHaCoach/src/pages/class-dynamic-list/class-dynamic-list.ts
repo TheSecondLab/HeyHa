@@ -31,6 +31,9 @@ export class ClassDynamicListPage {
 
   openModal() {
     let modal = this.modalCtrl.create(ModalPostPageComponent, { classId: this.classId });
+    modal.onDidDismiss(data => {
+      this.loadPageData();
+    })
     modal.present();
   }
 
@@ -46,7 +49,6 @@ export class ClassDynamicListPage {
       this.dynamicList = data;
     });
   }
-
 
   deleteDynamic(id) {
     this.baseService.postData('/admin/dynamic/deleteDynamic', { data: {id}, hideLoading: true }, (data)=> {

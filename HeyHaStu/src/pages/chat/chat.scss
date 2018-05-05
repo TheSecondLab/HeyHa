@@ -1,9 +1,13 @@
 page-chat {
   .wrap {
-    background-color: #F2F2F2;
-    .scroll-content {
-      padding-bottom: 60px!important;
-    }
+    background-color: #f2f2f2;
+    height: 100%;
+  }
+  .chatWrap {
+    padding: 16px 16px 0;
+    flex: 1;
+    position: relative;
+    overflow-y: auto;
   }
   @mixin chat($type: 'other') {
     display: flex;
@@ -68,6 +72,11 @@ page-chat {
     }
   }
 
+  .box {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
   .chat-other {
     @include chat();
   }
@@ -76,14 +85,13 @@ page-chat {
   }
 
   .chat-window {
-    position: fixed;
     display: flex;
+    background: #fff;
+    height: 50px;
+    box-sizing: border-box;
     align-items: center;
-    bottom: 0;
-    left: 0;
     width: 100%;
     padding: 6px 0 6px 9px;
-    background-color: #fff;
     .input {
       flex: 1;
       padding-right: 2px;

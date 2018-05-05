@@ -13,43 +13,45 @@
 </ion-header>
 
 
-<ion-content padding class="wrap" scrollDownOnLoad={{true}}>
-  <div class="chatWrap">
-    <div *ngFor="let msg of chatHistrory">
-
-      <div *ngIf="msg.type==='text';else imgBlock">
-        <div class="chat-me"  *ngIf="msg.isMine; else elseBlock">
-          <div class="iphoto"><img src={{msg.imageUrl}} /></div>
-          <div class="text">{{msg.content}}</div>
-        </div>
-        <ng-template #elseBlock>
-          <div class="chat-other">
+<ion-content class="wrap" >
+  <div class="box">
+    <div class="chatWrap">
+      <div *ngFor="let msg of chatHistrory">
+        <div *ngIf="msg.type==='text';else imgBlock">
+          <div class="chat-me"  *ngIf="msg.isMine; else elseBlock">
             <div class="iphoto"><img src={{msg.imageUrl}} /></div>
             <div class="text">{{msg.content}}</div>
           </div>
-        </ng-template>
-      </div>
-      <ng-template #imgBlock>
-        <div class="chat-me"  *ngIf="msg.isMine; else elseBlock">
-          <div class="iphoto"><img src={{msg.imageUrl}} /></div>
-          <div class="text"><img src={{msg.content}} /></div>
+          <ng-template #elseBlock>
+            <div class="chat-other">
+              <div class="iphoto"><img src={{msg.imageUrl}} /></div>
+              <div class="text">{{msg.content}}</div>
+            </div>
+          </ng-template>
         </div>
-        <ng-template #elseBlock>
-          <div class="chat-other">
-            <div class="iphoto"><img src={{msg.avatarThumbPath}} /></div>
+        <ng-template #imgBlock>
+          <div class="chat-me"  *ngIf="msg.isMine; else elseBlock">
+            <div class="iphoto"><img src={{msg.imageUrl}} /></div>
             <div class="text"><img src={{msg.content}} /></div>
           </div>
+          <ng-template #elseBlock>
+            <div class="chat-other">
+              <div class="iphoto"><img src={{msg.avatarThumbPath}} /></div>
+              <div class="text"><img src={{msg.content}} /></div>
+            </div>
+          </ng-template>
         </ng-template>
-      </ng-template>
-
+  
+      </div>
+    </div>
+    <div class="chat-window">
+      <div class="input">
+        <form (submit)="sendMsg()" [formGroup]="form">
+          <input type="text" placeholder="说点什么吧" [(ngModel)]="inputs" formControlName="content" />
+        </form>
+      </div>
+      <div class="add" (click)="chooseImage()"></div>
     </div>
   </div>
-  <div class="chat-window">
-    <div class="input">
-      <form (submit)="sendMsg()" [formGroup]="form">
-        <input type="text" placeholder="说点什么吧" [(ngModel)]="inputs" formControlName="content" />
-      </form>
-    </div>
-    <div class="add" (click)="chooseImage()"></div>
-  </div>
+  
 </ion-content>

@@ -26,7 +26,7 @@ export class PersonalInfoPage {
     public navParams: NavParams) {
   }
 
-  ionViewWillEnter() {
+  ngOnInit() {
     this.userInfo = this.navParams.get('userInfo');
     this.infos = [{
       label: '性别',
