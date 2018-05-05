@@ -7,7 +7,7 @@
     </ion-slides>
     <menu-bar></menu-bar>
   </div>
-  <reminder></reminder>
+  <reminder [data]="reminder"></reminder>
 
   <sub-title title='热点资讯' btnText='更多' (onTitleClick)='titleClick()'></sub-title>
   <news-list-thumb [list]=newsList></news-list-thumb>

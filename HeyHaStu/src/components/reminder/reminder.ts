@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 @Component({
@@ -6,12 +6,16 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'reminder.html'
 })
 export class ReminderComponent {
+  @Input() data = {
+    status: false,
+    imgUrl: '',
+    name: ''
+  };
 
   constructor(public navCtrl: NavController) {
   }
 
   navTo() {
-    console.log('123')
     this.navCtrl.push('TrainPage');
   }
 }
