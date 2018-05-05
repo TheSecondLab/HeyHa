@@ -11,7 +11,8 @@ import { LoginPage } from '../pages/login/login';
 interface ReqOption {
   data: any,
   myHeader?: any,
-  hideLoading?: boolean
+  hideLoading?: boolean,
+  array?: any
 }
 
 interface ResData {
@@ -139,7 +140,7 @@ export class BaseService {
       loading.present();
     }
 
-    const { data, myHeader } = option;
+    const { data, myHeader, array } = option;
     const headers = new HttpHeaders({ 'Content-Type': 'application/x-www-form-urlencoded' });
     // headers.append('withCredentials', 'true');
     // console.log(headers);
@@ -153,6 +154,12 @@ export class BaseService {
     for (const key in data) {
       params.append(key, data[key]);
     };
+
+    for (const key in array) {
+      array[key].forEach((value) => {
+        params.append(key, value)
+      });
+    }
 
     // const domain = 'http://test.hu0572.cn';
     const domain = 'http://api.zjztty.com';
