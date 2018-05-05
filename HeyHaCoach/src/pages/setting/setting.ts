@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { BaseService } from '../../module/baseService.service';
+import { LoginPage } from '../login/login';
 
 /**
  * Generated class for the SettingPage page.
@@ -26,7 +27,7 @@ export class SettingPage {
 
   logout() {
     this.baseService.postData('/admin/logout', { data: {} }, ()=> {
-      this.navCtrl.push('LoginPage');
+      this.navCtrl.push(LoginPage);
     });
   }
 
