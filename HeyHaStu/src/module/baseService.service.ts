@@ -87,7 +87,7 @@ export class BaseService {
       loading.dismiss();
       const timeout = datas.filter((data) => data.status === 'SESSION_OUT');
       if(timeout.length > 0) {
-        this.alertService.showTimeout();
+        this.sessionTimeout();
         return;
       }
 
@@ -180,7 +180,7 @@ export class BaseService {
         return;
       }
       if(data.status === 'SESSION_OUT') {
-        this.alertService.showTimeout();
+        this.sessionTimeout();
       }
 
       if (typeof onError === 'function') {
