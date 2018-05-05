@@ -32,21 +32,17 @@
         </div>
       </div>
       <div *ngIf="tabIndex === 2">
-        <div class="classList">
-          <div class="type">12</div>
+        <div
+          [ngClass]="{'classListAct': item.status, 'classList': !item.status}"
+          *ngFor="let item of classList;index as i" (click)="selectItem(item.id)"
+        >
+          <div class="type"  status>{{i + 1}}</div>
           <div class="cont">
-            <div class="name">三年二班</div>
-            <div class="time">课程时间：2012-2-2</div>
+            <div class="name">{{item.name}}</div>
+            <div class="time">课程时间：{{item.clazzTime}}</div>
           </div>
         </div>
-        <div class="classList act">
-          <div class="type">12</div>
-          <div class="cont">
-            <div class="name">三年二班</div>
-            <div class="time">课程时间：2012-2-2</div>
-          </div>
-        </div>
-        <button ion-button full class="btn">发送消息</button>
+        <button ion-button full class="btn" (click)="openModal()">发送消息</button>
       </div>
     </div>
   </div>

@@ -16,6 +16,7 @@ import { TraceListComponent } from './trace-list/trace-list';
 // import { ExerciseListComponent } from './exercise-list/exercise-list';
 import { ModalPostPageComponent } from './modal-post-page/modal-post-page';
 import { CourseListComponent } from './course-list/course-list';
+import { PostClassMessageComponent } from './post-class-message/post-class-message';
 // import { DropdownComponent } from './dropdown/dropdown';
 
 @NgModule({
@@ -30,6 +31,7 @@ import { CourseListComponent } from './course-list/course-list';
     TraceListComponent,
     // ExerciseListComponent,
     ModalPostPageComponent,
+    PostClassMessageComponent,
     // DropdownComponent
   ],
 	imports: [CommonModule, IonicModule],
@@ -43,6 +45,7 @@ import { CourseListComponent } from './course-list/course-list';
     // StuListComponent,
     TraceListComponent,
     ModalPostPageComponent,
+    PostClassMessageComponent,
     // DropdownComponent
   ]
 })

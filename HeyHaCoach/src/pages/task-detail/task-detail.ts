@@ -51,22 +51,32 @@ export class TaskDetailPage {
       }],
       onSuccess: (datas) => {
         this.taskList = datas[0];
-        this.completeStu = datas[1].map((obj) => {
-          if (obj.completeStatus === 'COMPLETE') {
-            return obj;
-          } else {
-            this.uncompleteStu.push(obj);
-          }
-        });
+        this.handleStudentList(datas[1]);
+
       }
     });
   
   }
 
+  handleStudentList(data) {
+    let completeStu = [], uncompleteStu = [];
+    completeStu = data.map((obj) => {
+      if (obj.completeStatus === 'COMPLETE') {
+        return obj;
+      } else {
+        uncompleteStu.push(obj);
+      }
+    });
+    this.completeStu = completeStu;
+    this.uncompleteStu = uncompleteStu
+  }
+
   remindStu(item) {
     if (item.notice === 'INACTIVE') {
-      this.baseService.postData('/admin/clazzSource/noticeClazzSource', { data: { id: this.id, memberId: item.id } }, (data)=> {
-       
+      this.baseService.postData('/admin/clazzSource/noticeClazzSource', { data: { id: this.id, memberId: item.id }, hideLoading: true }, (data)=> {
+        this.baseService.postData('/admin/clazzSource/getEmployeeClazzSourceLearning', { data: { id: this.id } }, (data)=> {
+          this.handleStudentList(data);
+        })
       });
       
     }

@@ -7,7 +7,7 @@
 <ion-content>
     <ion-slides pager="true" loop="true" class="banner">
       <ion-slide *ngFor="let item of bannerList" class="list" >
-        <div style="overflow: hidden;" (click)="navToNews(item)"><img src="{{item.coverUrl}}" style="width:100%" /></div>
+        <a style="overflow: hidden;display: block" (click)="openLink(item.hyperlink)"><img src="{{item.coverUrl}}" style="width:100%" /></a>
       </ion-slide>
     </ion-slides>
     <div class="searchWrap">
