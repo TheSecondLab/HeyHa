@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { App, IonicPage, NavController, NavParams } from 'ionic-angular';
 import { BaseService } from '../../module/baseService.service';
 import { LoginPage } from '../login/login';
 
@@ -17,7 +17,10 @@ import { LoginPage } from '../login/login';
 })
 export class SettingPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public baseService: BaseService) {
+  constructor(
+    public app: App,
+    public navCtrl: NavController,
+    public navParams: NavParams, public baseService: BaseService) {
   }
 
   
@@ -27,7 +30,9 @@ export class SettingPage {
 
   logout() {
     this.baseService.postData('/admin/logout', { data: {} }, ()=> {
-      this.navCtrl.push(LoginPage);
+      // this.navCtrl.push(LoginPage);
+      // this.navCtrl.setRoot(LoginPage);
+      this.app.getRootNav().setRoot(LoginPage);
     });
   }
 

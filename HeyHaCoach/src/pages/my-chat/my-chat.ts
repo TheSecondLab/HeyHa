@@ -102,9 +102,19 @@ export class MyChatPage {
   }
 
   openModal() {
+    if(!this.sendClasses.length) {
+      let alert = this.alertCtrl.create({
+        title: '提示',
+        message: '您还没有选择班级哦~',
+        buttons: ['确定']
+      });
+      alert.present();
+      return;
+    }
     let modal = this.modalCtrl.create(PostClassMessageComponent, { classIds: this.sendClasses });
     modal.onDidDismiss(data => {
       this.loadData();
+      this.sendClasses = [];
     })
     modal.present();
   }

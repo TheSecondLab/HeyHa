@@ -5,7 +5,7 @@ import { Observable } from 'rxjs/Observable';
 import { AlertService } from './alertService.service';
 import { Globals } from "./global";
 
-// import { LoginPage } from '../pages/login/login';
+import { LoginPage } from '../pages/login/login';
 
 interface ReqOption {
   data: any,

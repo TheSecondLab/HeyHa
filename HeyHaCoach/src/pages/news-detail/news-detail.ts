@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { BaseService } from './../../module/baseService.service';
 
 /**
  * Generated class for the NewsDetailPage page.
@@ -15,12 +16,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class NewsDetailPage {
 
-  articleData: any;
+  articleData = {};
   articleTitle: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public baseService: BaseService,
+    public alertCtrl: AlertController,
+    public navParams: NavParams) {
+
     this.articleTitle = this.navParams.get('item').name;
-    this.articleData = this.navParams.get('item');
+    this.baseService.postData('/admin/sysactivity/oneactivity', { data: { id: this.navParams.get('item').id } }, (data)=> {
+      this.articleData = data;
+     
+    });
+
   }
 
 }

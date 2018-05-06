@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavController, AlertController } from 'ionic-angular';
 import { JPush } from '@jiguang-ionic/jpush';
 import { IMService } from '../../module/imService.service';
 
@@ -23,6 +23,7 @@ export class LoginPage {
     public navCtrl: NavController,
     public imService: IMService,
     public jPush: JPush,
+    public alertCtrl: AlertController,
     public baseService: BaseService) {
     this.form = new FormGroup({
       username: new FormControl("zdl", Validators.required),
@@ -33,6 +34,7 @@ export class LoginPage {
   login() {
     this.baseService.postData("/admin/login", { data: this.form.value }, (data) => {
       window.localStorage.setItem('username', data.code);
+
       this.jPush.setAlias({ sequence: 1, alias: data.username });
       this.imService.login(data.username);
       this.imService.addClickMessageNotificationListener((msg) => {

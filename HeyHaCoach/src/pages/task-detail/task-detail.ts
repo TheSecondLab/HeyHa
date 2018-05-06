@@ -60,9 +60,9 @@ export class TaskDetailPage {
 
   handleStudentList(data) {
     let completeStu = [], uncompleteStu = [];
-    completeStu = data.map((obj) => {
+    data.forEach((obj) => {
       if (obj.completeStatus === 'COMPLETE') {
-        return obj;
+        completeStu.push(obj);
       } else {
         uncompleteStu.push(obj);
       }
@@ -83,9 +83,6 @@ export class TaskDetailPage {
     return;
   }
 
-  changeTab(idx) {
-    this.tabIndex = idx;
-  }
 
   navTo(item) {
     this.navCtrl.push('CourseDetailPage', {
