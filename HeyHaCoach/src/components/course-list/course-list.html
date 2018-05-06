@@ -3,7 +3,7 @@
   <div class="list" *ngFor="let item of courseList" (click)="goCourseDetail(item)">
     <div class="type"></div>
     <div class="cont">
-      <div class="name">【{{item.yearStr}}版】{{item.materialName}}</div>
+      <div class="name">【{{item.yearStr}}版】{{item.name}}</div>
       <div class="time">动作要求：{{item.claim}}</div>
     </div>
   </div>
