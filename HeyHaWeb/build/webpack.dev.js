@@ -10,7 +10,7 @@ module.exports = merge(baseConfig, {
     hot: true
   },
   plugins: [
-    new webpack.NamedModulesPlugin(),
+    // new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()
   ]
 })

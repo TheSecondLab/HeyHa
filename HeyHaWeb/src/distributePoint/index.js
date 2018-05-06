@@ -48,7 +48,7 @@ class DestribuyePointComp extends C {
               <tr>
                 <td>18/2/1</td>
                 <td>课堂纪律差</td>
-                <td><div>约翰列侬，约翰列侬，约翰列侬，约翰列侬，约翰列侬，约翰列侬，</div></td>
+                <td><div>约翰1列侬，约翰列侬，约翰列侬，约翰列侬，约翰列侬，约翰列侬，</div></td>
                 <td>100</td>
                 <td><span className={style.del} onClick={this.deleteStu}>删除</span></td>
               </tr>

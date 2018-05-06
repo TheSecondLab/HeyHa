@@ -1,6 +1,6 @@
 const axios = require('axios');
 
-const domain = 'http://test.hu0572.cn';
+const domain = 'http://localhost:3000';
 
 const post = (path, data) => new Promise((resolve, reject) => {
   var params = new URLSearchParams();
