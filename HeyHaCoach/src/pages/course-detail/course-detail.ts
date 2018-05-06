@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 
 import { BaseService } from '../../module/baseService.service';
 
@@ -16,17 +16,23 @@ import { BaseService } from '../../module/baseService.service';
   templateUrl: 'course-detail.html',
 })
 export class CourseDetailPage {
-  courseDetail = {};
+  courseDetail = {
+    videoUrl: '',
+    coverUrl: '',
+    claim: ''
+  };
   courseName = '';
-  videoUrl = '';
+  // videoUrl = '';
   claim = '';
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public baseService: BaseService) {
+    public baseService: BaseService,
+    public alertCtrl: AlertController
+  ) {
   }
-  // 
+  //
   // showContent(e) {
   //   const div = e.currentTarget;
   //   if (div.className.indexOf('hidden') > 0) {
