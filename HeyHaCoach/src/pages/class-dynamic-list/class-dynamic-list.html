@@ -15,7 +15,7 @@
 
 
 <ion-content padding>
-  <div class="dynamic" *ngFor="let dynamic of dynamicList">
+  <div class="dynamic" *ngFor="let dynamic of dynamicList" >
     <div class="assist">
       <div class="time">{{dynamic.publishTimeStr}}</div>
       <div class="delete" (click)="deleteDynamic(dynamic.id)"></div>

@@ -16,7 +16,7 @@ import { BaseService } from '../../module/baseService.service';
   templateUrl: 'course-detail.html',
 })
 export class CourseDetailPage {
-  courseDetail = [];
+  courseDetail = {};
   courseName = '';
   videoUrl = '';
   claim = '';
@@ -26,23 +26,31 @@ export class CourseDetailPage {
     public navParams: NavParams,
     public baseService: BaseService) {
   }
-
-  showContent(e) {
-    const div = e.currentTarget;
-    if (div.className.indexOf('hidden') > 0) {
-      div.className = div.className.replace('hidden', '')
-    } else {
-      div.className = `${div.className} hidden`;
-    }
-  }
+  // 
+  // showContent(e) {
+  //   const div = e.currentTarget;
+  //   if (div.className.indexOf('hidden') > 0) {
+  //     div.className = div.className.replace('hidden', '')
+  //   } else {
+  //     div.className = `${div.className} hidden`;
+  //   }
+  // }
 
   ionViewWillEnter() {
-    const course =this.navParams.get('item');
-    this.courseName = course.name;
-    this.videoUrl = course.videoPlayUrl;
-    this.claim = course.claim;
+
+    // this.videoUrl = course.videoPlayUrl;
+    // this.claim = course.claim;
+    this.loadData(this.navParams.get('item').capitalId);
+    this.courseName = this.navParams.get('item').name;
 
   }
+
+  loadData(id) {
+    this.baseService.postData('/admin/capital/onecapital', { data: { capitalId: id } }, (data)=> {
+      this.courseDetail = data;
+    });
+  }
+
 
 
 

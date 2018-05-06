@@ -31,14 +31,25 @@ export class ClassDynamicListPage {
   }
 
   zan(id) {
-    this.baseService.postData('/admin/dynamic/zanDynamic', { data: {id}, hideLoading: true }, (data)=> {
-      this.loadData();
+    this.baseService.postData('/admin/dynamic/zanDynamic', { data: {id}, hideLoading: false }, (data)=> {
+      this.dynamicList.some((item) => {
+        if(item.id == id) {
+          item.zan = !item.zan;
+          return true;
+        }
+      })
     });
   }
 
   collect(id){
-    this.baseService.postData('/admin/dynamic/collectDynamic', { data: {id}, hideLoading: true }, (data)=> {
-      this.loadData();
+    this.baseService.postData('/admin/dynamic/collectDynamic', { data: {id}, hideLoading: false }, (data)=> {
+      
+      this.dynamicList.some((item) => {
+        if(item.id == id) {
+          item.collect = !item.collect;
+          return true;
+        }
+      })
     });
   }
 }

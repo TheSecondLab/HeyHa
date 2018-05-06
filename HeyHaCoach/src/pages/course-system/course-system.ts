@@ -35,7 +35,7 @@ export class CourseSystemPage {
   loadPageData() {
     this.baseService.multiReq({
       requests: [{
-        url: '/admin/capital/capital',
+        url: '/admin/clazzSource/getCapital',
         option: { data: {} }
       },{
         url: '/admin/capital/getMaterial',
