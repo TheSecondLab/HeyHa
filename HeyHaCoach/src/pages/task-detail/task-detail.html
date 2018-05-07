@@ -33,7 +33,7 @@
     <div [ngSwitch]="type">
       <div *ngSwitchCase="'unfinish'">
         <div class="finishStatusList" *ngFor="let item of uncompleteStu">
-          <div class="iphoto"><img src="{{item.photoUrl}}" alt=""></div>
+          <div class="iphoto"><img src="{{item.photoImageUrl}}" alt=""></div>
           <div class="msg">
             <div class="name">{{item.name}}</div>
             <div>{{item.code}}</div>
@@ -45,7 +45,7 @@
     
       <div *ngSwitchCase="'finished'">
         <div class="finishStatusList" *ngFor="let item of completeStu">
-          <div class="iphoto"><img src="{{item.photoUrl}}" alt=""></div>
+          <div class="iphoto"><img src="{{item.photoImageUrl}}" alt=""></div>
           <div class="msg">
             <div class="name">{{item.name}}</div>
             <div>{{item.code}}</div>
