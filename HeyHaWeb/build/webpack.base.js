@@ -40,7 +40,26 @@ module.exports = {
     }, {
       test: /\.html$/,
       loader: 'html-loader'
-    }]
+    }, {
+      test: /\.less$/,
+      exclude: /node_modules/,
+      use: [
+        'style-loader',
+        // Using source maps breaks urls in the CSS loader
+        // https://github.com/webpack/css-loader/issues/232
+        // This comment solves it, but breaks testing from a local network
+        // https://github.com/webpack/css-loader/issues/232#issuecomment-240449998
+        // 'css-loader?sourceMap',
+        { loader: 'css-loader' },
+        { loader: 'less-loader' }
+      ],
+  },{
+    test: /\.css/,
+    loader: [
+      'style-loader',
+      { loader: 'css-loader'},
+    ]
+}]
   },
   plugins: [
     new CleanWebpackPlugin(['../dist']),

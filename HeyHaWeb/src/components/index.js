@@ -5,6 +5,7 @@ import StuList from './stuList';
 import Panel from './panel';
 import PageTitle from './pageTitle';
 import SideMenu from './sideMenu';
+import Message from './message';
 
 export default {
   Header,
@@ -13,5 +14,6 @@ export default {
   StuList,
   Panel,
   PageTitle,
-  SideMenu
+  SideMenu,
+  Message
 };

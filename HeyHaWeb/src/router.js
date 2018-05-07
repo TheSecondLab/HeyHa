@@ -41,6 +41,9 @@ const routes = [
   }, { path: '/postMoment',
     exact: true,
     component: PostMoment
+  }, { path: '/search',
+    exact: true,
+    component: SearchComp
   }, { 
     component: Root,
     path: '/',
@@ -51,9 +54,6 @@ const routes = [
       }, { path: '/classList',
         exact: true,
         component: AttendenceComp
-      }, { path: '/search',
-        exact: true,
-        component: SearchComp
       }, { path: '/point',
         exact: true,
         component: DestribuyePointComp

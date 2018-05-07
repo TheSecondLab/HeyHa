@@ -32,7 +32,7 @@ class Task extends C {
           </div>
         </div>
         <div className={style.content}>
-          <SideMenu />
+          <SideMenu active={4}/>
           <div className={style.menuContent}>
             <div className={style.box}>
               <HeaderBar title='本班学员' hasBorder={true}>

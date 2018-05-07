@@ -25,50 +25,61 @@ class DestribuyePointComp extends C {
   }
   render() {
     return (
-      <div className={style.content}>
-        <SideMenu />
-        <div className={style.menuContent}>
-        <div className={style.wrap}>
-          <div className={style.header}>
-            <HeaderBar title='积分发放' hasBorder={true}>
-              <HeaderOpa pagePush={this.addStu} />
-            </HeaderBar>
+      <div>
+        <div className={style.header}>
+          <div>
+            <div className={style.name}>红黑精英班</div>
+            <div className={style.time}>每周六、日10：00-11：00</div>
           </div>
-          <table className={style.pointTable}>
-            <thead>
-              <tr>
-                <td>发放日期</td>
-                <td>原因</td>
-                <td>对象</td>
-                <td>分值</td>
-                <td>操作</td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>18/2/1</td>
-                <td>课堂纪律差</td>
-                <td><div>约翰1列侬，约翰列侬，约翰列侬，约翰列侬，约翰列侬，约翰列侬，</div></td>
-                <td>100</td>
-                <td><span className={style.del} onClick={this.deleteStu}>删除</span></td>
-              </tr>
-              <tr>
-                <td>18/2/1</td>
-                <td>课堂纪律差</td>
-                <td><div>约翰列侬，约翰列侬，约翰列侬，约翰列侬，约翰列侬，约翰列侬，</div></td>
-                <td>100</td>
-                <td><span className={style.del}>删除</span></td>
-              </tr>
-              <tr>
-                <td>18/2/1</td>
-                <td>课堂纪律差</td>
-                <td><div>约翰列侬，约翰列侬，约翰列侬，约翰列侬，约翰列侬，约翰列侬，</div></td>
-                <td>100</td>
-                <td><span className={style.del}>删除</span></td>
-              </tr>
-            </tbody>
-          </table>
+          <div>
+            <span className={style.else}>其他班级</span>
+          </div>
         </div>
+        <div className={style.content}>
+          <SideMenu active={2} />
+          <div className={style.menuContent}>
+            <div className={style.wrap}>
+              <div className={style.headerBar}>
+                <HeaderBar title='积分发放' hasBorder={true}>
+                  <HeaderOpa pagePush={this.addStu} />
+                </HeaderBar>
+              </div>
+              <table className={style.pointTable}>
+                <thead>
+                  <tr>
+                    <td>发放日期</td>
+                    <td>原因</td>
+                    <td>对象</td>
+                    <td>分值</td>
+                    <td>操作</td>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>18/2/1</td>
+                    <td>课堂纪律差</td>
+                    <td><div>约翰1列侬，约翰列侬，约翰列侬，约翰列侬，约翰列侬，约翰列侬，</div></td>
+                    <td>100</td>
+                    <td><span className={style.del} onClick={this.deleteStu}>删除</span></td>
+                  </tr>
+                  <tr>
+                    <td>18/2/1</td>
+                    <td>课堂纪律差</td>
+                    <td><div>约翰列侬，约翰列侬，约翰列侬，约翰列侬，约翰列侬，约翰列侬，</div></td>
+                    <td>100</td>
+                    <td><span className={style.del}>删除</span></td>
+                  </tr>
+                  <tr>
+                    <td>18/2/1</td>
+                    <td>课堂纪律差</td>
+                    <td><div>约翰列侬，约翰列侬，约翰列侬，约翰列侬，约翰列侬，约翰列侬，</div></td>
+                    <td>100</td>
+                    <td><span className={style.del}>删除</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
         </div>
       </div>
     )
