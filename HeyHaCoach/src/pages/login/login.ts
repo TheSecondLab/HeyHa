@@ -26,8 +26,8 @@ export class LoginPage {
     public alertCtrl: AlertController,
     public baseService: BaseService) {
     this.form = new FormGroup({
-      username: new FormControl("zdl", Validators.required),
-      password: new FormControl("123456", Validators.required)
+      username: new FormControl("", Validators.required),
+      password: new FormControl("", Validators.required)
     });
   }
 
@@ -42,7 +42,7 @@ export class LoginPage {
           username: msg.from.username
         });
       })
-      this.navCtrl.push('TabsPage', {
+      this.navCtrl.setRoot('TabsPage', {
         userInfo: data
       });
     });

@@ -28,8 +28,8 @@ export class LoginPage {
     public jpush: JPush
   ) {
     this.form = new FormGroup({
-      username: new FormControl("CFTA18A001", Validators.required),
-      password: new FormControl("123456", Validators.required)
+      username: new FormControl("", Validators.required),
+      password: new FormControl("", Validators.required)
     });
   }
 

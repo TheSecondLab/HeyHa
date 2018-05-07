@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
+import { BaseService } from '../../module/baseService.service';
+import { ModalPostPageComponent } from '../../components/modal-post-page/modal-post-page';
 
 /**
  * Generated class for the PersonalInfoPage page.
@@ -15,42 +17,54 @@ import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angu
 })
 export class PersonalInfoPage {
 
-  userInfo: any;
-  infos: any;
-// 性别 入职时间 联系电话 身份证号 详细住址 职级 段位
-  
-
+  userInfo = {};
+  infos = [];
   constructor(
     public navCtrl: NavController,
+    public baseService: BaseService,
+    public modalCtrl: ModalController,
     public alertCtrl: AlertController,
     public navParams: NavParams) {
   }
 
   ngOnInit() {
-    this.userInfo = this.navParams.get('userInfo');
-    this.infos = [{
-      label: '性别',
-      value: this.userInfo.sexStr
-    },{
-      label: '入职时间',
-      value: this.userInfo.inTimeStr
-    },{
-      label: '联系电话',
-      value: this.userInfo.tel
-    },{
-      label: '身份证号',
-      value: this.userInfo.userId
-    },{
-      label: '详细住址',
-      value: this.userInfo.address
-    },{
-      label: '职级',
-      value: this.userInfo.jobLevel
-    },{
-      label: '段位',
-      value: this.userInfo.levelName
-    }]
+    this.loadPageInfo();
   }
+
+  openModal() {
+    let modal = this.modalCtrl.create(ModalPostPageComponent, { userInfo: this.userInfo });
+    modal.present();
+  }
+
+  loadPageInfo() {
+    this.baseService.postData('/admin/coached', { data: {} }, (data)=> {
+      this.userInfo = data;
+      this.infos = [{
+        label: '性别',
+        value: data.sexStr
+      },{
+        label: '入职时间',
+        value: data.inTimeStr
+      },{
+        label: '联系电话',
+        value: data.tel
+      },{
+        label: '身份证号',
+        value: data.userId
+      },{
+        label: '详细住址',
+        value: data.address
+      },{
+        label: '职级',
+        value: data.jobLevel
+      },{
+        label: '段位',
+        value: data.levelName
+      }];
+    });
+    
+  }
+
 
 
 }
