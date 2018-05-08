@@ -1,7 +1,7 @@
 const axios = require('axios');
 
 // const domain = 'http://localhost:3000';
-const domain = '';
+const domain = '/api';
 
 const post = (path, data) => new Promise((resolve, reject) => {
   var params = new URLSearchParams();
