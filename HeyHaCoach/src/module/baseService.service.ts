@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { App, AlertController, LoadingController } from 'ionic-angular';
-import { Observable } from 'rxjs/Observable';
-import { AlertService } from './alertService.service';
 import { Globals } from "./global";
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/forkJoin'
 
-import { LoginPage } from '../pages/login/login';
+import { AlertService } from './alertService.service';
+// import { LoginPage } from '../pages/login/login';
 
 interface ReqOption {
   data: any,
@@ -18,16 +19,14 @@ interface ResData {
   data: any,
   msg: string,
   status: string
-}
+};
+
 
 @Injectable()
 export class BaseService {
-  constructor(
-    public app: App,
-    public http: HttpClient,
-    public loadingCtrl: LoadingController,
-    public alertService: AlertService,
-    public alertCtrl: AlertController) {
+
+
+  constructor(public app: App, public http: HttpClient, public loadingCtrl: LoadingController, public alertCtrl: AlertController, public alertService: AlertService) {
   }
 
   sessionTimeout() {
@@ -88,7 +87,7 @@ export class BaseService {
       loading.dismiss();
       const timeout = datas.filter((data) => data.status === 'SESSION_OUT');
       if(timeout.length > 0) {
-        this.alertService.showTimeout();
+        this.sessionTimeout();
         return;
       }
 
@@ -162,11 +161,20 @@ export class BaseService {
       });
     }
 
+    // const domain = 'http://test.hu0572.cn';
     const domain = 'http://api.zjztty.com';
     // const domain = '';
 
     this.http.post(`${domain}${url}`, params.toString() ,options).subscribe((data: ResData) => {
       loading.dismiss();
+      // let alert = this.alertCtrl.create({
+      //   title: "错误",
+      //   message: JSON.stringify(data),
+      //   buttons: [{
+      //     text: 'Ok',
+      //   }]
+      // });
+      // alert.present()
       if(data.status === 'SUCCESS') {
         onSuccess(data.data);
         return;
@@ -194,15 +202,15 @@ export class BaseService {
         onError("系统错误，请稍后重试");
         return;
       }
+
       let alert = this.alertCtrl.create({
         title: "错误",
-        // message: "系统错误，请稍后重试",
         message: JSON.stringify(error),
         buttons: [{
           text: 'Ok',
         }]
       });
-      alert.present()
+      alert.present();
     });
   }
 }

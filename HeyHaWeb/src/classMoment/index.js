@@ -31,7 +31,7 @@ class ClassMoment extends C {
           </div>
         </div>
         <div className={style.content}>
-          <SideMenu />
+          <SideMenu active={5} />
           <div className={style.menuContent}>
             <div className={style.box}>
               <HeaderBar title='班级动态'  hasBorder={true}>

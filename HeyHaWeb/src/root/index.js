@@ -21,10 +21,10 @@ class Root extends C {
   }
   render() {
     return (
-      <div>
+      <div style={{paddingTop: '20px'}}>
         <Header />
         <div className={style.wrap}>
-          <SideBar pagePush={this.pagePush} />
+          <SideBar pagePush={this.pagePush} location={this.props.location} history={this.props.history} />
           <div className={style.content}>
             {renderRoutes(this.props.route.routes)}
           </div>

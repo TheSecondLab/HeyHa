@@ -36,7 +36,7 @@ export class ModalPostPageComponent {
     public loadingCtrl: LoadingController
   ) {
     this.form = new FormGroup({
-      record: new FormControl('', Validators.required)
+      record: new FormControl(this.params.get('userInfo') ? this.params.get('userInfo').introduction : '', Validators.required)
     });
   }
 

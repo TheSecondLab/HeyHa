@@ -14,6 +14,7 @@
       background: #FFFFFF;
       box-shadow: 0 2px 4px 0 rgba(0,0,0,0.14);
       border-radius: 4px;
+      border: 2px solid transparent;
   
       &.act {
         border: 2px solid #6490FF;
@@ -38,6 +39,10 @@
           margin-right: 0;
         }
       }
+
+      &.done {
+        border-left: 4px solid #6490FF;
+      }
      
   
       img {
@@ -54,6 +59,11 @@
         .name {
           font-size: 17px;
           color: #333;
+          span {
+            color: #618BFF;
+            font-size: 14px;
+            vertical-align: 1px;
+          }
         }
         .no {
           font-size: 15px;
