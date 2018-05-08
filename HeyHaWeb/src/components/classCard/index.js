@@ -6,8 +6,8 @@ import * as style from './style.scss';
 class ClassCard extends C {
   render () {
     var result = [];
-    for(var i=0,len=this.props.data.length;i<len;i+=3){
-      result.push(this.props.data.slice(i,i+3));
+    for(var i = 0,len = this.props.data.length; i<len; i += 3){
+      result.push(this.props.data.slice(i, i + 3));
     }
     return (
       <div className={style.wrap}>
@@ -19,7 +19,7 @@ class ClassCard extends C {
                   return (
                     <div className={style.classList} key={`card-${i}`} onClick={() => this.props.goClass(o.id)} >
                       <div className={style.name}>{o.name}</div>
-                      <div className={style.time}>{o.date}</div>
+                      <div className={style.time}>{o.clazzTime}</div>
                     </div>
                   );
                 })}

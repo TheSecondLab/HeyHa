@@ -2,6 +2,8 @@ import React, { Component as C } from 'react'
 
 import { HeaderBar, StuList, SideMenu } from '../components/index';
 import * as style from './style.scss';
+import { post } from '../utils/service';
+
 
 const HeaderOpa = () => (
   <div className={style.opaWrap}>
@@ -17,10 +19,39 @@ class AttendenceComp extends C {
     super();
     this.choseItem = this.choseItem.bind(this);
     this.sellectAll = this.sellectAll.bind(this);
+    this.goSearch = this.goSearch.bind(this);
     this.state = {
-      stuList: Array.from(new Array(9), (val, index) => ({id: index})),
-      selectedList: []
+      stuList: [{}],
+      selectedList: [],
+      otherClassStudentList: []
     };
+  }
+
+  componentWillMount() {
+    const { id } = this.props.match.params;
+    let otherClassStudent = [];
+    if (this.props.location.query) {
+      otherClassStudent = this.props.location.query.otherClassStudent;
+    }
+    if (otherClassStudent.length) {
+      this.setState({
+        otherClassStudentList: otherClassStudent
+      });
+    }
+
+    this.loadClassStudent(id);
+    
+  }
+
+  loadClassStudent(id) {
+    post('/admin/integralQuery/getAttendanceMember', { clazzId: id }).then((data) => {
+      this.setState({
+        stuList: data
+      });
+
+    }).catch((err) => {
+      console.log(err)
+    });
   }
 
   sellectAll() {
@@ -53,8 +84,17 @@ class AttendenceComp extends C {
     });
   }
 
+  goSearch() {
+    const { id } = this.props.match.params;
+    this.props.history.push({
+      pathname:'/search',
+      query: { id },
+    })
+  }
+
   render() {
-    const { stuList } = this.state;
+    const { stuList, otherClassStudentList } = this.state;
+    const { id } = this.props.match.params;
 
     return (
       <div>
@@ -68,17 +108,25 @@ class AttendenceComp extends C {
           </div>
         </div>
         <div className={style.content}>
-          <SideMenu active={1} />
+          <SideMenu active={1} id={id} />
           <div className={style.menuContent}>
             <div className={style.box}>
               <HeaderBar title='本班学员'>
               <div className={style.opaWrap}>
-                <div className={style.input}><span onClick={() => { window.location.href = '/#/search' }}>跨班搜索</span></div>
+                <div className={style.input}><span onClick={this.goSearch}>跨班搜索</span></div>
                 <div className={style.lightBtn} onClick={this.sellectAll}><button>全选</button></div>
                 <div className={style.darkBtn}><button>确定</button></div>
               </div>
               </HeaderBar>
               <StuList alignment='3' data={stuList} choseItem={this.choseItem} />
+              {
+                otherClassStudentList.length
+                  ? <div>
+                      <HeaderBar title='跨班学员' />
+                      <StuList alignment='3' data={otherClassStudentList} choseItem={this.choseItem} />
+                    </div>
+                  : null
+              }
             </div>
           </div>
         </div>

@@ -20,6 +20,7 @@ class Task extends C {
   }
 
   render() {
+    const { id } = this.props.match.params;
     return (
       <div>
         <div className={style.header}>
@@ -32,7 +33,7 @@ class Task extends C {
           </div>
         </div>
         <div className={style.content}>
-          <SideMenu active={4}/>
+          <SideMenu active={4} id={id}/>
           <div className={style.menuContent}>
             <div className={style.box}>
               <HeaderBar title='本班学员' hasBorder={true}>

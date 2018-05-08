@@ -7,13 +7,18 @@ const StuList = (props) => (
   <div className={style[`stuList${props.alignment}n`]}>
     {
       props.data.map((item, idx) => {
-        // debugger
         return (
           <div className={item.status ? `${style.item} ${style.act}` : style.item} key={`stuList-${idx}`} onClick={() => {props.choseItem(item.id)}}>
-            <img src='http://www.qqzhi.com/uploadpic/2014-09-23/000247589.jpg'  alt=''/>
+            <img src={item.photoUrl}  alt=''/>
             <div className={style.msg}>
-              <div className={style.name}>凯里<span>· 已出勤</span></div>
-              <div className={style.no}>ZTTY18A001</div>
+              <div className={style.name}>{item.name}
+              {
+                item.attendanceType ? 
+                  <span>· 已出勤</span> :
+                  null
+              }
+            </div>
+              <div className={style.no}>{item.code}</div>
             </div>
           </div>
         )

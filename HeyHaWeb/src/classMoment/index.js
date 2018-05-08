@@ -19,6 +19,7 @@ class ClassMoment extends C {
   }
 
   render(){
+    const { id } = this.props.match.params;
     return (
       <div>
         <div className={style.header}>
@@ -31,7 +32,7 @@ class ClassMoment extends C {
           </div>
         </div>
         <div className={style.content}>
-          <SideMenu active={5} />
+          <SideMenu active={5} id={id} />
           <div className={style.menuContent}>
             <div className={style.box}>
               <HeaderBar title='班级动态'  hasBorder={true}>

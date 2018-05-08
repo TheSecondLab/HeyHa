@@ -21,13 +21,18 @@ import { post } from '../utils/service';
 // }
 
 class Login extends React.Component {
+  constructor() {
+    super();
+    this.login = this.login.bind(this);
+  }
 
   login() {
     post('/admin/login', {
-      username: 'CFTA18A001',
+      username: 'zdl',
       password: '123456'
     }).then((data) => {
-      console.log(`then data: ${JSON.stringify(data)}`);
+      // console.log(`then data: ${JSON.stringify(data)}`);
+      this.props.history.replace('/home');
       post('/admin/chart/relation', {}).then((data) => {
         console.log(data)
       }).catch(e=>{

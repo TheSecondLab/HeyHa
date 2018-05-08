@@ -1,11 +1,46 @@
 import React, { Component as C } from 'react'
 import { Panel, HeaderBar, StuList, PageTitle } from '../components';
 import * as style from './style.scss';
+import { post } from '../utils/service';
 
  class PointDetailComp extends C {
   constructor() {
     super();
     this.goBack = this.goBack.bind(this);
+    this.loadStudentList = this.loadStudentList.bind(this);
+    this.loadOtherStudentList = this.loadOtherStudentList.bind(this);
+    this.state = {
+      studentList: [],
+      otherClassStudentList: []
+    }
+  }
+
+  componentWillMount() {
+    const { classId, recordId } = this.props.location.query;
+    this.loadStudentList(classId);
+    this.loadOtherStudentList(classId)
+
+  }
+
+  loadStudentList(id) {
+    post('/admin/integralQuery/getAttendanceMember', { clazzId: id }).then((data) => {
+      this.setState({
+        studentList: data
+      });
+
+    }).catch((err) => {
+      console.log(err)
+    });
+  }
+  loadOtherStudentList(id) {
+    post('/admin/integralQuery/getOtherAttendanceMember', { clazzId: id }).then((data) => {
+      this.setState({
+        otherClassStudentList: data
+      });
+
+    }).catch((err) => {
+      console.log(err)
+    });
   }
 
   goBack() {
@@ -13,6 +48,7 @@ import * as style from './style.scss';
   }
 
   render() {
+    const { studentList, otherClassStudentList } = this.state;
     return(
       <div style={{paddingTop: '20px'}}>
         <PageTitle title='积分详情' goBack={this.goBack} />
@@ -36,11 +72,11 @@ import * as style from './style.scss';
           </div>
           <Panel>
             <HeaderBar title='本班学员' hasBorder={true}/>
-            <StuList alignment='4' data={Array.from(new Array(4), (val, index) => index)} />
+            <StuList alignment='4' data={studentList} />
           </Panel>
           <Panel>
             <HeaderBar title='跨班学员' hasBorder={true}/>
-            <StuList alignment='4' data={Array.from(new Array(5), (val, index) => index)} />
+            <StuList alignment='4' data={otherClassStudentList} />
           </Panel>
         </div>
       </div>

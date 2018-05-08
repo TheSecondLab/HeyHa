@@ -2,6 +2,7 @@ import React, { Component as C } from 'react';
 
 import * as style from './style.scss';
 import { HeaderBar, SideMenu } from '../components/index';
+import { post } from '../utils/service';
 
 const HeaderOpa = (props) => (
   <div className={style.opaWrap}>
@@ -14,16 +15,45 @@ class DestribuyePointComp extends C {
     super();
     this.addStu = this.addStu.bind(this);
     this.deleteStu = this.deleteStu.bind(this);
+    this.loadPointList = this.loadPointList.bind(this);
+    this.state = {
+      pointList: []
+    }
+  }
+
+  componentWillMount() {
+    const { id } = this.props.match.params;
+    this.loadPointList(id);
+  }
+
+  loadPointList(id) {
+    post('/admin/integralQuery/getAddIntegral', { clazzId: id }).then((data) => {
+      this.setState({
+        pointList: data
+      });
+
+    }).catch((err) => {
+      console.log(err)
+    });
   }
 
   addStu(id) {
     this.props.history.push('/sendPoint');
   }
 
-  deleteStu(id) {
-    this.props.history.push('/pointDetail');
+  deleteStu(recordId) {
+    const { id } = this.props.match.params;
+    this.props.history.push({
+      pathname: '/pointDetail',
+      query: {
+        recordId,
+        classId: id
+      }
+    });
   }
   render() {
+    const { id } = this.props.match.params;
+    const { pointList } = this.state;
     return (
       <div>
         <div className={style.header}>
@@ -36,7 +66,7 @@ class DestribuyePointComp extends C {
           </div>
         </div>
         <div className={style.content}>
-          <SideMenu active={2} />
+          <SideMenu active={2} id={id} />
           <div className={style.menuContent}>
             <div className={style.wrap}>
               <div className={style.headerBar}>
@@ -55,27 +85,19 @@ class DestribuyePointComp extends C {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>18/2/1</td>
-                    <td>课堂纪律差</td>
-                    <td><div>约翰1列侬，约翰列侬，约翰列侬，约翰列侬，约翰列侬，约翰列侬，</div></td>
-                    <td>100</td>
-                    <td><span className={style.del} onClick={this.deleteStu}>删除</span></td>
-                  </tr>
-                  <tr>
-                    <td>18/2/1</td>
-                    <td>课堂纪律差</td>
-                    <td><div>约翰列侬，约翰列侬，约翰列侬，约翰列侬，约翰列侬，约翰列侬，</div></td>
-                    <td>100</td>
-                    <td><span className={style.del}>删除</span></td>
-                  </tr>
-                  <tr>
-                    <td>18/2/1</td>
-                    <td>课堂纪律差</td>
-                    <td><div>约翰列侬，约翰列侬，约翰列侬，约翰列侬，约翰列侬，约翰列侬，</div></td>
-                    <td>100</td>
-                    <td><span className={style.del}>删除</span></td>
-                  </tr>
+                  {
+                    pointList.map((item) => {
+                      return (
+                        <tr>
+                          <td>{item.integralTimeStr}</td>
+                          <td>{item.reason}</td>
+                          <td><div>{item.memberName}</div></td>
+                          <td>{item.score}</td>
+                          <td><span className={style.del} onClick={() => { this.deleteStu(item.id) }}>删除</span></td>
+                        </tr>
+                      );
+                    })
+                  }
                 </tbody>
               </table>
             </div>

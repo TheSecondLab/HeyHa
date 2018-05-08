@@ -1,10 +1,15 @@
 .wrap {
-  padding:40px 25px 20px 30px 
+  padding:0 0 20px 0;
+  box-sizing: border-box;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: #FBFBFD;
 }
 
 .searchBar {
   display: flex;
-  padding-bottom: 20px;
+  padding: 40px 25px 20px 30px;
+  background: #fff;
   .input {
     flex: 1;
     box-sizing: border-box;
@@ -16,7 +21,8 @@
     background-position: 15px center;
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAEFCu8CAAAAAXNSR0IArs4c6QAABERJREFUSA21Vd1rVFcQv+fcddWsmk39aDWlBfWl4h8QUUErRK0PvtSAUNGl1WCSdfeugqgIgvjVh70bk11ITRC0Txt8EKsYqqTQhyoF8cGWQkG0jaEajUnU7SZm9/ibkz13z73Zi6u0B3bnnJn5zZyZOTPXMLCSyc6rROVyHRTTlyaTHaIE6/jNpUUS3t6eXk9cznnUJZUHuHqguMlkulEIweXZtjt/VwJFlaeAZbWtyGaz5sDA40kSMsYsIKUeo/9U6tyHQozfZ0zsisejvVJCf16zyiTJyPEN2qiVSESlNTqT8Fcl8FIO5xd0Jsy+VmdpwrY7BnHBxcTEbX8B4YiiwbGvtIkCTQqGI6Rbw8VnQHZwzrKFglgGebthiNpQKBhubm4eJYCzKH49NEegbWw7ncK1HmosA4FQ0gJrdKZ3b1mtccTyic5HdY2vDaNwRWd697Z9PuzlyRi7u7s/GBv79xljxreWFT2olM6e/X7e5OTzZzgHEPttypiSOclRDD9aymaDMlA1UBl0DCgGUZRkL8gBJGI+6NVQaMZulCFHMu+SHtPp9PLx8eKfiHFACLbfNNlQsSgiqOsOXK0PsW2aBuzp6Zk7Opobw1tYmUi0udsL2mgfyIyfIduigzmy+Q91XCUQKYI/D6/nC3RR0AXEdWri8dZOnend47qXBweH8PzKa6pry+eKO7TjRTho1IVVAZGwjwAamQakBOlM7x7lOYXfGZ2PvPAosjqsM/X91MgSc5GkrM6XdUTh/0AMyxibs9CyIs6VUqnOE6jnYQIEAnW1+/Z9RaWRy3lyAO8BuEsJSnR41ixzeT5fkDfSwQ7QA3AdS10iJ4ACVwUkK15w1UAPeHgakEqDZ3gIijF6VQTwXwzPlR1bsmRhd1NTU8FfryxxHFJnTUyIW3CCVmQvYOgwDH0HQxNl9fKuq6urNpd7TRdD+woTHXnPNOtW6xUra5d30iEqeBKgQ+iBl3hYDX4NVoa5d7ad2SxE4Qdw6R3uRK+5vhy6NqMhA2cZmhk1NcGlGDDOZ0VXfNseES949WriL+jNNk2+ORZrvV4JQ714gARwmHhfZ4QH9ikIpdhAUxwhWmnheyPHpwE6VEnhXXiYqBQh2frUD8cxgkqhs51+StXyEdl20kW2+vwwPBjk30BhCHXchXF93E/xbXy8hdOIbBvcPamvX9Tqpy9faX9/f+Du3Xt9AHwO5yNoiS9jsbabfiCdT9MPkV3ChevwynMzZ/KPW1panus6+t7pQ2JmMpm6fL7YiypsmFJiL5Dya7jIT4yZf3NehF1WDwfrIMdHS9SSHjmCwBkSON82zXBjpZ50OSSwWviYzX706OlGvLmt4K2E8XrQAKUM9A5+P4bDod5IJJLHXs6+QmHkOhyvojOtSo59HU5B3v2/NHTp0TRo6FuY3hsp4v/coXJSyTEivvy/OdQdI9UXkOq1GHtH3wCtc9u4PMfCvAAAAABJRU5ErkJggg==);
     input {
-      width: 100px;
+      width: 100%;
+      display: block;
       font-size: 16px;
     }
   }
@@ -70,4 +76,8 @@
     background: #fff;
     border-radius: 100px;
   }
+}
+
+.content {
+  padding: 0 25px 0 30px;
 }

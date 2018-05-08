@@ -51,22 +51,22 @@ const routes = [
       { path: '/home',
         exact: true,
         component: HomeComponent
-      }, { path: '/classList',
+      }, { path: '/classList/:id',
         exact: true,
         component: AttendenceComp
-      }, { path: '/point',
+      }, { path: '/point/:id',
         exact: true,
         component: DestribuyePointComp
       }, { path: '/mineInfo',
         exact: true,
         component: MineInfo
-      }, { path: '/courseProgress',
+      }, { path: '/courseProgress/:id',
         exact: true,
         component: CourseProgress
-      }, { path: '/classMoment',
+      }, { path: '/classMoment/:id',
         exact: true,
         component: ClassMoment
-      }, { path: '/task',
+      }, { path: '/task/:id',
         exact: true,
         component: Task
       }
