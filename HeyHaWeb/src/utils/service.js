@@ -1,6 +1,7 @@
 const axios = require('axios');
 
-const domain = 'http://localhost:3000';
+// const domain = 'http://localhost:3000';
+const domain = '';
 
 const post = (path, data) => new Promise((resolve, reject) => {
   var params = new URLSearchParams();
@@ -9,7 +10,7 @@ const post = (path, data) => new Promise((resolve, reject) => {
     params.append(key, data[key]);
   });
 
-  axios.post(`${domain}/${path}`, params)
+  axios.post(`${domain}${path}`, params)
     .then(function (response) {
       if(response.status && response.data.status === 'SUCCESS')
         resolve(response.data.data);

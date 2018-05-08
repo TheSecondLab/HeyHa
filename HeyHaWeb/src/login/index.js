@@ -28,6 +28,12 @@ class Login extends React.Component {
       password: '123456'
     }).then((data) => {
       console.log(`then data: ${JSON.stringify(data)}`);
+      post('/admin/chart/relation', {}).then((data) => {
+        console.log(data)
+      }).catch(e=>{
+        console.log('111',e)
+      })
+
     }).catch((err) => {
       console.log(err)
     });
