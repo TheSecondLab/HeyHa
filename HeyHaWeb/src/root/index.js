@@ -14,6 +14,11 @@ class Root extends C {
     this.pagePush = this.pagePush.bind(this);
   }
 
+  componentWillMount() {
+    if (this.props.location.pathname === '/')
+      this.props.history.push('/login');
+  }
+
   pagePush(page) {
     return () => {
       this.props.history.push(page);

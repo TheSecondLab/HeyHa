@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --config build/webpack.prod.js",
+    "build": "webpack --config build/webpack.prod.js && rm -rf ../HeyHaIpad/www/* && cp ./dist/* ../HeyHaIpad/www/",
     "dev": "webpack-dev-server --open --config build/webpack.dev.js",
     "proxy": "node proxy"
   },
