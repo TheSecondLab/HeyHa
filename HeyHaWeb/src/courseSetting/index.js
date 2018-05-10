@@ -1,5 +1,6 @@
 import React, { Component as C } from 'react'
-import { Panel, HeaderBar, StuList, PageTitle, List } from '../components';
+
+import { Panel, HeaderBar, StuList, PageTitle, List, Message } from '../components';
 import * as style from './style.scss';
 import { post } from '../utils/service';
 
@@ -10,19 +11,30 @@ class CourseSetting extends C {
     this.selectLevel = this.selectLevel.bind(this);
     this.selectMaterial = this.selectMaterial.bind(this);
     this.loadAllCourse = this.loadAllCourse.bind(this);
+    this.mapAddCourse = this.mapAddCourse.bind(this);
+    this.getStudentLevel = this.getStudentLevel.bind(this);
+    this.choseCourse2List = this.choseCourse2List.bind(this);
+    this.showToast = this.showToast.bind(this);
     this.state = {
       courseList: [],
       materialList: [],
       levelList: [],
       levelId: '',
-      materialId: ''
+      materialId: '',
+      studentLevel: [],
+      currentLevel: '',
+      toastTimer: null,
+      showToast: false
     };
   }
 
   componentWillMount() {
+    const { id } = this.props.match.params;
+
     this.loadAllCourse();
     this.loadMaterial();
     this.loadLevel();
+    this.getStudentLevel(id);
   }
 
   goBack() {
@@ -43,6 +55,22 @@ class CourseSetting extends C {
       materialId 
     });
     this.loadAllCourse(this.state.levelId, materialId);
+  }
+  
+  getStudentLevel(id) {
+    post('/admin/clazzSource/getClazzStudentLevel', { clazzId: id }).then((data) => {
+      data.forEach((item) => {
+        this.setState({
+          [`level-${item.levelId}`]: []
+        })
+      })
+      this.setState({
+        studentLevel: data
+      });
+
+    }).catch((err) => {
+      console.log(err)
+    });
   }
 
   loadMaterial() {
@@ -76,16 +104,47 @@ class CourseSetting extends C {
     });
   }
 
+  mapAddCourse(id) {
+    return this.state[`level-${id}`].map((item, idx) => (
+      <div className={style.courseList} key={`ITEM-${idx}`}>
+        <div className={style.img}><img src={item.photoUrl} alt='' /></div>
+        <div className={style.cont}>
+          <div className={style.name}>{item.name}</div>
+          <div className={style.desc}>{item.claim}</div>
+        </div>
+        <div className={style.lightbtn}>移除</div>
+      </div>
+    ))
+  }
+
+  choseCourse2List(item) {
+    const key = `level-${this.state.currentLevel}`;
+    
+    const handleCourseList = this.state.courseList.map((obj) => {
+      if(obj.capitalId === item.capitalId) {
+        obj.status = true;
+        // return obj;
+      }
+      return obj;
+    });
+    this.setState({
+      [key]: this.state[key].concat(item),
+      courseList: handleCourseList
+    });
+  }
+
+  showToast() {
+    this.setState({showToast: true});
+    setTimeout(()=> {
+      this.setState({showToast: false});
+    }, 2000);
+  }
   render() {
-    const data = [
-      {id: 1, name: '黄带'},
-      {id: 2, name: '白带'},
-      {id: 3, name: '红带'},
-      {id: 4, name: '黑带'}
-    ];
-    const { courseList, levelList, materialList } = this.state;
+
+    const { courseList, levelList, materialList, studentLevel, currentLevel, showToast } = this.state;
     return(
       <div>
+        <Message title='请选择段位~' visible={showToast} />
         <PageTitle title='课程设置' goBack={this.goBack} />
         <div className={style.wrap}>  
           <Panel>
@@ -106,29 +165,32 @@ class CourseSetting extends C {
             <div className={style.courseBox}>
               <div className={style.courseContent}>
                 <div className={style.title}>课程内容</div>
-                <div className={style.courseType}><span>白带（12）</span><span className={style.add}></span></div>
-                <div className={style.courseList}>
-                  <div className={style.img}><img src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2171885043,3211252209&fm=173&app=25&f=JPEG?w=218&h=146&s=49269F545F295C0370498CD1030080B3' alt='' /></div>
-                  <div className={style.cont}>
-                    <div className={style.name}>太极一行</div>
-                    <div className={style.desc}>太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行</div>
-                  </div>
-                  <div className={style.lightbtn}>移除</div>
-                </div>
+                {
+                  studentLevel.map((item, idx) => {
+                    return (
+                      <div key={`item-${idx}`}>
+                        <div className={style.courseType}>
+                          <span>{item.name}（{item.num}）</span>
+                          <span className={style.add} onClick={
+                            () => {
+                              this.loadAllCourse(item.levelId);
+                              this.setState({
+                                currentLevel: item.levelId
+                              });
+                            }
+                            }></span>
+                        </div>
+                        { this.mapAddCourse(item.levelId) }
+                      </div>
+                    )
+                  })
+                }
               </div>
               <div className={style.typeWrap}>
                 <div className={style.typeSelector}>
                   <List data={levelList} onChange={this.selectLevel} initialTitle='所有等级' />
                   <List data={materialList} onChange={this.selectMaterial} initialTitle='所有类型' />
                 </div>
-                {/* <div className={style.courseList}>
-                  <div className={style.img}><img src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2171885043,3211252209&fm=173&app=25&f=JPEG?w=218&h=146&s=49269F545F295C0370498CD1030080B3' alt='' /></div>
-                  <div className={style.cont}>
-                    <div className={style.name}>太极一行</div>
-                    <div className={style.desc}>太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行</div>
-                  </div>
-                  <div className={style.darkbtn}>已选</div>
-                </div> */}
                
                 {
                   courseList.map((item, idx) => (
@@ -138,7 +200,19 @@ class CourseSetting extends C {
                         <div className={style.name}>{item.name}</div>
                         <div className={style.desc}>{item.claim}</div>
                       </div>
-                      <div className={style.lightbtn}>选择</div>
+                      <div
+                        className={ item.status ? `${style.darkbtn}` : `${style.lightbtn}` }
+                        onClick={() => {
+                          if(!currentLevel) {
+                            this.showToast();
+                            return;
+                          };
+                          if(item.status) return;
+                          this.choseCourse2List(item)
+                        }}
+                      >
+                        { item.status ? '已选' : '选择' }
+                      </div>
                     </div>
                   ))
                 }
