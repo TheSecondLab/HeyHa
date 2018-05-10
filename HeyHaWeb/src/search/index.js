@@ -77,11 +77,11 @@ class SearchComp extends C {
   }
 
   confirm() {
-    const { id } = this.props.location.query;
+    const { id, page } = this.props.location.query;
     const { selectedList } = this.state;
     // debugger
     this.props.history.push({
-      pathname: `/classList/${id}`,
+      pathname: `${page}/${id}`,
       query: {
         otherClassStudent: selectedList
       }

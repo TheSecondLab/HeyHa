@@ -23,7 +23,7 @@ const routes = [
   { path: '/pointDetail',
     exact: true,
     component: PointDetailComp
-  }, { path: '/sendPoint',
+  }, { path: '/sendPoint/:id',
     exact: true,
     component: SendPoint
   }, { path: '/password',
@@ -32,7 +32,7 @@ const routes = [
   }, { path: '/login',
     exact: true,
     component: Login
-  }, { path: '/courseSetting',
+  }, { path: '/courseSetting/:id',
     exact: true,
     component: CourseSetting
   }, { path: '/taskSetting',

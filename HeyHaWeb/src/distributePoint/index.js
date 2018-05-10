@@ -1,4 +1,5 @@
 import React, { Component as C } from 'react';
+import { Dialog, Toast } from 'react-weui';
 
 import * as style from './style.scss';
 import { HeaderBar, SideMenu } from '../components/index';
@@ -13,17 +14,36 @@ const HeaderOpa = (props) => (
 class DestribuyePointComp extends C {
   constructor() {
     super();
-    this.addStu = this.addStu.bind(this);
-    this.deleteStu = this.deleteStu.bind(this);
+    this.goSendPoint = this.goSendPoint.bind(this);
     this.loadPointList = this.loadPointList.bind(this);
+    this.deletePoint = this.deletePoint.bind(this);
+    this.hideDialog = this.hideDialog.bind(this);
+    this.loadClassInfo = this.loadClassInfo.bind(this);
+    this.detailPointCont = this.detailPointCont.bind(this);
     this.state = {
-      pointList: []
-    }
+      pointList: [],
+      confirm: false,
+      addIntegralId: 0,
+      classInfo: {},
+      dialogBtn: [
+        {
+          type: 'default',
+          label: 'Cancel',
+          onClick: this.hideDialog
+        },
+        {
+          type: 'primary',
+          label: 'Ok',
+          onClick: () => this.deletePoint(this.state.addIntegralId)
+        }
+    ]
+    };
   }
 
   componentWillMount() {
     const { id } = this.props.match.params;
     this.loadPointList(id);
+    this.loadClassInfo(id)
   }
 
   loadPointList(id) {
@@ -33,36 +53,72 @@ class DestribuyePointComp extends C {
       });
 
     }).catch((err) => {
-      console.log(err)
+      console.log(err);
     });
   }
 
-  addStu(id) {
-    this.props.history.push('/sendPoint');
+  goSendPoint(id) {
+    return () => { this.props.history.push(`/sendPoint/${id}`); }
   }
 
-  deleteStu(recordId) {
+  detailPointCont(addIntegralId) {
     const { id } = this.props.match.params;
     this.props.history.push({
       pathname: '/pointDetail',
       query: {
-        recordId,
+        addIntegralId,
         classId: id
       }
     });
   }
+
+  loadClassInfo(id) {
+    post('/admin/clazz/getClazz', { clazzId: id }).then((data) => {
+      this.setState({
+        classInfo: data
+      });
+
+    }).catch((err) => {
+      console.log(err)
+    });
+  }
+
+  deletePoint(id) {
+   
+    post('/admin/integralQuery/deleteAddIntegral', { addIntegralId: id }).then((data) => {
+      this.hideDialog();
+      this.setState({
+        pointList: this.pointList.filter((item) => (item.addIntegralId !== id))
+      });
+
+    }).catch((err) => {
+      this.hideDialog();
+      console.log(err);
+    });
+  }
+
+  goOtherClass() {
+    this.props.history.push('/home')
+  }
+
+  hideDialog() {
+    this.setState({
+      confirm: false
+    });
+  }
+
   render() {
     const { id } = this.props.match.params;
-    const { pointList } = this.state;
+    const { pointList, confirm, dialogBtn, classInfo } = this.state;
     return (
       <div>
         <div className={style.header}>
           <div>
-            <div className={style.name}>红黑精英班</div>
-            <div className={style.time}>每周六、日10：00-11：00</div>
+            <div className={style.name}>{classInfo.name}</div>
+            <div className={style.time}>{classInfo.clazzTime}</div>
           </div>
           <div>
-            <span className={style.else}>其他班级</span>
+            <span className={style.else} onClick={this.goOtherClass}>其他班级</span>
           </div>
         </div>
         <div className={style.content}>
@@ -71,7 +127,7 @@ class DestribuyePointComp extends C {
             <div className={style.wrap}>
               <div className={style.headerBar}>
                 <HeaderBar title='积分发放' hasBorder={true}>
-                  <HeaderOpa pagePush={this.addStu} />
+                  <HeaderOpa pagePush={this.goSendPoint(id)} />
                 </HeaderBar>
               </div>
               <table className={style.pointTable}>
@@ -86,14 +142,14 @@ class DestribuyePointComp extends C {
                 </thead>
                 <tbody>
                   {
-                    pointList.map((item) => {
+                    pointList.map((item, idx) => {
                       return (
-                        <tr>
-                          <td>{item.integralTimeStr}</td>
+                        <tr key={`item-${idx}`}>
+                          <td onClick={() => { this.detailPointCont(item.addIntegralId) }}>{item.integralTimeStr}</td>
                           <td>{item.reason}</td>
                           <td><div>{item.memberName}</div></td>
                           <td>{item.score}</td>
-                          <td><span className={style.del} onClick={() => { this.deleteStu(item.id) }}>删除</span></td>
+                          <td><span className={style.del} onClick={() => { this.setState({confirm: true, addIntegralId: item.addIntegralId}) }}>删除</span></td>
                         </tr>
                       );
                     })
@@ -103,6 +159,9 @@ class DestribuyePointComp extends C {
             </div>
           </div>
         </div>
+        <Dialog type="ios" title='提示' buttons={dialogBtn} show={confirm}>
+          确定要删除么？
+        </Dialog>
       </div>
     )
   }

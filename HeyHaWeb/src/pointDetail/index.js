@@ -1,4 +1,6 @@
 import React, { Component as C } from 'react'
+import { Dialog, Toast } from 'react-weui';
+
 import { Panel, HeaderBar, StuList, PageTitle } from '../components';
 import * as style from './style.scss';
 import { post } from '../utils/service';
@@ -8,17 +10,35 @@ import { post } from '../utils/service';
     super();
     this.goBack = this.goBack.bind(this);
     this.loadStudentList = this.loadStudentList.bind(this);
+    this.hideDialog = this.hideDialog.bind(this);
+    this.deletePoint = this.deletePoint.bind(this);
+    this.loadPointDetail = this.loadPointDetail.bind(this);
     this.loadOtherStudentList = this.loadOtherStudentList.bind(this);
     this.state = {
       studentList: [],
-      otherClassStudentList: []
+      otherClassStudentList: [],
+      pointDetail: {},
+      confirm: false,
+      dialogBtn: [
+        {
+          type: 'default',
+          label: 'Cancel',
+          onClick: this.hideDialog
+        },
+        {
+          type: 'primary',
+          label: 'Ok',
+          onClick: () => this.deletePoint(this.state.addIntegralId)
+        }
+    ]
     }
   }
 
   componentWillMount() {
-    const { classId, recordId } = this.props.location.query;
+    const { classId, addIntegralId } = this.props.location.query;
     this.loadStudentList(classId);
-    this.loadOtherStudentList(classId)
+    this.loadOtherStudentList(classId);
+    this.loadPointDetail(addIntegralId);
 
   }
 
@@ -32,6 +52,18 @@ import { post } from '../utils/service';
       console.log(err)
     });
   }
+
+  loadPointDetail(id) {
+    post('/admin/integralQuery/getIntegralDetails', { addIntegralId: id }).then((data) => {
+      this.setState({
+        pointDetail: data
+      });
+
+    }).catch((err) => {
+      console.log(err)
+    });
+  }
+
   loadOtherStudentList(id) {
     post('/admin/integralQuery/getOtherAttendanceMember', { clazzId: id }).then((data) => {
       this.setState({
@@ -43,12 +75,30 @@ import { post } from '../utils/service';
     });
   }
 
+  deletePoint(id) {
+    post('/admin/integralQuery/deleteAddIntegral', { addIntegralId: id }).then((data) => {
+      this.hideDialog();
+      this.props.history.goBack();
+
+    }).catch((err) => {
+      this.props.history.goBack();
+      console.log(err);
+    });
+  }
+
+  hideDialog() {
+    this.setState({
+      confirm: false
+    });
+  }
+  
+
   goBack() {
     this.props.history.goBack();
   }
 
   render() {
-    const { studentList, otherClassStudentList } = this.state;
+    const { studentList, otherClassStudentList, pointDetail, dialogBtn, confirm } = this.state;
     return(
       <div style={{paddingTop: '20px'}}>
         <PageTitle title='积分详情' goBack={this.goBack} />
@@ -56,18 +106,18 @@ import { post } from '../utils/service';
           <div className={style.record}>
             <div className={style.item}>
               <div className={style.desc}>分值</div>
-              <div className={style.value}><span>100</span>分</div>
+              <div className={style.value}><span>{pointDetail.score}</span>分</div>
             </div>
             <div className={style.item}>
               <div className={style.desc}>发放原因</div>
-              <div className={style.value}>刻苦练习</div>
+              <div className={style.value}>{pointDetail.reason}</div>
             </div>
             <div className={style.item}>
               <div className={style.desc}>发放日期</div>
-              <div className={style.value}>2018/12/1</div>
+              <div className={style.value}>{pointDetail.integralTimeStr}</div>
             </div>
             <div className={style.item}>
-              <span className={style.del}>删除</span>
+              <span className={style.del} onClick={() => { this.setState({confirm: true, addIntegralId: pointDetail.addIntegralId}) }}>删除</span>
             </div>
           </div>
           <Panel>
@@ -79,6 +129,9 @@ import { post } from '../utils/service';
             <StuList alignment='4' data={otherClassStudentList} />
           </Panel>
         </div>
+        <Dialog type="ios" title='提示' buttons={dialogBtn} show={confirm}>
+          确定要删除么？
+        </Dialog>
       </div>
       )
   }

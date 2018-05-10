@@ -6,6 +6,7 @@ import Panel from './panel';
 import PageTitle from './pageTitle';
 import SideMenu from './sideMenu';
 import Message from './message';
+import List from './list';
 
 export default {
   Header,
@@ -15,5 +16,6 @@ export default {
   Panel,
   PageTitle,
   SideMenu,
-  Message
+  Message,
+  List
 };

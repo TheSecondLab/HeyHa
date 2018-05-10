@@ -17,7 +17,7 @@ class ClassCard extends C {
               <div key={`idx-${idx}`}>
                 {item.map((o, i) => {
                   return (
-                    <div className={style.classList} key={`card-${i}`} onClick={() => this.props.goClass(o.id)} >
+                    <div className={style.classList} key={`card-${i}`} onClick={() => this.props.goClass(o)} >
                       <div className={style.name}>{o.name}</div>
                       <div className={style.time}>{o.clazzTime}</div>
                     </div>

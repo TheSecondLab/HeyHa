@@ -26,8 +26,8 @@ class HomeComponent extends C {
     });
   }
 
-  click(id) {
-    this.props.history.push(`/classList/${id}`);
+  click(item) {
+    this.props.history.push(`/classList/${item.id}`);
   }
 
   render() {

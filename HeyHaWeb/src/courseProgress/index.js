@@ -2,6 +2,7 @@ import React, { Component as C } from 'react'
 
 import { HeaderBar, StuList, SideMenu } from '../components/index';
 import * as style from './style.scss';
+import { post } from '../utils/service';
 
 const HeaderOpa = (props) => (
   <div className={style.opaWrap}>
@@ -13,30 +14,57 @@ class CourseProgress extends C {
   constructor() {
     super();
     this.addCourse = this.addCourse.bind(this);
+    this.loadClassInfo = this.loadClassInfo.bind(this);
+    this.state = {
+      classInfo: {}
+    };
 
   }
+  componentWillMount() {
+    const { id } = this.props.match.params;
+    this.loadClassInfo(id)
+  }
+
+
   addCourse() {
-    this.props.history.push('/courseSetting');
+    const { id } = this.props.match.params;
+    this.props.history.push(`/courseSetting/${id}`);
+  }
+
+  loadClassInfo(id) {
+    post('/admin/clazz/getClazz', { clazzId: id }).then((data) => {
+      this.setState({
+        classInfo: data
+      });
+
+    }).catch((err) => {
+      console.log(err)
+    });
+  }
+
+  goOtherClass() {
+    this.props.history.push('/home')
   }
 
   render() {
     const { id } = this.props.match.params;
+    const { classInfo } = this.state;
     return (
       <div>
         <div className={style.header}>
           <div>
-            <div className={style.name}>红黑精英班</div>
-            <div className={style.time}>每周六、日10：00-11：00</div>
+            <div className={style.name}>{classInfo.name}</div>
+            <div className={style.time}>{classInfo.clazzTime}</div>
           </div>
           <div>
-            <span className={style.else}>其他班级</span>
+            <span className={style.else} onClick={this.goOtherClass}>其他班级</span>
           </div>
         </div>
         <div className={style.content}>
           <SideMenu active={3} id={id} />
           <div className={style.menuContent}>
             <div className={style.box}>
-              <HeaderBar title='本班学员' hasBorder={true}>
+              <HeaderBar title='课程进度' hasBorder={true}>
                 <HeaderOpa pagePush={this.addCourse} />
               </HeaderBar>
               <section className={style.tab}>

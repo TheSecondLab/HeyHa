@@ -1,28 +1,89 @@
 import React, { Component as C } from 'react'
-import { Panel, HeaderBar, StuList, PageTitle } from '../components';
+import { Panel, HeaderBar, StuList, PageTitle, List } from '../components';
 import * as style from './style.scss';
-
-const HeaderOpa = () => (
-  <div className={style.opaWrap}>
-    <div className={style.input}><input placeholder='跨班搜索' /></div>
-    <div className={style.lightBtn}><button>全选</button></div>
-    <div className={style.darkBtn}><button>确定</button></div>
-  </div>
-)
-
-
+import { post } from '../utils/service';
 
 class CourseSetting extends C {
   constructor() {
     super();
     this.goBack = this.goBack.bind(this);
+    this.selectLevel = this.selectLevel.bind(this);
+    this.selectMaterial = this.selectMaterial.bind(this);
+    this.loadAllCourse = this.loadAllCourse.bind(this);
+    this.state = {
+      courseList: [],
+      materialList: [],
+      levelList: [],
+      levelId: '',
+      materialId: ''
+    };
+  }
+
+  componentWillMount() {
+    this.loadAllCourse();
+    this.loadMaterial();
+    this.loadLevel();
   }
 
   goBack() {
     this.props.history.goBack();
   }
-  
+
+  selectLevel(item) {
+    const levelId =  item.id === 'all' ? '' : item.id;
+    this.setState({
+      levelId
+    });
+    this.loadAllCourse(levelId, this.state.materialId);
+  }
+
+  selectMaterial(item) {
+    const materialId = item.id === 'all' ? '' : item.id;
+    this.setState({
+      materialId 
+    });
+    this.loadAllCourse(this.state.levelId, materialId);
+  }
+
+  loadMaterial() {
+    post('/admin/capital/getMaterial', {}).then((data) => {
+      this.setState({
+        materialList: [{id: 'all', name: '所有类型'}].concat(data)
+      });
+    }).catch((err) => {
+      console.log(err)
+    });
+  }
+
+  loadLevel() {
+    post('/admin/level/getLevel', {}).then((data) => {
+      this.setState({
+        levelList: [{id: 'all', name: '所有级别'}].concat(data)
+      });
+    }).catch((err) => {
+      console.log(err)
+    });
+  }
+
+  loadAllCourse(levelId, materialId) {
+    post('/admin/clazzSource/getCapital', { types: 'FODDER', levelId, materialId }).then((data) => {
+      this.setState({
+        courseList: data
+      });
+
+    }).catch((err) => {
+      console.log(err)
+    });
+  }
+
   render() {
+    const data = [
+      {id: 1, name: '黄带'},
+      {id: 2, name: '白带'},
+      {id: 3, name: '红带'},
+      {id: 4, name: '黑带'}
+    ];
+    const { courseList, levelList, materialList } = this.state;
     return(
       <div>
         <PageTitle title='课程设置' goBack={this.goBack} />
@@ -57,38 +118,30 @@ class CourseSetting extends C {
               </div>
               <div className={style.typeWrap}>
                 <div className={style.typeSelector}>
-                  <div>白黄</div>
-                  <div>选择类型</div>
+                  <List data={levelList} onChange={this.selectLevel} initialTitle='所有等级' />
+                  <List data={materialList} onChange={this.selectMaterial} initialTitle='所有类型' />
                 </div>
-                <div className={style.courseList}>
+                {/* <div className={style.courseList}>
                   <div className={style.img}><img src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2171885043,3211252209&fm=173&app=25&f=JPEG?w=218&h=146&s=49269F545F295C0370498CD1030080B3' alt='' /></div>
                   <div className={style.cont}>
                     <div className={style.name}>太极一行</div>
                     <div className={style.desc}>太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行</div>
                   </div>
                   <div className={style.darkbtn}>已选</div>
-                </div>
-                <div className={style.courseList}>
-                  <div className={style.img}><img src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2171885043,3211252209&fm=173&app=25&f=JPEG?w=218&h=146&s=49269F545F295C0370498CD1030080B3' alt='' /></div>
-                  <div className={style.cont}>
-                    <div className={style.name}>太极一行</div>
-                    <div className={style.desc}>太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行</div>
-                  </div>
-                </div>
-                <div className={style.courseList}>
-                  <div className={style.img}><img src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2171885043,3211252209&fm=173&app=25&f=JPEG?w=218&h=146&s=49269F545F295C0370498CD1030080B3' alt='' /></div>
-                  <div className={style.cont}>
-                    <div className={style.name}>太极一行</div>
-                    <div className={style.desc}>太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行</div>
-                  </div>
-                </div>
-                <div className={style.courseList}>
-                  <div className={style.img}><img src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2171885043,3211252209&fm=173&app=25&f=JPEG?w=218&h=146&s=49269F545F295C0370498CD1030080B3' alt='' /></div>
-                  <div className={style.cont}>
-                    <div className={style.name}>太极一行</div>
-                    <div className={style.desc}>太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行</div>
-                  </div>
-                </div>
+                </div> */}
+               
+                {
+                  courseList.map((item, idx) => (
+                    <div className={style.courseList} key={`item-${idx}`}>
+                      <div className={style.img}><img src={item.photoUrl} alt='' /></div>
+                      <div className={style.cont}>
+                        <div className={style.name}>{item.name}</div>
+                        <div className={style.desc}>{item.claim}</div>
+                      </div>
+                      <div className={style.lightbtn}>选择</div>
+                    </div>
+                  ))
+                }
               </div>
             </div>
           </Panel>

@@ -1,17 +1,62 @@
 import React, { Component as C } from 'react';
 import { Panel, HeaderBar, StuList, PageTitle } from '../components';
 import * as style from './style.scss';
+import { post } from '../utils/service';
 
 class SendPoint extends C {
   constructor() {
     super();
     this.goBack = this.goBack.bind(this);
     this.choseItem = this.choseItem.bind(this);
+    this.goSearch = this.goSearch.bind(this);
+    this.loadClassStudent = this.loadClassStudent.bind(this);
     this.sellectAll = this.sellectAll.bind(this);
+    this.choseCause = this.choseCause.bind(this);
+    this.inputReason = this.inputReason.bind(this);
+    this.addPoint = this.addPoint.bind(this);
     this.state = {
-      stuList: Array.from(new Array(9), (val, index) => ({id: index})),
-      selectedList: []
+      stuList: [],
+      selectedList: [],
+      reasonList: [],
+      otherClassStudentList: [],
+      reason: ''
     };
+  }
+
+  componentWillMount() {
+    const { id } = this.props.match.params;
+    this.loadClassStudent(id);
+
+    let otherClassStudent = [];
+    if (this.props.location.query && this.props.location.query.otherClassStudent) {
+      otherClassStudent = this.props.location.query.otherClassStudent;
+    }
+    if (otherClassStudent.length) {
+      this.setState({
+        otherClassStudentList: otherClassStudent
+      });
+    }
+
+    // 发放积分原因列表
+    post('/admin/integralQuery/getIntegral', { clazzId: id }).then((data) => {
+      this.setState({
+        reasonList: data
+      });
+
+    }).catch((err) => {
+      console.log(err)
+    });
+  }
+
+  loadClassStudent(id) {
+    post('/admin/integralQuery/getAttendanceMember', { clazzId: id }).then((data) => {
+      this.setState({
+        stuList: data
+      });
+
+    }).catch((err) => {
+      console.log(err)
+    });
   }
 
   goBack() {
@@ -20,11 +65,14 @@ class SendPoint extends C {
 
   sellectAll() {
     const selectedList = [];
-    const stuList = this.state.stuList.map((item) => {
+    const stuList = [];
+    this.state.stuList.forEach((item) => {
       item.status = !item.status ? true : item.status;
+      if(item.attendanceType) item.status = false;
       if(item.status) selectedList.push(item.id)
-      return item;
+      stuList.push(item);
     });
+
 
     this.setState({
       stuList,
@@ -48,8 +96,43 @@ class SendPoint extends C {
     });
   }
 
+  goSearch() {
+    const { id } = this.props.match.params;
+    this.props.history.push({
+      pathname:'/search',
+      query: { id, page: '/sendPoint' },
+    })
+  }
+
+  choseCause(e) {
+    const { value } = e.target;
+    this.setState({
+      integralId: value.split('-')[0],
+      score: value.split('-')[1]
+    })
+  }
+
+  inputReason(e) {
+    this.setState({
+      reason: e.target.value
+    })
+  }
+
+  addPoint() {
+    const { id } = this.props.match.params;
+    const { integralId, score, reason, selectedList, otherClassStudentList } = this.state;
+    const otherClassStudentId = otherClassStudentList.map((item) => item.id );
+    const memberId = selectedList.concat(otherClassStudentId);
+    post('/admin/integralQuery/addIntegral',
+      { integralId, score, reason, clazzId: id, memberId  }).then((data) => {
+        this.props.history.goBack();
+    }).catch((err) => {
+      console.log(err)
+    });
+  }
+
   render() {
-    const {stuList} = this.state;
+    const { stuList, reasonList, otherClassStudentList, reason, score } = this.state;
     return(
       <div style={{paddingTop: '20px'}}>
         <PageTitle title='积分发放' goBack={this.goBack} />
@@ -59,34 +142,43 @@ class SendPoint extends C {
               <div className={style.formItem}>
                 <label>发放原因</label>
                 <div>
-                  <select>
-                    <option>选择原因</option>
-                    <option>其他</option>
+                  <select onChange={this.choseCause}>
+                    {
+                      reasonList.map((item, idx) => (<option key={`item-${idx}`} value={`${item.id}-${item.score}`}>{item.name}</option>))
+                    }
                   </select>
                 </div>
               </div>
               <div className={style.formItem}>
                 <label></label>
                 <div>
-                  <div><input type='text' placeholder='我输入的原因' /></div>
+                  <div><input type='text' placeholder='我输入的原因' value={reason} onChange={this.inputReason} /></div>
                 </div>
               </div>
               <div className={style.formItem}>
                 <label>分值</label>
-                <div><input type='text' placeholder='输入分值' /></div>
+                <div><input type='text' placeholder='输入分值' disabled value={score} /></div>
                 <div className={style.btnBox}>
-                  <div className={style.btn}>确定发放</div>
+                  <div className={style.btn} onClick={this.addPoint}>确定发放</div>
                 </div>
               </div>
             </div>
             <HeaderBar title='本班学员' hasBorder={true}>
               <div className={style.opaWrap}>
-                <div className={style.input}><input placeholder='跨班搜索' /></div>
+              <div className={style.input}><span onClick={this.goSearch}>跨班搜索</span></div>
                 <div className={style.lightBtn} onClick={this.sellectAll}><button>全选</button></div>
                 <div className={style.darkBtn}><button>确定</button></div>
               </div>
             </HeaderBar>
             <StuList alignment='4' data={stuList} choseItem={this.choseItem} />
+            {
+              otherClassStudentList.length
+                ? <div>
+                    <HeaderBar title='跨班学员' />
+                    <StuList alignment='3' data={otherClassStudentList} choseItem={this.choseItem} />
+                  </div>
+                : null
+            }
           </Panel>
         </div>
       </div>

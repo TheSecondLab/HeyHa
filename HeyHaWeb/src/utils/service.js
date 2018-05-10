@@ -7,6 +7,12 @@ const post = (path, data) => new Promise((resolve, reject) => {
   var params = new URLSearchParams();
   const keys = Object.keys(data);
   keys.forEach((key) => {
+    if (Array.isArray(data[key])) {
+      data[key].forEach((item) => {
+        params.append(key, item)
+      });
+      return
+    }
     params.append(key, data[key]);
   });
 
