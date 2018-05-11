@@ -35,7 +35,7 @@ const routes = [
   }, { path: '/courseSetting/:id',
     exact: true,
     component: CourseSetting
-  }, { path: '/taskSetting',
+  }, { path: '/taskSetting/:id',
     exact: true,
     component: TaskSetting
   }, { path: '/postMoment',

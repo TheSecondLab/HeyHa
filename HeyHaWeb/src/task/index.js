@@ -14,25 +14,63 @@ class Task extends C {
   constructor() {
     super();
     this.addCourse = this.addCourse.bind(this);
+    this.loadCourseDetail = this.loadCourseDetail.bind(this);
+    this.loadClassCourse = this.loadClassCourse.bind(this);
     this.loadClassInfo = this.loadClassInfo.bind(this);
-    this.goOtherClass = this.goOtherClass.bind(this);
+    this.changeCourse = this.changeCourse.bind(this);
+    this.setCouseStyle = this.setCouseStyle.bind(this);
+    // this.getStudentLevel = this.getStudentLevel.bind(this);
     this.state = {
-      classInfo: {}
+      classInfo: {},
+      classCourse: [],
+      courseDetail: [],
+      levelList: []
     };
-  }
-  addCourse() {
-    this.props.history.push('/courseSetting');
-  }
 
+  }
   componentWillMount() {
     const { id } = this.props.match.params;
     this.loadClassInfo(id);
+    this.loadClassCourse(id);
+    // this.getStudentLevel(id);
+  }
+
+
+  loadClassCourse(id) {
+    post('/admin/clazzSource/getEmployeeClazzSource', { clazzId: id, type: 'COURSE' }).then((data) => {
+      data[0].status = true;
+      this.setState({
+        classCourse: data
+      });
+      this.loadCourseDetail(data[0].id)
+
+    }).catch((err) => {
+      console.log(err)
+    });
+  }
+
+  addCourse() {
+    const { id } = this.props.match.params;
+    this.props.history.push(`/taskSetting/${id}`);
   }
 
   loadClassInfo(id) {
     post('/admin/clazz/getClazz', { clazzId: id }).then((data) => {
       this.setState({
         classInfo: data
+      });
+      // this.loadCourseDetail(id)
+      // /admin/clazz/getEmployeeClazzSourceDetail
+
+    }).catch((err) => {
+      console.log(err)
+    });
+  }
+
+  loadCourseDetail(id) {
+    post('/admin/clazzSource/getEmployeeClazzSourceDetail', { id}).then((data) => {
+      this.setState({
+        courseDetail: data
       });
 
     }).catch((err) => {
@@ -44,10 +82,34 @@ class Task extends C {
     this.props.history.push('/home')
   }
 
+  changeCourse(id) {
+    this.loadCourseDetail(id);
+    const classCourse = this.state.classCourse.map((item) => {
+      if (item.id === id) {
+        item.status = true;
+        return item
+      } else {
+        item.status = false;
+        return item
+      }
+    });
+    this.setState({
+      classCourse
+    });
+  }
+
+  setCouseStyle(item) {
+    
+    if (item.status) {
+      return item.publish === 'ACTIVE' ? `${style.progressList} ${style.act} ${style.done}` :  `${style.act} ${style.progressList}`
+    }
+    return item.publish === 'ACTIVE' ? `${style.progressList} ${style.done}` :  ` ${style.progressList}`;
+  }
 
   render() {
     const { id } = this.props.match.params;
-    const { classInfo } = this.state;
+    const { classInfo, classCourse, courseDetail } = this.state;
+    // const courseStyle = this.setCouseStyle(item);
     return (
       <div>
         <div className={style.header}>
@@ -60,56 +122,36 @@ class Task extends C {
           </div>
         </div>
         <div className={style.content}>
-          <SideMenu active={4} id={id}/>
+          <SideMenu active={3} id={id} />
           <div className={style.menuContent}>
             <div className={style.box}>
-              <HeaderBar title='本班学员' hasBorder={true}>
+              <HeaderBar title='课程进度' hasBorder={true}>
                 <HeaderOpa pagePush={this.addCourse} />
               </HeaderBar>
               <section className={style.tab}>
                 <div className={style.tabTit}>
-                  <div className={`${style.progressList} ${style.act} ${style.done}`}>
-                    <div className={style.name}>第六节课</div>
-                    <div className={style.date}>1024/2/2</div>
-                  </div>
-                  <div className={style.progressList}>
-                    <div className={style.name}>第六节课</div>
-                    <div className={style.date}>1024/2/2</div>
-                  </div>
-                  <div className={style.progressList}>
-                    <div className={style.name}>第六节课</div>
-                    <div className={style.date}>1024/2/2</div>
-                  </div>
-                  <div className={style.progressList}>
-                    <div className={style.name}>第六节课</div>
-                    <div className={style.date}>1024/2/2</div>
-                    <div className={style.edit}>编辑</div>
-                  </div>
-                  
+                  {
+                    // ${style.act}
+                    classCourse.map((item, idx) => (
+                      <div key={`item-${idx}`} className={this.setCouseStyle(item)} onClick={() => {this.changeCourse(item.id)}}>
+                        <div className={style.name}>{item.name}</div>
+                        <div className={style.date}>{item.dateStr}</div>
+                      </div>
+                    ))
+                  }
                 </div>
                 <div className={style.tabPane}>
-                  <div className={style.title}>白带（15人）</div>
-                  <div className={style.taskInfo}>
-                    <div className={style.img}><img src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2171885043,3211252209&fm=173&app=25&f=JPEG?w=218&h=146&s=49269F545F295C0370498CD1030080B3' alt='' /></div>
-                    <div className={style.cont}>
-                      <div className={style.name}>太极一行</div>
-                      <div className={style.desc}>太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行</div>
-                    </div>
-                  </div>
-                  <div className={style.taskInfo}>
-                    <div className={style.img}><img src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2171885043,3211252209&fm=173&app=25&f=JPEG?w=218&h=146&s=49269F545F295C0370498CD1030080B3' alt='' /></div>
-                    <div className={style.cont}>
-                      <div className={style.name}>太极一行</div>
-                      <div className={style.desc}>太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行</div>
-                    </div>
-                  </div>
-                  <div className={style.taskInfo}>
-                    <div className={style.img}><img src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2171885043,3211252209&fm=173&app=25&f=JPEG?w=218&h=146&s=49269F545F295C0370498CD1030080B3' alt='' /></div>
-                    <div className={style.cont}>
-                      <div className={style.name}>太极一行</div>
-                      <div className={style.desc}>太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行</div>
-                    </div>
-                  </div>
+                  {
+                    courseDetail.map((item, idx) => (
+                      <div className={style.taskInfo} key={`item-${idx}`}>
+                        <div className={style.img}><img src={item.photoUrl} alt='' /></div>
+                        <div className={style.cont}>
+                          <div className={style.name}>{item.name}</div>
+                          <div className={style.desc}>{item.claim}</div>
+                        </div>
+                      </div>
+                    ))
+                  }
                 </div>
               </section>
             </div>

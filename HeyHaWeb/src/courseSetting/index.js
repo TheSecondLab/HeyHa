@@ -2,8 +2,8 @@ import React, { Component as C } from 'react'
 
 import { Panel, HeaderBar, StuList, PageTitle, List, Message } from '../components';
 import * as style from './style.scss';
-import { post } from '../utils/service';
-
+import { post, $post } from '../utils/service';
+import $ from 'jquery';
 class CourseSetting extends C {
   constructor() {
     super();
@@ -15,6 +15,10 @@ class CourseSetting extends C {
     this.getStudentLevel = this.getStudentLevel.bind(this);
     this.choseCourse2List = this.choseCourse2List.bind(this);
     this.showToast = this.showToast.bind(this);
+    this.sendCourse = this.sendCourse.bind(this);
+    this.setCourseName = this.setCourseName.bind(this);
+    this.setDate = this.setDate.bind(this);
+    this.removeItem = this.removeItem.bind(this);
     this.state = {
       courseList: [],
       materialList: [],
@@ -104,6 +108,17 @@ class CourseSetting extends C {
     });
   }
 
+  removeItem(levelId, capitalId) {
+    const stateName = `level-${levelId}`;
+    const { courseList } = this.state;
+    courseList.some((item) => { if(item.capitalId === capitalId) {item.status = false; return true} });
+
+    this.setState({
+      [stateName]: this.state[stateName].filter((item) => item.capitalId != capitalId ),
+      courseList
+    });
+  }
+
   mapAddCourse(id) {
     return this.state[`level-${id}`].map((item, idx) => (
       <div className={style.courseList} key={`ITEM-${idx}`}>
@@ -112,9 +127,44 @@ class CourseSetting extends C {
           <div className={style.name}>{item.name}</div>
           <div className={style.desc}>{item.claim}</div>
         </div>
-        <div className={style.lightbtn}>移除</div>
+        <div className={style.lightbtn} onClick={() => this.removeItem(id, item.capitalId)}>移除</div>
       </div>
     ))
+  }
+
+  sendCourse(postType) {
+    const { id } = this.props.match.params;
+    const { courseName, date, studentLevel } = this.state;
+
+    const arr = [];
+    Object.keys(this.state).forEach((item) => {
+      if(item.indexOf('level-') > -1) {
+        if(this.state[item].length) {
+          this.state[item].map((o) => {
+            arr.push({levelId: +item.split('-').pop(), capitalId: o.capitalId})
+          });
+        }
+      }
+    })
+
+
+    var obj = {
+      publish: postType,
+      clazzId: id,
+      name: courseName,
+      date,
+      types: 'HOMEWORK',
+      capital: arr
+
+    }
+    $post('/admin/clazzSource/addOrEditCapital', JSON.stringify(obj)).then((data) => {
+     
+        console.log(data);
+
+    }).catch((err) => {
+      console.log(err)
+    });
+
   }
 
   choseCourse2List(item) {
@@ -139,9 +189,21 @@ class CourseSetting extends C {
       this.setState({showToast: false});
     }, 2000);
   }
+
+  setCourseName(e) {
+    this.setState({
+      courseName: e.target.value
+    });
+  }
+
+  setDate(e) {
+    this.setState({
+      date: e.target.value
+    });
+  }
   render() {
 
-    const { courseList, levelList, materialList, studentLevel, currentLevel, showToast } = this.state;
+    const { courseList, levelList, materialList, studentLevel, currentLevel, showToast, courseName, date } = this.state;
     return(
       <div>
         <Message title='请选择段位~' visible={showToast} />
@@ -151,14 +213,14 @@ class CourseSetting extends C {
             <div className={style.formBox}>
               <div className={style.formItem}>
                 <label>课程名称</label>
-                <div><input type='text' placeholder='课程名称' /></div>
+                <div><input type='text' placeholder='课程名称' value={courseName} onChange={this.setCourseName} /></div>
               </div>
               <div className={style.formItem}>
                 <label>上课日期</label>
-                <div><input type='date' placeholder='上课日期' /></div>
+                <div><input type='date' placeholder='上课日期' value={date} onChange={this.setDate} /></div>
                 <div className={style.btnBox}>
-                  <div className={style.lightbtn}>稍后发布</div>
-                  <div className={style.darkbtn}>立即发布</div>
+                  <div className={style.lightbtn} onClick={() => this.sendCourse('INACTIVE')}>稍后发布</div>
+                  <div className={style.darkbtn} onClick={() => this.sendCourse('ACTIVE')}>立即发布</div>
                 </div>
               </div>
             </div>

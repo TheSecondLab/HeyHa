@@ -98,17 +98,6 @@ class CourseProgress extends C {
     });
   }
 
-  // getStudentLevel(id) {
-  //   post('/admin/clazzSource/getClazzStudentLevel', { clazzId: id }).then((data) => {
-  //     this.setState({
-  //       courseDetail: data
-  //     });
-
-  //   }).catch((err) => {
-  //     console.log(err)
-  //   });
-  // }
-
   setCouseStyle(item) {
     
     if (item.status) {
