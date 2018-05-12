@@ -12,26 +12,11 @@ class PostMoment extends Component {
   constructor(props){
     super(props);
     this.goBack = this.goBack.bind(this);
+    this.test = this.test.bind(this);
+    this.publish = this.publish.bind(this);
     this.state = {
       gallery: false,
       demoFiles : [
-        {
-          url: thumbSrc,
-        },
-        {
-          url: photoSrc
-        },
-        {
-          url: thumbSrc
-        },
-        {
-          url: photoSrc,
-          error: true
-        },
-        {
-          url: thumbSrc,
-          status: '50%'
-        }
       ]
     };
   }
@@ -67,6 +52,68 @@ class PostMoment extends Component {
     )
   }
 
+  test() {
+    const cameraOptions = {
+      quality: 50,
+      // destinationType: this.platform.is('ios') ? this.camera.DestinationType.NATIVE_URI : this.camera.DestinationType.FILE_URI,
+      destinationType: 1,
+      encodingType: 0,
+      mediaType: 0,
+      sourceType: 0
+    };
+    // const cameraSuccess = (imageData) => {
+    //   // let newFiles = [...this.state.demoFiles, {url:imageData}];
+    //   // this.setState({
+    //   //     demoFiles: newFiles
+    //   // });
+
+    //   this.transform(imageData);
+    // }
+    const cameraError = (err) =>{conosle.log(err)}
+    navigator.camera.getPicture(this.transform, cameraError, cameraOptions);
+  }
+
+  transform(imageData) {
+    window.resolveLocalFileSystemURL(imageData, function(fileEntry) {  
+      fileEntry.file(function(file) {  
+          const reader = new FileReader();  
+          reader.onloadend = function(e) {   
+              const the_file = new Blob([e.target.result ], { type: "image/jpeg" } );  
+              let newFiles = [...this.state.demoFiles, {url:imageData, data: the_file, name:file.name}];
+              this.setState({
+                  demoFiles: newFiles
+              });
+          };  
+          reader.readAsArrayBuffer(file);  
+        }, function(e){()=> {}});  
+      }, function(e){()=>{}});  
+  }
+
+  publish() {
+    this.formData = new FormData();
+    const { demoFiles } = this.state;
+    
+    const imgArr = demoFiles.map((file) => {
+      return new Promise((resolve, reject) => {
+        window.resolveLocalFileSystemURL(file.url, entry => {
+          entry.file(file => {
+            let blob = file;
+            const reader = new FileReader();
+              reader.onloadend = () => {
+                const imgBlob = new Blob([reader.result], {type: blob.type});
+                console.log('blob', imgBlob)
+                this.formData.append('file_image', imgBlob, blob.name);
+                resolve();
+              };
+              reader.readAsArrayBuffer(blob);
+            });
+          })
+      });
+    })
+
+    Promise.all(imgArr).then(data=> {console.log('adbgg, '+JSON.stringify(this.formData.getAll('file_image')))})
+  }
+
   render(){
     return (
       <div classMoment={style.wrap}>
@@ -80,26 +127,27 @@ class PostMoment extends Component {
             <CellBody>
               <Uploader
                 title="Image Uploader"
-                maxCount={6}
+                maxCount={3}
                 files={this.state.demoFiles}
                 onError={msg => alert(msg)}
                 onChange={(file,e) => {
+                  console.log('13')
                   let newFiles = [...this.state.demoFiles, {url:file.data}];
                   this.setState({
                       demoFiles: newFiles
                   });
                 }}
-                onFileClick={
-                  (e, file, i) => {
-                    console.log('file click', file, i)
-                    this.setState({
-                      gallery: {
-                          url: file.url,
-                          id: i
-                      }
-                    })
-                  }
-                }
+                // onFileClick={
+                //   (e, file, i) => {
+                //     console.log('file click', file, i)
+                //     this.setState({
+                //       gallery: {
+                //           url: file.url,
+                //           id: i
+                //       }
+                //     })
+                //   }
+                // }
                 lang={{
                   maxError: maxCount => `Max ${maxCount} images allow`
                 }}
@@ -114,8 +162,8 @@ class PostMoment extends Component {
                </textarea>
              </div>
              <div className={style.btnWrap}>
-               <div className={style.light}>稍后再发</div>
-               <div className={style.dark}>立即发布</div>
+               <div className={style.light} onClick={this.test}>稍后再发</div>
+               <div className={style.dark} onClick={this.publish}>立即发布</div>
              </div>
            </Panel>
          </div>

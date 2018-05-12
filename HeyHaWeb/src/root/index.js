@@ -15,6 +15,13 @@ class Root extends C {
   }
 
   componentWillMount() {
+    // console.log(`isapp:${typeof cordova}`)
+    // if(window.isApp) {
+      // const permissions = cordova.plugins.permissions;
+      // permissions.requestpermissions(permissions.WRITE_EXTERNAL_STORAGE);
+      // permissions.requestPermissions(permissions.CAMERA);
+    // }
+
     if (this.props.location.pathname === '/')
       this.props.history.push('/login');
   }

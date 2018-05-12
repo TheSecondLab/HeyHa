@@ -3,7 +3,7 @@ import React, { Component as C } from 'react'
 import { Panel, HeaderBar, StuList, PageTitle, List, Message } from '../components';
 import * as style from './style.scss';
 import { post, $post } from '../utils/service';
-import $ from 'jquery';
+// import $ from 'jquery';
 class CourseSetting extends C {
   constructor() {
     super();
