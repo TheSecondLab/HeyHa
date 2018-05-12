@@ -158,25 +158,25 @@ class TaskSetting extends C {
           });
         }
       }
-    })
-
-
+    });
     var obj = {
       publish: postType,
       clazzId: id,
       name: courseName,
       date,
-      types: 'COURSE',
+      types: 'HOMEWORK',
       capital: arr
+    };
 
+    if (name && date && capital.length) {
+      $post('/admin/clazzSource/addOrEditCapital', JSON.stringify(obj)).then((data) => {
+          this.showToast('添加成功');
+      }).catch((err) => {
+        console.log(err)
+      });
+      return;
     }
-    $post('/admin/clazzSource/addOrEditCapital', JSON.stringify(obj)).then((data) => {
-     
-        console.log(data);
-
-    }).catch((err) => {
-      console.log(err)
-    });
+    this.showToast('请补全课程信息')
 
   }
 
@@ -196,8 +196,8 @@ class TaskSetting extends C {
     });
   }
 
-  showToast() {
-    this.setState({showToast: true});
+  showToast(msg) {
+    this.setState({showToast: true, toastMsg: msg});
     setTimeout(()=> {
       this.setState({showToast: false});
     }, 2000);
@@ -223,10 +223,10 @@ class TaskSetting extends C {
   }
   render() {
 
-    const { courseList, levelList, materialList, studentLevel, currentLevel, showToast, courseName, date } = this.state;
+    const { courseList, levelList, materialList, studentLevel, currentLevel, showToast, courseName, date, toastMsg } = this.state;
     return(
       <div>
-        <Message title='请选择段位~' visible={showToast} />
+        <Message title={toastMsg} visible={showToast} />
         <PageTitle title='课程设置' goBack={this.goBack} />
         <div className={style.wrap}>  
           <Panel>
@@ -281,7 +281,7 @@ class TaskSetting extends C {
                         className={ item.status ? `${style.darkbtn}` : `${style.lightbtn}` }
                         onClick={() => {
                           if(!currentLevel) {
-                            this.showToast();
+                            this.showToast('请选择段位~');
                             return;
                           };
                           if(item.status) return;

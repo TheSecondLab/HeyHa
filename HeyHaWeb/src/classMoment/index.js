@@ -1,6 +1,5 @@
 import React, { Component as C } from 'react'
-
-import { HeaderBar, StuList, SideMenu } from '../components/index';
+import { HeaderBar, StuList, SideMenu, Message } from '../components/index';
 import * as style from './style.scss';
 import { post } from '../utils/service';
 
@@ -17,14 +16,31 @@ class ClassMoment extends C {
     this.loadClassInfo = this.loadClassInfo.bind(this);
     this.loadClassInfo = this.loadClassInfo.bind(this);
     this.goOtherClass = this.goOtherClass.bind(this);
+    this.deleteMoment = this.deleteMoment.bind(this);
+    this.showToast = this.showToast.bind(this);
+    this.postMoment = this.postMoment.bind(this);
     this.state = {
-      classInfo: {}
+      classInfo: {},
+      momentList: [],
+      showToast: false
     };
   }
 
   componentWillMount() {
     const { id } = this.props.match.params;
     this.loadClassInfo(id);
+    this.loadClassMoment(id);
+  }
+
+  loadClassMoment(id) {
+    post('/admin/dynamic/getDynamicListByClazz', { clazzId: id }).then((data) => {
+      this.setState({
+        momentList: data
+      });
+
+    }).catch((err) => {
+      console.log(err)
+    });
   }
 
   postMoment() {
@@ -43,14 +59,48 @@ class ClassMoment extends C {
   }
 
   goOtherClass() {
-    this.props.history.push('/home')
+    this.props.history.push('/home');
   }
+
+  deleteMoment(id) {
+    post('/admin/dynamic/deleteDynamic', { id }).then((data) => {
+     this.showToast('删除成功');
+     this.setState({
+       momentList: this.state.momentList.filter((item) => item.id !== id)
+     })
+
+    }).catch((err) => {
+      console.log(err)
+    });
+  }
+
+  showToast(msg) {
+    this.setState({showToast: true, toastMsg: msg});
+    setTimeout(()=> {
+      this.setState({showToast: false});
+    }, 2000);
+  }
+
+  callbackMoment(id) {
+    post('/admin/dynamic/cancelDynamic', { id }).then((data) => {
+      this.showToast('撤回状态成功！');
+ 
+     }).catch((err) => {
+       console.log(err)
+     });
+  }
+
+  postMoment(id) {
+    const moment = this.state.momentList.filter(item => item.id === id);
+  }
+
   render(){
     const { id } = this.props.match.params;
-    const { classInfo } = this.state;
+    const { classInfo, momentList, showToast, toastMsg } = this.state;
 
     return (
       <div>
+        <Message title={toastMsg} visible={showToast} />
         <div className={style.header}>
         <div>
           <div className={style.name}>{classInfo.name}</div>
@@ -68,20 +118,30 @@ class ClassMoment extends C {
                 <HeaderOpa pagePush={this.postMoment} />
               </HeaderBar>
               <div className={style.courseWrap}>
-                <div className={style.dateTit}>2018/2/2</div>
-                <div className={style.courseList}>
-                  <div className={style.img}><img src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2171885043,3211252209&fm=173&app=25&f=JPEG?w=218&h=146&s=49269F545F295C0370498CD1030080B3' alt='' /></div>
-                  <div className={style.cont}>
-                    <div className={style.name}>太极一行</div>
-                    <div className={style.desc}>
-                      <span>共三张图</span> 
-                      <div className={style.btn}>
-                        <span className={style.dark}>发布</span>
-                        <span className={style.light}>删除</span>
+                {/* <div className={style.dateTit}>2018/2/2</div> */}
+                {
+                  momentList.map((item) => (
+                    <div className={style.courseList} key={item.id}>
+                      <div className={style.img}><img src={item.firstImg} alt='' /></div>
+                      <div className={style.cont}>
+                        <div className={style.name}>{item.content}</div>
+                        <div className={style.desc}>
+                          <span>共{item.imageUrl.length}张图</span> 
+                          <div className={style.btn}>
+                            {
+                              item.dataStatus === 'ACTIVE'
+                                ? <span className={style.dark} onClick={() => this.callbackMoment(item.id)}>撤回</span>
+                                : <span className={style.dark} onClick={() => this.postMoment(item.id)}>发布</span>
+                            }
+                            
+                            <span className={style.light} onClick={() => this.deleteMoment(item.id)}>删除</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </div>
+                  ))
+                }
+                
               </div>
             </div>
           </div>
