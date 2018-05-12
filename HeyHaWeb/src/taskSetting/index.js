@@ -1,93 +1,298 @@
 import React, { Component as C } from 'react';
-import { Panel, HeaderBar, StuList, PageTitle } from '../components';
+import { Panel, HeaderBar, StuList, PageTitle, Message, List } from '../components';
 import * as style from './style.scss';
-
-const HeaderOpa = () => (
-  <div className={style.opaWrap}>
-    <div className={style.input}><input placeholder='跨班搜索' /></div>
-    <div className={style.lightBtn}><button>全选</button></div>
-    <div className={style.darkBtn}><button>确定</button></div>
-  </div>
-)
+import { post } from '../utils/service';
 
 class TaskSetting extends C {
-
   constructor() {
     super();
     this.goBack = this.goBack.bind(this);
+    this.selectLevel = this.selectLevel.bind(this);
+    this.selectMaterial = this.selectMaterial.bind(this);
+    this.loadAllCourse = this.loadAllCourse.bind(this);
+    this.mapAddCourse = this.mapAddCourse.bind(this);
+    this.getStudentLevel = this.getStudentLevel.bind(this);
+    this.choseCourse2List = this.choseCourse2List.bind(this);
+    this.showToast = this.showToast.bind(this);
+    this.sendCourse = this.sendCourse.bind(this);
+    this.setCourseName = this.setCourseName.bind(this);
+    this.setDate = this.setDate.bind(this);
+    this.removeItem = this.removeItem.bind(this);
+    this.addLelvelCourse = this.addLelvelCourse.bind(this);
+    this.state = {
+      courseList: [],
+      materialList: [],
+      levelList: [],
+      levelId: '',
+      materialId: '',
+      studentLevel: [],
+      currentLevel: '',
+      toastTimer: null,
+      showToast: false
+    };
+  }
+
+  componentWillMount() {
+    const { id } = this.props.match.params;
+
+    this.loadAllCourse();
+    this.loadMaterial();
+    this.loadLevel();
+    this.getStudentLevel(id);
   }
 
   goBack() {
     this.props.history.goBack();
   }
 
+  selectLevel(item) {
+    const levelId =  item.id === 'all' ? '' : item.id;
+    this.setState({
+      levelId
+    });
+    this.loadAllCourse(levelId, this.state.materialId);
+  }
+
+  selectMaterial(item) {
+    const materialId = item.id === 'all' ? '' : item.id;
+    this.setState({
+      materialId 
+    });
+    this.loadAllCourse(this.state.levelId, materialId);
+  }
+  
+  getStudentLevel(id) {
+    post('/admin/clazzSource/getClazzStudentLevel', { clazzId: id }).then((data) => {
+      data.forEach((item) => {
+        this.setState({
+          [`level-${item.levelId}`]: []
+        })
+      })
+      this.setState({
+        studentLevel: data
+      });
+
+    }).catch((err) => {
+      console.log(err)
+    });
+  }
+
+  loadMaterial() {
+    post('/admin/capital/getMaterial', {}).then((data) => {
+      this.setState({
+        materialList: [{id: 'all', name: '所有类型'}].concat(data)
+      });
+    }).catch((err) => {
+      console.log(err)
+    });
+  }
+
+  loadLevel() {
+    post('/admin/level/getLevel', {}).then((data) => {
+      this.setState({
+        levelList: [{id: 'all', name: '所有级别'}].concat(data)
+      });
+    }).catch((err) => {
+      console.log(err)
+    });
+  }
+
+  loadAllCourse(levelId, materialId) {
+    post('/admin/clazzSource/getCapital', { types: 'FODDER', levelId, materialId }).then((data) => {
+     
+      let courseList = [];
+      const { currentLevel } = this.state;
+      if (currentLevel) {
+        courseList = data.map((item) => {
+          this.state[`level-${currentLevel}`].forEach((obj) => {
+            if (item.capitalId === obj.capitalId) {
+              item.status = true;
+            }
+          });
+          return item;
+        })
+      }
+      this.setState({
+        courseList: courseList.length ? courseList: data
+      });
+
+    }).catch((err) => {
+      console.log(err)
+    });
+  }
+
+  removeItem(levelId, capitalId) {
+    const stateName = `level-${levelId}`;
+    const { courseList } = this.state;
+    courseList.some((item) => { if(item.capitalId === capitalId) {item.status = false; return true} });
+
+    this.setState({
+      [stateName]: this.state[stateName].filter((item) => item.capitalId != capitalId ),
+      courseList
+    });
+  }
+
+  mapAddCourse(id) {
+    return this.state[`level-${id}`].map((item, idx) => (
+      <div className={style.courseList} key={`ITEM-${idx}`}>
+        <div className={style.img}><img src={item.photoUrl} alt='' /></div>
+        <div className={style.cont}>
+          <div className={style.name}>{item.name}</div>
+          <div className={style.desc}>{item.claim}</div>
+        </div>
+        <div className={style.lightbtn} onClick={() => this.removeItem(id, item.capitalId)}>移除</div>
+      </div>
+    ))
+  }
+
+  sendCourse(postType) {
+    const { id } = this.props.match.params;
+    const { courseName, date, studentLevel } = this.state;
+
+    const arr = [];
+    Object.keys(this.state).forEach((item) => {
+      if(item.indexOf('level-') > -1) {
+        if(this.state[item].length) {
+          this.state[item].map((o) => {
+            arr.push({levelId: +item.split('-').pop(), capitalId: o.capitalId})
+          });
+        }
+      }
+    })
+
+
+    var obj = {
+      publish: postType,
+      clazzId: id,
+      name: courseName,
+      date,
+      types: 'COURSE',
+      capital: arr
+
+    }
+    $post('/admin/clazzSource/addOrEditCapital', JSON.stringify(obj)).then((data) => {
+     
+        console.log(data);
+
+    }).catch((err) => {
+      console.log(err)
+    });
+
+  }
+
+  choseCourse2List(item) {
+    const key = `level-${this.state.currentLevel}`;
+    
+    const handleCourseList = this.state.courseList.map((obj) => {
+      if(obj.capitalId === item.capitalId) {
+        obj.status = true;
+        // return obj;
+      }
+      return obj;
+    });
+    this.setState({
+      [key]: this.state[key].concat(item),
+      courseList: handleCourseList
+    });
+  }
+
+  showToast() {
+    this.setState({showToast: true});
+    setTimeout(()=> {
+      this.setState({showToast: false});
+    }, 2000);
+  }
+
+  setCourseName(e) {
+    this.setState({
+      courseName: e.target.value
+    });
+  }
+
+  setDate(e) {
+    this.setState({
+      date: e.target.value
+    });
+  }
+
+  addLelvelCourse(item){
+    this.loadAllCourse(item.levelId);
+    this.setState({
+      currentLevel: item.levelId
+    })
+  }
   render() {
+
+    const { courseList, levelList, materialList, studentLevel, currentLevel, showToast, courseName, date } = this.state;
     return(
       <div>
+        <Message title='请选择段位~' visible={showToast} />
         <PageTitle title='课程设置' goBack={this.goBack} />
         <div className={style.wrap}>  
           <Panel>
             <div className={style.formBox}>
               <div className={style.formItem}>
                 <label>课程名称</label>
-                <div><input type='text' placeholder='课程名称' /></div>
+                <div><input type='text' placeholder='课程名称' value={courseName} onChange={this.setCourseName} /></div>
               </div>
               <div className={style.formItem}>
                 <label>上课日期</label>
-                <div><input type='date' placeholder='上课日期' /></div>
+                <div><input type='date' placeholder='上课日期' value={date} onChange={this.setDate} /></div>
                 <div className={style.btnBox}>
-                  <div className={style.lightbtn}>稍后发布</div>
-                  <div className={style.darkbtn}>立即发布</div>
+                  <div className={style.lightbtn} onClick={() => this.sendCourse('INACTIVE')}>稍后发布</div>
+                  <div className={style.darkbtn} onClick={() => this.sendCourse('ACTIVE')}>立即发布</div>
                 </div>
               </div>
             </div>
             <div className={style.courseBox}>
               <div className={style.courseContent}>
                 <div className={style.title}>课程内容</div>
-                <div className={style.courseType}><span>白带（12）</span><span className={style.add}></span></div>
-                <div className={style.courseList}>
-                  <div className={style.img}><img src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2171885043,3211252209&fm=173&app=25&f=JPEG?w=218&h=146&s=49269F545F295C0370498CD1030080B3' alt='' /></div>
-                  <div className={style.cont}>
-                    <div className={style.name}>太极一行</div>
-                    <div className={style.desc}>太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行</div>
-                  </div>
-                  <div className={style.lightbtn}>移除</div>
-                </div>
+                {
+                  studentLevel.map((item, idx) => {
+                    return (
+                      <div key={`item-${idx}`}>
+                        <div className={style.courseType}>
+                          <span>{item.name}（{item.num}）</span>
+                          <span className={style.add} onClick={
+                            () => this.addLelvelCourse(item)
+                            }></span>
+                        </div>
+                        { this.mapAddCourse(item.levelId) }
+                      </div>
+                    )
+                  })
+                }
               </div>
               <div className={style.typeWrap}>
                 <div className={style.typeSelector}>
-                  <div>白黄</div>
-                  <div>选择类型</div>
+                  <List data={levelList} onChange={this.selectLevel} initialTitle='所有等级' />
+                  <List data={materialList} onChange={this.selectMaterial} initialTitle='所有类型' />
                 </div>
-                <div className={style.courseList}>
-                  <div className={style.img}><img src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2171885043,3211252209&fm=173&app=25&f=JPEG?w=218&h=146&s=49269F545F295C0370498CD1030080B3' alt='' /></div>
-                  <div className={style.cont}>
-                    <div className={style.name}>太极一行</div>
-                    <div className={style.desc}>太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行</div>
-                  </div>
-                  <div className={style.darkbtn}>已选</div>
-                </div>
-                <div className={style.courseList}>
-                  <div className={style.img}><img src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2171885043,3211252209&fm=173&app=25&f=JPEG?w=218&h=146&s=49269F545F295C0370498CD1030080B3' alt='' /></div>
-                  <div className={style.cont}>
-                    <div className={style.name}>太极一行</div>
-                    <div className={style.desc}>太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行</div>
-                  </div>
-                </div>
-                <div className={style.courseList}>
-                  <div className={style.img}><img src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2171885043,3211252209&fm=173&app=25&f=JPEG?w=218&h=146&s=49269F545F295C0370498CD1030080B3' alt='' /></div>
-                  <div className={style.cont}>
-                    <div className={style.name}>太极一行</div>
-                    <div className={style.desc}>太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行</div>
-                  </div>
-                </div>
-                <div className={style.courseList}>
-                  <div className={style.img}><img src='https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=2171885043,3211252209&fm=173&app=25&f=JPEG?w=218&h=146&s=49269F545F295C0370498CD1030080B3' alt='' /></div>
-                  <div className={style.cont}>
-                    <div className={style.name}>太极一行</div>
-                    <div className={style.desc}>太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行太极一行</div>
-                  </div>
-                </div>
+               
+                {
+                  courseList.map((item, idx) => (
+                    <div className={style.courseList} key={`item-${idx}`}>
+                      <div className={style.img}><img src={item.photoUrl} alt='' /></div>
+                      <div className={style.cont}>
+                        <div className={style.name}>{item.name}</div>
+                        <div className={style.desc}>{item.claim}</div>
+                      </div>
+                      <div
+                        className={ item.status ? `${style.darkbtn}` : `${style.lightbtn}` }
+                        onClick={() => {
+                          if(!currentLevel) {
+                            this.showToast();
+                            return;
+                          };
+                          if(item.status) return;
+                          this.choseCourse2List(item)
+                        }}
+                      >
+                        { item.status ? '已选' : '选择' }
+                      </div>
+                    </div>
+                  ))
+                }
               </div>
             </div>
           </Panel>

@@ -19,7 +19,6 @@ class Task extends C {
     this.loadClassInfo = this.loadClassInfo.bind(this);
     this.changeCourse = this.changeCourse.bind(this);
     this.setCouseStyle = this.setCouseStyle.bind(this);
-    // this.getStudentLevel = this.getStudentLevel.bind(this);
     this.state = {
       classInfo: {},
       classCourse: [],
@@ -32,7 +31,6 @@ class Task extends C {
     const { id } = this.props.match.params;
     this.loadClassInfo(id);
     this.loadClassCourse(id);
-    // this.getStudentLevel(id);
   }
 
 
@@ -59,8 +57,6 @@ class Task extends C {
       this.setState({
         classInfo: data
       });
-      // this.loadCourseDetail(id)
-      // /admin/clazz/getEmployeeClazzSourceDetail
 
     }).catch((err) => {
       console.log(err)
@@ -109,7 +105,7 @@ class Task extends C {
   render() {
     const { id } = this.props.match.params;
     const { classInfo, classCourse, courseDetail } = this.state;
-    // const courseStyle = this.setCouseStyle(item);
+
     return (
       <div>
         <div className={style.header}>
@@ -122,7 +118,7 @@ class Task extends C {
           </div>
         </div>
         <div className={style.content}>
-          <SideMenu active={3} id={id} />
+          <SideMenu active={4} id={id} />
           <div className={style.menuContent}>
             <div className={style.box}>
               <HeaderBar title='课程进度' hasBorder={true}>
@@ -131,7 +127,6 @@ class Task extends C {
               <section className={style.tab}>
                 <div className={style.tabTit}>
                   {
-                    // ${style.act}
                     classCourse.map((item, idx) => (
                       <div key={`item-${idx}`} className={this.setCouseStyle(item)} onClick={() => {this.changeCourse(item.id)}}>
                         <div className={style.name}>{item.name}</div>
@@ -161,4 +156,4 @@ class Task extends C {
     )
   }
 }
-export default Task
+export default Task;

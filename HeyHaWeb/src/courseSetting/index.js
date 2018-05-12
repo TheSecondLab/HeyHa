@@ -19,6 +19,8 @@ class CourseSetting extends C {
     this.setCourseName = this.setCourseName.bind(this);
     this.setDate = this.setDate.bind(this);
     this.removeItem = this.removeItem.bind(this);
+    this.addLelvelCourse = this.addLelvelCourse.bind(this);
+
     this.state = {
       courseList: [],
       materialList: [],
@@ -99,8 +101,21 @@ class CourseSetting extends C {
 
   loadAllCourse(levelId, materialId) {
     post('/admin/clazzSource/getCapital', { types: 'FODDER', levelId, materialId }).then((data) => {
+     
+      let courseList = [];
+      const { currentLevel } = this.state;
+      if (currentLevel) {
+        courseList = data.map((item) => {
+          this.state[`level-${currentLevel}`].forEach((obj) => {
+            if (item.capitalId === obj.capitalId) {
+              item.status = true;
+            }
+          });
+          return item;
+        })
+      }
       this.setState({
-        courseList: data
+        courseList: courseList.length ? courseList: data
       });
 
     }).catch((err) => {
@@ -201,6 +216,13 @@ class CourseSetting extends C {
       date: e.target.value
     });
   }
+
+  addLelvelCourse(item) {
+    this.loadAllCourse(item.levelId);
+    this.setState({
+      currentLevel: item.levelId
+    })
+  }
   render() {
 
     const { courseList, levelList, materialList, studentLevel, currentLevel, showToast, courseName, date } = this.state;
@@ -234,12 +256,7 @@ class CourseSetting extends C {
                         <div className={style.courseType}>
                           <span>{item.name}（{item.num}）</span>
                           <span className={style.add} onClick={
-                            () => {
-                              this.loadAllCourse(item.levelId);
-                              this.setState({
-                                currentLevel: item.levelId
-                              });
-                            }
+                            () => this.addLelvelCourse(item)
                             }></span>
                         </div>
                         { this.mapAddCourse(item.levelId) }
