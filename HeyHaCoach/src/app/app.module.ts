@@ -31,7 +31,8 @@ import { ChatPageModule } from '../pages/chat/chat.module';
 import { ClassDueStudentPageModule } from '../pages/class-due-student/class-due-student.module';
 import { CourseDetailPageModule } from '../pages/course-detail/course-detail.module';
 import { SearchStudentPageModule } from '../pages/search-student/search-student.module';
-
+import { CourseProgressPageModule } from '../pages/course-progress/course-progress.module';
+import { CourseProgressListPageModule } from '../pages/course-progress-list/course-progress-list.module';
 
 // 根组件
 import { MyApp } from './app.component';
@@ -68,6 +69,8 @@ import { ChatPage } from '../pages/chat/chat';
 import { ClassDueStudentPage } from '../pages/class-due-student/class-due-student';
 import { CourseDetailPage } from '../pages/course-detail/course-detail';
 import { SearchStudentPage } from '../pages/search-student/search-student';
+import { CourseProgressPage } from '../pages/course-progress/course-progress';
+import { CourseProgressListPage } from '../pages/course-progress-list/course-progress-list';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -120,7 +123,9 @@ import { AlertService } from '../module/alertService.service';
     ChatPageModule,
     ClassDueStudentPageModule,
     CourseDetailPageModule,
-    SearchStudentPageModule
+    SearchStudentPageModule,
+    CourseProgressPageModule,
+    CourseProgressListPageModule
   ],
   bootstrap: [IonicApp], // 启动模块
   entryComponents: [ // 不会在模板中使用的组件
@@ -155,7 +160,9 @@ import { AlertService } from '../module/alertService.service';
     ChatPage,
     ClassDueStudentPage,
     CourseDetailPage,
-    SearchStudentPage
+    SearchStudentPage,
+    CourseProgressPage,
+    CourseProgressListPage
   ],
   providers: [
     StatusBar,
