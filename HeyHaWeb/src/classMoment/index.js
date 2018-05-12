@@ -18,7 +18,7 @@ class ClassMoment extends C {
     this.goOtherClass = this.goOtherClass.bind(this);
     this.deleteMoment = this.deleteMoment.bind(this);
     this.showToast = this.showToast.bind(this);
-    this.postMoment = this.postMoment.bind(this);
+    this.posttempMoment = this.posttempMoment.bind(this);
     this.state = {
       classInfo: {},
       momentList: [],
@@ -90,7 +90,8 @@ class ClassMoment extends C {
      });
   }
 
-  postMoment(id) {
+  posttempMoment(id) {
+    // 缺少接口
     const moment = this.state.momentList.filter(item => item.id === id);
   }
 
@@ -131,7 +132,7 @@ class ClassMoment extends C {
                             {
                               item.dataStatus === 'ACTIVE'
                                 ? <span className={style.dark} onClick={() => this.callbackMoment(item.id)}>撤回</span>
-                                : <span className={style.dark} onClick={() => this.postMoment(item.id)}>发布</span>
+                                : <span className={style.dark} onClick={() => this.posttempMoment(item.id)}>发布</span>
                             }
                             
                             <span className={style.light} onClick={() => this.deleteMoment(item.id)}>删除</span>
