@@ -9,11 +9,12 @@ import { post } from '../utils/service';
   constructor() {
     super();
     this.goBack = this.goBack.bind(this);
-    this.loadStudentList = this.loadStudentList.bind(this);
+    // this.loadStudentList = this.loadStudentList.bind(this);
     this.hideDialog = this.hideDialog.bind(this);
     this.deletePoint = this.deletePoint.bind(this);
     this.loadPointDetail = this.loadPointDetail.bind(this);
-    this.loadOtherStudentList = this.loadOtherStudentList.bind(this);
+    this.loadPointPeople = this.loadPointPeople.bind(this);
+    // this.loadOtherStudentList = this.loadOtherStudentList.bind(this);
     this.state = {
       studentList: [],
       otherClassStudentList: [],
@@ -36,16 +37,37 @@ import { post } from '../utils/service';
 
   componentWillMount() {
     const { classId, addIntegralId } = this.props.location.query;
-    this.loadStudentList(classId);
-    this.loadOtherStudentList(classId);
+    // this.loadStudentList(classId);
+    // this.loadOtherStudentList(classId);
     this.loadPointDetail(addIntegralId);
 
   }
 
-  loadStudentList(id) {
-    post('/admin/integralQuery/getAttendanceMember', { clazzId: id }).then((data) => {
+  // loadStudentList(id) {
+  //   post('/admin/integralQuery/getAttendanceMember', { clazzId: id }).then((data) => {
+  //     this.setState({
+  //       studentList: data
+  //     });
+
+  //   }).catch((err) => {
+  //     console.log(err)
+  //   });
+  // }
+
+  loadPointPeople(id) {
+    post('/admin/integralQuery/getIntegralMember', { addIntegralId: id }).then((data) => {
+      const studentList = [];
+      const otherClassStudentList = [];
+      data.forEach((item) => {
+        if (item.clazzType) {
+          studentList.push(item)
+        } else {
+          otherClassStudentList.push(item)
+        }
+      })
       this.setState({
-        studentList: data
+        studentList,
+        otherClassStudentList
       });
 
     }).catch((err) => {
@@ -59,21 +81,23 @@ import { post } from '../utils/service';
         pointDetail: data
       });
 
-    }).catch((err) => {
-      console.log(err)
-    });
-  }
-
-  loadOtherStudentList(id) {
-    post('/admin/integralQuery/getOtherAttendanceMember', { clazzId: id }).then((data) => {
-      this.setState({
-        otherClassStudentList: data
-      });
+      this.loadPointPeople(id)
 
     }).catch((err) => {
       console.log(err)
     });
   }
+
+  // loadOtherStudentList(id) {
+  //   post('/admin/integralQuery/getOtherAttendanceMember', { clazzId: id }).then((data) => {
+  //     this.setState({
+  //       otherClassStudentList: data
+  //     });
+
+  //   }).catch((err) => {
+  //     console.log(err)
+  //   });
+  // }
 
   deletePoint(id) {
     post('/admin/integralQuery/deleteAddIntegral', { addIntegralId: id }).then((data) => {
@@ -120,14 +144,20 @@ import { post } from '../utils/service';
               <span className={style.del} onClick={() => { this.setState({confirm: true, addIntegralId: pointDetail.addIntegralId}) }}>删除</span>
             </div>
           </div>
-          <Panel>
-            <HeaderBar title='本班学员' hasBorder={true}/>
-            <StuList alignment='4' data={studentList} />
-          </Panel>
-          <Panel>
-            <HeaderBar title='跨班学员' hasBorder={true}/>
-            <StuList alignment='4' data={otherClassStudentList} />
-          </Panel>
+          {
+            studentList.length ? 
+            <Panel>
+              <HeaderBar title='本班学员' hasBorder={true}/>
+              <StuList alignment='4' data={studentList} />
+            </Panel> : null
+          }
+          {
+            otherClassStudentList.length ?
+            <Panel>
+              <HeaderBar title='跨班学员' hasBorder={true}/>
+              <StuList alignment='4' data={otherClassStudentList} />
+            </Panel> : null
+          }
         </div>
         <Dialog type="ios" title='提示' buttons={dialogBtn} show={confirm}>
           确定要删除么？

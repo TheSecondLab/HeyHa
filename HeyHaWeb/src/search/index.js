@@ -79,7 +79,6 @@ class SearchComp extends C {
   confirm() {
     const { id, page } = this.props.location.query;
     const { selectedList } = this.state;
-    // debugger
     this.props.history.push({
       pathname: `${page}/${id}`,
       query: {
@@ -97,7 +96,7 @@ class SearchComp extends C {
           <span className={style.cancel} onClick={this.returnBack}>取消</span>
         </div>
         <div className={style.content}>
-          <HeaderBar title='搜索历史' hasBorder={false} />
+          {/* <HeaderBar title='搜索历史' hasBorder={false} />
           <div className={style.searchHistory}>
             <span>王大力</span>
             <span>王大力</span>
@@ -106,7 +105,7 @@ class SearchComp extends C {
             <span>王大力</span>
             <span>王大力</span>
             <span>王大力</span>
-          </div>
+          </div> */}
           {
             resList.length ?
               <div>

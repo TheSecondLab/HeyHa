@@ -44,7 +44,9 @@ class ClassMoment extends C {
   }
 
   postMoment() {
-    this.props.history.push('/postMoment')
+    // 
+    this.showToast('功能暂未开放~');
+    // this.props.history.push('/postMoment')
   }
 
   loadClassInfo(id) {
@@ -91,8 +93,14 @@ class ClassMoment extends C {
   }
 
   postTempMoment(id) {
-    // 缺少接口
-    const moment = this.state.momentList.filter(item => item.id === id);
+    post('/admin/dynamic/changeOneDynamic', { id }).then((data) => {
+      this.showToast('发布成功');
+      const classId = this.props.match.params.id;
+      this.loadClassMoment(classId)
+
+     }).catch((err) => {
+       console.log(err)
+     });
   }
 
   render(){

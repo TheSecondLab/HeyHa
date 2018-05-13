@@ -4,16 +4,6 @@ import { HeaderBar, StuList, SideMenu } from '../components/index';
 import * as style from './style.scss';
 import { post } from '../utils/service';
 
-
-const HeaderOpa = () => (
-  <div className={style.opaWrap}>
-    <div className={style.input}><span onClick={() => { window.location.href = '/#/search' }}>跨班搜索</span></div>
-    <div className={style.lightBtn}><button>全选</button></div>
-    <div className={style.darkBtn}><button>确定</button></div>
-  </div>
-)
-
-
 class AttendenceComp extends C {
   constructor() {
     super();
@@ -27,7 +17,8 @@ class AttendenceComp extends C {
       stuList: [{}],
       selectedList: [],
       otherClassStudentList: [],
-      classInfo: {}
+      classInfo: {},
+      unAddOtherClassStu: []
     };
   }
 
@@ -38,13 +29,16 @@ class AttendenceComp extends C {
     if (this.props.location.query && this.props.location.query.otherClassStudent) {
       otherClassStudent = this.props.location.query.otherClassStudent;
     }
+
     if (otherClassStudent.length) {
       this.setState({
-        otherClassStudentList: otherClassStudent
+        unAddOtherClassStu: otherClassStudent
       });
     }
+
     this.loadClassInfo(id)
     this.loadClassStudent(id);
+    this.loadOtherClassStudent(id);
     
   }
   
@@ -63,6 +57,17 @@ class AttendenceComp extends C {
     post('/admin/integralQuery/getAttendanceMember', { clazzId: id }).then((data) => {
       this.setState({
         stuList: data
+      });
+
+    }).catch((err) => {
+      console.log(err)
+    });
+  }
+
+  loadOtherClassStudent(id) {
+    post('/admin/integralQuery/getOtherAttendanceMember', { clazzId: id }).then((data) => {
+      this.setState({
+        otherClassStudentList: data.concat(this.state.unAddOtherClassStu)
       });
 
     }).catch((err) => {
@@ -116,13 +121,14 @@ class AttendenceComp extends C {
 
   checkAttendence() {
     const { id } = this.props.match.params;
-    const { otherClassStudentList, selectedList } = this.state;
-    const otherClassStudentId = otherClassStudentList.map(item => item.id);
+    const { unAddOtherClassStu, selectedList } = this.state;
+    const otherClassStudentId = unAddOtherClassStu.map(item => item.id);
     const memberId = selectedList.concat(otherClassStudentId);
     if (!memberId.length) return;
     post('/admin/clazz/addAttendanceLog', { clazzId: id, memberId }).then((data) => {
-      this.setState({ selectedList: [], otherClassStudentList: [] })
+      this.setState({ selectedList: [], unAddOtherClassStu: [] })
       this.loadClassStudent(id);
+      this.loadOtherClassStudent(id);
     }).catch((err) => {
       console.log(err);
     });

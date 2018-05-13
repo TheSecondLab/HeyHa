@@ -88,7 +88,7 @@ class DestribuyePointComp extends C {
     post('/admin/integralQuery/deleteAddIntegral', { addIntegralId: id }).then((data) => {
       this.hideDialog();
       this.setState({
-        pointList: this.pointList.filter((item) => (item.addIntegralId !== id))
+        pointList: this.state.pointList.filter((item) => (item.addIntegralId != id))
       });
 
     }).catch((err) => {

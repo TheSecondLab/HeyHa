@@ -171,9 +171,10 @@ class CourseSetting extends C {
       types: 'FODDER',
       capital: arr
     }
-    if (name && date && capital.length) {
+    if (courseName && date && arr.length) {
       $post('/admin/clazzSource/addOrEditCapital', JSON.stringify(obj)).then((data) => {
          this.showToast('添加成功~');
+         this.props.history.goBack();
       }).catch((err) => {
         console.log(err)
       });

@@ -35,7 +35,7 @@ class Task extends C {
 
 
   loadClassCourse(id) {
-    post('/admin/clazzSource/getEmployeeClazzSource', { clazzId: id, type: 'COURSE' }).then((data) => {
+    post('/admin/clazzSource/getEmployeeClazzSource', { clazzId: id, type: 'HOMEWORK' }).then((data) => {
       data[0].status = true;
       this.setState({
         classCourse: data

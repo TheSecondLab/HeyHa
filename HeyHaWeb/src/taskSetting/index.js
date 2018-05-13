@@ -1,7 +1,7 @@
 import React, { Component as C } from 'react';
 import { Panel, HeaderBar, StuList, PageTitle, Message, List } from '../components';
 import * as style from './style.scss';
-import { post } from '../utils/service';
+import { post, $post } from '../utils/service';
 
 class TaskSetting extends C {
   constructor() {
@@ -167,10 +167,11 @@ class TaskSetting extends C {
       types: 'HOMEWORK',
       capital: arr
     };
-
-    if (name && date && capital.length) {
+    
+    if (courseName && date && arr.length) {
       $post('/admin/clazzSource/addOrEditCapital', JSON.stringify(obj)).then((data) => {
           this.showToast('添加成功');
+          this.props.history.goBack();
       }).catch((err) => {
         console.log(err)
       });

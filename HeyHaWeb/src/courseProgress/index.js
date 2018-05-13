@@ -37,7 +37,7 @@ class CourseProgress extends C {
 
 
   loadClassCourse(id) {
-    post('/admin/clazzSource/getEmployeeClazzSource', { clazzId: id, type: 'HOMEWORK' }).then((data) => {
+    post('/admin/clazzSource/getEmployeeClazzSource', { clazzId: id, type: 'COURSE' }).then((data) => {
       data[0].status = true;
       this.setState({
         classCourse: data

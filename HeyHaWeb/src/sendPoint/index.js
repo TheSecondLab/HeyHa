@@ -1,5 +1,5 @@
 import React, { Component as C } from 'react';
-import { Panel, HeaderBar, StuList, PageTitle } from '../components';
+import { Panel, HeaderBar, StuList, PageTitle, Message } from '../components';
 import * as style from './style.scss';
 import { post } from '../utils/service';
 
@@ -14,12 +14,14 @@ class SendPoint extends C {
     this.choseCause = this.choseCause.bind(this);
     this.inputReason = this.inputReason.bind(this);
     this.addPoint = this.addPoint.bind(this);
+    this.showToast = this.showToast.bind(this);
     this.state = {
       stuList: [],
       selectedList: [],
       reasonList: [],
       otherClassStudentList: [],
-      reason: ''
+      reason: '',
+      toastShow: false
     };
   }
 
@@ -118,23 +120,37 @@ class SendPoint extends C {
     })
   }
 
+  showToast(msg) {
+    this.setState({showToast: true, toastMsg: msg});
+    setTimeout(()=> {
+      this.setState({showToast: false});
+    }, 2000);
+  }
+
   addPoint() {
     const { id } = this.props.match.params;
     const { integralId, score, reason, selectedList, otherClassStudentList } = this.state;
     const otherClassStudentId = otherClassStudentList.map((item) => item.id );
     const memberId = selectedList.concat(otherClassStudentId);
-    post('/admin/integralQuery/addIntegral',
-      { integralId, score, reason, clazzId: id, memberId  }).then((data) => {
-        this.props.history.goBack();
-    }).catch((err) => {
-      console.log(err)
-    });
+    if (integralId && score && memberId && id ) {
+      post('/admin/integralQuery/addIntegral',
+        { integralId, score, clazzId: id, memberId  }).then((data) => {
+          
+          this.props.history.push(`/point/${id}`)
+      }).catch((err) => {
+        console.log(err)
+      });
+      return;
+    }
+    this.showToast('请补全信息');
+    
   }
 
   render() {
-    const { stuList, reasonList, otherClassStudentList, reason, score } = this.state;
+    const { stuList, reasonList, otherClassStudentList, reason, score, showToast, toastMsg } = this.state;
     return(
       <div style={{paddingTop: '20px'}}>
+        <Message title={toastMsg} visible={showToast} />
         <PageTitle title='积分发放' goBack={this.goBack} />
         <div className={style.wrap}>
           <Panel>
