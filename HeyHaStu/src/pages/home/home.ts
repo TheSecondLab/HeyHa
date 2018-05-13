@@ -18,6 +18,7 @@ export class HomePage {
     imgUrl: '',
     name: ''
   };
+  courseProgress = {};
 
   constructor(public navCtrl: NavController, public baseService: BaseService, public alertCtrl: AlertController) {
 
@@ -45,6 +46,9 @@ export class HomePage {
       },{
         url: '/admin/stucoached',
         option: { data: {} }
+      },{
+        url: '/admin/clazzSource/getNewStudentClazzSource',
+        option: { data: {} }
       }],
       onSuccess: (datas) => {
         this.newsList = datas[0];
@@ -52,6 +56,7 @@ export class HomePage {
         this.reminder.status = datas[2] === "UNCOMPLETE" ? false: true;
         this.reminder.imgUrl = datas[3].photoUrl;
         this.reminder.name = datas[3].name;
+        this.courseProgress = datas[4];
       }
     })
     // this.baseService.postData('/admin/sysactivity/threeunactivity', { data: {} }, (data)=> {
@@ -72,9 +77,12 @@ export class HomePage {
 
   titleClick() {
     this.navCtrl.push('NewsListPage');
-    // this.baseService.postData('/admin/unactivity'， { data: {} }, (data) => {
-
-    // });
   }
+
+  navToCourse() {
+    this.navCtrl.parent.select(1);
+  }
+
+
 
 }
