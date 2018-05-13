@@ -39,6 +39,14 @@ class TaskSetting extends C {
     this.loadMaterial();
     this.loadLevel();
     this.getStudentLevel(id);
+    if (this.props.location.query) {
+      const { name, date, courseId } = this.props.location.query;
+      this.setState({
+        courseName: name,
+        date,
+        courseId
+      });
+    }
   }
 
   goBack() {
@@ -62,11 +70,33 @@ class TaskSetting extends C {
   }
   
   getStudentLevel(id) {
+    let courseDetail = [];
+    if (this.props.location.query) {
+      courseDetail = this.props.location.query.courseDetail;
+    }
     post('/admin/clazzSource/getClazzStudentLevel', { clazzId: id }).then((data) => {
       data.forEach((item) => {
-        this.setState({
-          [`level-${item.levelId}`]: []
-        })
+        if (courseDetail.length) {
+          // 编辑
+          courseDetail.forEach(obj => {
+            const kk = this.state[`level-${item.levelId}`] || [];
+            if (item.levelId === obj.levelId) {
+              this.setState({
+                [`level-${item.levelId}`]: kk.concat(obj)
+              });
+            } else {
+              this.setState({
+                [`level-${item.levelId}`]: kk
+              });
+            }
+          })
+        } else {
+          // 新增
+          this.setState({
+            [`level-${item.levelId}`]: []
+          })
+
+        }
       })
       this.setState({
         studentLevel: data
@@ -147,7 +177,7 @@ class TaskSetting extends C {
 
   sendCourse(postType) {
     const { id } = this.props.match.params;
-    const { courseName, date, studentLevel } = this.state;
+    const { courseName, date, studentLevel, courseId } = this.state;
 
     const arr = [];
     Object.keys(this.state).forEach((item) => {
@@ -167,7 +197,8 @@ class TaskSetting extends C {
       types: 'HOMEWORK',
       capital: arr
     };
-    
+    if (courseId) obj.id = courseId;
+
     if (courseName && date && arr.length) {
       $post('/admin/clazzSource/addOrEditCapital', JSON.stringify(obj)).then((data) => {
           this.showToast('添加成功');

@@ -43,6 +43,7 @@ class PasswordComp extends C {
       });
 
       post('/admin/updatePwd', { password, newPassword }).then((data) => {
+        localStorage.setItem('password', newPassword)
         this.props.history.push('/mineInfo');
   
       }).catch((err) => {

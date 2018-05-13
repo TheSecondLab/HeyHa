@@ -19,7 +19,7 @@ class CourseProgress extends C {
     this.loadClassInfo = this.loadClassInfo.bind(this);
     this.changeCourse = this.changeCourse.bind(this);
     this.setCouseStyle = this.setCouseStyle.bind(this);
-    // this.getStudentLevel = this.getStudentLevel.bind(this);
+    this.editCourse = this.editCourse.bind(this);
     this.state = {
       classInfo: {},
       classCourse: [],
@@ -32,7 +32,6 @@ class CourseProgress extends C {
     const { id } = this.props.match.params;
     this.loadClassInfo(id);
     this.loadClassCourse(id);
-    // this.getStudentLevel(id);
   }
 
 
@@ -68,7 +67,7 @@ class CourseProgress extends C {
   }
 
   loadCourseDetail(id) {
-    post('/admin/clazzSource/getEmployeeClazzSourceDetail', { id}).then((data) => {
+    post('/admin/clazzSource/getEmployeeClazzSourceDetail', { id }).then((data) => {
       this.setState({
         courseDetail: data
       });
@@ -106,6 +105,24 @@ class CourseProgress extends C {
     return item.publish === 'ACTIVE' ? `${style.progressList} ${style.done}` :  ` ${style.progressList}`;
   }
 
+  editCourse(item) {
+    const classId = this.props.match.params.id;
+
+    post('/admin/clazzSource/getEmployeeClazzSourceDetail', { id: item.id }).then((data) => {
+      this.props.history.push({
+        pathname: `/courseSetting/${classId}`,
+        query: {
+          courseDetail: data,
+          name: item.name,
+          date: item.dateStr,
+          courseId: item.id
+        }
+      })
+
+    }).catch((err) => {
+      console.log(err)
+    });
+  }
   render() {
     const { id } = this.props.match.params;
     const { classInfo, classCourse, courseDetail } = this.state;
@@ -131,11 +148,15 @@ class CourseProgress extends C {
               <section className={style.tab}>
                 <div className={style.tabTit}>
                   {
-                    // ${style.act}
                     classCourse.map((item, idx) => (
-                      <div key={`item-${idx}`} className={this.setCouseStyle(item)} onClick={() => {this.changeCourse(item.id)}}>
-                        <div className={style.name}>{item.name}</div>
+                      <div key={`item-${idx}`} className={this.setCouseStyle(item)} >
+                        <div className={style.name} onClick={() => {this.changeCourse(item.id)}}>{item.name}</div>
                         <div className={style.date}>{item.dateStr}</div>
+                        {
+                          item.publish !== 'ACTIVE' ?
+                            <div className={style.edit} onClick={() => {this.editCourse(item)}}>编辑</div> :
+                            null
+                        }
                       </div>
                     ))
                   }

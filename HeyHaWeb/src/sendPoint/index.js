@@ -186,12 +186,12 @@ class SendPoint extends C {
                 <div className={style.darkBtn}><button>确定</button></div>
               </div>
             </HeaderBar>
-            <StuList alignment='4' data={stuList} choseItem={this.choseItem} />
+            <StuList alignment='4' data={stuList} choseItem={this.choseItem} diffOpa={false} />
             {
               otherClassStudentList.length
                 ? <div>
                     <HeaderBar title='跨班学员' />
-                    <StuList alignment='3' data={otherClassStudentList} choseItem={this.choseItem} />
+                    <StuList alignment='3' data={otherClassStudentList} choseItem={this.choseItem} diffOpa={false} />
                   </div>
                 : null
             }

@@ -86,7 +86,9 @@ class ClassMoment extends C {
   callbackMoment(id) {
     post('/admin/dynamic/cancelDynamic', { id }).then((data) => {
       this.showToast('撤回状态成功！');
- 
+      const classId = this.props.match.params.id;
+
+      this.loadClassMoment(classId)
      }).catch((err) => {
        console.log(err)
      });

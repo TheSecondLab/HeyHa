@@ -148,14 +148,14 @@ import { post } from '../utils/service';
             studentList.length ? 
             <Panel>
               <HeaderBar title='本班学员' hasBorder={true}/>
-              <StuList alignment='4' data={studentList} />
+              <StuList alignment='4' data={studentList}  diffOpa={true} />
             </Panel> : null
           }
           {
             otherClassStudentList.length ?
             <Panel>
               <HeaderBar title='跨班学员' hasBorder={true}/>
-              <StuList alignment='4' data={otherClassStudentList} />
+              <StuList alignment='4' data={otherClassStudentList}  diffOpa={true} />
             </Panel> : null
           }
         </div>

@@ -160,12 +160,12 @@ class AttendenceComp extends C {
                 <div className={style.darkBtn} onClick={this.checkAttendence}><button>确定</button></div>
               </div>
               </HeaderBar>
-              <StuList alignment='3' data={stuList} choseItem={this.choseItem} />
+              <StuList alignment='3' data={stuList} choseItem={this.choseItem} diffOpa={true} />
               {
                 otherClassStudentList.length
                   ? <div>
                       <HeaderBar title='跨班学员' />
-                      <StuList alignment='3' data={otherClassStudentList} choseItem={this.choseItem} />
+                      <StuList alignment='3' data={otherClassStudentList} choseItem={this.choseItem}  diffOpa={true}/>
                     </div>
                   : null
               }

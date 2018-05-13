@@ -10,8 +10,13 @@ const StuList = (props) => (
         return (
           <div className={item.status ? `${style.item} ${style.act}` : style.item} key={`stuList-${idx}`}
             onClick={() => {
-              if (item.attendanceType) return;
+              if (item.attendanceType) {
+                if (!props.diffOpa) props.choseItem(item.id);
+                return
+              }
               props.choseItem(item.id)
+              
+              
             }}>
             <img src={item.photoUrl}  alt=''/>
             <div className={style.msg}>
