@@ -46,19 +46,23 @@ page-home {
     background-color: #fff;
 
     .img {
-      width: 300px;
+      width: 150px;
       height: 89px;
-      margin-right: 25px;
+      margin-right: 12px;
       
       img {
         width: 100%;
         overflow: hidden;
       }
     }
+    .cont-box {
+      flex: 1;
+    }
 
     .date {
       color: #555;
       font-size: 16px;
+      text-align: left;
     }
 
     .claim {
