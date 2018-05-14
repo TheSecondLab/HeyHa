@@ -31,9 +31,9 @@
         <div class="good" (click)="zan(dynamic.id)">点赞</div>
       </ng-template>
 
-      <div class="nonselect" *ngIf="dynamic.collect; else uncollect" (click)="collect(dynamic.id)">收藏</div>
+      <div class="collect" *ngIf="dynamic.collect; else uncollect" (click)="collect(dynamic.id)">收藏</div>
       <ng-template #uncollect>
-        <div class="collect" (click)="collect(dynamic.id)">收藏</div>
+        <div class="nonselect" (click)="collect(dynamic.id)">收藏</div>
       </ng-template>
     </div>
   </div>

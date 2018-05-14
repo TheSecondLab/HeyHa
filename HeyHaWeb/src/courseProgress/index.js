@@ -153,7 +153,7 @@ class CourseProgress extends C {
                         <div className={style.name} onClick={() => {this.changeCourse(item.id)}}>{item.name}</div>
                         <div className={style.date}>{item.dateStr}</div>
                         {
-                          item.publish !== 'ACTIVE' ?
+                          item.status ?
                             <div className={style.edit} onClick={() => {this.editCourse(item)}}>编辑</div> :
                             null
                         }

@@ -57,6 +57,7 @@ export class HomePage {
         this.reminder.imgUrl = datas[3].photoUrl;
         this.reminder.name = datas[3].name;
         this.courseProgress = datas[4];
+
       }
     })
     // this.baseService.postData('/admin/sysactivity/threeunactivity', { data: {} }, (data)=> {
@@ -79,10 +80,13 @@ export class HomePage {
     this.navCtrl.push('NewsListPage');
   }
 
-  navToCourse() {
-    this.navCtrl.parent.select(1);
+  navToCourse(id, dateStr, isTask) {
+    this.navCtrl.push('CourseDetailPage', {
+      id,
+      dateStr,
+      isTask
+    });
   }
-
 
 
 }

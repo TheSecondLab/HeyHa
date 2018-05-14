@@ -53,10 +53,6 @@ export class ClassDynamicListPage {
   deleteDynamic(id) {
     this.baseService.postData('/admin/dynamic/deleteDynamic', { data: {id}, hideLoading: true }, (data)=> {
       this.loadPageData();
-      let alert = this.alertCtrl.create({
-        message: JSON.stringify(data)
-      })
-      alert.present();
     });
   }
 }

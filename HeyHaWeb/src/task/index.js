@@ -152,7 +152,7 @@ class Task extends C {
                         <div className={style.name}>{item.name}</div>
                         <div className={style.date}>{item.dateStr}</div>
                         {
-                          item.publish !== 'ACTIVE' ?
+                          item.status ?
                             <div className={style.edit} onClick={() => {this.editCourse(item)}}>编辑</div> :
                             null
                         }

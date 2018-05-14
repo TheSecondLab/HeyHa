@@ -27,15 +27,18 @@ export class LoginPage {
     public imService: IMService,
     public jpush: JPush
   ) {
+    const username = window.localStorage.getItem('username');
+    const password = window.localStorage.getItem('password');
     this.form = new FormGroup({
-      username: new FormControl("", Validators.required),
-      password: new FormControl("", Validators.required)
+      username: new FormControl(username, Validators.required),
+      password: new FormControl(password, Validators.required)
     });
   }
 
   login() {
     this.baseService.postData("/admin/login", { data: this.form.value }, (data) => {
       window.localStorage.setItem('username', data.code);
+      window.localStorage.setItem('password', this.form.value.password);
       this.jpush.setAlias({ sequence: 1, alias: data.code });
       this.imService.login(data.code);
       this.imService.addClickMessageNotificationListener((msg) => {

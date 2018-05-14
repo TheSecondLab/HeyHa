@@ -128,7 +128,7 @@ class TaskSetting extends C {
   }
 
   loadAllCourse(levelId, materialId) {
-    post('/admin/clazzSource/getCapital', { types: 'FODDER', levelId, materialId }).then((data) => {
+    post('/admin/clazzSource/getCapital', { types: 'COURSE', levelId, materialId }).then((data) => {
      
       let courseList = [];
       const { currentLevel } = this.state;
@@ -208,7 +208,7 @@ class TaskSetting extends C {
       });
       return;
     }
-    this.showToast('请补全课程信息')
+    this.showToast('请补全作业信息')
 
   }
 
@@ -259,13 +259,13 @@ class TaskSetting extends C {
     return(
       <div>
         <Message title={toastMsg} visible={showToast} />
-        <PageTitle title='课程设置' goBack={this.goBack} />
+        <PageTitle title='作业设置' goBack={this.goBack} />
         <div className={style.wrap}>  
           <Panel>
             <div className={style.formBox}>
               <div className={style.formItem}>
-                <label>课程名称</label>
-                <div><input type='text' placeholder='课程名称' value={courseName} onChange={this.setCourseName} /></div>
+                <label>作业名称</label>
+                <div><input type='text' placeholder='作业名称' value={courseName} onChange={this.setCourseName} /></div>
               </div>
               <div className={style.formItem}>
                 <label>上课日期</label>
@@ -278,7 +278,7 @@ class TaskSetting extends C {
             </div>
             <div className={style.courseBox}>
               <div className={style.courseContent}>
-                <div className={style.title}>课程内容</div>
+                <div className={style.title}>作业内容</div>
                 {
                   studentLevel.map((item, idx) => {
                     return (

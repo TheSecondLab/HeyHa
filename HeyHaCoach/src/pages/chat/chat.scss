@@ -2,12 +2,18 @@ page-chat {
   .wrap {
     background-color: #f2f2f2;
     height: 100%;
+
+    // .scroll-content {
+    //   padding-bottom: 60px!important;
+
+    // }
   }
   .chatWrap {
-    // padding: 16px 16px 0;
-    background-color: #f2f2f2;
+    padding: 16px 16px 0;
     flex: 1;
+    // height: calc(100vh - 60px);
     position: relative;
+    // background-color: #000;
     overflow-y: auto;
   }
   @mixin chat($type: 'other') {

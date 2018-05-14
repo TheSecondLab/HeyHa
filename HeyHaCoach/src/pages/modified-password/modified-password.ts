@@ -51,6 +51,7 @@ export class ModifiedPasswordPage {
         title: '修改成功！',
         buttons: ['确定']
       });
+      window.localStorage.setItem('password', this.form.value.newPassword);
       alert.present();
       this.navCtrl.pop();
     });

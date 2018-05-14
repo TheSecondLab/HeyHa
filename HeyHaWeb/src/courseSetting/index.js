@@ -135,7 +135,7 @@ class CourseSetting extends C {
   }
 
   loadAllCourse(levelId, materialId) {
-    post('/admin/clazzSource/getCapital', { types: 'FODDER', levelId, materialId }).then((data) => {
+    post('/admin/clazzSource/getCapital', { types: 'COURSE', levelId, materialId }).then((data) => {
      
       let courseList = [];
       const { currentLevel } = this.state;
@@ -203,7 +203,7 @@ class CourseSetting extends C {
       clazzId: id,
       name: courseName,
       date,
-      types: 'FODDER',
+      types: 'COURSE',
       capital: arr
     }
     if (courseId) obj.id = courseId;

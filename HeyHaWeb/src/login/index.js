@@ -19,7 +19,6 @@ class Login extends React.Component {
   }
 
   login() {
-    debugger
     const { username, password } = this.state;
 
     post('/admin/login', {
@@ -63,7 +62,7 @@ class Login extends React.Component {
             <div className={style.formItem}><input placeholder='请输入账号' value={username} onChange={this.changeUsername} /></div>
             <div  className={style.formItem}><input placeholder='请输入密码' type='password' value={password} onChange={this.changePassword} /></div>
           </div>
-          <div className={style.forget}>忘记密码</div>
+          {/* <div className={style.forget}>忘记密码</div> */}
           <div className={style.btn} onClick={this.login}>登   录</div>
         </div>
       </div>

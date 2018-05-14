@@ -15,6 +15,7 @@ class SendPoint extends C {
     this.inputReason = this.inputReason.bind(this);
     this.addPoint = this.addPoint.bind(this);
     this.showToast = this.showToast.bind(this);
+    this.choseAttendenceStu = this.choseAttendenceStu.bind(this);
     this.state = {
       stuList: [],
       selectedList: [],
@@ -146,6 +147,17 @@ class SendPoint extends C {
     
   }
 
+  choseAttendenceStu() {    
+   
+    this.setState({
+      stuList: this.state.stuList.map((item) => {
+        item.attendanceType &&( item.status = true);
+        return item;
+      }),
+      selectedList: this.state.stuList.filter(item => item.attendanceType)
+    });
+  }
+
   render() {
     const { stuList, reasonList, otherClassStudentList, reason, score, showToast, toastMsg } = this.state;
     return(
@@ -183,7 +195,8 @@ class SendPoint extends C {
               <div className={style.opaWrap}>
               <div className={style.input}><span onClick={this.goSearch}>跨班搜索</span></div>
                 <div className={style.lightBtn} onClick={this.sellectAll}><button>全选</button></div>
-                <div className={style.darkBtn}><button>确定</button></div>
+                <div className={style.darkBtn} onClick={this.choseAttendenceStu}><button>出勤人员</button></div>
+                
               </div>
             </HeaderBar>
             <StuList alignment='4' data={stuList} choseItem={this.choseItem} diffOpa={false} />
