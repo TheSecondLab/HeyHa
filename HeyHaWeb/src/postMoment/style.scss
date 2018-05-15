@@ -22,6 +22,7 @@
 }
 
 .imgThumb {
+  display: flex;
   > div {
     position: relative;
     width: 120px;

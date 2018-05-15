@@ -5,9 +5,9 @@ import 'react-weui/build/packages/react-weui.css';
 import axios from 'axios';
 import 'isomorphic-fetch';
 
-import { Panel, PageTitle } from '../components';
+import { Panel, PageTitle, Message } from '../components';
 import * as style from './style.scss';
-import photoSrc from './cemera.png';
+import cemera from './cemera.png';
 import thumbSrc from './cemera.png';
 import { useCameraToUpload, usePhotoToUpload, uploadFiles } from '../utils/upload';
 
@@ -22,12 +22,14 @@ class PostMoment extends Component {
     this.onCancel = this.onCancel.bind(this);
     this.contentChange = this.contentChange.bind(this);
     this.onChooseSuccess = this.onChooseSuccess.bind(this);
+    this.showToast = this.showToast.bind(this);
     this.state = {
       gallery: false,
       actionSheetShow: false,
       fileList: [],
       demoFiles : [
-      ]
+      ],
+      toastShow: false
     };
   }
 
@@ -73,8 +75,8 @@ class PostMoment extends Component {
       files: this.state.fileList,
       fileKey: 'file_image',
       data,
-      onUploadSuccess: (result)=>{console.log(`success ${result}`)},
-      onUploadFailed: (result)=>{console.log(`error ${result}`)}
+      onUploadSuccess: (result)=>{this.props.history.goBack()},
+      onUploadFailed: (result)=>{this.showToast('上传失败')}
     });
   }
 
@@ -89,8 +91,8 @@ class PostMoment extends Component {
       files: this.state.fileList,
       fileKey: 'file_image',
       data,
-      onUploadSuccess: (result)=>{console.log(`success ${result}`)},
-      onUploadFailed: (result)=>{console.log(`error ${result}`)}
+      onUploadSuccess: (result)=>{this.props.history.goBack()},
+      onUploadFailed: (result)=>{this.showToast('上传失败')}
     });
   }
 
@@ -126,31 +128,26 @@ class PostMoment extends Component {
     })
   }
 
+  showToast(msg) {
+    this.setState({showToast: true, toastMsg: msg});
+    setTimeout(()=> {
+      this.setState({showToast: false});
+    }, 2000);
+  }
   render(){
+    const { fileList, showToast, toastMsg } = this.state;
     return (
       <div classMoment={style.wrap}>
+        <Message title={toastMsg} visible={showToast} />
         <PageTitle title='发布动态' goBack={this.goBack} />
         <div className={style.panel}>
-          <button onClick={this.openCamera}>add</button>
+          {/* <button>add</button> */}
           <Panel>
-            <div>
-              { this.renderGallery() }
-              <Form>
-                <Cell>
-                  <CellBody>
-                    <Uploader
-                      title="Image Uploader"
-                      maxCount={3}
-                      files={this.state.demoFiles}
-                      onError={msg => alert(msg)}
-                      onChange={() => {}}
-                      lang={{
-                        maxError: maxCount => `Max ${maxCount} images allow`
-                      }}
-                    />
-                  </CellBody>
-                </Cell>
-              </Form>
+            <div className={style.imgThumb}>
+              {
+                fileList.map((item) => (<div><img src={item.uri} alt='' /></div>))
+              }
+              <div onClick={this.openCamera}><img src={cemera} alt='' /></div>
             </div>
             <div className={style.textarea}>
               <textarea rows='5' placeholder='说点什么吧...' onChange={this.contentChange}>{this.state.content}</textarea>
