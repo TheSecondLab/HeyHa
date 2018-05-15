@@ -1,21 +1,30 @@
 import React, {Component} from 'react';
-import { Gallery, GalleryDelete, Uploader, Form, Cell, CellBody } from 'react-weui';
+import { Gallery, GalleryDelete, Uploader, Form, Cell, CellBody, ActionSheet } from 'react-weui';
 import 'weui';  
 import 'react-weui/build/packages/react-weui.css';
+import axios from 'axios';
+import 'isomorphic-fetch';
 
 import { Panel, PageTitle } from '../components';
 import * as style from './style.scss';
 import photoSrc from './cemera.png';
 import thumbSrc from './cemera.png';
+import { useCameraToUpload, usePhotoToUpload, uploadFiles } from '../utils/upload';
 
 class PostMoment extends Component {
   constructor(props){
     super(props);
     this.goBack = this.goBack.bind(this);
-    this.test = this.test.bind(this);
     this.publish = this.publish.bind(this);
+    this.openCamera = this.openCamera.bind(this);
+    this.useCamera = this.useCamera.bind(this);
+    this.usePhoto = this.usePhoto.bind(this);
+    this.onCancel = this.onCancel.bind(this);
+    this.onChooseSuccess = this.onChooseSuccess.bind(this);
     this.state = {
       gallery: false,
+      actionSheetShow: false,
+      fileList: [],
       demoFiles : [
       ]
     };
@@ -52,123 +61,101 @@ class PostMoment extends Component {
     )
   }
 
-  test() {
-    const cameraOptions = {
-      quality: 50,
-      // destinationType: this.platform.is('ios') ? this.camera.DestinationType.NATIVE_URI : this.camera.DestinationType.FILE_URI,
-      destinationType: 1,
-      encodingType: 0,
-      mediaType: 0,
-      sourceType: 0
-    };
-    // const cameraSuccess = (imageData) => {
-    //   // let newFiles = [...this.state.demoFiles, {url:imageData}];
-    //   // this.setState({
-    //   //     demoFiles: newFiles
-    //   // });
-
-    //   this.transform(imageData);
-    // }
-    const cameraError = (err) =>{conosle.log(err)}
-    navigator.camera.getPicture(this.transform, cameraError, cameraOptions);
-  }
-
-  transform(imageData) {
-    window.resolveLocalFileSystemURL(imageData, function(fileEntry) {  
-      fileEntry.file(function(file) {  
-          const reader = new FileReader();  
-          reader.onloadend = function(e) {   
-              const the_file = new Blob([e.target.result ], { type: "image/jpeg" } );  
-              let newFiles = [...this.state.demoFiles, {url:imageData, data: the_file, name:file.name}];
-              this.setState({
-                  demoFiles: newFiles
-              });
-          };  
-          reader.readAsArrayBuffer(file);  
-        }, function(e){()=> {}});  
-      }, function(e){()=>{}});  
-  }
-
   publish() {
-    this.formData = new FormData();
-    const { demoFiles } = this.state;
-    
-    const imgArr = demoFiles.map((file) => {
-      return new Promise((resolve, reject) => {
-        window.resolveLocalFileSystemURL(file.url, entry => {
-          entry.file(file => {
-            let blob = file;
-            const reader = new FileReader();
-              reader.onloadend = () => {
-                const imgBlob = new Blob([reader.result], {type: blob.type});
-                console.log('blob', imgBlob)
-                this.formData.append('file_image', imgBlob, blob.name);
-                resolve();
-              };
-              reader.readAsArrayBuffer(blob);
-            });
-          })
-      });
-    })
+    const data = {
+      clazzId: '1',
+      dataStatus: 'ACTIVE',
+      content: 'robintest123'
+    };
 
-    Promise.all(imgArr).then(data=> {console.log('adbgg, '+JSON.stringify(this.formData.getAll('file_image')))})
+    uploadFiles({
+      files: this.state.fileList,
+      fileKey: 'file_image',
+      data,
+      onUploadSuccess: (result)=>{console.log(`success ${result}`)},
+      onUploadFailed: (result)=>{console.log(`error ${result}`)}
+    });
+  }
+
+  openCamera() {
+    this.setState({
+      actionSheetShow: true
+    })
+  }
+
+  onChooseSuccess(fileData) {
+    console.log(`uuuu: ${fileData.uri}`);
+    this.setState({
+      actionSheetShow: false,
+      fileList: this.state.fileList.concat(fileData)
+    });
+  }
+
+  useCamera() {
+    useCameraToUpload(this.onChooseSuccess, () => {});
+  }
+
+  usePhoto() {
+    usePhotoToUpload(this.onChooseSuccess, () => {});
+  }
+
+  onCancel() {
+    this.setState({actionSheetShow: false})
   }
 
   render(){
     return (
       <div classMoment={style.wrap}>
-         <PageTitle title='发布动态' goBack={this.goBack} />
-         <div className={style.panel}>
-           <Panel>
-           <div>
-        { this.renderGallery() }
-        <Form>
-          <Cell>
-            <CellBody>
-              <Uploader
-                title="Image Uploader"
-                maxCount={3}
-                files={this.state.demoFiles}
-                onError={msg => alert(msg)}
-                onChange={(file,e) => {
-                  console.log('13')
-                  let newFiles = [...this.state.demoFiles, {url:file.data}];
-                  this.setState({
-                      demoFiles: newFiles
-                  });
-                }}
-                // onFileClick={
-                //   (e, file, i) => {
-                //     console.log('file click', file, i)
-                //     this.setState({
-                //       gallery: {
-                //           url: file.url,
-                //           id: i
-                //       }
-                //     })
-                //   }
-                // }
-                lang={{
-                  maxError: maxCount => `Max ${maxCount} images allow`
-                }}
-              />
-            </CellBody>
-          </Cell>
-        </Form>
+        <PageTitle title='发布动态' goBack={this.goBack} />
+        <div className={style.panel}>
+          <button onClick={this.openCamera}>add</button>
+          <button onClick={this.publish}>publish</button>
+          <Panel>
+            <div>
+              { this.renderGallery() }
+              <Form>
+                <Cell>
+                  <CellBody>
+                    <Uploader
+                      title="Image Uploader"
+                      maxCount={3}
+                      files={this.state.demoFiles}
+                      onError={msg => alert(msg)}
+                      onChange={() => {}}
+                      lang={{
+                        maxError: maxCount => `Max ${maxCount} images allow`
+                      }}
+                    />
+                  </CellBody>
+                </Cell>
+              </Form>
+            </div>
+            <div className={style.textarea}>
+              <textarea rows='5' placeholder='说点什么吧...' ></textarea>
+            </div>
+            <div className={style.btnWrap}>
+              <div className={style.light} onClick={this.publish}>稍后再发</div>
+              <div className={style.dark} onClick={this.publish}>立即发布</div>
+            </div>
+          </Panel>
+        </div>
+        <ActionSheet
+          show={ this.state.actionSheetShow }
+          onRequestClose={
+            e => this.setState({ show: false })
+          }
+          menus={[{
+            label: '使用照相机',
+            onClick: this.useCamera
+          }, {
+            label: '从相册中选取',
+            onClick: this.usePhoto
+          }, {
+            label: '取消',
+            onClick: this.onCancel
+          }]}
+        />
       </div>
-             <div className={style.textarea}>
-               <textarea rows='5' placeholder='说点什么吧...' >
-  
-               </textarea>
-             </div>
-             <div className={style.btnWrap}>
-               <div className={style.light} onClick={this.test}>稍后再发</div>
-               <div className={style.dark} onClick={this.publish}>立即发布</div>
-             </div>
-           </Panel>
-         </div>
-       </div>
-      
     );
   }
 }
