@@ -20,6 +20,7 @@ class PostMoment extends Component {
     this.useCamera = this.useCamera.bind(this);
     this.usePhoto = this.usePhoto.bind(this);
     this.onCancel = this.onCancel.bind(this);
+    this.contentChange = this.contentChange.bind(this);
     this.onChooseSuccess = this.onChooseSuccess.bind(this);
     this.state = {
       gallery: false,
@@ -61,11 +62,27 @@ class PostMoment extends Component {
     )
   }
 
+  prePublish() {
+    const data = {
+      clazzId: this.props.match.params.id,
+      dataStatus: 'INACTIVE',
+      content: this.state.content
+    };
+
+    uploadFiles({
+      files: this.state.fileList,
+      fileKey: 'file_image',
+      data,
+      onUploadSuccess: (result)=>{console.log(`success ${result}`)},
+      onUploadFailed: (result)=>{console.log(`error ${result}`)}
+    });
+  }
+
   publish() {
     const data = {
-      clazzId: '1',
+      clazzId: this.props.match.params.id,
       dataStatus: 'ACTIVE',
-      content: 'robintest123'
+      content: this.state.content
     };
 
     uploadFiles({
@@ -103,13 +120,18 @@ class PostMoment extends Component {
     this.setState({actionSheetShow: false})
   }
 
+  contentChange(e) {
+    this.setState({
+      content: e.target.value
+    })
+  }
+
   render(){
     return (
       <div classMoment={style.wrap}>
         <PageTitle title='发布动态' goBack={this.goBack} />
         <div className={style.panel}>
           <button onClick={this.openCamera}>add</button>
-          <button onClick={this.publish}>publish</button>
           <Panel>
             <div>
               { this.renderGallery() }
@@ -131,10 +153,10 @@ class PostMoment extends Component {
               </Form>
             </div>
             <div className={style.textarea}>
-              <textarea rows='5' placeholder='说点什么吧...' ></textarea>
+              <textarea rows='5' placeholder='说点什么吧...' onChange={this.contentChange}>{this.state.content}</textarea>
             </div>
             <div className={style.btnWrap}>
-              <div className={style.light} onClick={this.publish}>稍后再发</div>
+              <div className={style.light} onClick={this.prePublish}>稍后再发</div>
               <div className={style.dark} onClick={this.publish}>立即发布</div>
             </div>
           </Panel>
