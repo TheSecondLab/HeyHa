@@ -7,6 +7,7 @@ import {HttpClient} from "@angular/common/http";
 import {catchError, finalize} from "rxjs/operators";
 import {Observable} from "rxjs";
 import { ForkJoinObservable } from "rxjs/observable/ForkJoinObservable";
+import { FilePath } from '@ionic-native/file-path';
 
 @Injectable()
 export class MultipleUpLoadService {
@@ -30,6 +31,7 @@ export class MultipleUpLoadService {
     private transfer:FileTransfer,
     private camera: Camera,
     private file: File,
+    private filePath: FilePath,
     private readonly http: HttpClient
   ) {
     this.fileTransfer = this.transfer.create();
@@ -60,7 +62,9 @@ export class MultipleUpLoadService {
     };
 
     this.camera.getPicture(options).then((imageData) => {
-      cb(imageData);
+      this.filePath.resolveNativePath(imageData)
+        .then(filePath => cb(filePath))
+        .catch(err => console.log(err));
     }, (err) => {
       this.options.onError(err);
     });

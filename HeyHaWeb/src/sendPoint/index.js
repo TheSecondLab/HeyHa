@@ -15,6 +15,7 @@ class SendPoint extends C {
     this.inputReason = this.inputReason.bind(this);
     this.addPoint = this.addPoint.bind(this);
     this.showToast = this.showToast.bind(this);
+    this.changeScore = this.changeScore.bind(this);
     this.choseAttendenceStu = this.choseAttendenceStu.bind(this);
     this.state = {
       stuList: [],
@@ -158,6 +159,12 @@ class SendPoint extends C {
     });
   }
 
+  changeScore(e) {
+    this.setState({
+      score: e.target.value
+    })
+  }
+
   render() {
     const { stuList, reasonList, otherClassStudentList, reason, score, showToast, toastMsg } = this.state;
     return(
@@ -185,7 +192,7 @@ class SendPoint extends C {
               </div>
               <div className={style.formItem}>
                 <label>分值</label>
-                <div><input type='text' placeholder='输入分值' disabled value={score} /></div>
+                <div><input type='text' placeholder='输入分值' value={score} onChange={this.changeScore} /></div>
                 <div className={style.btnBox}>
                   <div className={style.btn} onClick={this.addPoint}>确定发放</div>
                 </div>

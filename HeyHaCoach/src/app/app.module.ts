@@ -8,6 +8,7 @@ import { Camera } from '@ionic-native/camera';
 import { FileTransfer, FileUploadOptions, FileTransferObject }from'@ionic-native/file-transfer';
 import { File, FileEntry } from '@ionic-native/file';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
+import { FilePath } from '@ionic-native/file-path';
 
 // 自定义组件
 import { ComponentsModule } from '../components/components.module';
@@ -182,6 +183,7 @@ import { AlertService } from '../module/alertService.service';
     Camera,
     FileTransferObject,
     FileTransfer,
+    FilePath,
     File
   ]
 })

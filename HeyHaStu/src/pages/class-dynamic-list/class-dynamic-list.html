@@ -14,7 +14,7 @@
 
 
 <ion-content>
-  <div class="dynamic" *ngFor="let dynamic of dynamicList" [(ngModel)]="dynamicList">
+  <div class="dynamic" *ngFor="let dynamic of dynamicList" >
     <div class="text">{{dynamic.content}}</div>
     <div class="assist">
       <div class="time">{{dynamic.publishTimeStr}}</div>

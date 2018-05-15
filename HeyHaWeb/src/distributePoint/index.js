@@ -2,7 +2,7 @@ import React, { Component as C } from 'react';
 import { Dialog, Toast } from 'react-weui';
 
 import * as style from './style.scss';
-import { HeaderBar, SideMenu } from '../components/index';
+import { HeaderBar, SideMenu, ClassInfo } from '../components/index';
 import { post } from '../utils/service';
 
 const HeaderOpa = (props) => (
@@ -112,15 +112,7 @@ class DestribuyePointComp extends C {
     const { pointList, confirm, dialogBtn, classInfo } = this.state;
     return (
       <div>
-        <div className={style.header}>
-          <div>
-            <div className={style.name}>{classInfo.name}</div>
-            <div className={style.time}>{classInfo.clazzTime}</div>
-          </div>
-          <div>
-            <span className={style.else} onClick={this.goOtherClass}>其他班级</span>
-          </div>
-        </div>
+        <ClassInfo classInfo={classInfo} goOtherClass={this.goOtherClass} />
         <div className={style.content}>
           <SideMenu active={2} id={id} />
           <div className={style.menuContent}>

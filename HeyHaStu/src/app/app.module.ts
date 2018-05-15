@@ -10,6 +10,7 @@ import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { Camera } from '@ionic-native/camera';
 import { FileTransfer, FileUploadOptions, FileTransferObject }from'@ionic-native/file-transfer';
 import { File, FileEntry } from '@ionic-native/file';
+import { FilePath } from '@ionic-native/file-path';
 
 import { MyApp } from './app.component';
 
@@ -126,6 +127,7 @@ import { AlertService } from '../module/alertService.service';
     Camera,
     FileTransferObject,
     FileTransfer,
+    FilePath,
     File
   ]
 })

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActionSheetController, LoadingController, Platform, AlertController } from 'ionic-angular';
 import { FileTransfer, FileTransferObject }from'@ionic-native/file-transfer';
 import { Camera, CameraOptions } from '@ionic-native/camera';
+import { FilePath } from '@ionic-native/file-path';
 
 @Injectable()
 export class UpLoadService {
@@ -20,6 +21,7 @@ export class UpLoadService {
     private fileTransfer:FileTransferObject,
     private transfer:FileTransfer,
     private camera: Camera,
+    private filePath: FilePath,
     public alertCtrl: AlertController
   ) {
     this.fileTransfer = this.transfer.create();
@@ -54,7 +56,7 @@ export class UpLoadService {
 
   chooseFromCamera() {
     const options: CameraOptions = {
-      quality: 100,
+      quality: 50,
       destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
@@ -69,7 +71,7 @@ export class UpLoadService {
 
   chooseFromLibrary() {
     const options: CameraOptions = {
-      quality: 100,
+      quality: 50,
       destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
@@ -77,7 +79,9 @@ export class UpLoadService {
     };
 
     this.camera.getPicture(options).then((imageData) => {
-      this.upload(imageData);
+      this.filePath.resolveNativePath(imageData)
+      .then(filePath => this.upload(filePath))
+      .catch(err => console.log(err));
     }, (err) => {
       this.options.onError(err);
     });

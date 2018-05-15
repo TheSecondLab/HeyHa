@@ -71,7 +71,7 @@ class Root extends C {
     const { userMsg } = localStorage;
     const { confirm, dialogBtn } = this.state;
     return (
-      <div style={{paddingTop: '20px'}}>
+      <div>
         <Header userMsg={userMsg} />
         <div className={style.wrap}>
           <SideBar pagePush={this.pagePush} location={this.props.location} history={this.props.history} logOut={() => {this.setState({confirm: true})}} />

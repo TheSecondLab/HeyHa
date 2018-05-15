@@ -1,6 +1,6 @@
 import React, { Component as C } from 'react'
 
-import { HeaderBar, StuList, SideMenu } from '../components/index';
+import { HeaderBar, StuList, SideMenu, ClassInfo } from '../components/index';
 import * as style from './style.scss';
 import { post } from '../utils/service';
 
@@ -128,15 +128,7 @@ class Task extends C {
 
     return (
       <div>
-        <div className={style.header}>
-          <div>
-            <div className={style.name}>{classInfo.name}</div>
-            <div className={style.time}>{classInfo.clazzTime}</div>
-          </div>
-          <div>
-            <span className={style.else} onClick={this.goOtherClass}>其他班级</span>
-          </div>
-        </div>
+        <ClassInfo classInfo={classInfo} goOtherClass={this.goOtherClass} />
         <div className={style.content}>
           <SideMenu active={4} id={id} />
           <div className={style.menuContent}>

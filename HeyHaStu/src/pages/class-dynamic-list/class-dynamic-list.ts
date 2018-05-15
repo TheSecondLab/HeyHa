@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
 import { ModalPostPageComponent } from '../../components/modal-post-page/modal-post-page';
 import { BaseService } from '../../module/baseService.service';
 
@@ -18,7 +18,12 @@ import { BaseService } from '../../module/baseService.service';
 export class ClassDynamicListPage {
   dynamicList = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public baseService: BaseService) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public alertCtrl: AlertController,
+    public modalCtrl: ModalController,
+    public baseService: BaseService) {
   }
   ionViewWillEnter() {
     this.loadData();
@@ -32,11 +37,11 @@ export class ClassDynamicListPage {
 
   zan(id) {
     this.baseService.postData('/admin/dynamic/zanDynamic', { data: {id}, hideLoading: false }, (data)=> {
-      this.dynamicList.some((item) => {
+      this.dynamicList = this.dynamicList.map((item) => {
         if(item.id == id) {
           item.zan = !item.zan;
-          return true;
         }
+        return item
       })
     });
   }
@@ -44,11 +49,11 @@ export class ClassDynamicListPage {
   collect(id){
     this.baseService.postData('/admin/dynamic/collectDynamic', { data: {id}, hideLoading: false }, (data)=> {
       
-      this.dynamicList.some((item) => {
+      this.dynamicList = this.dynamicList.map((item) => {
         if(item.id == id) {
           item.collect = !item.collect;
-          return true;
         }
+        return item;
       })
     });
   }

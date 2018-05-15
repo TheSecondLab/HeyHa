@@ -7,6 +7,7 @@ import PageTitle from './pageTitle';
 import SideMenu from './sideMenu';
 import Message from './message';
 import List from './list';
+import ClassInfo from './classInfo';
 
 export default {
   Header,
@@ -17,5 +18,6 @@ export default {
   PageTitle,
   SideMenu,
   Message,
-  List
+  List,
+  ClassInfo
 };
