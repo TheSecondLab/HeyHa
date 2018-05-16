@@ -54,7 +54,7 @@ export class MultipleUpLoadService {
 
   chooseFromLibrary(cb) {
     const options: CameraOptions = {
-      quality: 50,
+      quality: 10,
       destinationType: this.platform.is('ios') ? this.camera.DestinationType.NATIVE_URI : this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,

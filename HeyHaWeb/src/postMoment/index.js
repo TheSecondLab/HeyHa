@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Gallery, GalleryDelete, Uploader, Form, Cell, CellBody, ActionSheet } from 'react-weui';
+import { Gallery, GalleryDelete, Uploader, Form, Cell, CellBody, ActionSheet, Toast } from 'react-weui';
 import 'weui';  
 import 'react-weui/build/packages/react-weui.css';
 import axios from 'axios';
@@ -23,13 +23,15 @@ class PostMoment extends Component {
     this.contentChange = this.contentChange.bind(this);
     this.onChooseSuccess = this.onChooseSuccess.bind(this);
     this.showToast = this.showToast.bind(this);
+    this.prePublish = this.prePublish.bind(this);
     this.state = {
       gallery: false,
       actionSheetShow: false,
       fileList: [],
       demoFiles : [
       ],
-      toastShow: false
+      toastShow: false,
+      showLoading: false
     };
   }
 
@@ -70,14 +72,21 @@ class PostMoment extends Component {
       dataStatus: 'INACTIVE',
       content: this.state.content
     };
-
-    uploadFiles({
-      files: this.state.fileList,
-      fileKey: 'file_image',
-      data,
-      onUploadSuccess: (result)=>{this.props.history.goBack()},
-      onUploadFailed: (result)=>{this.showToast('上传失败')}
-    });
+    
+    if (this.state.content) {
+      this.setState({
+        showLoading: true
+      });
+      uploadFiles({
+        files: this.state.fileList,
+        fileKey: 'file_image',
+        data,
+        onUploadSuccess: (result)=>{this.props.history.goBack()},
+        onUploadFailed: (result)=>{this.showToast('上传失败')}
+      });
+      return
+    }
+    this.showToast('请填写完整~');
   }
 
   publish() {
@@ -86,14 +95,21 @@ class PostMoment extends Component {
       dataStatus: 'ACTIVE',
       content: this.state.content
     };
-
-    uploadFiles({
-      files: this.state.fileList,
-      fileKey: 'file_image',
-      data,
-      onUploadSuccess: (result)=>{this.props.history.goBack()},
-      onUploadFailed: (result)=>{this.showToast('上传失败')}
-    });
+    
+    if (this.state.content) {
+      this.setState({
+        showLoading: true
+      });
+      uploadFiles({
+        files: this.state.fileList,
+        fileKey: 'file_image',
+        data,
+        onUploadSuccess: (result)=>{this.props.history.goBack()},
+        onUploadFailed: (result)=>{this.showToast('上传失败')}
+      });
+      return
+    }
+    this.showToast('请填写完整~');
   }
 
   openCamera() {
@@ -135,9 +151,10 @@ class PostMoment extends Component {
     }, 2000);
   }
   render(){
-    const { fileList, showToast, toastMsg } = this.state;
+    const { fileList, showToast, toastMsg, showLoading } = this.state;
     return (
       <div classMoment={style.wrap}>
+        <Toast icon="loading" show={showLoading}>发布中</Toast>
         <Message title={toastMsg} visible={showToast} />
         <PageTitle title='发布动态' goBack={this.goBack} />
         <div className={style.panel}>

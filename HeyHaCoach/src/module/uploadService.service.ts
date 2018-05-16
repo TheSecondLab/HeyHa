@@ -73,7 +73,7 @@ export class UpLoadService {
 
   chooseFromLibrary() {
     const options: CameraOptions = {
-      quality: 100,
+      quality: 10,
       destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
