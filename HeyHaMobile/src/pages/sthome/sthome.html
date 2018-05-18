@@ -9,7 +9,7 @@
   </div>
   <reminder [data]="reminder"></reminder>
 
-  <sub-title title='课程进度'></sub-title>
+  <st-sub-title title='课程进度'></st-sub-title>
   <div class="courseProgress">
     <div class="img"><img src='{{courseProgress.photoUrl}}' /></div>
     <div class="cont-box">
@@ -18,6 +18,6 @@
       <div class="btn" (click)="navToCourse(courseProgress.id, courseProgress.dateStr, courseProgress.type==='COURSE')">查看</div>
     </div>
   </div>
-  <sub-title title='热点资讯' btnText='更多' (click)='titleClick()'></sub-title>
-  <news-list-thumb [list]=newsList></news-list-thumb>
+  <st-sub-title title='热点资讯' btnText='更多' (click)='titleClick()'></st-sub-title>
+  <st-news-list-thumb [list]=newsList></st-news-list-thumb>
 </ion-content>
