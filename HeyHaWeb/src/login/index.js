@@ -54,6 +54,8 @@ class Login extends React.Component {
   
   render() {
     const { username, password } = this.state;
+    document.body.style.paddingTop = '0';
+
     return (
       <div className={style.wrap}>
         <div className={style.box}>
