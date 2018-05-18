@@ -1,0 +1,34 @@
+<!-- Generated template for the DropdownComponent component -->
+<div class="container">
+  <div *ngIf="clickedTitleKey != ''" >
+    <div class="layer"></div>
+  </div>
+  <div class="inputs">
+    <div *ngFor="let selectedValue of selectedValues" (click)="changeTab(selectedValue.titleKey)">
+      <span>{{selectedValue.value}}</span>
+      <div *ngIf="selectedValue.titleKey === clickedTitleKey; else ad">
+        <div class="arrowUp"></div>
+      </div>
+      <ng-template #ad>
+        <div class="arrowDown"></div>
+      </ng-template>
+    </div>
+
+  </div>
+
+  <div class="list">
+    <div *ngIf="clickedTitleKey != ''" >
+      <div class="divider"></div>
+      <div class="triangle" [ngStyle]="arrowPostion"></div>
+    </div>
+    <div *ngFor="let listItem of listItems">
+      <div *ngIf="listItem.key === selectedValues[selectedIndex].key; else elseBlock">
+        <div class="item selected" (click)="selectItem(listItem.key)">{{listItem.value}}</div>
+      </div>
+      <ng-template #elseBlock>
+        <div class="item" (click)="selectItem(listItem.key, listItem.value)">{{listItem.value}}</div>
+      </ng-template>
+    </div>
+  </div>
+
+</div>

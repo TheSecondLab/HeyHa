@@ -1,0 +1,25 @@
+<!--
+  Generated template for the ClassSystemPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>课程体系</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content >
+  <!-- <div class="tabMenu">
+    <div>所有级别</div>
+    <div>组合技术</div>
+  </div>
+  <div class="dropdownContainer"> -->
+  <dropdown [typeList]=typeList [levelList]=levelList (childOuter)="getParentData($event)"></dropdown>
+  <!-- </div> -->
+  <course-list [list]=courseList></course-list>
+</ion-content>

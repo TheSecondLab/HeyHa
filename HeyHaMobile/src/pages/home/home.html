@@ -1,0 +1,52 @@
+<ion-content>
+    <ion-slides pager="true" loop="true" class="banner">
+      <ion-slide *ngFor="let item of bannerList" class="list" >
+        <div style="overflow: hidden;display: block" (click)="openLink(item.hyperlink)"><img src="{{item.coverUrl}}" style="width:100%" /></div>
+      </ion-slide>
+    </ion-slides>
+    <div class="searchWrap">
+      <ion-input type="text" [(ngModel)]="studentName" value="" class="input" placeholder="搜索学员姓名"></ion-input>
+      <button class="btn" (click)="searchStudent()">搜索</button>
+    </div>
+    <div class="linkWrap">
+      <div class="items" (click)="navTo('MyClassPage')">
+        <div class="img"></div>
+        <div>任教班级</div>
+      </div>
+      <div class="items" (click)="navTo('MyChatPage')">
+        <div class="img"></div>
+        <div>最新消息</div>
+      </div>
+      <div class="items" (click)="navTo('CourseSystemPage')">
+        <div class="img"></div>
+        <div>课程体系</div>
+      </div>
+      <div class="items" (click)="navTo('CourseProgressPage')">
+        <div class="img"></div>
+        <div>课程进度</div>
+      </div>
+    </div>
+    <div class="panel">
+      <sub-title pageName="{{dueToStuPage}}" title="到期提醒"></sub-title>
+      <due-to-remind-list [list]=remindList pageName="{{dueToStuPage}}"></due-to-remind-list>
+    </div>
+    <div class="panel">
+      <sub-title pageName="{{newsListPage}}" title="热点资讯"></sub-title>
+      <news-list-thumb [list]=newsList></news-list-thumb>
+    </div>
+    <!-- <ion-searchbar
+    animated="true"
+    showCancelButton="true"
+    cancelButtonText="取消">
+</ion-searchbar> -->
+  <!-- <due-to-remind-list></due-to-remind-list>
+  <h2>Welcome to Ionic!</h2>
+  <p>
+    This starter project comes with simple tabs-based layout for apps
+    that are going to primarily use a Tabbed UI.
+  </p>
+  <p>
+    Take a look at the <code>src/pages/</code> directory to add or change tabs,
+    update any existing page or create new pages.
+  </p> -->
+</ion-content>
