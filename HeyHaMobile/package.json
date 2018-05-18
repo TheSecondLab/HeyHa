@@ -59,7 +59,6 @@
       "cordova-plugin-whitelist": {},
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
-      "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-android-permissions": {},
       "jmessage-phonegap-plugin": {
@@ -67,7 +66,8 @@
       },
       "jpush-phonegap-plugin": {
         "APP_KEY": "fbad4c0d77e0af70bec040e9"
-      }
+      },
+      "cordova-plugin-ionic-keyboard": {}
     },
     "platforms": [
       "android"
