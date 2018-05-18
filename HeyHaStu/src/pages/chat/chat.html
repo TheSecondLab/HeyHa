@@ -30,9 +30,9 @@
 
 </ion-content> -->
 
-<ion-content class="wrap">
+<div class="wrap">
   <div class="box">
-    <div class="chatWrap">
+    <ion-content class="chatWrap">
       <div *ngFor="let msg of chatHistrory">
         <div *ngIf="msg.type==='text';else imgBlock">
           <div class="chat-me"  *ngIf="msg.isMine; else elseBlock">
@@ -60,15 +60,16 @@
         </ng-template>
 
       </div>
-    </div>
+    </ion-content>
     <div class="chat-window">
       <div class="input">
         <form (submit)="sendMsg()" [formGroup]="form">
           <!-- <input type="text" placeholder="说点什么吧" [(ngModel)]="inputs" formControlName="content" /> -->
-          <ion-input type="text" placeholder="说点什么吧" [(ngModel)]="inputs" formControlName="content" ></ion-input>
+          <ion-input type="text" placeholder="说点什么吧" [(ngModel)]="inputs" formControlName="content"></ion-input>
         </form>
       </div>
       <div class="add" (click)="chooseImage()"></div>
     </div>
+    <div id="zx"></div>
   </div>
-</ion-content>
+</div>

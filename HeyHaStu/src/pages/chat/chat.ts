@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, AlertController, Content, LoadingC
 import { IMService } from '../../module/imService.service';
 import { MultipleUpLoadService } from '../../module/multipleUpdate.service';
 import { BaseService } from '../../module/baseService.service';
+
 import {
   FormGroup,
   FormControl,
@@ -52,6 +53,18 @@ export class ChatPage {
   }
 
   ionViewWillEnter() {
+
+    let doc = document.getElementById('zx');
+    window.addEventListener('keyboardDidHide', function (e) {
+      doc.style.height = '0px';
+
+    });
+
+    window.addEventListener('keyboardDidShow', function (e) {
+      const keyboardHeight = JSON.parse(JSON.stringify(e)).keyboardHeight;
+      doc.style.height = `${keyboardHeight}px`;
+
+    });
     const username = this.navParams.get('username');
 
     this.baseService.postData('/admin/user/usernames', {
