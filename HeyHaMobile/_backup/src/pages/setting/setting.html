@@ -1,0 +1,22 @@
+<!--
+  Generated template for the SettingPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>设置</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="content">
+  <ion-list>
+    <button class="settingList" ion-item *ngFor="let item of items" (click)="itemSelected(item)">
+      {{ item.desc }}
+    </button>
+  </ion-list>
+</ion-content>

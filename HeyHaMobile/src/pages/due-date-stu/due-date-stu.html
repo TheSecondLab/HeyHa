@@ -1,0 +1,38 @@
+<!--
+  Generated template for the DueDateStuPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="bgContent">
+  <div class="photoCard">
+    <div class="person">
+      <div class="iphoto"><img src={{photoUrl}} alt=""></div>
+      <div class="msg">
+          <div class="name">{{studentName}}</div>
+          <div class="place">{{taekwondoName}}</div>
+          <div class="time">到期时间： {{expirationTimeEndStr}}</div>
+      </div>
+    </div>
+    <div class="phone" (click)="presentActionSheet(tel)"></div>
+  </div>
+  <div>
+    <div class="contactWrapper" *ngFor="let item of studentTrace; let i = index" >
+      <div class="contactList">
+        <div class="idx">{{i + 1}}</div>
+        <div class="dark">跟进时间：{{item.followTimeStr}}</div>
+        <div class="dark">跟进方式：{{item.wayStr}}</div>
+        <div class="light">沟通内容：{{item.content}}</div>
+      </div>
+    </div>
+    
+  </div>
+  <div class="btn" (click)="navTo()"><span></span>添加记录</div>
+</ion-content>

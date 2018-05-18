@@ -1,0 +1,8 @@
+<!-- Generated template for the DueToRemindListComponent component -->
+<div class="wrap">
+  <div class="peopleList" *ngFor="let item of data" (click)="navTo(item)">
+    <div><img src="{{item.photoUrl}}" alt=""></div>
+    <div class="name">{{item.name}}</div>
+    <div class="dueDate">还剩{{item.fate}}天</div>
+  </div>
+</div>

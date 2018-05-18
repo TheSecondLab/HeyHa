@@ -1,0 +1,47 @@
+page-mine {
+  .header {
+    height: 236.5px;
+    position: relative;
+
+    .bg {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      width: 100%;
+
+    }
+
+    .title {
+      position: relative;
+      padding-top: 13px;
+      text-align: center;
+
+      span {
+        font-size: 17px;
+        color: #fff;
+      }
+
+      .setting {
+        width: 22px;
+        padding-top: 13px;
+        position: absolute;
+        right: 15px;
+        top: 0;
+      }
+    }
+
+    personal-info {
+      position: absolute;
+      z-index: 10;
+      top: 46px;
+      background-color: #fff;
+      width: 345px;
+      height: 181px;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+      border-radius: 4px;
+      box-shadow: 0 2px 12px rgba(71,71,71,0.11);
+    }
+  }
+}

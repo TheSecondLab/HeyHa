@@ -1,0 +1,61 @@
+personal-info {
+  .container {
+    padding: 0 3px 12px;
+
+    .info {
+      display: flex;
+      border-bottom: 1px solid #f2f2f2;
+
+      .avatar {
+        height: 65px;
+        width: 65px;
+        margin: 18px;
+        overflow: hidden;
+        border-radius: 50%;
+      }
+
+      .detail {
+        margin: 27px 0 4px;
+
+        .name {
+          font-family: PingFangSC-Semibold;
+          color: #333;
+          font-size: 17px;
+        }
+
+        .classroom {
+          color: #666;
+          font-size: 14px;
+
+          .id {
+            color: #999;
+          }
+        }
+      }
+    }
+
+    .interactive {
+      display: flex;
+      justify-content: space-around;
+      height: 100%;
+      line-height: 100%;
+
+      .item {
+        display: flex;
+        flex-direction: column;
+        padding-top: 16px;
+        margin: 0 auto;
+        font-size: 12px;
+        color: #666;
+
+        & > div {
+          height: 30px;
+          width: 30px;
+          line-height: 30px;
+          text-align: center;
+          margin: 0 auto 6px;
+        }
+      }
+    }
+  }
+}

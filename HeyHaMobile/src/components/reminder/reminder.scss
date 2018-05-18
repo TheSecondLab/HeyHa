@@ -1,0 +1,55 @@
+reminder {
+  .container {
+    background-color: #fff;
+    height: 136px;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+
+    .coach {
+      margin: 0 22px 12px 14px;
+      display: flex;
+      justify-content: baseline;
+
+      .img {
+        height: 50px;
+        width: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+
+      .reminderContent {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        flex-grow: 1;
+        margin-left: 10px;
+
+        .name {
+          font-size: 15px;
+          color: #333;
+          font-family: PingFangSC-Medium;
+        }
+
+        .message {
+          font-size: 14px;
+          color: #666;
+        }
+      }
+
+      .btn {
+        background-color: #80bdfe;
+        height: 24px;
+        width: 50px;
+        border-radius: 12px;
+        text-align: center;
+        font-size: 12px;
+        color: #fff;
+        font-family: PingFangSC-Medium;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+      }
+    }
+  }
+}

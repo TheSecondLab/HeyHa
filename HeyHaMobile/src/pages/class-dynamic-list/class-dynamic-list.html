@@ -1,0 +1,28 @@
+<!--
+  Generated template for the ClassDynamicListPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar class="header">
+    <ion-title>{{classTitle}}</ion-title>
+    <div class="postNew" (click)="openModal()"></div>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div class="dynamic" *ngFor="let dynamic of dynamicList" >
+    <div class="assist">
+      <div class="time">{{dynamic.publishTimeStr}}</div>
+      <div class="delete" (click)="deleteDynamic(dynamic.id)"></div>
+    </div>
+    <div class="text">{{dynamic.content}}</div>
+    <div class="photoGroup">
+      <div *ngFor="let imageUrl of dynamic.imageUrl"><img src="{{imageUrl}}" alt=""></div>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,47 @@
+class-list {
+  .list {
+    position: relative;
+    display: flex;
+    padding: 18px 15px;
+    border-bottom: 1px solid #f2f2f2;
+    background-color: #fff;
+
+    &::after {
+      position: absolute;
+      content: ' ';
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 8px;
+      height: 16px;
+      background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAQCAYAAAFcjQ7rAAAAAXNSR0IArs4c6QAAAP1JREFUKBVtUasOwkAQLNczLWgCDgtYBBJNgiMVkKYOwR/Al/AwfWHqMMA3IPgHFAlY0qq2zB65o1BqdnZmdm7vqgVBMND+fJ7nHRjxhmGMPrrv+1XVYXaqwXgRDKQ2mqWSiwDCVcQR6brumjHWJ3AvusqY5kosyFMURTUSKlJF1oJzvpe9qCBzAWDXMfbeFHs30WyVVVxEdQBQHyWyYBCnIrMRx/ER/Nk0zbllWan0qLWIoMOTJFnled7TdX1o2/btyyCnqOIZJ1mW7XiRlBh7LZEyw0W7KoGeAvERTAx/a4w9njTAwzDspGl6gLhxHGcoU2TliKpDaEnit74AWIFtjLP4uVEAAAAASUVORK5CYII=);
+    }
+  }
+  .type {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    margin-right: 10px;
+    text-align: center;
+    border-radius: 50%;
+    color: #fff;
+    font-weight: bold;
+    background-color: #91DCFD;
+  }
+
+  .cont {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    padding: 2px 0;
+  }
+  .name {
+    font-size: 16px;
+    color: #333333;
+  }
+
+  .time {
+    font-size: 14px;
+    color: #666666;
+  }
+}

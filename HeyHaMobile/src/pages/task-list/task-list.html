@@ -1,0 +1,40 @@
+<!-- <ion-menu [content]="content" side="right" type="overlay">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>选择班级</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <button ion-item (click)="openPage('1234')" class="classList">
+        <div class="name">精英一班</div>
+        <div class="time">课程时间：周六12：00-14：00</div>
+      </button>
+      <button ion-item (click)="openPage('2234')" class="classList">
+        <div class="name">精英一班</div>
+        <div class="time">课程时间：周六12：00-14：00</div>
+      </button>
+      <button ion-item (click)="openPage('3234')" class="classList">
+        <div class="name">精英一班</div>
+        <div class="time">课程时间：周六12：00-14：00</div>
+      </button>
+      <button ion-item (click)="openPage('4234')" class="classList">
+        <div class="name">精英一班</div>
+        <div class="time">课程时间：周六12：00-14：00</div>
+      </button>
+    </ion-list>
+  </ion-content>
+</ion-menu> -->
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>{{classTitle}}</ion-title>
+    <!-- <div (click)="showMenu()">test</div> -->
+  </ion-navbar>
+</ion-header>
+
+<!-- <ion-content #content> -->
+<ion-content>
+  <exercise-list [list]=dataList></exercise-list>
+</ion-content>
+

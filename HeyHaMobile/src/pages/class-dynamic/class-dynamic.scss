@@ -1,0 +1,46 @@
+page-class-dynamic {
+.list {
+    position: relative;
+    display: flex;
+    align-content: center;
+    padding: 18px 15px;
+    border-bottom: 1px solid #f2f2f2;
+    background-color: #fff;
+    .type {
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        margin-right: 10px;
+        text-align: center;
+        border-radius: 50%;
+        color: #fff;
+        font-weight: bold;
+        background-color: #91DCFD;
+    }
+    
+    .cont {
+        display: flex;
+        flex: 1;
+        justify-content: space-between;
+        flex-direction: column;
+        padding: 2px 0;
+    }
+    .name {
+        font-size: 16px;
+        color: #333333;
+    }
+    
+    .time {
+        font-size: 14px;
+        color: #666666;
+    }
+    
+    .stuCount{
+        display: flex;
+        align-items: center;
+        width: 44px;
+        font-size: 20px;
+        color: #D0021B;
+    }
+    }
+}

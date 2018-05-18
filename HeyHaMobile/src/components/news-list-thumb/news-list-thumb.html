@@ -1,0 +1,8 @@
+<!-- Generated template for the NewsListThumbComponent component -->
+<div class="wrap">
+ <div class="list" *ngFor="let item of newsList" (click)="navTo(item)">
+   <div class="img"><img src="{{item.coverUrl}}" alt=""></div>
+   <div class="title">{{item.name}}</div>
+   <div class="desc">联盟发布 · {{item.releasetimeStr}}</div>
+ </div>
+</div>

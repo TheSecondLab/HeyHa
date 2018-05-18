@@ -1,0 +1,37 @@
+<!--
+  Generated template for the PostTraceRecordPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>发布跟进记录</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="content">
+  <ion-list class="form">
+      <ion-item class="formItem">
+        <ion-label class="label">跟进学生</ion-label>
+        <ion-input type="text" [(ngModel)]="stuName" disabled ></ion-input>
+      </ion-item>
+      <ion-item class="formItem">
+        <ion-label class="label">跟进方式</ion-label>
+        <ion-select [(ngModel)]="way">
+          <ion-option value="PHONE">电话</ion-option>
+          <ion-option value="WECHAT">微信</ion-option>
+          <ion-option value="APP">App</ion-option>
+          <ion-option value="OTHER">其他</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item class="formItem">
+        <ion-label class="label" stacked>沟通内容</ion-label>
+        <ion-textarea placeholder="请输入沟通内容…." rows="10" [(ngModel)]="content" ></ion-textarea>
+      </ion-item>
+  </ion-list>
+  <div class="btn" (click)="addTrace()">确认发布</div>
+</ion-content>

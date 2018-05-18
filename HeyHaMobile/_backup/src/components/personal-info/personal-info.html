@@ -1,0 +1,37 @@
+<!-- Generated template for the PersonalInfoComponent component -->
+<div class="container">
+  <div class="info">
+    <div class="avatar">
+      <img src={{item.photoUrl}} alt="">
+    </div>
+    <div class="detail">
+      <div class="name">
+        <span>{{item.name}}</span>
+      </div>
+      <div class="classroom">
+        <span>{{ item.taekwondoName }}</span>
+        <span class="id">{{ item.code }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="interactive">
+    <div class="item" (click)="navTo('MyPointPage')">
+      <div>
+        <img src="assets/imgs/icon_score.png" alt="">
+      </div>
+      <span>我的积分</span>
+    </div>
+    <div class="item" (click)="navTo('MyChatPage')">
+      <div>
+        <img src="assets/imgs/icon_news.png" alt="">
+      </div>
+      <span>互动消息</span>
+    </div>
+    <div class="item" (click)="navTo('EventsPage')">
+      <div>
+        <img src="assets/imgs/icon_grow.png" alt="">
+      </div>
+      <span>成长记录</span>
+    </div>
+  </div>
+</div>
