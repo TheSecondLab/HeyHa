@@ -1,0 +1,10 @@
+<!-- Generated template for the NewListComponent component -->
+<div>
+  <div *ngFor="let item of newsList" class="list" (click)="goNewsDetail(item)">
+    <div class="img"><img src="{{item.coverUrl}}"/></div>
+    <div class="content">
+      <div class="tit">{{item.name}}</div>
+      <div class="date">{{item.releasetimeStr}}</div>
+    </div>
+  </div>
+</div>

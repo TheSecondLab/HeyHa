@@ -1,0 +1,65 @@
+page-coach-info {
+  .content {
+    background-color: #f2f2f2;
+
+    .coachBrief {
+      height: 90px;
+      position: relative;
+      background-color: #fff;
+      padding: 15px;
+      display: flex;
+
+      .avatar {
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+
+      .brief {
+        margin-left: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        color: #333;
+        font-size: 14px;
+
+        .name {
+          font-family: PingFangSC-Medium;
+          font-size: 17px;
+          color: #333;
+          margin-bottom: 6px;
+        }
+      }
+
+      &::after {
+        position: absolute;
+        content: '';
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 8px;
+        height: 16px;
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAQCAYAAAFcjQ7rAAAAAXNSR0IArs4c6QAAAP1JREFUKBVtUasOwkAQLNczLWgCDgtYBBJNgiMVkKYOwR/Al/AwfWHqMMA3IPgHFAlY0qq2zB65o1BqdnZmdm7vqgVBMND+fJ7nHRjxhmGMPrrv+1XVYXaqwXgRDKQ2mqWSiwDCVcQR6brumjHWJ3AvusqY5kosyFMURTUSKlJF1oJzvpe9qCBzAWDXMfbeFHs30WyVVVxEdQBQHyWyYBCnIrMRx/ER/Nk0zbllWan0qLWIoMOTJFnled7TdX1o2/btyyCnqOIZJ1mW7XiRlBh7LZEyw0W7KoGeAvERTAx/a4w9njTAwzDspGl6gLhxHGcoU2TliKpDaEnit74AWIFtjLP4uVEAAAAASUVORK5CYII=);
+      }
+    }
+
+    .intro {
+      margin-top: 10px;
+      background-color: #fff;
+      padding: 15px;
+
+      .title {
+        margin-bottom: 15px;
+        font-size: 15px;
+        font-family: PingFangSC-Medium;
+        color: #333;
+      }
+
+      .introContent {
+        color: #666;
+        font-size: 14px;
+      }
+    }
+  }
+}

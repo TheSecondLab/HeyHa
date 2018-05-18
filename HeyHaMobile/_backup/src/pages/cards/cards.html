@@ -1,0 +1,27 @@
+<!--
+  Generated template for the CardsPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>办卡历史</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="content">
+  <ion-card class="cards"  *ngFor="let card of cards;index as i">
+    <img src="assets/imgs/pic_card{{i%4+1}}.png"/>
+    <div class="cardType">
+      <div class="title">{{card.card.name}}</div>
+      <div class="date">
+        <div>办卡日期：{{card.startTimeStr}}</div>
+        <div>截止日期：{{card.endTimeStr}}</div>
+      </div>
+    </div>
+  </ion-card>
+</ion-content>

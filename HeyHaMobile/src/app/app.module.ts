@@ -41,8 +41,11 @@ import { MyApp } from './app.component';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
+import { StHomePage } from '../pages/sthome/home';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TabsPageModule } from '../pages/tabs/tabs.module';
+import { StTabsPage } from '../pages/stTabs/stTabs';
+import { StTabsPageModule } from '../pages/stTabs/stTabs.module';
 import { StuImformationPage } from '../pages/stu-imformation/stu-imformation';
 import { DueDateStuPage } from '../pages/due-date-stu/due-date-stu';
 import { SettingPage } from '../pages/setting/setting';
@@ -91,6 +94,7 @@ import { AlertService } from '../module/alertService.service';
     AboutPage,
     ContactPage,
     HomePage,
+    StHomePage,
     ExerciseTasksPage,
     ExerciseTasksListPage,
     ClassDynamicPage,
@@ -121,6 +125,7 @@ import { AlertService } from '../module/alertService.service';
     PersonalInfoPageModule,
     PostTraceRecordPageModule,
     TabsPageModule,
+    StTabsPageModule,
     ChatPageModule,
     ClassDueStudentPageModule,
     CourseDetailPageModule,
@@ -134,7 +139,9 @@ import { AlertService } from '../module/alertService.service';
     AboutPage,
     ContactPage,
     HomePage,
+    StHomePage,
     TabsPage,
+    StTabsPage,
     StuImformationPage,
     DueDateStuPage,
     SettingPage,

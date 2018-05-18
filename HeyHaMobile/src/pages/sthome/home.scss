@@ -1,0 +1,88 @@
+st-page-home {
+  .content {
+    background-color: #f2f2f2;
+
+    .header {
+      position: relative;
+      display: flex;
+      justify-content: center;
+
+      .homeSlide {
+        height: 214px;
+
+        .slide {
+          position: relative;
+          overflow: hidden;
+
+          ion-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            // height: 100%;
+            // width: 100%;
+          }
+        }
+      }
+
+      menu-bar {
+        position: absolute;
+        bottom: -53px;
+        z-index: 10;
+      }
+    }
+
+    sub-title {
+      .wrap {
+        margin-top: 10px;
+      }
+    }
+  }
+
+  .courseProgress {
+    position: relative;
+    display: flex;
+    padding: 0 15px 10px;
+    justify-content: space-between;
+    background-color: #fff;
+
+    .img {
+      width: 150px;
+      height: 89px;
+      margin-right: 12px;
+
+      img {
+        width: 100%;
+        overflow: hidden;
+      }
+    }
+    .cont-box {
+      flex: 1;
+    }
+
+    .date {
+      color: #555;
+      font-size: 16px;
+      text-align: left;
+    }
+
+    .claim {
+      font-size: 14px;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+    }
+
+    .btn {
+      position: absolute;
+      background: #f78185;
+      padding: 2px 8px;
+      color: #fff;
+      border-radius: 25px;
+      bottom: 8px;
+      right: 14px;
+    }
+
+  }
+
+}

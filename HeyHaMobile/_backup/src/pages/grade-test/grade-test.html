@@ -1,0 +1,54 @@
+<ion-header>
+    <ion-navbar>
+      <ion-title>
+        考级查询
+      </ion-title>
+    </ion-navbar>
+
+    <ion-toolbar no-border-top>
+      <ion-segment [(ngModel)]="segmentModel">
+        <ion-segment-button value="tab1">
+          考级
+        </ion-segment-button>
+        <ion-segment-button value="tab2">
+          考品/段
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content >
+    <div [ngSwitch]="segmentModel">
+      <ion-list *ngSwitchCase="'tab1'">
+        <div *ngFor="let level of levelList;index as i" class="gradeItem">
+          <div class="img">
+            <img src="assets/imgs/ji{{i}}.png" alt="">
+          </div>
+          <div class="desc">
+            <div class="title">{{level.name}}</div>
+            <div class="date">考试日期：{{level.addtimeStr || '未开始'}}</div>
+          </div>
+          <div class="score" *ngIf="level.score">
+            {{level.score.substr(0,1)}}
+            <span class="extra">{{level.score.substr(1,2)}}</span>
+          </div>
+        </div>
+      </ion-list>
+
+      <ion-list *ngSwitchCase="'tab2'">
+        <div *ngFor="let level of segmentLevel; index as j" class="gradeItem">
+          <div class="img">
+            <img src="assets/imgs/kao{{j}}.png" alt="">
+          </div>
+          <div class="desc">
+            <div class="title">{{level.name}}</div>
+            <div class="date">考试日期：{{level.addtimeStr || '未开始'}}</div>
+          </div>
+          <div class="score" *ngIf="level.score">
+            {{level.score.substr(0,1)}}
+            <span class="extra">{{level.score.substr(1,2)}}</span>
+          </div>
+        </div>
+      </ion-list>
+    </div>
+  </ion-content>
