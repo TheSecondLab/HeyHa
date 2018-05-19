@@ -12,10 +12,10 @@ import { BaseService } from '../../module/baseService.service';
 
 @IonicPage()
 @Component({
-  selector: 'page-class-dynamic-list',
-  templateUrl: 'class-dynamic-list.html',
+  selector: 'page-st-class-dynamic-list',
+  templateUrl: 'st-class-dynamic-list.html',
 })
-export class ClassDynamicListPage {
+export class StClassDynamicListPage {
   dynamicList = [];
 
   constructor(
@@ -48,7 +48,7 @@ export class ClassDynamicListPage {
 
   collect(id){
     this.baseService.postData('/admin/dynamic/collectDynamic', { data: {id}, hideLoading: false }, (data)=> {
-      
+
       this.dynamicList = this.dynamicList.map((item) => {
         if(item.id == id) {
           item.collect = !item.collect;

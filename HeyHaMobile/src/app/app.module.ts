@@ -88,6 +88,9 @@ import { CardsPageModule } from '../pages/cards/cards.module';
 import { CardsPage } from '../pages/cards/cards';
 import { StPersonalInfoPage } from '../pages/st-personal-info/st-personal-info';
 import { StPersonalInfoPageModule } from '../pages/st-personal-info/st-personal-info.module';
+import { StClassDynamicListPage } from '../pages/st-class-dynamic-list/st-class-dynamic-list';
+import { TrainPage } from '../pages/train/train';
+import { TrainPageModule } from '../pages/train/train.module';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -112,7 +115,8 @@ import { AlertService } from '../module/alertService.service';
     ClassDynamicPage,
     TaskPage,
     MinePage,
-    LoginPage
+    LoginPage,
+    StClassDynamicListPage
   ],
   imports: [ // 依赖的模块
     BrowserModule,
@@ -121,6 +125,7 @@ import { AlertService } from '../module/alertService.service';
     MyPointPageModule,
     EventsPageModule,
     StMyChatPageModule,
+    TrainPageModule,
     CardsPageModule,
     StPersonalInfoPageModule,
     CoachInfoPageModule,
@@ -161,8 +166,10 @@ import { AlertService } from '../module/alertService.service';
     MyPointPage,
     HomePage,
     StMyChatPage,
+    TrainPage,
     CardsPage,
     CoachInfoPage,
+    StClassDynamicListPage,
     MinePage,
     StHomePage,
     TabsPage,
