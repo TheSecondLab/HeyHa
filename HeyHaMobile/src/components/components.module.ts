@@ -22,6 +22,8 @@ import { PostClassMessageComponent } from './post-class-message/post-class-messa
 import { MenuBarComponent } from './menu-bar/menu-bar';
 import { ReminderComponent } from './reminder/reminder';
 import { StNewsListThumbComponent } from './st-news-list-thumb/news-list-thumb';
+import { PersonalInfoComponent } from './personal-info/personal-info';
+import { MyInfoListComponent } from './my-info-list/my-info-list';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { StNewsListThumbComponent } from './st-news-list-thumb/news-list-thumb';
     // NewsListComponent,
     // NewsDetailComponent,
     NewsListThumbComponent,
+    PersonalInfoComponent,
     ClassListComponent,
+    MyInfoListComponent,
     // RemindListAllComponent,
     // StuListComponent,
     TraceListComponent,
@@ -48,9 +52,11 @@ import { StNewsListThumbComponent } from './st-news-list-thumb/news-list-thumb';
 	exports: [DueToRemindListComponent,
     SubTitleComponent,
     StSubTitleComponent,
+    MyInfoListComponent,
     // NewsListComponent,
     // NewsDetailComponent,
     NewsListThumbComponent,
+    PersonalInfoComponent,
     ClassListComponent,
     // RemindListAllComponent,
     // StuListComponent,

@@ -38,6 +38,7 @@ import { CourseProgressListPageModule } from '../pages/course-progress-list/cour
 // 根组件
 import { MyApp } from './app.component';
 
+import { MinePage } from '../pages/mine/mine';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
@@ -75,7 +76,12 @@ import { CourseDetailPage } from '../pages/course-detail/course-detail';
 import { SearchStudentPage } from '../pages/search-student/search-student';
 import { CourseProgressPage } from '../pages/course-progress/course-progress';
 import { CourseProgressListPage } from '../pages/course-progress-list/course-progress-list';
-
+import { MyPointPageModule } from '../pages/my-point/my-point.module';
+import { MyPointPage } from '../pages/my-point/my-point';
+import { EventsPage } from '../pages/events/events';
+import { EventsPageModule } from '../pages/events/events.module';
+import { StMyChatPageModule } from '../pages/st-my-chat/st-my-chat.module';
+import { StMyChatPage } from '../pages/st-my-chat/st-my-chat';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -99,12 +105,16 @@ import { AlertService } from '../module/alertService.service';
     ExerciseTasksListPage,
     ClassDynamicPage,
     TaskPage,
+    MinePage,
     LoginPage
   ],
   imports: [ // 依赖的模块
     BrowserModule,
     ComponentsModule,
     HttpClientModule,
+    MyPointPageModule,
+    EventsPageModule,
+    StMyChatPageModule,
     IonicModule.forRoot(MyApp, {
       tabsHideOnSubPages: 'true'
      }),
@@ -137,8 +147,12 @@ import { AlertService } from '../module/alertService.service';
   entryComponents: [ // 不会在模板中使用的组件
     MyApp,
     AboutPage,
+    EventsPage,
     ContactPage,
+    MyPointPage,
     HomePage,
+    StMyChatPage,
+    MinePage,
     StHomePage,
     TabsPage,
     StTabsPage,

@@ -37,8 +37,8 @@ export class LoginPage {
 
   login() {
     this.baseService.postData("/admin/login", { data: this.form.value }, (data) => {
-      if (data.username) {
-      // if (data.loginType === 'EMPLOYEE') {
+      // if (data.username) {
+      if (data.loginType === 'EMPLOYEE') {
         console.log('Is coach');
         window.localStorage.setItem('username', data.username);
         // window.localStorage.setItem('user', this.form.value.username);
@@ -53,8 +53,8 @@ export class LoginPage {
         this.navCtrl.setRoot('TabsPage', {
           userInfo: data
         });
-      } else if (data.code) {
-      // } else if (data.loginType === 'MEMBER') {
+      // } else if (data.code) {
+      } else if (data.loginType === 'MEMBER') {
         console.log('Is student');
         window.localStorage.setItem('username', data.code);
         window.localStorage.setItem('password', this.form.value.password);

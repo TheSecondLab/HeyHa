@@ -8,10 +8,10 @@ import {JmessageChenyu} from "jmessage-chenyu";
 
 @IonicPage()
 @Component({
-  selector: 'page-my-chat',
-  templateUrl: 'my-chat.html',
+  selector: 'page-st-my-chat',
+  templateUrl: 'st-my-chat.html',
 })
-export class MyChatPage {
+export class StMyChatPage {
 
 
   public tabIndex = 1;
