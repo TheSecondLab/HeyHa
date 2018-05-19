@@ -8,10 +8,10 @@ import { UpLoadService } from '../../module/uploadService.service';
 
 @IonicPage()
 @Component({
-  selector: 'page-personal-info',
-  templateUrl: 'personal-info.html',
+  selector: 'page-st-personal-info',
+  templateUrl: 'st-personal-info.html',
 })
-export class PersonalInfoPage {
+export class StPersonalInfoPage {
 
   // infos = [{
   //   label: 'testtest',

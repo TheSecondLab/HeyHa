@@ -82,6 +82,12 @@ import { EventsPage } from '../pages/events/events';
 import { EventsPageModule } from '../pages/events/events.module';
 import { StMyChatPageModule } from '../pages/st-my-chat/st-my-chat.module';
 import { StMyChatPage } from '../pages/st-my-chat/st-my-chat';
+import { CoachInfoPageModule } from '../pages/coach-info/coach-info.module';
+import { CoachInfoPage } from '../pages/coach-info/coach-info';
+import { CardsPageModule } from '../pages/cards/cards.module';
+import { CardsPage } from '../pages/cards/cards';
+import { StPersonalInfoPage } from '../pages/st-personal-info/st-personal-info';
+import { StPersonalInfoPageModule } from '../pages/st-personal-info/st-personal-info.module';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -115,6 +121,9 @@ import { AlertService } from '../module/alertService.service';
     MyPointPageModule,
     EventsPageModule,
     StMyChatPageModule,
+    CardsPageModule,
+    StPersonalInfoPageModule,
+    CoachInfoPageModule,
     IonicModule.forRoot(MyApp, {
       tabsHideOnSubPages: 'true'
      }),
@@ -152,9 +161,12 @@ import { AlertService } from '../module/alertService.service';
     MyPointPage,
     HomePage,
     StMyChatPage,
+    CardsPage,
+    CoachInfoPage,
     MinePage,
     StHomePage,
     TabsPage,
+    StPersonalInfoPage,
     StTabsPage,
     StuImformationPage,
     DueDateStuPage,
