@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
-import { ModalPostPageComponent } from '../../components/modal-post-page/modal-post-page';
+import { StModalPostPageComponent } from '../../components/st-modal-post-page/st-modal-post-page';
 import { BaseService } from '../../module/baseService.service';
 
 /**
@@ -21,7 +21,7 @@ export class EventsPage {
   }
 
   openModal(characterNum) {
-    let modal = this.modalCtrl.create(ModalPostPageComponent, characterNum);
+    let modal = this.modalCtrl.create(StModalPostPageComponent, characterNum);
     modal.onDidDismiss(data => {
       this.loadData();
     });

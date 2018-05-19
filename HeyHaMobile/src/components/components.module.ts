@@ -24,7 +24,7 @@ import { ReminderComponent } from './reminder/reminder';
 import { StNewsListThumbComponent } from './st-news-list-thumb/news-list-thumb';
 import { PersonalInfoComponent } from './personal-info/personal-info';
 import { MyInfoListComponent } from './my-info-list/my-info-list';
-
+import { StModalPostPageComponent } from './st-modal-post-page/st-modal-post-page';
 
 @NgModule({
 	declarations: [DueToRemindListComponent,
@@ -41,6 +41,7 @@ import { MyInfoListComponent } from './my-info-list/my-info-list';
     TraceListComponent,
     // ExerciseListComponent,
     ModalPostPageComponent,
+    StModalPostPageComponent,
     PostClassMessageComponent,
     // DropdownComponent
     MenuBarComponent,
@@ -62,6 +63,7 @@ import { MyInfoListComponent } from './my-info-list/my-info-list';
     // StuListComponent,
     TraceListComponent,
     ModalPostPageComponent,
+    StModalPostPageComponent,
     PostClassMessageComponent,
     // DropdownComponent
     MenuBarComponent,

@@ -10,10 +10,10 @@ import { BaseService } from '../../module/baseService.service';
 import { MultipleUpLoadService } from '../../module/multipleUpdate.service';
 
 @Component({
-  selector: 'modal-post-page',
-  templateUrl: 'modal-post-page.html'
+  selector: 'st-modal-post-page',
+  templateUrl: 'st-modal-post-page.html'
 })
-export class ModalPostPageComponent {
+export class StModalPostPageComponent {
   form;
   photoList = [];
   constructor(

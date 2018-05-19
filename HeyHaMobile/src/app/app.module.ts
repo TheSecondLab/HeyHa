@@ -91,6 +91,7 @@ import { StPersonalInfoPageModule } from '../pages/st-personal-info/st-personal-
 import { StClassDynamicListPage } from '../pages/st-class-dynamic-list/st-class-dynamic-list';
 import { TrainPage } from '../pages/train/train';
 import { TrainPageModule } from '../pages/train/train.module';
+import { StModalPostPageComponent } from '../components/st-modal-post-page/st-modal-post-page';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -162,6 +163,7 @@ import { AlertService } from '../module/alertService.service';
     MyApp,
     AboutPage,
     EventsPage,
+    StModalPostPageComponent,
     ContactPage,
     MyPointPage,
     HomePage,
