@@ -41,24 +41,32 @@ const uploadFiles = ({ files, fileKey, data, onUploadSuccess, onUploadFailed }) 
   _uploadService(formData, onUploadSuccess, onUploadFailed);
 };
 
+const readFileFunc = (imgData, onSuccess) => {
+  window.resolveLocalFileSystemURL(imgData, function(fileEntry) {
+    fileEntry.file((file) => {
+      var reader = new FileReader();
+      reader.onloadend = function () {
+        const fileData = new Blob([this.result]);  
+        onSuccess({
+          uri: imgData,
+          fileData,
+          fileName: file.name
+        })
+      };
+
+      reader.readAsArrayBuffer(file);
+
+    }, function(e){()=> {}});  
+  }, function(e){()=>{}}); 
+}
+
 const transferFilePath = (onSuccess) => (imageData) => {
+  if (window.device.platform === 'iOS') {
+    readFileFunc(imageData, onSuccess);
+    return;
+  }
   window.FilePath.resolveNativePath(imageData, (uri) => {
-    window.resolveLocalFileSystemURL(uri, function(fileEntry) {  
-      fileEntry.file((file) => {
-        var reader = new FileReader();
-        reader.onloadend = function () {
-          const fileData = new Blob([this.result]);  
-          onSuccess({
-            uri,
-            fileData,
-            fileName: file.name
-          })
-        };
-
-        reader.readAsArrayBuffer(file);
-
-      }, function(e){()=> {}});  
-    }, function(e){()=>{}}); 
+    readFileFunc(uri, onSuccess);
   });
 }
 
