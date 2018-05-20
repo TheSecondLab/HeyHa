@@ -62,6 +62,10 @@ export class MultipleUpLoadService {
     };
 
     this.camera.getPicture(options).then((imageData) => {
+      if (this.platform.is('ios')) {
+        cb(imageData)
+        return;
+      }
       this.filePath.resolveNativePath(imageData)
       .then(filePath => cb(filePath))
       .catch(err => console.log(err));
