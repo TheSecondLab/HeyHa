@@ -9,7 +9,7 @@ import { BaseService } from './baseService.service';
 export class IMService {
 
   hardCodePassword: string = '123456';
-  appKey: string = 'b62940b22c4c70c0ee319808';
+  appKey: string = 'fbad4c0d77e0af70bec040e9';
 
   constructor(
     public jMessageChenyu: JmessageChenyu,
