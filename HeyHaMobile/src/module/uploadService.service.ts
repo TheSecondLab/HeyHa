@@ -63,8 +63,12 @@ export class UpLoadService {
     }
 
     this.camera.getPicture(options).then((imageData) => {
+      if (this.platform.is('ios')) {
+        this.upload(imageData);
+        return;
+      }
       this.filePath.resolveNativePath(imageData)
-        .then(filePath => this.upload(imageData))
+        .then(filePath => this.upload(filePath))
         .catch(err => console.log(err));
     }, (err) => {
       this.options.onError(err);
