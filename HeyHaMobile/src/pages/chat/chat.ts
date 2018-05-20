@@ -41,23 +41,29 @@ export class ChatPage {
   }
 
   receiveMsgListen(msg) {
-    const alert1 = this.alertCtrl.create({
-      message: JSON.stringify(msg.from.username)
-    });
-    alert1.present();
-
+    // const alert = this.alertCtrl.create({
+    //   message: JSON.stringify(msg)
+    // });
+    // alert.present();
     const currentUser = this.navParams.get('username');
-    const alert2 = this.alertCtrl.create({
-      message: JSON.stringify(currentUser)
-    });
-    alert2.present();
-
     if(msg.from && currentUser === msg.from.username) {
       this.loadMessage(currentUser);
     }
   }
 
   ionViewWillEnter() {
+
+    let doc = document.getElementById('pad');
+    window.addEventListener('keyboardDidHide', function (e) {
+      doc.style.height = '0px';
+
+    });
+
+    window.addEventListener('keyboardDidShow', function (e) {
+      const keyboardHeight = JSON.parse(JSON.stringify(e)).keyboardHeight;
+      doc.style.height = `${keyboardHeight}px`;
+
+    });
     const username = this.navParams.get('username');
 
     this.baseService.postData('/admin/user/usernames', {
@@ -75,7 +81,6 @@ export class ChatPage {
       })
       alert.present();
     });
-
     this.loadMessage(username);
     this.imService.createConversation(username);
     this.imService.addReceiveMessageListener(this.receiveMsgListen);
@@ -130,14 +135,6 @@ export class ChatPage {
   }
 
   sendMsg() {
-    // let alert = this.alertCtrl.create({
-    //   title: "this.inputs",
-    //   message: JSON.stringify(this.inputs),
-    //   buttons: [{
-    //     text: 'Ok',
-    //   }]
-    // });
-    // alert.present();
     this.imService.sendTextMsg(this.navParams.get('username'), this.inputs).then(msg => {
       this.inputs = '';
       this.newMessage(msg);

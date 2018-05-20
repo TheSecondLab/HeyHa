@@ -11,9 +11,28 @@
   </ion-navbar>
 
 </ion-header>
-<ion-content class="wrap">
+
+<!-- 
+<ion-content padding class="wrap" >
   <div class="box">
-    <div padding class="chatWrap">
+    <div  class="chatWrap">
+      
+    </div>
+    <div class="chat-window">
+      <div class="input">
+        <form (submit)="sendMsg()" [formGroup]="form">
+          <input type="text" placeholder="说点什么吧" [(ngModel)]="inputs" formControlName="content" />
+        </form>
+      </div>
+      <div class="add" (click)="chooseImage()"></div>
+    </div>
+  </div>
+
+</ion-content> -->
+
+<div class="wrap">
+  <div class="box">
+    <ion-content class="chatWrap">
       <div *ngFor="let msg of chatHistrory">
         <div *ngIf="msg.type==='text';else imgBlock">
           <div class="chat-me"  *ngIf="msg.isMine; else elseBlock">
@@ -39,19 +58,18 @@
             </div>
           </ng-template>
         </ng-template>
+
       </div>
-    </div>
+    </ion-content>
     <div class="chat-window">
       <div class="input">
-        <!-- <form (submit)="sendMsg()" [formGroup]="form">
-          <input type="text" placeholder="说点什么吧" [(ngModel)]="inputs" formControlName="content" />
-        </form> -->
         <form (submit)="sendMsg()" [formGroup]="form">
           <!-- <input type="text" placeholder="说点什么吧" [(ngModel)]="inputs" formControlName="content" /> -->
-          <ion-input type="text" placeholder="说点什么吧" [(ngModel)]="inputs" formControlName="content" ></ion-input>
+          <ion-input type="text" placeholder="说点什么吧" [(ngModel)]="inputs" formControlName="content"></ion-input>
         </form>
       </div>
       <div class="add" (click)="chooseImage()"></div>
     </div>
+    <div id="pad"></div>
   </div>
-</ion-content>
+</div>
