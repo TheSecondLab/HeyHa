@@ -1,15 +1,16 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, Content, LoadingController } from 'ionic-angular';
 import { IMService } from '../../module/imService.service';
-import { BaseService } from '../../module/baseService.service';
 import { MultipleUpLoadService } from '../../module/multipleUpdate.service';
+import { BaseService } from '../../module/baseService.service';
+
 import {
   FormGroup,
   FormControl,
   Validators
 } from '@angular/forms';
 
-// import { JmessageChenyu } from "jmessage-chenyu";
+
 
 @IonicPage()
 @Component({
@@ -53,7 +54,7 @@ export class ChatPage {
 
   ionViewWillEnter() {
 
-    let doc = document.getElementById('pad');
+    let doc = document.getElementById('zx');
     window.addEventListener('keyboardDidHide', function (e) {
       doc.style.height = '0px';
 
@@ -106,7 +107,7 @@ export class ChatPage {
       content: msg.type === 'text' ? msg.text: msg.thumbPath,
       type: msg.type,
       avatarThumbPath: msg.from.avatarThumbPath
-    })).reverse();
+    }));
     this.chatHistrory = arr;
 
     this.scrollToBottom();
