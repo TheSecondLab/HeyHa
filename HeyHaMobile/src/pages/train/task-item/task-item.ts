@@ -20,7 +20,7 @@ export class TaskItemComponent {
   }
 
   navTo(id, dateStr, isTask) {
-    this.navCtrl.push('CourseDetailPage', {
+    this.navCtrl.push('StCourseDetailPage', {
       id,
       dateStr,
       isTask
