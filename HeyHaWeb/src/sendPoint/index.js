@@ -132,8 +132,10 @@ class SendPoint extends C {
   addPoint() {
     const { id } = this.props.match.params;
     const { integralId, score, reason, selectedList, otherClassStudentList } = this.state;
+    
     const otherClassStudentId = otherClassStudentList.map((item) => item.id );
     const memberId = selectedList.concat(otherClassStudentId);
+    // console.log(memberId);
     if (integralId && score && memberId && id ) {
       post('/admin/integralQuery/addIntegral',
         { integralId, score, clazzId: id, memberId  }).then((data) => {
@@ -155,7 +157,7 @@ class SendPoint extends C {
         item.attendanceType &&( item.status = true);
         return item;
       }),
-      selectedList: this.state.stuList.filter(item => item.attendanceType)
+      selectedList: this.state.stuList.filter(item => item.attendanceType).map(item => item.id)
     });
   }
 
@@ -178,6 +180,7 @@ class SendPoint extends C {
                 <label>发放原因</label>
                 <div>
                   <select onChange={this.choseCause}>
+                    <option disabled selected>请选择发放原因</option>
                     {
                       reasonList.map((item, idx) => (<option key={`item-${idx}`} value={`${item.id}-${item.score}`}>{item.name}</option>))
                     }

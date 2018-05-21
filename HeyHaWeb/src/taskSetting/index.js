@@ -2,6 +2,7 @@ import React, { Component as C } from 'react';
 import { Panel, HeaderBar, StuList, PageTitle, Message, List } from '../components';
 import * as style from './style.scss';
 import { post, $post } from '../utils/service';
+import { Toast } from 'react-weui';
 
 class TaskSetting extends C {
   constructor() {
@@ -28,7 +29,8 @@ class TaskSetting extends C {
       studentLevel: [],
       currentLevel: '',
       toastTimer: null,
-      showToast: false
+      showToast: false,
+      showLoading: false
     };
   }
 
@@ -178,7 +180,9 @@ class TaskSetting extends C {
   sendCourse(postType) {
     const { id } = this.props.match.params;
     const { courseName, date, studentLevel, courseId } = this.state;
-
+    this.setState({
+      showLoading: true
+    });
     const arr = [];
     Object.keys(this.state).forEach((item) => {
       if(item.indexOf('level-') > -1) {
@@ -255,9 +259,10 @@ class TaskSetting extends C {
   }
   render() {
 
-    const { courseList, levelList, materialList, studentLevel, currentLevel, showToast, courseName, date, toastMsg } = this.state;
+    const { courseList, levelList, materialList, studentLevel, currentLevel, showToast, courseName, date, toastMsg, showLoading } = this.state;
     return(
       <div>
+        <Toast icon="loading" show={showLoading}>发布中</Toast>
         <Message title={toastMsg} visible={showToast} />
         <PageTitle title='作业设置' goBack={this.goBack} />
         <div className={style.wrap}>  
