@@ -18,7 +18,7 @@
   <div class="dynamic" *ngFor="let dynamic of dynamicList" >
     <div class="assist">
       <div class="time">{{dynamic.publishTimeStr}}</div>
-      <div class="delete" (click)="deleteDynamic(dynamic.id)"></div>
+      <div class="delete" tappable (click)="deleteDynamic(dynamic.id)"></div>
     </div>
     <div class="text">{{dynamic.content}}</div>
     <div class="photoGroup">

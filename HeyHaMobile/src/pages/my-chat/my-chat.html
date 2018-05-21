@@ -15,12 +15,12 @@
 <ion-content class="bg">
   <div class="wrap">
     <div class="tabs">
-      <div class="{{tabIndex === 1 ? 'tab-item act' : 'tab-item'}}" (click)="changeTab(1)">个人列表</div>
-      <div class="{{tabIndex === 2 ? 'tab-item act' : 'tab-item'}}" (click)="changeTab(2)">我的班级</div>
+      <div class="{{tabIndex === 1 ? 'tab-item act' : 'tab-item'}}" tappable (click)="changeTab(1)">个人列表</div>
+      <div class="{{tabIndex === 2 ? 'tab-item act' : 'tab-item'}}" tappable (click)="changeTab(2)">我的班级</div>
     </div>
     <div>
       <div *ngIf="tabIndex === 1">
-        <div class="personalList" (click)="navTo('ChatPage', conversation.username)" *ngFor="let conversation of chatHistory">
+        <div class="personalList" tappable (click)="navTo('ChatPage', conversation.username)" *ngFor="let conversation of chatHistory">
           <div class="iphoto"><img src={{conversation.image}} alt=""></div>
           <div class="cont">
             <div class="info">
@@ -34,7 +34,7 @@
       <div *ngIf="tabIndex === 2">
         <div
           [ngClass]="{'classListAct': item.status, 'classList': !item.status}"
-          *ngFor="let item of classList;index as i" (click)="selectItem(item.id)"
+          *ngFor="let item of classList;index as i" tappable (click)="selectItem(item.id)"
         >
           <div class="type"  status>{{i + 1}}</div>
           <div class="cont">
@@ -42,7 +42,7 @@
             <div class="time">课程时间：{{item.clazzTime}}</div>
           </div>
         </div>
-        <button ion-button full class="btn" (click)="openModal()">发送消息</button>
+        <button ion-button full class="btn" tappable (click)="openModal()">发送消息</button>
       </div>
     </div>
   </div>

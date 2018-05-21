@@ -7,13 +7,13 @@
     <div class="name">
       {{userInfo.name}}
     </div>
-    <div class="setting" (click)="navTo('SettingPage')"></div>
+    <div class="setting" tappable (click)="navTo('SettingPage')"></div>
   </div>
   <div class="list">
-    <div class="privateMsg" (click)="navTo('PersonalInfoPage')">
+    <div class="privateMsg" tappable (click)="navTo('PersonalInfoPage')">
       <span></span>个人信息
     </div>
-    <div class="privateIntro"  (click)="openModal()">
+    <div class="privateIntro" tappable (click)="openModal()">
       <span></span>个人简介
     </div>
   </div>

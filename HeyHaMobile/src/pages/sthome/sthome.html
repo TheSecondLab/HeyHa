@@ -2,7 +2,7 @@
   <div class="header">
     <ion-slides class="homeSlide" *ngIf="banners.length>0" pager="true" loop=true autoplay="3000" speed="500">
       <ion-slide *ngFor="let item of banners" class="list" >
-        <div style="overflow: hidden;" (click)="openLink(item.hyperlink)"><img src="{{item.coverUrl}}" style="width:100%" /></div>
+        <div style="overflow: hidden;" tappable (click)="openLink(item.hyperlink)"><img src="{{item.coverUrl}}" style="width:100%" /></div>
       </ion-slide>
     </ion-slides>
     <menu-bar></menu-bar>
@@ -15,9 +15,9 @@
     <div class="cont-box">
       <div class="date">{{courseProgress.dateStr}}</div>
       <div class="claim">{{courseProgress.claim}}</div>
-      <div class="btn" (click)="navToCourse(courseProgress.id, courseProgress.dateStr, courseProgress.type==='COURSE')">查看</div>
+      <div class="btn" tappable (click)="navToCourse(courseProgress.id, courseProgress.dateStr, courseProgress.type==='COURSE')">查看</div>
     </div>
   </div>
-  <st-sub-title title='热点资讯' btnText='更多' (click)='titleClick()'></st-sub-title>
+  <st-sub-title title='热点资讯' btnText='更多' tappable (click)='titleClick()'></st-sub-title>
   <st-news-list-thumb [list]=newsList></st-news-list-thumb>
 </ion-content>

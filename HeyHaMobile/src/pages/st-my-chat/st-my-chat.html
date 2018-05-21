@@ -15,7 +15,7 @@
 <ion-content class="bg">
   <div class="wrap">
     <div>
-      <div class="personalList" (click)="navTo('ChatPage', conversation.username)" *ngFor="let conversation of chatHistory">
+      <div class="personalList" tappable (click)="navTo('ChatPage', conversation.username)" *ngFor="let conversation of chatHistory">
         <div class="iphoto"><img src={{conversation.image}} alt=""></div>
         <div class="cont">
           <div class="info">

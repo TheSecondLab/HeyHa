@@ -1,6 +1,6 @@
 <!-- Generated template for the ExerciseListComponent component -->
 <div>
-  <div class="list" *ngFor="let item of exerciseList; let i = index" (click)="navTo(item)">
+  <div class="list" *ngFor="let item of exerciseList; let i = index" tappable (click)="navTo(item)">
     <div class="iphoto">{{i + 1}}</div>
     <div *ngIf="item.completeNum==item.totalNum" class="content done">
       <div class="name">{{item.dateStr}}</div>

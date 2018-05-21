@@ -14,7 +14,7 @@
 
 
 <ion-content>
-  <div class="list" *ngFor="let item of studentList" (click)="navTo(item)">
+  <div class="list" *ngFor="let item of studentList" tappable (click)="navTo(item)">
     <div class="iphoto"><img src="{{item.photoUrl}}" alt=""></div>
     <div class="content">
       <div class="name">{{item.name}} 【{{item.levelName}}】 <span>{{item.code}}</span></div>

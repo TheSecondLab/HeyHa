@@ -38,7 +38,7 @@
             <div class="name">{{item.name}}</div>
             <div>{{item.code}}</div>
           </div>
-          <button ion-button class="btn" *ngIf="item.notice == 'INACTIVE'" (click)="remindStu(item)">任务提醒</button>
+          <button ion-button class="btn" *ngIf="item.notice == 'INACTIVE'" tappable (click)="remindStu(item)">任务提醒</button>
           <button ion-button class="btn dis" *ngIf="item.notice != 'INACTIVE'">已提醒</button>
         </div>
       </div>
@@ -59,7 +59,7 @@
       <div *ngSwitchCase="'classVideo'">
         <div
           class="list"
-          *ngFor="let item of taskList;index as i" (click)="navTo(item)"
+          *ngFor="let item of taskList;index as i" tappable (click)="navTo(item)"
         >
           <div class="type"></div>
           <div class="cont">

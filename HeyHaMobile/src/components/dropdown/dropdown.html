@@ -4,7 +4,7 @@
     <div class="layer"></div>
   </div>
   <div class="inputs">
-    <div *ngFor="let selectedValue of selectedValues" (click)="changeTab(selectedValue.titleKey)">
+    <div *ngFor="let selectedValue of selectedValues" tappable (click)="changeTab(selectedValue.titleKey)">
       <span>{{selectedValue.value}}</span>
       <div *ngIf="selectedValue.titleKey === clickedTitleKey; else ad">
         <div class="arrowUp"></div>
@@ -23,10 +23,10 @@
     </div>
     <div *ngFor="let listItem of listItems">
       <div *ngIf="listItem.key === selectedValues[selectedIndex].key; else elseBlock">
-        <div class="item selected" (click)="selectItem(listItem.key)">{{listItem.value}}</div>
+        <div class="item selected" tappable (click)="selectItem(listItem.key)">{{listItem.value}}</div>
       </div>
       <ng-template #elseBlock>
-        <div class="item" (click)="selectItem(listItem.key, listItem.value)">{{listItem.value}}</div>
+        <div class="item" tappable (click)="selectItem(listItem.key, listItem.value)">{{listItem.value}}</div>
       </ng-template>
     </div>
   </div>

@@ -21,7 +21,7 @@
           <div class="time">到期时间： {{expirationTimeEndStr}}</div>
       </div>
     </div>
-    <div class="phone" (click)="presentActionSheet(tel)"></div>
+    <div class="phone" tappable (click)="presentActionSheet(tel)"></div>
   </div>
   <div>
     <div class="contactWrapper" *ngFor="let item of studentTrace; let i = index" >
@@ -34,5 +34,5 @@
     </div>
     
   </div>
-  <div class="btn" (click)="navTo()"><span></span>添加记录</div>
+  <div class="btn" tappable (click)="navTo()"><span></span>添加记录</div>
 </ion-content>

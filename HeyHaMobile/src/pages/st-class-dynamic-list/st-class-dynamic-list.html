@@ -26,14 +26,14 @@
       <div><img src="assets/imgs/iphoto.JPG" alt=""></div> -->
     </div>
     <div class="btns">
-      <div class="bad" *ngIf="dynamic.zan; else elseBlock" (click)="zan(dynamic.id)">点赞</div>
+      <div class="bad" *ngIf="dynamic.zan; else elseBlock" tappable (click)="zan(dynamic.id)">点赞</div>
       <ng-template #elseBlock>
-        <div class="good" (click)="zan(dynamic.id)">点赞</div>
+        <div class="good" tappable (click)="zan(dynamic.id)">点赞</div>
       </ng-template>
 
-      <div class="collect" *ngIf="dynamic.collect; else uncollect" (click)="collect(dynamic.id)">收藏</div>
+      <div class="collect" *ngIf="dynamic.collect; else uncollect" tappable (click)="collect(dynamic.id)">收藏</div>
       <ng-template #uncollect>
-        <div class="nonselect" (click)="collect(dynamic.id)">收藏</div>
+        <div class="nonselect" tappable (click)="collect(dynamic.id)">收藏</div>
       </ng-template>
     </div>
   </div>

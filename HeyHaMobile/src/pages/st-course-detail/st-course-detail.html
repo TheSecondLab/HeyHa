@@ -26,11 +26,11 @@
           <source src={{course.videoUrl}} type="video/mp4" />
         </video>
       </div>
-      <div class="article hidden" (click)="showContent($event)">
+      <div class="article hidden" tappable (click)="showContent($event)">
         <div class="title">动作要领</div>
         <div class="content">{{course.claim}}</div>
       </div>
     </div>
   </div>
-  <div class="fixBtn" *ngIf="isTask && courseDetail[0] && courseDetail[0].completeStatus==='UNCOMPLETE'" (click)="completeTask(courseDetail[0].id)">完成作业</div>
+  <div class="fixBtn" *ngIf="isTask && courseDetail[0] && courseDetail[0].completeStatus==='UNCOMPLETE'" tappable (click)="completeTask(courseDetail[0].id)">完成作业</div>
 </ion-content>

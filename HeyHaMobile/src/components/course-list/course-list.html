@@ -1,6 +1,6 @@
 <!-- Generated template for the CourseListComponent component -->
 <div>
-  <div class="list" *ngFor="let item of courseList" (click)="goCourseDetail(item)">
+  <div class="list" *ngFor="let item of courseList" tappable (click)="goCourseDetail(item)">
     <div class="type"></div>
     <div class="cont">
       <div class="name">【{{item.yearStr}}版】{{item.name}}</div>

@@ -2,7 +2,7 @@
 
     <ion-navbar class="header">
       <ion-title>成长记录</ion-title>
-      <div class="postNew" (click)="openModal({charNum: 0})"></div>
+      <div class="postNew" tappable (click)="openModal({charNum: 0})"></div>
     </ion-navbar>
 
   </ion-header>
@@ -13,7 +13,7 @@
       <div class="text">{{event.record}}</div>
       <div class="assist">
         <div class="time">{{event.recordTimeStr}}</div>
-        <div class="delete" (click)="deleteEvent(event.id)"></div>
+        <div class="delete" tappable (click)="deleteEvent(event.id)"></div>
       </div>
       <div class="photoGroup">
         <div *ngFor="let imageUrl of event.imageUrl"><img src="{{imageUrl}}" alt=""></div>

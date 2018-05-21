@@ -1,6 +1,6 @@
 <!-- Generated template for the StuListComponent component -->
 <div>
-  <div class="list" *ngFor="let item of list" (click)="goRemindDetail(item.number)">
+  <div class="list" *ngFor="let item of list" tappable (click)="goRemindDetail(item.number)">
     <div class="iphoto"><img src="{{item.imgUrl}}" alt=""></div>
     <div class="content">
       <div class="name">{{item.name}}</div>

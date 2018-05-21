@@ -18,7 +18,7 @@
 
   <div
     class="list"
-    *ngFor="let item of classList;index as i" (click)="navTo(item)"
+    *ngFor="let item of classList;index as i" tappable (click)="navTo(item)"
   >
     <div class="type">动态</div>
     <div class="cont">

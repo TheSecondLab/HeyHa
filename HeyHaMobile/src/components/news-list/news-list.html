@@ -1,6 +1,6 @@
 <!-- Generated template for the NewListComponent component -->
 <div>
-  <div *ngFor="let item of newsList" class="list" (click)="navTo(item)" >
+  <div *ngFor="let item of newsList" class="list" tappable (click)="navTo(item)" >
     <div class="img"><img src="{{item.coverUrl}}"/></div>
     <div class="content">
       <div class="tit">{{item.name}}</div>

@@ -11,13 +11,13 @@
       <ng-template #content>个人简历</ng-template> -->
     </ion-title>
     <ion-buttons start>
-      <button ion-button (click)="dismiss()">
+      <button ion-button tappable (click)="dismiss()">
         <span ion-text color="primary" showWhen="ios">取消</span>
         <ion-icon name="md-close" showWhen="android,windows"></ion-icon>
       </button>
     </ion-buttons>
     <ion-buttons end>
-      <button ion-button (click)="submit()">
+      <button ion-button tappable (click)="submit()">
         <span ion-text color="primary" showWhen="ios">发布</span>
         <ion-icon name="md-checkmark" showWhen="android,windows"></ion-icon>
       </button>
@@ -32,7 +32,7 @@
           <img src="{{imgUrl || ''}}" alt="" />
         </div>
         <div>
-          <div class="empty" *ngIf="photoList.length < imgLength" (click)='addPhoto()'></div>
+          <div class="empty" *ngIf="photoList.length < imgLength" tappable (click)='addPhoto()'></div>
         </div>
       </div>
   </form>
