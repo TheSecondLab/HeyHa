@@ -34,9 +34,9 @@ class HomeComponent extends C {
     // debugger
     const { classList } = this.state;
     
-    // if (window.device.platform === 'iOS') {
-    //   document.body.style.paddingTop = '20px';
-    // }
+    if (window.device.platform === 'iOS') {
+      document.body.style.paddingTop = '20px';
+    }
     
     return (
       <div>

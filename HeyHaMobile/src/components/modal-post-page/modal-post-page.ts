@@ -56,6 +56,7 @@ export class ModalPostPageComponent {
   }
 
   submit() {
+    
     let loading = this.loadingCtrl.create({
       spinner: 'crescent',
       content: '请稍后...'
@@ -82,6 +83,14 @@ export class ModalPostPageComponent {
       return;
     }
 
+    if (!this.photoList.length || !this.form.value.record) {
+      let alert = this.alertCtrl.create({
+        title: '提示',
+        message: '请填写完整'
+      });
+      alert.present();
+      return;
+    }
     const params = new Map();
     params.set('introduction', this.form.value.record);
 
