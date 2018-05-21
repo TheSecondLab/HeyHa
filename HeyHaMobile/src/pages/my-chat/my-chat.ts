@@ -59,6 +59,7 @@ export class MyChatPage {
         option: { data: {} }
       }],
       onSuccess: (datas) => {
+        // this.alertCtrl.create({message: JSON.stringify(datas[0])}).present()
         datas[0].forEach((relation) => {
           this.imService.getConversation(relation.username).then((conversation) => {
             const msg = {
@@ -69,11 +70,11 @@ export class MyChatPage {
               date: '',
               nickname: relation.nickname
             };
-  
+
             this.chatHistory.push(msg);
           })
         });
-        
+
         this.classList = datas[1];
 
       }
@@ -83,7 +84,7 @@ export class MyChatPage {
   selectItem(id) {
     const active = [];
     this.classList = this.classList.map((item) => {
-      
+
       if(item.id == id) {
         item.status = !item.status;
         item.status && active.push(item.id);
