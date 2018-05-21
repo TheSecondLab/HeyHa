@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, Content, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, Content, LoadingController, Platform } from 'ionic-angular';
 import { IMService } from '../../module/imService.service';
 import { MultipleUpLoadService } from '../../module/multipleUpdate.service';
 import { BaseService } from '../../module/baseService.service';
@@ -27,6 +27,7 @@ export class ChatPage {
   userImg;
 
   constructor(
+    public platform: Platform,
     public imService: IMService,
     public alertCtrl: AlertController,
     public navCtrl: NavController,
@@ -54,17 +55,21 @@ export class ChatPage {
 
   ionViewWillEnter() {
 
-    let doc = document.getElementById('zx');
-    window.addEventListener('keyboardDidHide', function (e) {
-      doc.style.height = '0px';
+    if (!this.platform.is('ios')) {
+      let doc = document.getElementById('pad');
+      
+      window.addEventListener('keyboardDidHide', function (e) {
+        doc.style.height = '0px';
+  
+      });
+  
+      window.addEventListener('keyboardDidShow', function (e) {
+        const keyboardHeight = JSON.parse(JSON.stringify(e)).keyboardHeight;
+        doc.style.height = `${keyboardHeight}px`;
+  
+      });
 
-    });
-
-    window.addEventListener('keyboardDidShow', function (e) {
-      const keyboardHeight = JSON.parse(JSON.stringify(e)).keyboardHeight;
-      doc.style.height = `${keyboardHeight}px`;
-
-    });
+    }
     const username = this.navParams.get('username');
 
     this.baseService.postData('/admin/user/usernames', {
