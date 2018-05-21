@@ -1,0 +1,6 @@
+.tab-button {
+  & > ion-icon {
+    font-family: "iconfont" !important;
+    /*指定在当前组件中的ion-icon使用的字体名称*/
+  }
+}

@@ -1,0 +1,13 @@
+.tab-button {
+  &>ion-icon {
+    font-family: "iconfont" !important;
+    /*指定在当前组件中的ion-icon使用的字体名称*/
+  }
+}
+
+// .tab-button[aria-selected=false]{
+//   color: #555!important;
+//   .tab-button-icon{
+//     color: #555!important;
+//   }
+// }
