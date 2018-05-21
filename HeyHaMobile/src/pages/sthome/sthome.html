@@ -1,6 +1,6 @@
 <ion-content class="content">
   <div class="header">
-    <ion-slides class="homeSlide" loop="true">
+    <ion-slides class="homeSlide" *ngIf="banners.length>0" pager="true" loop=true autoplay="3000" speed="500">
       <ion-slide *ngFor="let item of banners" class="list" >
         <div style="overflow: hidden;" (click)="openLink(item.hyperlink)"><img src="{{item.coverUrl}}" style="width:100%" /></div>
       </ion-slide>
