@@ -29,16 +29,18 @@ class AttendenceComp extends C {
     if (this.props.location.query && this.props.location.query.otherClassStudent) {
       otherClassStudent = this.props.location.query.otherClassStudent;
     }
-
+    
     if (otherClassStudent.length) {
       this.setState({
-        unAddOtherClassStu: otherClassStudent
+        unAddOtherClassStu: otherClassStudent,
+        otherClassStudentList: otherClassStudent
       });
+    } else {
+      this.loadOtherClassStudent(id);
     }
 
     this.loadClassInfo(id)
     this.loadClassStudent(id);
-    this.loadOtherClassStudent(id);
     
   }
   
