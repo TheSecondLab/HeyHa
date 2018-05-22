@@ -44,9 +44,12 @@ class ClassMoment extends C {
   }
 
   postMoment() {
-    // 
-    // this.showToast('功能暂未开放~');
-    this.props.history.push(`/postMoment/${this.props.match.params.id}`)
+    if(window.device) {
+      this.props.history.push(`/postMoment/${this.props.match.params.id}`);
+      return;
+    }
+    this.showToast('请至App内打开~');
+    
   }
 
   loadClassInfo(id) {
