@@ -43,7 +43,8 @@ export class StModalPostPageComponent {
 
     let loading = this.loadingCtrl.create({
       spinner: 'crescent',
-      content: '请稍后...'
+      content: '请稍后...',
+      showBackdrop: false
     });
     loading.present();
 

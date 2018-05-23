@@ -53,7 +53,8 @@ export class BaseService {
   multiReq(options): void {
     let loading = this.loadingCtrl.create({
       spinner: 'crescent',
-      content: '请稍后...'
+      content: '请稍后...',
+      showBackdrop: false
     });
 
     if (!options.hideLoading) {
@@ -133,7 +134,8 @@ export class BaseService {
   postData(url: string, option: ReqOption = { data: {}, myHeader: {}, hideLoading: false}, onSuccess: any, onError?: any): void {
     let loading = this.loadingCtrl.create({
       spinner: 'crescent',
-      content: '请稍后...'
+      content: '请稍后...',
+      showBackdrop: false
     });
 
     if (!option.hideLoading) {

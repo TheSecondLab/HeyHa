@@ -93,7 +93,8 @@ export class PostClassMessageComponent {
   submit() {
     let loading = this.loadingCtrl.create({
       spinner: 'crescent',
-      content: '请稍后...'
+      content: '请稍后...',
+      showBackdrop: false
     });
     loading.present();
     const message = this.form.value.record;
