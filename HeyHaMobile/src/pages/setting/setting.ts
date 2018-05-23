@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { App, IonicPage, NavController, NavParams } from 'ionic-angular';
+import { App, IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { BaseService } from '../../module/baseService.service';
 import { LoginPage } from '../login/login';
 
@@ -20,13 +20,21 @@ export class SettingPage {
   constructor(
     public app: App,
     public navCtrl: NavController,
+    public viewCtrl: ViewController,
     public navParams: NavParams, public baseService: BaseService) {
   }
 
   
   navTo(page) {
-    this.navCtrl.push(page)
+    this.navCtrl.push(page);
+    
   }
+
+
+  ionViewWillEnter() {
+    this.viewCtrl.setBackButtonText('返回');
+  }
+
 
   logout() {
     this.baseService.postData('/admin/logout', { data: {} }, ()=> {

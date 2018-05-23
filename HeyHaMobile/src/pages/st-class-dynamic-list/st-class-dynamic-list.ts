@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, AlertController, ViewController } from 'ionic-angular';
 import { ModalPostPageComponent } from '../../components/modal-post-page/modal-post-page';
 import { BaseService } from '../../module/baseService.service';
 
@@ -23,9 +23,12 @@ export class StClassDynamicListPage {
     public navParams: NavParams,
     public alertCtrl: AlertController,
     public modalCtrl: ModalController,
+    public viewCtrl: ViewController,
     public baseService: BaseService) {
   }
   ionViewWillEnter() {
+    this.viewCtrl.setBackButtonText('返回');
+
     this.loadData();
   }
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ViewController } from 'ionic-angular';
 import { BaseService } from './../../module/baseService.service';
 
 /**
@@ -23,6 +23,7 @@ export class NewsDetailPage {
     public navCtrl: NavController,
     public baseService: BaseService,
     public alertCtrl: AlertController,
+    public viewCtrl: ViewController,
     public navParams: NavParams) {
 
     this.articleTitle = this.navParams.get('item').name;
@@ -31,6 +32,10 @@ export class NewsDetailPage {
      
     });
 
+  }
+
+  ionViewWillEnter() {
+    this.viewCtrl.setBackButtonText('返回');
   }
 
 }

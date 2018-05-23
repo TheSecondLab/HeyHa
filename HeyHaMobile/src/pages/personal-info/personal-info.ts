@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ModalController, ViewController } from 'ionic-angular';
 import { BaseService } from '../../module/baseService.service';
 import { ModalPostPageComponent } from '../../components/modal-post-page/modal-post-page';
 
@@ -24,11 +24,14 @@ export class PersonalInfoPage {
     public baseService: BaseService,
     public modalCtrl: ModalController,
     public alertCtrl: AlertController,
+    public viewCtrl: ViewController,
     public navParams: NavParams) {
   }
 
   ngOnInit() {
     this.loadPageInfo();
+    this.viewCtrl.setBackButtonText('返回');
+
   }
 
   openModal() {

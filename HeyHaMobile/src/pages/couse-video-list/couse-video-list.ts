@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { BaseService } from '../../module/baseService.service';
 
 /**
@@ -19,11 +19,14 @@ export class CouseVideoListPage {
   constructor(
     public navCtrl: NavController, 
     public baseService: BaseService,
+    public viewCtrl: ViewController,
     public navParams: NavParams) {
   }
 
 
   ngOnInit() {
+    this.viewCtrl.setBackButtonText('返回');
+
     // this.classTitle = this.navParams.get('item').name;
     this.loadPageData(this.navParams.get('item').id);
   }

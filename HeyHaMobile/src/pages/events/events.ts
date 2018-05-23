@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, ViewController } from 'ionic-angular';
 import { StModalPostPageComponent } from '../../components/st-modal-post-page/st-modal-post-page';
 import { BaseService } from '../../module/baseService.service';
 
@@ -17,7 +17,12 @@ import { BaseService } from '../../module/baseService.service';
 })
 export class EventsPage {
   eventList= [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public baseService: BaseService) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public modalCtrl: ModalController,
+    public viewCtrl: ViewController,
+    public baseService: BaseService) {
   }
 
   openModal(characterNum) {
@@ -28,6 +33,7 @@ export class EventsPage {
     modal.present();
   }
   ionViewWillEnter() {
+    this.viewCtrl.setBackButtonText('返回');
     this.loadData();
   }
 

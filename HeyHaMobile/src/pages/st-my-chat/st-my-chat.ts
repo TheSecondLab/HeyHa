@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ViewController } from 'ionic-angular';
 
 import { IMService } from '../../module/imService.service';
 import { BaseService } from '../../module/baseService.service';
@@ -24,6 +24,7 @@ export class StMyChatPage {
     public baseService: BaseService,
     public imService: IMService,
     public alertCtrl: AlertController,
+    public viewCtrl: ViewController,
     public jMessageChenyu: JmessageChenyu
   ) {
   }
@@ -35,6 +36,8 @@ export class StMyChatPage {
   }
 
   ionViewWillEnter() {
+    this.viewCtrl.setBackButtonText('返回');
+
     this.loadData();
   }
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Content, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Content, AlertController, ViewController } from 'ionic-angular';
 
 import { BaseService } from '../../module/baseService.service';
 
@@ -27,11 +27,14 @@ export class StuImformationPage {
     public navCtrl: NavController, 
     public alertCtrl: AlertController, 
     public baseService: BaseService, 
+    public viewCtrl: ViewController,
     public navParams: NavParams) {
     // this.studentId = this.navParams.get('item').id
   }
 
   ionViewWillEnter() {
+    this.viewCtrl.setBackButtonText('返回');
+
     this.loadPageData();
   }
 

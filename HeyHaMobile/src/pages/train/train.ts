@@ -1,15 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
+import { IonicPage, NavController, ViewController } from 'ionic-angular';
 import { BaseService } from '../../module/baseService.service';
-
-
-// interface Task {
-//   imgUrl: string,
-//   date: string,
-//   desc: string,
-//   id: string,
-//   status: boolean
-// }
 
 @IonicPage()
 @Component({
@@ -22,52 +13,16 @@ export class TrainPage {
 
   taskList = [];
   courseList = [];
-  // tasks: Task[] = [{
-  //   date: '20101211',
-  //   imgUrl: '',
-  //   desc: '',
-  //   id: '',
-  //   status: false
-  // }];
-  // courses: Task[] = [{
-  //   date: '20101211',
-  //   imgUrl: '',
-  //   desc: '',
-  //   id: '',
-  //   status: false
-  // }];
 
-  constructor(public navCtrl: NavController, public baseService: BaseService) {
-    // this.tasks = [{
-    //   id: '1',
-    //   date: '2020-02-02',
-    //   desc: 'testtesttestt esttesttesttes ttesttesttesttest',
-    //   status: true,
-    //   imgUrl: 'assets/imgs/iphoto.JPG'
-    // }, {
-    //   id: '2',
-    //   date: '2020-02-02',
-    //   desc: '测试测试测试测试测试测试测试测试',
-    //   status: true,
-    //   imgUrl: 'assets/imgs/iphoto.JPG'
-    // }];
-
-    // this.courses = [{
-    //   id: '1',
-    //   date: '2020-02-02',
-    //   desc: 'testtesttestt esttesttesttes ttesttesttesttest',
-    //   imgUrl: 'assets/imgs/iphoto.JPG',
-    //   status: false
-    // }, {
-    //   id: '2',
-    //   date: '2020-02-02',
-    //   desc: '测试测试测试测试测试测试测试测试',
-    //   imgUrl: 'assets/imgs/iphoto.JPG',
-    //   status: false
-    // }];
+  constructor(
+    public navCtrl: NavController,
+    public viewCtrl: ViewController,
+    public baseService: BaseService) {
   }
 
   ionViewWillEnter() {
+    this.viewCtrl.setBackButtonText('返回');
+
     this.loadData();
   }
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController, ViewController } from 'ionic-angular';
 
 import { BaseService } from '../../module/baseService.service';
 
@@ -23,6 +23,7 @@ export class TaskListPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public baseService: BaseService,
+    public viewCtrl: ViewController,
     public menu: MenuController) {
     menu.enable(true);
   }
@@ -41,6 +42,8 @@ export class TaskListPage {
   }
 
   ionViewWillEnter() {
+    this.viewCtrl.setBackButtonText('返回');
+
     this.classTitle = this.navParams.get('item').name;
     this.loadPageData();
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ModalController, ViewController } from 'ionic-angular';
 
 import { IMService } from '../../module/imService.service';
 import { BaseService } from '../../module/baseService.service';
@@ -28,6 +28,7 @@ export class MyChatPage {
     public imService: IMService,
     public alertCtrl: AlertController,
     public modalCtrl: ModalController,
+    public viewCtrl: ViewController,
     public jMessageChenyu: JmessageChenyu
   ) {
   }
@@ -43,6 +44,8 @@ export class MyChatPage {
   }
 
   ionViewWillEnter() {
+    this.viewCtrl.setBackButtonText('返回');
+
     this.loadData();
   }
 

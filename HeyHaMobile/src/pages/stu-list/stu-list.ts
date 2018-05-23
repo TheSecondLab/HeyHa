@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, Content } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, Content, ViewController } from 'ionic-angular';
 
 import { BaseService } from '../../module/baseService.service';
 
@@ -26,10 +26,13 @@ export class StuListPage {
     public navCtrl: NavController,
     public baseService: BaseService,
     public alertCtrl: AlertController,
+    public viewCtrl: ViewController,
     public navParams: NavParams) {
   }
 
   ionViewWillEnter() {
+    this.viewCtrl.setBackButtonText('返回');
+
     this.loadStudentList();
   }
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ActionSheetController, ViewController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { FileTransfer, FileUploadOptions, FileTransferObject }from'@ionic-native/file-transfer';
 
@@ -41,11 +41,19 @@ export class StPersonalInfoPage {
 
   imgSrc="";
 
-  constructor(public uploadService: UpLoadService, public navCtrl: NavController, public navParams: NavParams, public baseService: BaseService, public alertCtrl: AlertController) {
+  constructor(
+    public uploadService: UpLoadService,
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public baseService: BaseService,
+    public viewCtrl: ViewController,
+    public alertCtrl: AlertController) {
     // this.fileTransfer = this.transfer.create();
   }
 
   ionViewWillEnter() {
+    this.viewCtrl.setBackButtonText('返回');
+
     this.loadData();
   }
 

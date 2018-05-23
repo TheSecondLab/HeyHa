@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ViewController } from 'ionic-angular';
 
 import { BaseService } from '../../module/baseService.service';
 
@@ -22,10 +22,12 @@ export class CourseProgressListPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
+    public viewCtrl: ViewController,
     public baseService: BaseService) {
   }
 
   ngOnInit() {
+    this.viewCtrl.setBackButtonText('返回');
     this.classTitle = this.navParams.get('item').name;
     this.loadPageData();
   }

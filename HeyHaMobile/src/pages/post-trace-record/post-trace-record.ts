@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ViewController } from 'ionic-angular';
 import {
   FormGroup,
   FormControl,
@@ -29,11 +29,13 @@ export class PostTraceRecordPage {
     public navCtrl: NavController,
     public alertCtrl: AlertController,
     public baseService: BaseService,
+    public viewCtrl: ViewController,
     public navParams: NavParams) {
       
   }
 
   ionViewWillEnter() {
+    this.viewCtrl.setBackButtonText('返回');
     this.stuName = this.navParams.get('name');
   }
 

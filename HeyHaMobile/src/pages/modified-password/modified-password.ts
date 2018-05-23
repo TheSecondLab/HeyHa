@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ViewController } from 'ionic-angular';
 import {
   FormGroup,
   FormControl,
@@ -28,12 +28,17 @@ export class ModifiedPasswordPage {
     public navCtrl: NavController,
     public baseService: BaseService,
     public alertCtrl: AlertController,
+    public viewCtrl: ViewController,
     public navParams: NavParams) {
     this.form = new FormGroup({
       password: new FormControl('', Validators.required),
       confirmPassword: new FormControl('', Validators.required),
       newPassword: new FormControl('', Validators.required)
     });
+  }
+
+  ionViewWillEnter() {
+    this.viewCtrl.setBackButtonText('返回');
   }
 
   setConfirmPwd() {

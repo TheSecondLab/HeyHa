@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ViewController } from 'ionic-angular';
 
 import { BaseService } from '../../module/baseService.service';
 
@@ -30,11 +30,14 @@ export class TaskDetailPage {
     public navCtrl: NavController,
     public alertCtrl: AlertController,
     public baseService: BaseService,
+    public viewCtrl: ViewController,
     public navParams: NavParams) {
     this.pageName = 'ClassDynamicListPage';
   }
 
   ionViewWillEnter() {
+    this.viewCtrl.setBackButtonText('返回');
+
     this.loadPageData();
   }
 

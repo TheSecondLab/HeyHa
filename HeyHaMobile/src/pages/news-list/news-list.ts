@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 
 import { BaseService } from '../../module/baseService.service';
 
@@ -20,11 +20,13 @@ export class NewsListPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
+    public viewCtrl: ViewController,
     public baseService: BaseService) {
   }
   newsList: any;
 
   ionViewWillEnter() {
+    this.viewCtrl.setBackButtonText('返回');
     this.loadNewsListData();
   }
 

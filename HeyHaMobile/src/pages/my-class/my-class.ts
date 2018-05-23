@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ViewController } from 'ionic-angular';
 
 import { BaseService } from '../../module/baseService.service';
 
@@ -21,6 +21,7 @@ export class MyClassPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
+    public viewCtrl: ViewController,
     public baseService :BaseService) {
   }
 
@@ -28,6 +29,7 @@ export class MyClassPage {
   classList: any = [];
 
   ionViewWillEnter() {
+    this.viewCtrl.setBackButtonText('返回');
     this.loadPageData();
   }
   

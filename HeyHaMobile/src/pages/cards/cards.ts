@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { BaseService } from '../../module/baseService.service';
 
 /**
@@ -16,10 +16,15 @@ import { BaseService } from '../../module/baseService.service';
 })
 export class CardsPage {
   cards = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, public baseService: BaseService) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public viewCtrl: ViewController,
+    public baseService: BaseService) {
   }
 
   ionViewWillEnter() {
+    this.viewCtrl.setBackButtonText('返回');
     this.loadData();
   }
 

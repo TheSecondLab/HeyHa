@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, Content, LoadingController, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, Content, LoadingController, Platform, ViewController } from 'ionic-angular';
 import { IMService } from '../../module/imService.service';
 import { MultipleUpLoadService } from '../../module/multipleUpdate.service';
 import { BaseService } from '../../module/baseService.service';
@@ -34,6 +34,7 @@ export class ChatPage {
     public navParams: NavParams,
     public uploadService: MultipleUpLoadService,
     public loadingCtrl: LoadingController,
+    public viewCtrl: ViewController,
     public baseService: BaseService
   ) {
     this.form = new FormGroup({
@@ -54,6 +55,7 @@ export class ChatPage {
   }
 
   ionViewWillEnter() {
+    this.viewCtrl.setBackButtonText('返回');
 
     if (!this.platform.is('ios')) {
       let doc = document.getElementById('pad');

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { BaseService } from '../../module/baseService.service';
 
 /**
@@ -18,7 +18,11 @@ export class StCourseDetailPage {
   courseDetail = [];
   dateStr = '';
   isTask = false;
-  constructor(public navCtrl: NavController, public navParams: NavParams, public baseService: BaseService) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public viewCtrl: ViewController,
+    public baseService: BaseService) {
   }
 
   showContent(e) {
@@ -31,6 +35,7 @@ export class StCourseDetailPage {
   }
 
   ionViewWillEnter() {
+    this.viewCtrl.setBackButtonText('返回');
     const courseId =this.navParams.get('id');
     this.dateStr = this.navParams.get('dateStr');
     this.isTask = this.navParams.get('isTask');

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController, ViewController } from 'ionic-angular';
 
 import { BaseService } from '../../module/baseService.service';
 
@@ -29,6 +29,7 @@ export class CourseDetailPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public baseService: BaseService,
+    public viewCtrl: ViewController,
     public alertCtrl: AlertController
   ) {
   }
@@ -43,7 +44,7 @@ export class CourseDetailPage {
   // }
 
   ionViewWillEnter() {
-
+    this.viewCtrl.setBackButtonText('返回');
     // this.videoUrl = course.videoPlayUrl;
     // this.claim = course.claim;
     this.loadData(this.navParams.get('item').capitalId);

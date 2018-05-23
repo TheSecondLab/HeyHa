@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ActionSheetController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ActionSheetController, AlertController, ViewController } from 'ionic-angular';
 import { CallNumber } from '@ionic-native/call-number';
 
 import { BaseService } from '../../module/baseService.service';
@@ -30,6 +30,7 @@ export class DueDateStuPage {
     public navCtrl: NavController,
     public alertCtrl: AlertController,
     public navParams: NavParams,
+    public viewCtrl: ViewController,
     public actionSheetCtrl: ActionSheetController,
     public baseService: BaseService) {
   }
@@ -61,6 +62,8 @@ export class DueDateStuPage {
   }
 
   ionViewWillEnter() {
+    this.viewCtrl.setBackButtonText('返回');
+
     this.loadPageData();
    
   }

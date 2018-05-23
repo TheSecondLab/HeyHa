@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import { BaseService } from '../../module/baseService.service';
 /**
  * Generated class for the MyPointPage page.
@@ -33,10 +33,15 @@ export class MyPointPage {
   pointList
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public baseService: BaseService) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public viewCtrl: ViewController,
+    public baseService: BaseService) {
   }
 
   ionViewWillEnter() {
+    this.viewCtrl.setBackButtonText('返回');
     this.loadData();
   }
 
