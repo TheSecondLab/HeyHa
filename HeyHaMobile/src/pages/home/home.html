@@ -1,6 +1,6 @@
 <ion-content>
     <ion-slides *ngIf="bannerList.length>0" pager="true" loop=true autoplay="3000" speed="500" class="banner">
-      <ion-slide *ngFor="let item of bannerList" class="list" >
+      <ion-slide tappable *ngFor="let item of bannerList" class="list" >
         <div style="overflow: hidden;display: block" tappable (click)="openLink(item.hyperlink)"><img src="{{item.coverUrl}}" style="width:100%" /></div>
       </ion-slide>
     </ion-slides>
