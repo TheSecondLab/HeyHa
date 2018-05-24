@@ -40,7 +40,8 @@ export class SettingPage {
     this.baseService.postData('/admin/logout', { data: {} }, ()=> {
       // this.navCtrl.push(LoginPage);
       // this.navCtrl.setRoot(LoginPage);
-      this.app.getRootNav().setRoot(LoginPage);
+      // this.app.getRootNav().setRoot(LoginPage);
+      this.navCtrl.parent.parent.setRoot(LoginPage);
     });
   }
 

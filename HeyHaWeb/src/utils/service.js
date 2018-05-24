@@ -33,16 +33,25 @@ const post = (path, data) => new Promise((resolve, reject) => {
 
   axios.post(`${domain}${path}`, params)
     .then(function (response) {
-      if(response.status && response.data.status === 'SUCCESS')
+      if(response.status && response.data.status === 'SUCCESS') {
+
         resolve(response.data.data);
-      else
+        return;
+      }
+      if(response.data.status === 'SESSION_OUT') {
+        sessionOut();
+      } else {
         reject('系统错误，请稍后重试');
+      }
     })
     .catch(function (error) {
       reject('系统错误，请稍后重试');
     });
 });
 
+const sessionOut = () => {
+  window.location.hash = '/login'
+}
 
 const $axios = axios.create({
   timeout: 5000,
@@ -54,10 +63,15 @@ const $axios = axios.create({
 const $post = (path, data) => new Promise((resolve, reject) => {
   $axios.post(`${domain}${path}`, data)
     .then(function (response) {
-      if(response.status && response.data.status === 'SUCCESS')
+      if(response.status && response.data.status === 'SUCCESS') {
         resolve(response.data.data);
-      else
+        return;
+      }
+      if(response.data.status === 'SESSION_OUT') {
+        sessionOut();
+      } else {
         reject('系统错误，请稍后重试');
+      }
     })
     .catch(function (error) {
       reject('系统错误，请稍后重试');

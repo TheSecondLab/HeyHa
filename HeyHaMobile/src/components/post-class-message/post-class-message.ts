@@ -103,7 +103,11 @@ export class PostClassMessageComponent {
       this.sendImage(item.code, this.photoList[0])
 
     });
-     
+     let alert = this.alertCtrl.create({
+       title: '提示',
+       message: '发送成功'
+     });
+     alert.present()
     loading.dismiss();
     this.viewCtrl.dismiss();
 

@@ -35,6 +35,7 @@ import { StCourseDetailPageModule } from '../pages/st-course-detail/st-course-de
 import { SearchStudentPageModule } from '../pages/search-student/search-student.module';
 import { CourseProgressPageModule } from '../pages/course-progress/course-progress.module';
 import { CourseProgressListPageModule } from '../pages/course-progress-list/course-progress-list.module';
+import { LoginPageModule } from '../pages/login/login.module';
 
 // 根组件
 import { MyApp } from './app.component';
@@ -118,7 +119,7 @@ import { AlertService } from '../module/alertService.service';
     ClassDynamicPage,
     TaskPage,
     MinePage,
-    LoginPage,
+    // LoginPage,
     StClassDynamicListPage
   ],
   imports: [ // 依赖的模块
@@ -159,7 +160,8 @@ import { AlertService } from '../module/alertService.service';
     StCourseDetailPageModule,
     SearchStudentPageModule,
     CourseProgressPageModule,
-    CourseProgressListPageModule
+    CourseProgressListPageModule,
+    LoginPageModule
   ],
   bootstrap: [IonicApp], // 启动模块
   entryComponents: [ // 不会在模板中使用的组件
