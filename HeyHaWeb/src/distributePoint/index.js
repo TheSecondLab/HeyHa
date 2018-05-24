@@ -2,7 +2,7 @@ import React, { Component as C } from 'react';
 import { Dialog, Toast } from 'react-weui';
 
 import * as style from './style.scss';
-import { HeaderBar, SideMenu, ClassInfo } from '../components/index';
+import { HeaderBar, SideMenu, ClassInfo, SessionOut } from '../components/index';
 import { post } from '../utils/service';
 
 const HeaderOpa = (props) => (
@@ -47,7 +47,7 @@ class DestribuyePointComp extends C {
   }
 
   loadPointList(id) {
-    post('/admin/integralQuery/getAddIntegral', { clazzId: id }).then((data) => {
+    post('/admin/integralQuery/getAddIntegral', { clazzId: id }, () => { this.setState({show: true}) }).then((data) => {
       this.setState({
         pointList: data
       });
@@ -109,9 +109,10 @@ class DestribuyePointComp extends C {
 
   render() {
     const { id } = this.props.match.params;
-    const { pointList, confirm, dialogBtn, classInfo } = this.state;
+    const { pointList, confirm, dialogBtn, classInfo, show } = this.state;
     return (
       <div>
+        <SessionOut show={show} />
         <ClassInfo classInfo={classInfo} goOtherClass={this.goOtherClass} />
         <div className={style.content}>
           <SideMenu active={2} id={id} />

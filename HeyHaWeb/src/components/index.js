@@ -8,6 +8,7 @@ import SideMenu from './sideMenu';
 import Message from './message';
 import List from './list';
 import ClassInfo from './classInfo';
+import SessionOut from './sessionOut';
 
 export default {
   Header,
@@ -19,5 +20,6 @@ export default {
   SideMenu,
   Message,
   List,
-  ClassInfo
+  ClassInfo,
+  SessionOut
 };

@@ -3,7 +3,7 @@ const axios = require('axios');
 const domain = 'http://api.zjztty.com';
 // const domain = '/api';
 
-const post = (path, data) => new Promise((resolve, reject) => {
+const post = (path, data, timeOut) => new Promise((resolve, reject) => {
   // var params = new URLSearchParams();
   // const keys = Object.keys(data);
   // keys.forEach((key) => {
@@ -39,7 +39,7 @@ const post = (path, data) => new Promise((resolve, reject) => {
         return;
       }
       if(response.data.status === 'SESSION_OUT') {
-        sessionOut();
+        sessionOut(timeOut);
       } else {
         reject('系统错误，请稍后重试');
       }
@@ -49,8 +49,8 @@ const post = (path, data) => new Promise((resolve, reject) => {
     });
 });
 
-const sessionOut = () => {
-  window.location.hash = '/login'
+const sessionOut = (timeOut) => {  
+  timeOut()
 }
 
 const $axios = axios.create({
@@ -60,7 +60,7 @@ const $axios = axios.create({
   }
 });
 
-const $post = (path, data) => new Promise((resolve, reject) => {
+const $post = (path, data, timeOut) => new Promise((resolve, reject) => {
   $axios.post(`${domain}${path}`, data)
     .then(function (response) {
       if(response.status && response.data.status === 'SUCCESS') {
@@ -68,7 +68,7 @@ const $post = (path, data) => new Promise((resolve, reject) => {
         return;
       }
       if(response.data.status === 'SESSION_OUT') {
-        sessionOut();
+        sessionOut(timeOut);
       } else {
         reject('系统错误，请稍后重试');
       }
@@ -78,6 +78,6 @@ const $post = (path, data) => new Promise((resolve, reject) => {
     });
 });
 
-
+const Out = () => <div>过期了！</div>
 
 module.exports = { post, $post };

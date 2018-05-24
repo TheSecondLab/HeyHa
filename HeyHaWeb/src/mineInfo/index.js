@@ -1,5 +1,5 @@
 import React, { Component as C } from 'react';
-import { Panel } from '../components';
+import { Panel, SessionOut } from '../components';
 import * as style from './style.scss';
 import { post } from '../utils/service';
 
@@ -20,7 +20,7 @@ class MineInfo extends C {
   }
 
   loadCoachMessage(id) {
-    post('/admin/coached', {}).then((data) => {
+    post('/admin/coached', {}, () => { this.setState({show: true}) }).then((data) => {
       const coachMsg = [{
         label: '性别',
         value: data.sexStr
@@ -53,9 +53,10 @@ class MineInfo extends C {
   }
 
   render() {
-    const { coachMsg } = this.state;
+    const { coachMsg, show } = this.state;
     return (
       <div>
+        <SessionOut show={show} />
         <div className={style.title}>
           <span className={style.text}>我的信息</span>
           <div className={style.btn} onClick={this.changePassword}>修改密码</div>

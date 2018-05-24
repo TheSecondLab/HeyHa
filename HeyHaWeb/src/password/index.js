@@ -1,5 +1,5 @@
 import React, { Component as C } from 'react'
-import { Panel, PageTitle } from '../components';
+import { Panel, PageTitle, SessionOut } from '../components';
 import * as style from './style.scss';
 import { post } from '../utils/service';
 
@@ -42,7 +42,7 @@ class PasswordComp extends C {
         isSame: true
       });
 
-      post('/admin/updatePwd', { password, newPassword }).then((data) => {
+      post('/admin/updatePwd', { password, newPassword }, () => { this.setState({show: true}) }).then((data) => {
         localStorage.setItem('password', newPassword)
         this.props.history.push('/mineInfo');
   
@@ -56,9 +56,10 @@ class PasswordComp extends C {
     this.props.history.goBack();
   }
   render() {
-    const { password, newPassword, confirmPassword, isSame } = this.state;
+    const { password, newPassword, confirmPassword, isSame, show } = this.state;
     return(
       <div style={{paddingTop: '20px'}}>
+        <SessionOut show={show} />
         <PageTitle title='修改密码' goBack={this.goBack} />
         <div className={style.wrap}>
           <Panel>

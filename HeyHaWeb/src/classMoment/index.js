@@ -1,5 +1,5 @@
 import React, { Component as C } from 'react'
-import { HeaderBar, StuList, SideMenu, Message, ClassInfo } from '../components/index';
+import { HeaderBar, StuList, SideMenu, Message, ClassInfo, SessionOut } from '../components/index';
 import * as style from './style.scss';
 import { post } from '../utils/service';
 
@@ -33,7 +33,7 @@ class ClassMoment extends C {
   }
 
   loadClassMoment(id) {
-    post('/admin/dynamic/getDynamicListByClazz', { clazzId: id }).then((data) => {
+    post('/admin/dynamic/getDynamicListByClazz', { clazzId: id }, () => { this.setState({show: true}) }).then((data) => {
       this.setState({
         momentList: data
       });
@@ -68,7 +68,7 @@ class ClassMoment extends C {
   }
 
   deleteMoment(id) {
-    post('/admin/dynamic/deleteDynamic', { id }).then((data) => {
+    post('/admin/dynamic/deleteDynamic', { id }, () => {this.setState({show: true})}).then((data) => {
      this.showToast('删除成功');
      this.setState({
        momentList: this.state.momentList.filter((item) => item.id !== id)
@@ -87,7 +87,7 @@ class ClassMoment extends C {
   }
 
   callbackMoment(id) {
-    post('/admin/dynamic/cancelDynamic', { id }).then((data) => {
+    post('/admin/dynamic/cancelDynamic', { id }, () => {this.setState({show: true})}).then((data) => {
       this.showToast('撤回状态成功！');
       const classId = this.props.match.params.id;
 
@@ -98,7 +98,7 @@ class ClassMoment extends C {
   }
 
   postTempMoment(id) {
-    post('/admin/dynamic/changeOneDynamic', { id }).then((data) => {
+    post('/admin/dynamic/changeOneDynamic', { id }, () => {this.setState({show: true})}).then((data) => {
       this.showToast('发布成功');
       const classId = this.props.match.params.id;
       this.loadClassMoment(classId)
@@ -110,10 +110,11 @@ class ClassMoment extends C {
 
   render(){
     const { id } = this.props.match.params;
-    const { classInfo, momentList, showToast, toastMsg } = this.state;
+    const { classInfo, momentList, showToast, toastMsg, show } = this.state;
 
     return (
       <div>
+        <SessionOut show={show} />
         <Message title={toastMsg} visible={showToast} />
         <ClassInfo classInfo={classInfo} goOtherClass={this.goOtherClass} />
         <div className={style.content}>

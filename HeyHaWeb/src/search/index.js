@@ -1,6 +1,6 @@
 import React, { Component as C } from 'react'
 
-import { HeaderBar, StuList } from '../components'
+import { HeaderBar, StuList, SessionOut } from '../components'
 import * as style from './style.scss';
 import { post } from '../utils/service';
 
@@ -66,7 +66,7 @@ class SearchComp extends C {
   searchStu(e) {
     const { inputValue } = this.state;
     if (e.keyCode !== 13) return;
-    post('/admin/spanperson', { nameorcode: inputValue }).then((data) => {
+    post('/admin/spanperson', { nameorcode: inputValue }, () => { this.setState({show: true}) }).then((data) => {
       this.setState({
         resList: data
       });
@@ -88,9 +88,10 @@ class SearchComp extends C {
   }
 
   render() {
-    const { resList, inputValue } = this.state;
+    const { resList, inputValue, show } = this.state;
     return (
       <div className={style.wrap}>
+        <SessionOut show={show} />
         <div className={style.searchBar}>
           <div className={style.input}><input placeholder='跨班搜索' value={inputValue} onChange={this.setInputValue} onKeyUp={this.searchStu} /></div>
           <span className={style.cancel} onClick={this.returnBack}>取消</span>

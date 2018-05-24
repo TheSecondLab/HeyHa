@@ -1,5 +1,5 @@
 import React, { Component as C } from 'react';
-import { Panel, HeaderBar, StuList, PageTitle, Message } from '../components';
+import { Panel, HeaderBar, StuList, PageTitle, Message, SessionOut } from '../components';
 import * as style from './style.scss';
 import { post } from '../utils/service';
 
@@ -53,7 +53,7 @@ class SendPoint extends C {
   }
 
   loadClassStudent(id) {
-    post('/admin/integralQuery/getAttendanceMember', { clazzId: id }).then((data) => {
+    post('/admin/integralQuery/getAttendanceMember', { clazzId: id }, () => { this.setState({show: true}) }).then((data) => {
       this.setState({
         stuList: data
       });
@@ -138,7 +138,7 @@ class SendPoint extends C {
     // console.log(memberId);
     if (integralId && score && memberId && id ) {
       post('/admin/integralQuery/addIntegral',
-        { integralId, score, clazzId: id, memberId  }).then((data) => {
+        { integralId, score, clazzId: id, memberId  }, () => {this.setState({show: true})}).then((data) => {
           
           this.props.history.push(`/point/${id}`)
       }).catch((err) => {
@@ -168,9 +168,10 @@ class SendPoint extends C {
   }
 
   render() {
-    const { stuList, reasonList, otherClassStudentList, reason, score, showToast, toastMsg } = this.state;
+    const { stuList, reasonList, otherClassStudentList, reason, score, showToast, toastMsg, show } = this.state;
     return(
       <div style={{paddingTop: '20px'}}>
+        <SessionOut show={show}/>
         <Message title={toastMsg} visible={showToast} />
         <PageTitle title='积分发放' goBack={this.goBack} />
         <div className={style.wrap}>

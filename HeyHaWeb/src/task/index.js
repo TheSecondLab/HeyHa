@@ -1,6 +1,6 @@
 import React, { Component as C } from 'react'
 
-import { HeaderBar, StuList, SideMenu, ClassInfo } from '../components/index';
+import { HeaderBar, StuList, SideMenu, ClassInfo, SessionOut } from '../components/index';
 import * as style from './style.scss';
 import { post } from '../utils/service';
 
@@ -54,7 +54,7 @@ class Task extends C {
   }
 
   loadClassInfo(id) {
-    post('/admin/clazz/getClazz', { clazzId: id }).then((data) => {
+    post('/admin/clazz/getClazz', { clazzId: id }, () => { this.setState({show: true}) }).then((data) => {
       this.setState({
         classInfo: data
       });
@@ -106,7 +106,7 @@ class Task extends C {
   editCourse(item) {
     const classId = this.props.match.params.id;
 
-    post('/admin/clazzSource/getEmployeeClazzSourceDetail', { id: item.id }).then((data) => {
+    post('/admin/clazzSource/getEmployeeClazzSourceDetail', { id: item.id }, () => {this.setState({show: true})}).then((data) => {
       this.props.history.push({
         pathname: `/taskSetting/${classId}`,
         query: {
@@ -124,10 +124,11 @@ class Task extends C {
 
   render() {
     const { id } = this.props.match.params;
-    const { classInfo, classCourse, courseDetail } = this.state;
+    const { classInfo, classCourse, courseDetail, show } = this.state;
 
     return (
       <div>
+        <SessionOut show={show}/>
         <ClassInfo classInfo={classInfo} goOtherClass={this.goOtherClass} />
         <div className={style.content}>
           <SideMenu active={4} id={id} />

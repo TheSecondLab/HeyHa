@@ -1,6 +1,5 @@
 import React, { Component as C } from 'react'
-
-import { HeaderBar, StuList, SideMenu, ClassInfo } from '../components/index';
+import { HeaderBar, StuList, SideMenu, ClassInfo, SessionOut } from '../components/index';
 import * as style from './style.scss';
 import { post } from '../utils/service';
 
@@ -45,7 +44,7 @@ class AttendenceComp extends C {
   }
   
   loadClassInfo(id) {
-    post('/admin/clazz/getClazz', { clazzId: id }).then((data) => {
+    post('/admin/clazz/getClazz', { clazzId: id }, () => { this.setState({show: true}) }).then((data) => {
       this.setState({
         classInfo: data
       });
@@ -127,7 +126,7 @@ class AttendenceComp extends C {
     const otherClassStudentId = unAddOtherClassStu.map(item => item.id);
     const memberId = selectedList.concat(otherClassStudentId);
     if (!memberId.length) return;
-    post('/admin/clazz/addAttendanceLog', { clazzId: id, memberId }).then((data) => {
+    post('/admin/clazz/addAttendanceLog', { clazzId: id, memberId }, () => { this.setState({show: true}) }).then((data) => {
       this.setState({ selectedList: [], unAddOtherClassStu: [] })
       this.loadClassStudent(id);
       this.loadOtherClassStudent(id);
@@ -137,11 +136,12 @@ class AttendenceComp extends C {
   }
 
   render() {
-    const { stuList, otherClassStudentList, classInfo } = this.state;
+    const { stuList, otherClassStudentList, classInfo, show } = this.state;
     const { id } = this.props.match.params;
 
     return (
       <div>
+        <SessionOut show={show} />
         <ClassInfo classInfo={classInfo} goOtherClass={this.goOtherClass} />
         <div className={style.content}>
           <SideMenu active={1} id={id} classInfo={classInfo} />

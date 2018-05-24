@@ -1,7 +1,7 @@
 import React, { Component as C } from 'react'
 import { Dialog, Toast } from 'react-weui';
 
-import { Panel, HeaderBar, StuList, PageTitle } from '../components';
+import { Panel, HeaderBar, StuList, PageTitle, SessionOut } from '../components';
 import * as style from './style.scss';
 import { post } from '../utils/service';
 
@@ -76,7 +76,7 @@ import { post } from '../utils/service';
   }
 
   loadPointDetail(id) {
-    post('/admin/integralQuery/getIntegralDetails', { addIntegralId: id }).then((data) => {
+    post('/admin/integralQuery/getIntegralDetails', { addIntegralId: id }, () => { this.setState({show: true}) }).then((data) => {
       this.setState({
         pointDetail: data
       });
@@ -122,9 +122,10 @@ import { post } from '../utils/service';
   }
 
   render() {
-    const { studentList, otherClassStudentList, pointDetail, dialogBtn, confirm } = this.state;
+    const { studentList, otherClassStudentList, pointDetail, dialogBtn, confirm, show } = this.state;
     return(
       <div style={{paddingTop: '20px'}}>
+        <SessionOut show={show} />
         <PageTitle title='积分详情' goBack={this.goBack} />
         <div className={style.wrap}>
           <div className={style.record}>

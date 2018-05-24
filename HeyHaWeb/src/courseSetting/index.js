@@ -1,7 +1,7 @@
 import React, { Component as C } from 'react'
 import { Toast } from 'react-weui';
 
-import { Panel, HeaderBar, StuList, PageTitle, List, Message } from '../components';
+import { Panel, HeaderBar, StuList, PageTitle, List, Message, SessionOut } from '../components';
 import * as style from './style.scss';
 import { post, $post } from '../utils/service';
 // import $ from 'jquery';
@@ -136,7 +136,7 @@ class CourseSetting extends C {
   }
 
   loadAllCourse(levelId, materialId) {
-    post('/admin/clazzSource/getCapital', { types: 'COURSE', levelId, materialId }).then((data) => {
+    post('/admin/clazzSource/getCapital', { types: 'COURSE', levelId, materialId }, () => { this.setState({show: true}) }).then((data) => {
      
       let courseList = [];
       const { currentLevel } = this.state;
@@ -212,7 +212,7 @@ class CourseSetting extends C {
     if (courseId) obj.id = courseId;
     
     if (courseName && date && arr.length) {
-      $post('/admin/clazzSource/addOrEditCapital', JSON.stringify(obj)).then((data) => {
+      $post('/admin/clazzSource/addOrEditCapital', JSON.stringify(obj), () => {this.setState({show: true})}).then((data) => {
          this.showToast('添加成功~');
          this.props.history.goBack();
       }).catch((err) => {
@@ -266,9 +266,10 @@ class CourseSetting extends C {
   }
   render() {
 
-    const { courseList, levelList, materialList, studentLevel, currentLevel, showToast, courseName, date, toastMsg, showLoading } = this.state;
+    const { courseList, levelList, materialList, studentLevel, currentLevel, showToast, courseName, date, toastMsg, showLoading, show } = this.state;
     return(
       <div>
+        <SessionOut show={show} />
         <Toast icon="loading" show={showLoading}>发布中</Toast>
         <Message title={toastMsg} visible={showToast} />
         <PageTitle title='课程设置' goBack={this.goBack} />
