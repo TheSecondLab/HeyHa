@@ -9,6 +9,7 @@ import { FileTransfer, FileUploadOptions, FileTransferObject }from'@ionic-native
 import { File, FileEntry } from '@ionic-native/file';
 import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { FilePath } from '@ionic-native/file-path';
+import { AppVersion } from '@ionic-native/app-version';
 
 // 自定义组件
 import { ComponentsModule } from '../components/components.module';
@@ -232,7 +233,8 @@ import { AlertService } from '../module/alertService.service';
     FileTransferObject,
     FileTransfer,
     FilePath,
-    File
+    File,
+    AppVersion
   ]
 })
 export class AppModule {}

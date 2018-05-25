@@ -122,12 +122,10 @@ export class ChatPage {
 
   loadMessage(username,length?) {
     this.imService.getHistoryMsg(username, length || -1).then(messages => {
-      // const alert = this.alertCtrl.create({
-      //   message: JSON.stringify(messages.map(msg=>msg.from)),
-      //   title: username
-      // });
-      // alert.present();
-      this.pushToArray(messages);
+      const ordinalMessage = messages.sort((early, late) => {
+        return early.createTime - late.createTime
+      })      
+      this.pushToArray(ordinalMessage);
     });
   }
 

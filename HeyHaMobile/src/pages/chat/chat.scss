@@ -2,7 +2,7 @@ page-chat {
   .wrap {
     background-color: #f2f2f2;
     height: 100%;
-    padding-top: 44px;
+    padding-top: 74px;
     // .scroll-content {
     //   padding-bottom: 60px!important;
 
@@ -13,7 +13,7 @@ page-chat {
     flex: 1;
     // height: calc(100vh - 60px);
     position: relative;
-    // background-color: #000;
+    background-color: #f1f1f1;
     overflow-y: auto;
   }
   @mixin chat($type: 'other') {

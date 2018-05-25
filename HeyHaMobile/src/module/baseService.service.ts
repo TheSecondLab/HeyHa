@@ -112,22 +112,24 @@ export class BaseService {
       const successData = datas.map( data => data.data );
       options.onSuccess(successData);
 
-    }, error => {
-      loading.dismiss();
-      if (typeof options.onError === 'function') {
-        options.onError("系统错误，请稍后重试");
-        return;
-      }
+    }
+    // , error => {
+    //   loading.dismiss();
+    //   if (typeof options.onError === 'function') {
+    //     options.onError("系统错误，请稍后重试");
+    //     return;
+    //   }
 
-      let alert = this.alertCtrl.create({
-        title: "错误",
-        message: JSON.stringify(error),
-        buttons: [{
-          text: 'Ok',
-        }]
-      });
-      alert.present();
-    });
+    //   let alert = this.alertCtrl.create({
+    //     title: "错误",
+    //     message: JSON.stringify(error),
+    //     buttons: [{
+    //       text: 'Ok',
+    //     }]
+    //   });
+    //   alert.present();
+    // }
+  );
 
   }
 
