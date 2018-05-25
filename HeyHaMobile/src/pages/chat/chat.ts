@@ -59,16 +59,16 @@ export class ChatPage {
 
     if (!this.platform.is('ios')) {
       let doc = document.getElementById('pad');
-      
+
       window.addEventListener('keyboardDidHide', function (e) {
         doc.style.height = '0px';
-  
+
       });
-  
+
       window.addEventListener('keyboardDidShow', function (e) {
         const keyboardHeight = JSON.parse(JSON.stringify(e)).keyboardHeight;
         doc.style.height = `${keyboardHeight}px`;
-  
+
       });
 
     }
@@ -127,7 +127,7 @@ export class ChatPage {
       //   title: username
       // });
       // alert.present();
-      this.pushToArray(messages.reverse());
+      this.pushToArray(messages);
     });
   }
 
