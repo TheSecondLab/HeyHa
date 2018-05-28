@@ -112,7 +112,7 @@ class SearchComp extends C {
               <div>
                 <HeaderBar title='搜索结果' hasBorder={false} >
                 <div className={style.opaWrap}>
-                  <div className={style.lightBtn} onClick={this.sellectAll}><button>全选</button></div>
+                  {/* <div className={style.lightBtn} onClick={this.sellectAll}><button>全选</button></div> */}
                   <div className={style.darkBtn} onClick={this.confirm}><button>确定</button></div>
                 </div>
               </HeaderBar>
