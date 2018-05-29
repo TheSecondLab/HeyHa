@@ -100,8 +100,25 @@ export class MultipleUpLoadService {
     actionSheet.present();
   }
 
+  postImage(path, param, onSuccess, onError) {
+    this.http.post(path, param).toPromise().then(res => {
+      onSuccess(res);        
+    }).catch(error => {
+      onError(error);
+    });
+  }
+
   uploadFile(path, fileKey: string, params, filePaths:Array<string>, onSuccess: Function, onError: Function) {
     this.formData = new FormData();
+
+    if (!filePaths.length) {
+      params.forEach((value, key) => {
+        this.formData.append(key, value);
+      });
+      this.formData.append(fileKey, '');
+      this.postImage(`${this.domain}${path}`, this.formData,onSuccess, onError);
+      return;
+    }
 
     this.upload(filePaths, fileKey).subscribe(data => {
 
@@ -111,16 +128,14 @@ export class MultipleUpLoadService {
         this.formData.append(key, value);
       });
 
-      this.http.post(`${this.domain}${path}`, this.formData).toPromise().then(res => {
-        onSuccess(res);
-      }).catch(error => {
-        onError(error);
-      });
+      this.postImage(`${this.domain}${path}`, this.formData,onSuccess, onError);
 
     }, error => {
         console.log('文件处理失败');
     });
 }
+
+
 
   private upload(filePaths:Array<string>, fileKey:string):Observable<any> {
     var observables: Array<any> = [];

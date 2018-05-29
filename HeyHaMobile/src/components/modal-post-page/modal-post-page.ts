@@ -56,13 +56,16 @@ export class ModalPostPageComponent {
   }
 
   submit() {
-    if (!this.photoList.length || !this.form.value.record) {
-      let alert = this.alertCtrl.create({
-        title: '提示',
-        message: '请填写完整'
-      });
-      alert.present();
-      return;
+
+    if (this.params.get('classId')) {
+      if (!this.photoList.length || !this.form.value.record) {
+        let alert = this.alertCtrl.create({
+          title: '提示',
+          message: '请填写完整'
+        });
+        alert.present();
+        return;
+      }
     }
     
     let loading = this.loadingCtrl.create({

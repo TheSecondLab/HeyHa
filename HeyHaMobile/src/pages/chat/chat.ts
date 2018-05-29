@@ -141,6 +141,7 @@ export class ChatPage {
   }
 
   sendMsg() {
+    if (!this.inputs.length) return;
     this.imService.sendTextMsg(this.navParams.get('username'), this.inputs).then(msg => {
       this.inputs = '';
       this.newMessage(msg);
