@@ -138,7 +138,7 @@ class SendPoint extends C {
     // console.log(memberId);
     if (integralId && score && memberId && id ) {
       post('/admin/integralQuery/addIntegral',
-        { integralId, score, clazzId: id, memberId  }, () => {this.setState({show: true})}).then((data) => {
+        { integralId, score, clazzId: id, memberId, reason  }, () => {this.setState({show: true})}).then((data) => {
           
           this.props.history.push(`/point/${id}`)
       }).catch((err) => {
