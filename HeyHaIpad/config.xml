@@ -1,6 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.zjztty.mobile" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.zjztty.ipad" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>金牌小子教学版</name>
+    <icon density="mdpi" height="1024" platform="ios" src="res/icon/ios/icon-96-xhdpi.png" width="57" />
     <description>
         A sample Apache Cordova application that responds to the deviceready event.
     </description>
