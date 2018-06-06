@@ -24,6 +24,7 @@ class SearchComp extends C {
   returnBack() {
     // debugger
     this.props.history.goBack();
+    window.localStorage.setItem('flag', 1)
   }
 
 
