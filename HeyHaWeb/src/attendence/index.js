@@ -29,7 +29,7 @@ class AttendenceComp extends C {
       otherClassStudent = this.props.location.query.otherClassStudent;
     }
     
-    if (otherClassStudent.length) {
+    if (otherClassStudent.length || !!+localStorage.getItem('flag')) {
       const IDRECORD = JSON.parse(localStorage.getItem('IDRECORD'));
       const noRepeatData = []
 
@@ -50,8 +50,10 @@ class AttendenceComp extends C {
         otherClassStudentList: handledData
       });
       window.localStorage.setItem('cacheOtherStu', JSON.stringify(handledData));
+      localStorage.setItem('flag', 0)
     } else {
       window.localStorage.setItem('cacheOtherStu', '');
+      window.localStorage.setItem('IDRECORD', JSON.stringify({}));
       this.loadOtherClassStudent(id);
     }
 
