@@ -2,7 +2,7 @@ import React, { Component as C } from 'react'
 import { HeaderBar, StuList, SideMenu, ClassInfo, SessionOut } from '../components/index';
 import * as style from './style.scss';
 import { post } from '../utils/service';
-
+localStorage.setItem('IDRECORD', JSON.stringify({}))
 class AttendenceComp extends C {
   constructor() {
     super();
@@ -30,11 +30,28 @@ class AttendenceComp extends C {
     }
     
     if (otherClassStudent.length) {
+      const IDRECORD = JSON.parse(localStorage.getItem('IDRECORD'));
+      const noRepeatData = []
+
+      // 处理搜索页面过来的重复数据 & 叠加之前选中但是尚未提价的跨班学员
+      otherClassStudent.forEach(item => {
+        
+        if (!IDRECORD[item.id]) {
+          IDRECORD[item.id] = item;
+          localStorage.setItem('IDRECORD', JSON.stringify(IDRECORD));
+          noRepeatData.push(item);
+        }
+        return;
+      })
+      const cacheOtherStu = window.localStorage.getItem('cacheOtherStu') ? JSON.parse(window.localStorage.getItem('cacheOtherStu')) : [];
+      const handledData = Array.from(new Set(cacheOtherStu.concat(noRepeatData)));
       this.setState({
-        unAddOtherClassStu: otherClassStudent,
-        otherClassStudentList: otherClassStudent
+        unAddOtherClassStu: handledData,
+        otherClassStudentList: handledData
       });
+      window.localStorage.setItem('cacheOtherStu', JSON.stringify(handledData));
     } else {
+      window.localStorage.setItem('cacheOtherStu', '');
       this.loadOtherClassStudent(id);
     }
 
@@ -130,6 +147,8 @@ class AttendenceComp extends C {
       this.setState({ selectedList: [], unAddOtherClassStu: [] })
       this.loadClassStudent(id);
       this.loadOtherClassStudent(id);
+      window.localStorage.setItem('cacheOtherStu', '');
+      window.localStorage.setItem('IDRECORD', JSON.stringify({}));
     }).catch((err) => {
       console.log(err);
     });
@@ -138,7 +157,6 @@ class AttendenceComp extends C {
   render() {
     const { stuList, otherClassStudentList, classInfo, show } = this.state;
     const { id } = this.props.match.params;
-
     return (
       <div>
         <SessionOut show={show} />
