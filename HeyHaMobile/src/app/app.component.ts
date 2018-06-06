@@ -45,6 +45,24 @@ export class MyApp {
         return;
       }
 
+      const networkState = navigator['connection'].type;
+      console.log(`current network is: ${networkState}`);
+      if(networkState === window['Connection'].NONE) {
+        const alert = this.alertCtrl.create({
+          enableBackdropDismiss: false,
+          message: '由于您的网络设置导致系统无法正常使用，请尝试退出该程序进程重新打开。\n不便之处，敬请谅解',
+          buttons: [{
+            text: '确定',
+            handler: () => {
+              platform.exitApp();
+            }
+          }]
+        })
+        alert.present();
+
+        return;
+      }
+
       this.appVersion.getVersionNumber().then(data => {
 
         this.baseService.postData('/admin/updateEdition', { data: { name: data } }, (data) => {
