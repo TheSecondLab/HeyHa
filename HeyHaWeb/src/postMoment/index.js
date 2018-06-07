@@ -170,7 +170,7 @@ class PostMoment extends Component {
               <textarea rows='5' placeholder='说点什么吧...' onChange={this.contentChange}>{this.state.content}</textarea>
             </div>
             <div className={style.btnWrap}>
-              <div className={style.light} onClick={this.prePublish}>稍后再发</div>
+              {/* <div className={style.light} onClick={this.prePublish}>稍后再发</div> */}
               <div className={style.dark} onClick={this.publish}>立即发布</div>
             </div>
           </Panel>

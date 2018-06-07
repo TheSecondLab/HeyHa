@@ -134,7 +134,7 @@ class Task extends C {
           <SideMenu active={4} id={id} />
           <div className={style.menuContent}>
             <div className={style.box}>
-              <HeaderBar title='课程进度' hasBorder={true}>
+              <HeaderBar title='修炼任务' hasBorder={true}>
                 <HeaderOpa pagePush={this.addCourse} />
               </HeaderBar>
               <section className={style.tab}>
