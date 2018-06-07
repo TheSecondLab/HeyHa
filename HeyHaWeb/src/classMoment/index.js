@@ -44,6 +44,7 @@ class ClassMoment extends C {
   }
 
   postMoment() {
+    console.log(`device: ${JSON.stringify(device)}`)
     if(window.device) {
       this.props.history.push(`/postMoment/${this.props.match.params.id}`);
       return;
