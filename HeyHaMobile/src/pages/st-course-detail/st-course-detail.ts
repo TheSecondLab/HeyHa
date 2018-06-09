@@ -39,7 +39,7 @@ export class StCourseDetailPage {
     const courseId =this.navParams.get('id');
     
     const dateStrs = this.navParams.get('dateStr').split('-');
-    this.dateStr = dateStrs[0] + '年' + dataStrs[1] + '月' + dataStrs[2];
+    this.dateStr = dateStrs[0] + '年' + dateStrs[1] + '月' + dateStrs[2] + '日';
     
     this.isTask = this.navParams.get('isTask');
     this.loadData(courseId);
