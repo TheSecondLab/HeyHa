@@ -7,6 +7,7 @@ reminder {
     flex-direction: column;
 
     .coach {
+      position: relative;
       margin: 0 22px 12px 14px;
       display: flex;
       justify-content: baseline;
@@ -38,6 +39,10 @@ reminder {
       }
 
       .btn {
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
         background-color: #80bdfe;
         height: 24px;
         width: 50px;

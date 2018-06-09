@@ -80,6 +80,11 @@ export class StHomePage {
     this.navCtrl.push('NewsListPage');
   }
 
+  moreCourse() {
+    this.navCtrl.parent.select(1);
+  }
+
+
   navToCourse(id, dateStr, isTask) {
     this.navCtrl.push('StCourseDetailPage', {
       id,

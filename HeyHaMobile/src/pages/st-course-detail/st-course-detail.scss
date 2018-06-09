@@ -17,7 +17,8 @@ page-st-course-detail {
   }
 
   .banner {
-    height: 200px;
+    // height: 200px;
+    width: 100%;
     background-position:center;
     overflow:hidden;
     position: relative;
@@ -31,6 +32,15 @@ page-st-course-detail {
       color: #fff;
     }
   }
+  video::-internal-media-controls-download-button {
+    display:none;
+}
+video::-webkit-media-controls-enclosure {
+    overflow:hidden;
+}
+video::-webkit-media-controls-panel {
+    width: calc(100% + 30px); 
+}
 
   .hidden {
     height: 95px;
