@@ -54,6 +54,7 @@ page-my-point {
 
           .point {
             font-size: 36px;
+            font-weight: bold;
           }
         }
 
@@ -64,17 +65,43 @@ page-my-point {
           .point {
             font-size: 20px;
             margin-right: 10px;
+            font-weight: bold;
           }
         }
       }
     }
 
     .list {
+      position: relative;
       background-color: #fff;
       border-bottom: 1px solid #f2f2f2;
       height: 60px;
       display: flex;
       justify-content: space-between;
+      .add {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        margin-top: -7px;
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAAXNSR0IArs4c6QAAAe5JREFUSA29lrFOwzAQhu/c8ARsdGKBGSQkGFBFpe5IMPEstEDLszCBxI5UVDFQCQlmJqaWqU9AW3O/i9M0TdzGdfESO777P9u5nI9pidbs6L3xiE5Z07EmKhPTlnHT1GeinmZ6USV6bFT4Y5Gc2Oe31rM+H2u61Zp2862mM8z0qZgu6yd8P30728sEtjp6ezSiO9J0OGu+5IipWyrRRb3CX2mPOWCzrSuyowc5us20cZGxCA9kx2eNKneSfjNAAyN6EuBG0si3L8AfAdSS0BiIYxwP6W3VnaUXJ4CBiujAHq+yBvhmoWHQhqaJhz+QASIavQPErtj1lOAzDLExQIS+yz7EnGWw+amH9F5E9Ko6sb5pF/GS3UW0r5BBirn5W4OlkK78JYp5gqUkisrF3PytwVJxIvbXWd5Tkn60yNoGSJZd1pwrkCQJaCX/Xz9LbB3vJGV+R0Ltydnu5AGyVmx3ljWXp4P3YClcni6jkHPmosZNHVLUpQWWQlmAm9plGGIODLBMLkVZEELUpWEZ8h0n7bqtX9d2Y0jJcV3lI5DMDtFBDSL0AfohGzShbTVjIG5k1CAoC+zkqk9oQdPe9tCLgRig9pAV1ULsFBrQStYzc0ALRQ0if2kXY68mvtBIw6Ali8hv/1YIp5cQstT/Bc8Vq4dfihnNAAAAAElFTkSuQmCC);
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
+      .rm {
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        margin-top: -7px;
+        display: inline-block;
+        width: 14px;
+        height: 14px;
+        background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABwAAAAcCAYAAAByDd+UAAAAAXNSR0IArs4c6QAAAfBJREFUSA29lrFOAkEQhmcOfAI7qWzUwkYTEy0MkYTeRCqfRRTBZ7HCxN4EQywkMdHGQisrsOIJBMb5N+5xHOzdeaxuc7czs/+3e7e7M0wZWrMrO5MxHbPQoRCViGnNDBMaMFFfmB6CAt2el/klTU7j3a11L7WJ0JUIbbqjph5meg+YzupH3J5aZ98WAltdWR+P6ZqE9mfDM/aYeoUCndbL/BEfMQdsdqSsK7rRT7caD/5NX4WHuuKT8wp3o+NmgAZGdKfAlWhQ3ncFfimgGoWGQHzGyYiell1ZfHIKGAZF2rOfN7AB+Ge+YdCGptkPPyADxG7MvUHsjJOeuvkMQ2MMEFs/Kd6HzzLYHOoRPfsQTdPQf7kb4AZJC/TlByvAdeVLME0HrEB3USkt0JcfrKK5iPXN1WrbLs9ie/t1sd1Y9dIPz2FCmDeXXgJS1PM3UMUNl2rijF2DHHa9Mj81m1Df4fduBitA8vSu7BA0iRqZ2uH3bgZLV0l02ZG3rFk97yxQDVxUeMvsUpQFeYWyjrMMs0IManTk8c8yhpYcjQofgBOeQ9QgSh/C6LNBE9pWMwQiI6MGQVlgncs+TYmhmjbbQy8EooPaQ2dU9bFSaEArWs/MAS0UNYjesT30czUdC404DFo6CXf7t0I4PgWfpf4355CpNobfbbkAAAAASUVORK5CYII=);
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
 
       .left {
         margin-left: 40px;
@@ -100,6 +127,16 @@ page-my-point {
         font-family: SFUIDisplay-Bold, PingFangSC-Semibold;
         font-size: 17px;
         color: #D6006F;
+        font-weight: bold;
+      }
+      
+      .reduce {
+        margin-right: 14px;
+        line-height: 60px;
+        font-family: SFUIDisplay-Bold, PingFangSC-Semibold;
+        font-size: 17px;
+        color: #3D7100;
+        font-weight: bold;
       }
     }
   }

@@ -37,7 +37,10 @@ export class StCourseDetailPage {
   ionViewWillEnter() {
     this.viewCtrl.setBackButtonText('返回');
     const courseId =this.navParams.get('id');
-    this.dateStr = this.navParams.get('dateStr');
+    
+    const dateStrs = this.navParams.get('dateStr').split('-');
+    this.dateStr = dateStrs[0] + '年' + dataStrs[1] + '月' + dataStrs[2];
+    
     this.isTask = this.navParams.get('isTask');
     this.loadData(courseId);
   }

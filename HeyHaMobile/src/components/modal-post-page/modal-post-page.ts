@@ -117,4 +117,8 @@ export class ModalPostPageComponent {
 
   }
 
+  delImage(imgUrl) {
+    this.photoList = this.photoList.filter((item) => item !== imgUrl);
+  }
+
 }

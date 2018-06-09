@@ -122,5 +122,8 @@ export class PostClassMessageComponent {
     this.imService.sendImageMsg(username, path);
   }
 
+  delImage(imgUrl) {
+    this.photoList = this.photoList.filter((item) => item !== imgUrl);
+  }
 
 }

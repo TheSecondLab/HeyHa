@@ -29,6 +29,7 @@
       <ion-textarea placeholder="说点什么吧…" rows="12" formControlName="record"></ion-textarea>
       <div class="imgContainer">
         <div *ngFor="let imgUrl of photoList" class="target">
+          <div class="del" (click)="delImage(imgUrl)"></div>
           <img src="{{imgUrl || ''}}" alt="" />
         </div>
         <div>

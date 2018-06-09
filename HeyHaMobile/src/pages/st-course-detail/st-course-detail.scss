@@ -12,8 +12,8 @@ page-st-course-detail {
     background-color: #80BDFF;
     width: 100%;
     font-size: 16px;
-    font-family: PingFangSC-Semibold;
     color: #fff;
+    font-weight: bold;
   }
 
   .banner {
@@ -34,13 +34,13 @@ page-st-course-detail {
   }
   video::-internal-media-controls-download-button {
     display:none;
-}
-video::-webkit-media-controls-enclosure {
-    overflow:hidden;
-}
-video::-webkit-media-controls-panel {
-    width: calc(100% + 30px); 
-}
+  }
+  video::-webkit-media-controls-enclosure {
+      overflow:hidden;
+  }
+  video::-webkit-media-controls-panel {
+      width: calc(100% + 30px); 
+  }
 
   .hidden {
     height: 95px;

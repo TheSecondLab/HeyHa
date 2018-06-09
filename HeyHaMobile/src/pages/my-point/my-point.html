@@ -34,15 +34,19 @@
     </div>
 
     <div class="list" *ngFor="let point of pointList">
+      <span class="add" *ngIf="point.type === 'ADD'; else elseBlock"></span>
+      <ng-template #elseBlock>
+        <span class="rm"></span>
+      </ng-template>
       <div class="left">
         <div class="desc">{{ point.name }}</div>
-        <div class="date">{{ point.date }}</div>
+        <div class="date">{{ point.integralTimeStr }}</div>
       </div>
       <div class="right" *ngIf="point.type === 'ADD'; else elseBlock">
         +{{ point.score}}
       </div>
       <ng-template #elseBlock>
-        <div class="right" >
+        <div class="reduce" >
           -{{ point.score}}
         </div>
       </ng-template>
