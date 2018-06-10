@@ -63,6 +63,9 @@ export class PersonalInfoPage {
       },{
         label: '段位',
         value: data.levelName
+      },{
+        label: '个人简历',
+        value: data.introduction
       }];
     });
     

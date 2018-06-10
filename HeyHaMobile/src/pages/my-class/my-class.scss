@@ -30,7 +30,8 @@ page-my-class {
     position: relative;
     display: flex;
     align-content: center;
-    padding: 18px 15px;
+    align-items: center;
+    padding: 21px 15px;
     border-bottom: 1px solid #f2f2f2;
     background-color: #fff;
     .type {
@@ -63,11 +64,9 @@ page-my-class {
     }
   
     .stuCount{
-      display: flex;
-      align-items: center;
-      width: 44px;
       font-size: 20px;
       color: #D0021B;
+      text-align: right;
     }
   }
   

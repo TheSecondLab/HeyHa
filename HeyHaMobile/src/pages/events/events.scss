@@ -4,11 +4,13 @@ page-events {
     .postNew {
       position: absolute;
       right: 10px;
-      bottom: 7px;
+      top: 50%;
+      transform: translateY(-50%);
+      // bottom: 7px;
       width: 30px;
       height: 30px;
       background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAFo9M/3AAAAAXNSR0IArs4c6QAAAhFJREFUOBGNU79LW1EUPuclonYI2LrU4lBK/4K4qPVXAw6CDg6lUDpKO2RQEFw0vqiIXcSt4GAxah0KdVDHJLUUi1AoKuim6KCLk4qRxOT0O1fv41odvJB3zvnOd37eGyKcZEZSnipCVK/y+vhpAXBzRMQLAD8jC/gV1JdMy5Yl0eiaPFcjrB+lF69UI9YaK0G8IpPr8vgyRFw4pzfwN7Ih3nxGM9JRFFpljwa5RMVEjCdMTvWj4hWcIdVZ6BjOGaN/yUrFQYlyaujxY2yyIsAfjrEfPhTaQa3LpxGKfKhj079herRv5P8fDLnmYmZLFsBIJaxsCzJvsYCAyCzWp/XjIP2xBNPQWFqasZggtW1USSaD66wsp4iNNgSs8cACWFDvwCs+Uxv4nErGvN+RZwP14/5rrlUQTc5DNKCjWXMzYH9Wh3uSWRlW2zTpOlx9JCMJMI4wfDfwBvx6sN1vLufeBJ9+SU0uT5tYR7Ulg/gXM0zCrk608ZSDW/Vaamuo6N9GjXURClPdUAvvur6gg/ENeYI3tomn/MwlGJ3pKxb07g4OwNwDttaXP6eTe4LzZWUUdYOTP6RzJCsfbTLGn+GlV06nhQtKYeb2wEG0jIV1WVsDqUhRLLUVV1aF1pfwcPf0Hn+ichOIh16I3npCUmLiRCv/tsGu1HcO/gs8p/eKMx7hNuZYfMQ03d/GJy75Ifo/XELWGf/JLC4AAAAASUVORK5CYII=);
-      background-size: 15px;
+      background-size: 18px;
       background-repeat: no-repeat;
       background-position: center center;
     }

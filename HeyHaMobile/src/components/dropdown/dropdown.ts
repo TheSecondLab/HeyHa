@@ -34,7 +34,7 @@ export class DropdownComponent {
     key: '2',
     list: [{
       key: 'all',
-      value: '所有组合'
+      value: '所有类型'
     }]
   }];
 

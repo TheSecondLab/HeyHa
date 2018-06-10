@@ -26,7 +26,7 @@
 </ion-header>
 <ion-content padding>
   <form [formGroup]="form">
-      <ion-textarea placeholder="说点什么吧…" rows="12" formControlName="record"></ion-textarea>
+      <ion-textarea placeholder="说点什么吧…" rows="12" formControlName="record" class="text"></ion-textarea>
       <div class="imgContainer">
         <div *ngFor="let imgUrl of photoList" class="target">
           <div class="del" (click)="delImage(imgUrl)"></div>

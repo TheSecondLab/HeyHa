@@ -15,6 +15,7 @@ export class StSubTitleComponent {
 
   @Input() title: string;
   @Input() btnText: string;
+  @Input() noText: string;
   @Output() onTitleClick = new EventEmitter()
 
   constructor(public navCtrl: NavController) {

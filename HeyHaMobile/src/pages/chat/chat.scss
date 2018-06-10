@@ -86,9 +86,13 @@ page-chat {
   }
 
   .chat-other {
+    padding-left: 15px;
+    padding-right: 15px;
     @include chat();
   }
   .chat-me {
+    padding-left: 15px;
+    padding-right: 15px;
     @include chat('me');
   }
 

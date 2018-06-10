@@ -34,8 +34,8 @@
     </div>
 
     <div class="list" *ngFor="let point of pointList">
-      <span class="add" *ngIf="point.type === 'ADD'; else elseBlock"></span>
-      <ng-template #elseBlock>
+      <span class="add" *ngIf="point.type === 'ADD'; else elseBlocks"></span>
+      <ng-template #elseBlocks>
         <span class="rm"></span>
       </ng-template>
       <div class="left">

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, ViewController } from 'ionic-angular';
 import { StModalPostPageComponent } from '../../components/st-modal-post-page/st-modal-post-page';
 import { BaseService } from '../../module/baseService.service';
+import { PhotoViewer } from '@ionic-native/photo-viewer';
 
 /**
  * Generated class for the EventsPage page.
@@ -22,6 +23,7 @@ export class EventsPage {
     public navParams: NavParams,
     public modalCtrl: ModalController,
     public viewCtrl: ViewController,
+    private photoViewer: PhotoViewer,
     public baseService: BaseService) {
   }
 
@@ -47,5 +49,10 @@ export class EventsPage {
     this.baseService.postData('/admin/growthRecord/deleteGrowthRecord', { data: { id }, hideLoading: true }, (data)=> {
       this.loadData();
     });
+  }
+
+
+  photoView(url) {
+    this.photoViewer.show(url, ' ', { share: true });
   }
 }

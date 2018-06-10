@@ -34,7 +34,7 @@
       class="list"
       *ngFor="let item of classList;index as i" tappable (click)="navTo(item)"
     >
-      <div class="type">{{i}}</div>
+      <div class="type">{{i + 1}}</div>
       <div class="cont">
         <div class="name">{{item.name}}</div>
         <div class="time">课程时间：{{item.clazzTime}}</div>

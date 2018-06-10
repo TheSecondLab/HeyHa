@@ -9,8 +9,8 @@
   </div>
   <reminder [data]="reminder"></reminder>
   <div class="panel">
-      <st-sub-title title='课程进度' btnText='更多' tappable (click)='moreCourse()'></st-sub-title>
-      <div class="courseProgress">
+      <st-sub-title title='课程进度' btnText='更多' tappable (click)='moreCourse()' noText='y'></st-sub-title>
+      <div class="courseProgress" *ngIf="courseProgress">
         <div class="img"><img src='{{courseProgress.photoUrl}}' /></div>
         <div class="cont-box">
           <div class="date">{{courseProgress.dateStr}}</div>

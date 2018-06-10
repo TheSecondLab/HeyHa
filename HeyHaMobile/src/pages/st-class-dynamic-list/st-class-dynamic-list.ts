@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, AlertController, ViewController } from 'ionic-angular';
 import { ModalPostPageComponent } from '../../components/modal-post-page/modal-post-page';
 import { BaseService } from '../../module/baseService.service';
+import { PhotoViewer } from '@ionic-native/photo-viewer';
 
 /**
  * Generated class for the ClassDynamicListPage page.
@@ -24,6 +25,7 @@ export class StClassDynamicListPage {
     public alertCtrl: AlertController,
     public modalCtrl: ModalController,
     public viewCtrl: ViewController,
+    private photoViewer: PhotoViewer,
     public baseService: BaseService) {
   }
   ionViewWillEnter() {
@@ -59,6 +61,9 @@ export class StClassDynamicListPage {
         return item;
       })
     });
+  }
+  photoView(url) {
+    this.photoViewer.show(url, ' ', { share: true });
   }
 }
 

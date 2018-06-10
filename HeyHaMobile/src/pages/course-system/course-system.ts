@@ -47,7 +47,7 @@ export class CourseSystemPage {
         this.courseList = datas[0];
         this.baseService.postData('/admin/level/getLevel', { data: {}, hideLoading: true }, (levelList)=> {
           this.typeList = datas[1].map((item) => ({ key: item.id, value: item.name}));
-          this.typeList = [{key: 'all', value: '所有组合'}].concat(this.typeList);
+          this.typeList = [{key: 'all', value: '所有类型'}].concat(this.typeList);
           this.levelList = levelList.map((item) => ({ key: item.id, value: item.name}));
           this.levelList = [{key: 'all', value: '所有级别'}].concat(this.levelList);
         });

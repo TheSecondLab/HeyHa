@@ -3,6 +3,7 @@ page-task {
     position: relative;
     display: flex;
     align-content: center;
+    align-items: center;
     padding: 18px 15px;
     border-bottom: 1px solid #f2f2f2;
     background-color: #fff;
@@ -15,7 +16,7 @@ page-task {
       border-radius: 50%;
       color: #fff;
       font-weight: bold;
-      background-color: #91DCFD;
+      background-color: #FD9191;
     }
   
     .cont {
@@ -36,11 +37,12 @@ page-task {
     }
   
     .stuCount{
-      display: flex;
-      align-items: center;
+      // display: flex;
+      // align-items: center;
       width: 44px;
       font-size: 20px;
       color: #D0021B;
+      text-align: right
     }
   }
 }

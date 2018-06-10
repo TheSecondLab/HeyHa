@@ -75,5 +75,9 @@ export class StModalPostPageComponent {
     //   this.viewCtrl.dismiss();
     // });
   }
+  
+  delImage(imgUrl) {
+    this.photoList = this.photoList.filter((item) => item !== imgUrl);
+  }
 
 }

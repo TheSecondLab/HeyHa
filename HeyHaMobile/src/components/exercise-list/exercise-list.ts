@@ -19,7 +19,11 @@ export class ExerciseListComponent {
   }
 
   ngOnChanges(changes) {
-    this.exerciseList = changes.list.currentValue;
+    this.exerciseList = changes.list.currentValue ? changes.list.currentValue.map(item => {
+      const dateStrs = item.dateStr.split('-');
+      item.dateStr = dateStrs[0] + '年' + dateStrs[1] + '月' + dateStrs[2] + '日';
+      return item
+    }) : []
 
   }
   navTo(item) {

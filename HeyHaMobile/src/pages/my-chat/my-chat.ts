@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, ModalController, ViewController } from 'ionic-angular';
 
 import { IMService } from '../../module/imService.service';
+import { Utils } from '../../module/util';
 import { BaseService } from '../../module/baseService.service';
 import { PostClassMessageComponent } from '../../components/post-class-message/post-class-message';
 
@@ -29,7 +30,8 @@ export class MyChatPage {
     public alertCtrl: AlertController,
     public modalCtrl: ModalController,
     public viewCtrl: ViewController,
-    public jMessageChenyu: JmessageChenyu
+    public jMessageChenyu: JmessageChenyu,
+    public util: Utils
   ) {
   }
 
@@ -70,7 +72,7 @@ export class MyChatPage {
               image: relation.photoUrl,
               name: conversation.title,
               latestMessage: conversation.latestMessage.type === 'text' ? conversation.latestMessage.text : '[类型不支持预览]',
-              date: '',
+              date: this.util.formatDate(conversation.latestMessage.createTime, 'yyyy/MM/dd hh:mm:ss'),
               nickname: relation.nickname
             };
 

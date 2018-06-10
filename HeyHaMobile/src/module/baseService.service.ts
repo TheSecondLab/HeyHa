@@ -83,7 +83,7 @@ export class BaseService {
 
       return this.http.post(`${domain}${url}`, params.toString() ,options);
     });
-
+    
     Observable.forkJoin(requests).subscribe((datas: ResData[]) => {
       loading.dismiss();
       const timeout = datas.filter((data) => data.status === 'SESSION_OUT');

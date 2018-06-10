@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, AlertController, ViewController } from 'ionic-angular';
 import { ModalPostPageComponent } from '../../components/modal-post-page/modal-post-page';
+import { PhotoViewer } from '@ionic-native/photo-viewer';
 
 import { BaseService } from '../../module/baseService.service';
 
@@ -27,6 +28,7 @@ export class ClassDynamicListPage {
     public alertCtrl: AlertController,
     public baseService: BaseService,
     public viewCtrl: ViewController,
+    private photoViewer: PhotoViewer,
     public modalCtrl: ModalController) {
   }
 
@@ -56,6 +58,10 @@ export class ClassDynamicListPage {
     this.baseService.postData('/admin/dynamic/deleteDynamic', { data: {id}, hideLoading: true }, (data)=> {
       this.loadPageData();
     });
+  }
+
+  photoView(url) {
+    this.photoViewer.show(url, ' ', { share: true });
   }
 }
 

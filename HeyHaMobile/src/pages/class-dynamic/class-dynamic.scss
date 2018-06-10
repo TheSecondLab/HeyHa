@@ -3,6 +3,7 @@ page-class-dynamic {
     position: relative;
     display: flex;
     align-content: center;
+    align-items: center;
     padding: 18px 15px;
     border-bottom: 1px solid #f2f2f2;
     background-color: #fff;
@@ -36,11 +37,12 @@ page-class-dynamic {
     }
     
     .stuCount{
-        display: flex;
-        align-items: center;
+        // display: flex;
+        // align-items: center;
         width: 44px;
         font-size: 20px;
         color: #D0021B;
+        text-align: right;
     }
     }
 }

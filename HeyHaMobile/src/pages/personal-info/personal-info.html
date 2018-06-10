@@ -16,10 +16,14 @@
     </div>
   </div>
 
-  <ion-list>
-      <div ion-item *ngFor="let item of infos" class='infos'>
-        <span class="label">{{ item.label }}</span>
-        <span class="value">{{ item.value }}</span>
-      </div>
-    </ion-list>
+  <div class="infosWrap">
+    <ion-list>
+        <div ion-item *ngFor="let item of infos" >
+          <div class='infos'>
+            <span class="label">{{ item.label }}</span>
+            <span class="value">{{ item.value }}</span>
+          </div>
+        </div>
+      </ion-list>
+  </div>
 </ion-content>
