@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, AlertController, ViewController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, AlertController, ViewController, Platform } from 'ionic-angular';
 import { ModalPostPageComponent } from '../../components/modal-post-page/modal-post-page';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
+import { PhotoLibrary } from '@ionic-native/photo-library';
+import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 
 import { BaseService } from '../../module/baseService.service';
 
@@ -23,14 +26,19 @@ export class ClassDynamicListPage {
   classId;
   classTitle;
   constructor(
+    public platform: Platform,
     public navCtrl: NavController,
     public navParams: NavParams,
     public alertCtrl: AlertController,
     public baseService: BaseService,
+    private transfer: FileTransfer, private file: File,
     public viewCtrl: ViewController,
+    private photoLibrary: PhotoLibrary,
     private photoViewer: PhotoViewer,
     public modalCtrl: ModalController) {
   }
+
+  fileTransfer: FileTransferObject = this.transfer.create();
 
   openModal() {
     let modal = this.modalCtrl.create(ModalPostPageComponent, { classId: this.classId });
@@ -61,7 +69,18 @@ export class ClassDynamicListPage {
   }
 
   photoView(url) {
-    this.photoViewer.show(url, ' ', { share: true });
+    this.fileTransfer.download(url, this.file.dataDirectory + url.split('/').pop()).then((entry) => {
+      console.log('download complete===============zx: ' + entry.toURL());
+      this.photoViewer.show(entry.toURL(), ' ', { share: true });
+    }, (error) => {
+      // handle error
+    });
+    // if (this.platform.is('ios')) {
+
+    // } else {
+    //   this.photoViewer.show(url, ' ', { share: true });
+    // }
   }
+
 }
 

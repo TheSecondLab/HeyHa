@@ -11,6 +11,7 @@ import { AndroidPermissions } from '@ionic-native/android-permissions';
 import { FilePath } from '@ionic-native/file-path';
 import { AppVersion } from '@ionic-native/app-version';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
+import { PhotoLibrary } from '@ionic-native/photo-library';
 
 // 自定义组件
 import { ComponentsModule } from '../components/components.module';
@@ -236,7 +237,8 @@ import { AlertService } from '../module/alertService.service';
     FilePath,
     File,
     AppVersion,
-    PhotoViewer
+    PhotoViewer,
+    PhotoLibrary
   ]
 })
 export class AppModule {}
