@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController, AlertController, ViewController, Platform } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, AlertController, ViewController, Platform, ActionSheetController } from 'ionic-angular';
 import { ModalPostPageComponent } from '../../components/modal-post-page/modal-post-page';
 import { PhotoViewer } from '@ionic-native/photo-viewer';
 import { PhotoLibrary } from '@ionic-native/photo-library';
@@ -35,6 +35,7 @@ export class ClassDynamicListPage {
     public viewCtrl: ViewController,
     private photoLibrary: PhotoLibrary,
     private photoViewer: PhotoViewer,
+    public actionSheetCtrl: ActionSheetController,
     public modalCtrl: ModalController) {
   }
 
@@ -70,17 +71,59 @@ export class ClassDynamicListPage {
 
   photoView(url) {
     this.fileTransfer.download(url, this.file.dataDirectory + url.split('/').pop()).then((entry) => {
-      console.log('download complete===============zx: ' + entry.toURL());
       this.photoViewer.show(entry.toURL(), ' ', { share: true });
     }, (error) => {
       // handle error
     });
-    // if (this.platform.is('ios')) {
-
-    // } else {
-    //   this.photoViewer.show(url, ' ', { share: true });
-    // }
   }
+
+  save(url) {
+    this.photoLibrary.requestAuthorization().then(() => {
+      this.fileTransfer.download(url, this.file.dataDirectory + url.split('/').pop()).then((entry) => {
+       
+        this.photoLibrary.saveImage( entry.toURL(), '金牌小子').then((entry=>{
+          let alert = this.alertCtrl.create({
+            title: '保存成功',
+            buttons: ['确定']
+          });
+          alert.present();
+        }),
+        (error) => {
+          // handle error
+          let alert = this.alertCtrl.create({
+            title: '保存失败',
+            buttons: ['确定']
+          });
+          alert.present();
+        });
+      }, (error) => {
+        // handle error
+      });
+      
+    })
+    .catch(err => console.log('permissions weren\'t granted'));
+  }
+
+  presentActionSheet(imageUrl) {
+    const actionSheet = this.actionSheetCtrl.create({
+      buttons: [
+        {
+          text: '查看大图',
+          role: 'destructive',
+          handler: () => {
+            this.photoView(imageUrl);
+          }
+        },{
+          text: '保存图片',
+          handler: () => {
+            this.save(imageUrl);
+          }
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
 
 }
 

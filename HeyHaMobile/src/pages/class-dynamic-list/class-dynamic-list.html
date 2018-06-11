@@ -22,7 +22,7 @@
       <div class="delete" tappable (click)="deleteDynamic(dynamic.id)"></div>
     </div>
     <div class="photoGroup">
-      <div *ngFor="let imageUrl of dynamic.imageUrl"><img src="{{imageUrl}}" tappable (click)="photoView(imageUrl)"  alt=""></div>
+      <div *ngFor="let imageUrl of dynamic.imageUrl"><img src="{{imageUrl}}" tappable (click)="presentActionSheet(imageUrl)"  alt=""></div>
     </div>
   </div>
 </ion-content>
