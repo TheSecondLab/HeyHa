@@ -60,7 +60,9 @@ export class MultipleUpLoadService {
       destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
-      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
+      sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+      targetWidth:768, //图片输出宽度
+      targetHeight:1280 //图片输出高度
     };
 
     this.camera.getPicture(options).then((imageData) => {
@@ -102,7 +104,7 @@ export class MultipleUpLoadService {
 
   postImage(path, param, onSuccess, onError) {
     this.http.post(path, param).toPromise().then(res => {
-      onSuccess(res);        
+      onSuccess(res);
     }).catch(error => {
       onError(error);
     });
