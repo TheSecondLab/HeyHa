@@ -11,8 +11,6 @@ import {
 
 import { BaseService } from '../../module/baseService.service';
 
-
-
 @IonicPage()
 @Component({
   selector: 'page-login',
@@ -59,6 +57,12 @@ export class LoginPage {
         window.localStorage.setItem('username', data.code);
         window.localStorage.setItem('password', this.form.value.password);
         this.jPush.setAlias({ sequence: 1, alias: data.code });
+        // this.jPush.getRegistrationID().then((res) => {
+        //   this.alertCtrl.create({message: JSON.stringify(res)}).present();
+        // }).catch((err) => {
+        //   this.alertCtrl.create({message: JSON.stringify(err)}).present();
+        // });
+        console.log(`username: ${data.code}`)
         this.imService.login(data.code);
         this.imService.addClickMessageNotificationListener((msg) => {
           this.navCtrl.push('ChatPage', {// TODO change to stu

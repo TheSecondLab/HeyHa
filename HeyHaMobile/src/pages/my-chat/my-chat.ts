@@ -67,6 +67,20 @@ export class MyChatPage {
         // this.alertCtrl.create({message: JSON.stringify(datas[0])}).present()
         datas[0].forEach((relation) => {
           this.imService.getConversation(relation.username).then((conversation) => {
+            console.log(`conversation:${conversation.latestMessage}`)
+            if(!conversation.latestMessage) {
+              const msg = {
+                username: relation.username,
+                image: relation.photoUrl,
+                name: conversation.title,
+                latestMessage: '',
+                date: '',
+                nickname: relation.nickname
+              };
+
+              this.chatHistory.push(msg);
+              return;
+            }
             const msg = {
               username: relation.username,
               image: relation.photoUrl,
