@@ -130,7 +130,9 @@ class TaskSetting extends C {
   }
 
   loadAllCourse(levelId, materialId) {
-    post('/admin/clazzSource/getCapital', { types: 'COURSE', levelId, materialId }, () => { this.setState({show: true}) }).then((data) => {
+    const { id } = this.props.match.params;
+
+    post('/admin/clazzSource/getClazzCapital', { types: 'HOMEWORK', levelId, materialId, clazzId: id }, () => { this.setState({show: true}) }).then((data) => {
      
       let courseList = [];
       const { currentLevel } = this.state;
