@@ -61,8 +61,8 @@ export class MultipleUpLoadService {
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
       sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
-      targetWidth:768, //图片输出宽度
-      targetHeight:1280 //图片输出高度
+      targetWidth:7680, //图片输出宽度
+      targetHeight:12800 //图片输出高度
     };
 
     this.camera.getPicture(options).then((imageData) => {
